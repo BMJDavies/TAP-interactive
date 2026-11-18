@@ -2134,9 +2134,9 @@ var ptx_lunr_docs = [
   "body": " Conclusion  This book has given an overview of a challenging topic: what a proof is, how one is structured, and several methods of proof. Knowing which method a statement needs is not always easy. That comes with practice and with time spent in mathematics, and as it comes you will also come to appreciate how elegant a good proof can be.  Proofs are the building blocks of mathematics. A claim that has not been proved is, however plausible, a conjecture.  "
 },
 {
-  "id": "book-thinking-about-proof-14-1",
+  "id": "colophon",
   "level": "1",
-  "url": "book-thinking-about-proof-14-1.html",
+  "url": "colophon.html",
   "type": "Colophon",
   "number": "",
   "title": "Colophon",
