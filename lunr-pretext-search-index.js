@@ -2140,7 +2140,7 @@ var ptx_lunr_docs = [
   "type": "Colophon",
   "number": "",
   "title": "Colophon",
-  "body": " Adapted from Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof , 1st edition, University of Southampton, 2022, doi:10.5258\/SOTON\/P1082 , used under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International licence (CC BY-NC-SA 4.0).  Changes from the booklet: the text has been edited and reorganised as an online book, and computer-marked questions (written in STACK) have been added. The teacher edition also adds teaching notes and model proofs.  This interactive edition is licensed under the same licence, CC BY-NC-SA 4.0 . You may share and adapt it for non-commercial purposes, provided you credit the original authors and this edition, indicate any changes, and release your version under the same licence.  "
+  "body": " Interactive edition by Ben Davies, 2026.  Adapted from Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof , 1st edition, University of Southampton, 2022, doi:10.5258\/SOTON\/P1082 , used under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International licence (CC BY-NC-SA 4.0).  Changes from the booklet: the text has been edited and reorganised as an online book, and computer-marked questions (written in STACK) have been added. The teacher edition also adds teaching notes and model proofs.  This interactive edition is licensed under the same licence, CC BY-NC-SA 4.0 . You may share and adapt it for non-commercial purposes, provided you credit the original authors and this edition, indicate any changes, and release your version under the same licence.  "
 }
 ]
 

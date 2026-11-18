@@ -10,6 +10,8 @@ This repository holds only the generated website. The computer-marked questions 
 
 ## Attribution
 
+Interactive edition by Ben Davies, 2026.
+
 Adapted from Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F.,
 *Thinking about Proof*, 1st edition, University of Southampton, 2022,
 https://doi.org/10.5258/SOTON/P1082, used under the Creative Commons
