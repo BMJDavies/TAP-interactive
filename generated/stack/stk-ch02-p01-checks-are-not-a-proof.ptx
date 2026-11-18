@@ -1,0 +1,15 @@
+<stack-static>
+    <statement><p><p>A student wonders whether <m>{x^3+14 x=7 x^2+8}</m> for every real number <m>x</m>. They check <m>x = {1}</m>, <m>x = {2}</m> and <m>x = {4}</m>, and find that the two sides are equal each time.</p>
+<p>(a) Complete one of the checks: when <m>x = {2}</m>, both sides equal</p>
+<div><fillin characters="5" name="ans1"/>  </div>
+<p>(b) The student concludes that the equation is true for every real number <m>x</m>. Show that the student is wrong: give an example of a value of <m>x</m> for which the two sides are different.</p>
+<div><m>x =</m> <fillin characters="6" name="ans2"/>  </div>
+<p>Type fractions as <c>1/2</c> and square roots as <c>sqrt(2)</c>.</p></p></statement>
+    <solution><p><p>Checking values can show that a statement is false, but no number of checks can show that it is true for every real number: there are always values you have not checked.</p>
+<p>(a) When <m>x = {2}</m>, the left-hand side is <m>{2}^3 + {14} \times {2} = {36}</m> and the right-hand side is <m>{7} \times {2}^2 + {8} = {36}</m>.</p>
+<p>(b) Subtracting the right-hand side from the left-hand side gives</p>
+<p><me>\left({x^3+14 x}\right) - \left({7 x^2+8}\right) = (x - {1})(x - {2})(x - {4}).</me></p>
+<p>This product is 0 exactly when <m>x</m> is <m>{1}</m>, <m>{2}</m> or <m>{4}</m>, the three values the student happened to check, and it is not 0 for any other value of <m>x</m>. So any other value is a counterexample. For example, at <m>x = 0</m> the left-hand side is 0 and the right-hand side is <m>{8}</m>.</p></p></solution>
+    <answer><p><m>36</m></p></answer>
+    <answer><p><m>0</m></p></answer>
+</stack-static>

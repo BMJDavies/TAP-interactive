@@ -1,0 +1,30 @@
+<stack-static>
+    <statement><p><p>Here is the proof above in numbered lines.</p>
+<tabular>
+<row><cell>1</cell><cell>Suppose that <m>a^2</m> is even and <m>a</m> is not even.</cell></row>
+<row><cell>2</cell><cell>Then <m>a</m> is odd, so <m>a = 2c + 1</m> for some integer <m>c</m>.</cell></row>
+<row><cell>3</cell><cell>Then <m>a^2 = (2c + 1)^2 = 4c^2 + 4c + 1 = 2(2c^2 + 2c) + 1</m>.</cell></row>
+<row><cell>4</cell><cell>So <m>a^2</m> is odd.</cell></row>
+<row><cell>5</cell><cell>So <m>a^2</m> is even, by line 1, and <m>a^2</m> is odd, by line 4. This is a contradiction.</cell></row>
+<row><cell>6</cell><cell>So the assumption in line 1 is false: if <m>a^2</m> is even, then <m>a</m> is even.</cell></row>
+</tabular>
+<ol class="tb-parts">
+<li><p>Line 1 assumes two things: that <m>a^2</m> is even, and that <m>a</m> is odd. Apart from line 1, in which line is the assumption that <m>a^2</m> is even used?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div></li>
+<li><p>Lines 2 to 4 do not use the assumption that <m>a^2</m> is even. Which statement do lines 2 to 4 prove on their own?</p>
+<div><ol marker="(1)">
+<li>If <m>a</m> is even, then <m>a^2</m> is even.</li>
+<li>If <m>a^2</m> is odd, then <m>a</m> is odd.</li>
+<li>If <m>a</m> is odd, then <m>a^2</m> is odd.</li>
+<li>There is an integer <m>a</m> for which <m>a^2</m> is even and <m>a</m> is odd.</li>
+</ol>  </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p>The assumption that <m>a^2</m> is even is used only in line 5, where it clashes with line 4. Lines 2 to 4 start from ‘<m>a</m> is odd’ and never mention that <m>a^2</m> is even.</p></li>
+<li><p>Lines 2 to 4 prove, on their own, that if <m>a</m> is odd then <m>a^2</m> is odd. This is the <em>contrapositive</em> of the statement ‘if <m>a^2</m> is even, then <m>a</m> is even’: the contrapositive of ‘if P, then Q’ is ‘if not Q, then not P’, and a statement and its contrapositive are either both true or both false.</p>
+<p>So the proof can be rewritten without a contradiction: ‘Suppose that <m>a</m> is odd. Then <m>a = 2c + 1</m> for some integer <m>c</m>, and <m>a^2 = 2(2c^2 + 2c) + 1</m> is odd. So if <m>a</m> is odd, then <m>a^2</m> is odd; equivalently, if <m>a^2</m> is even, then <m>a</m> is even.’ Both versions are correct proofs.</p>
+<p>‘If <m>a</m> is even, then <m>a^2</m> is even’ is the converse of the statement, and ‘if <m>a^2</m> is odd, then <m>a</m> is odd’ is the converse of the contrapositive. Both are true, but neither is what lines 2 to 4 prove.</p></li>
+</ol></p></solution>
+    <answer><p><m>5</m></p></answer>
+    <answer><p><m>(3)</m></p></answer>
+</stack-static>

@@ -1,0 +1,4 @@
+/* book-extra.css: loaded via html.css.extra in project.ptx.
+   STACK feedback and Parsons blocks use Font Awesome 4 class names (fa fa-check etc.),
+   which PreTeXt does not load, so the icons were blank (Ch5 author, 2026-11-13). */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");

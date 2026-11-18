@@ -1,0 +1,23 @@
+<stack-static>
+    <statement><p><p>Claim: for every integer <m>n</m> with <m>{14} \le n \le {22}</m>,
+<me>2^{n/10} &gt; \left(\dfrac{n}{10}\right)^2.</me></p>
+<p>Enter the set of all <m>n</m> in this range for which the claim is false. Type a set in curly brackets, for example {5, 6}; type {} if there are none. You may use a calculator.</p>
+<div><fillin characters="20" name="ans1"/> </div></p></statement>
+    <solution><p><p>A claim about every integer in a finite range is proved, or disproved, by checking every value in the range. Here is the check, with values to 3 decimal places.</p>
+<tabular>
+<row><cell><m>n</m></cell><cell><m>2^{n/10}</m></cell><cell><m>\left(\dfrac{n}{10}\right)^2</m></cell><cell>Claim true?</cell></row>
+
+<row><cell><m>{14}</m></cell><cell><m>{2.639}</m></cell><cell><m>{1.960}</m></cell><cell>yes</cell></row>
+<row><cell><m>{15}</m></cell><cell><m>{2.828}</m></cell><cell><m>{2.250}</m></cell><cell>yes</cell></row>
+<row><cell><m>{16}</m></cell><cell><m>{3.031}</m></cell><cell><m>{2.560}</m></cell><cell>yes</cell></row>
+<row><cell><m>{17}</m></cell><cell><m>{3.249}</m></cell><cell><m>{2.890}</m></cell><cell>yes</cell></row>
+<row><cell><m>{18}</m></cell><cell><m>{3.482}</m></cell><cell><m>{3.240}</m></cell><cell>yes</cell></row>
+<row><cell><m>{19}</m></cell><cell><m>{3.732}</m></cell><cell><m>{3.610}</m></cell><cell>yes</cell></row>
+<row><cell><m>{20}</m></cell><cell><m>{4.000}</m></cell><cell><m>{4.000}</m></cell><cell>no</cell></row>
+<row><cell><m>{21}</m></cell><cell><m>{4.287}</m></cell><cell><m>{4.410}</m></cell><cell>no</cell></row>
+<row><cell><m>{22}</m></cell><cell><m>{4.595}</m></cell><cell><m>{4.840}</m></cell><cell>no</cell></row>
+
+</tabular>
+<p>The claim is false for every <m>n</m> in <m>{\left \{20 , 21 , 22 \right \}}</m>. At <m>n = {20}</m> the two sides are equal (both are <m>{4}</m>), and a claim that one side is greater than the other fails when they are equal. A check of only some values in the range could have missed this.</p></p></solution>
+    <answer><p><m>\left \{20 , 21 , 22 \right \}</m></p></answer>
+</stack-static>

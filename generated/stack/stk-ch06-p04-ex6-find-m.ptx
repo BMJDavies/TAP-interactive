@@ -1,0 +1,13 @@
+<stack-static>
+    <statement><p><p>(a) The product <m>{3} \times {4} \times {5} \times {6} = {360}</m> is 1 less than a perfect square. Find a whole number <m>M</m> with <m>{360} = M^2 - 1</m>.</p>
+<div><m>M =</m> <fillin characters="6" name="ans1"/> </div>
+<div/>
+<p>(b) Now the general case. Let the four consecutive integers be <m>{n}</m>, <m>{n+1}</m>, <m>{n+2}</m> and <m>{n+3}</m>, where <m>n</m> is an integer. Find <m>M</m>, a polynomial in <m>n</m>, such that their product equals <m>M^2 - 1</m>.</p>
+<div><m>M =</m> <fillin characters="18" name="ans2"/> </div>
+<div/></p></statement>
+    <solution><p><p>The idea is to pair the outer two numbers and the inner two. The two products differ by 2, and a product of two numbers that differ by 2 is 1 less than a perfect square: <m>t(t + 2) = t^2 + 2t = (t + 1)^2 - 1</m>.</p>
+<p>(a) <m>{3} \times {6} = {18}</m> and <m>{4} \times {5} = {20}</m>, so the product is <m>{18} \times {20} = {19}^2 - 1</m>. So <m>M = {19}</m> (or <m>-{19}</m>).</p>
+<p>(b) The same pairing: the outer product is <m>{n^2+3 n}</m> and the inner product is <m>{n^2+3 n+2}</m>, which is 2 more. Writing <m>t = {n^2+3 n}</m>, the product is <m>t(t + 2) = (t + 1)^2 - 1</m>, so <m>M = {n^2+3 n+1}</m>. This is an integer for every integer <m>n</m>, so the product of any four consecutive integers is 1 less than a perfect square.</p></p></solution>
+    <answer><p><m>19</m></p></answer>
+    <answer><p><m>n^2+3 n+1</m></p></answer>
+</stack-static>

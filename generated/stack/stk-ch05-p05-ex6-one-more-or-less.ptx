@@ -1,0 +1,28 @@
+<stack-static>
+    <statement><p><p>The exercise above claims that for every integer <m>n</m> with <m>1 \le n \le 4</m>, the number <m>n^3 + 7</m> is 1 more or 1 less than a multiple of 7.</p>
+<ol type="a">
+<li><p>For which of these <m>n</m> is <m>n^3 + 7</m> one less than a multiple of 7? Type a set in curly brackets, for example {5, 6}; type {} if there are none.</p>
+<div><fillin characters="15" name="ans1"/>  </div></li>
+<li><p>The claim is only made for <m>1 \le n \le 4</m>. What is the smallest positive integer <m>n</m> for which <m>n^3 + 7</m> is neither 1 more nor 1 less than a multiple of 7?</p>
+<div><m>n =</m> <fillin characters="4" name="ans2"/>  </div></li>
+</ol></p></statement>
+    <solution><p><p>For each <m>n</m>, find the multiple of 7 nearest to <m>n^3 + 7</m>; it may be above or below.</p>
+<tabular>
+<row><cell><m>n</m></cell><cell><m>n^3 + 7</m></cell><cell>nearest multiple of 7</cell><cell>difference</cell></row>
+
+<row><cell>1</cell><cell>8</cell><cell>7</cell><cell><m>+1</m></cell></row>
+<row><cell>2</cell><cell>15</cell><cell>14</cell><cell><m>+1</m></cell></row>
+<row><cell>3</cell><cell>34</cell><cell>35</cell><cell><m>-1</m></cell></row>
+<row><cell>4</cell><cell>71</cell><cell>70</cell><cell><m>+1</m></cell></row>
+<row><cell>5</cell><cell>132</cell><cell>133</cell><cell><m>-1</m></cell></row>
+<row><cell>6</cell><cell>223</cell><cell>224</cell><cell><m>-1</m></cell></row>
+<row><cell>7</cell><cell>350</cell><cell>350</cell><cell><m>0</m></cell></row>
+
+</tabular>
+<ol type="a">
+<li><p>Only <m>n = 3</m> gives a number one less than a multiple of 7: <m>34 = 35 - 1</m>. So the answer is <m>\{3\}</m>.</p></li>
+<li><p>For <m>n = 1</m> to 6 the claim holds, sometimes 1 above a multiple of 7 and sometimes 1 below. At <m>n = 7</m> it fails: 350 is itself a multiple of 7. Adding 7 does not change how far a number is from the nearest multiple of 7, so the claim is really about <m>n^3</m>, and <m>n^3</m> is a multiple of 7 whenever <m>n</m> is.</p></li>
+</ol></p></solution>
+    <answer><p><m>\left \{3 \right \}</m></p></answer>
+    <answer><p><m>7</m></p></answer>
+</stack-static>

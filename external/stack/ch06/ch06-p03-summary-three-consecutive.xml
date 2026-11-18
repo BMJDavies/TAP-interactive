@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch06_P03_Summary_three_consecutive</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Which is the best summary of the proof above that the product of any three consecutive positive integers is a multiple of 6?</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A good summary names the structure of the proof and its key idea. The proof does not use the expanded product. It shows that the product has a factor 2 (one or two of the numbers are even) and a factor 3 (one of them is a multiple of 3), and combines the two. That is the second option.</p>
+<ul>
+<li><p>Multiplying out was the first attempt, and the solution abandoned it (<q>start again</q>): \(n^3 + 3n^2 + 2n\) shows no factor of 6.</p></li>
+<li><p>Checking some products gives evidence, not a proof: there are infinitely many sets of three consecutive integers.</p></li>
+<li><p>Three consecutive integers need not include a multiple of 6: 7, 8 and 9 do not. Their product, \(504 = 6 \times 84\), is still a multiple of 6, because 8 is even and 9 is a multiple of 3.</p></li>
+</ul>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Fixed: one specific proof. Options in a fixed order, the best summary second. */
+optsS: [
+ [smexp, false, "Multiply out \\(n(n + 1)(n + 2)\\) to get \\(n^3 + 3n^2 + 2n\\), and show that this expression has a factor of 6 for every positive integer \\(n\\)."],
+ [smpar, true, "Among any three consecutive integers at least one is even and one is a multiple of 3, so the product is a multiple of 2 and of 3, and therefore of 6."],
+ [smemp, false, "Check that \\(1 \\times 2 \\times 3 = 6\\), \\(2 \\times 3 \\times 4 = 24\\) and \\(3 \\times 4 \\times 5 = 60\\) are all multiples of 6, and conclude that every such product is a multiple of 6."],
+ [smsix, false, "Among any three consecutive integers one of them is always a multiple of 6, so their product must also be a multiple of 6."]
+];
+]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Best summary: smpar]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 6.2 (the product of any three consecutive positive integers is a multiple of 6), pp. 24-25, in Section 6 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>radio</type><tans>optsS</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>nonotanswered</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Best summary</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>smpar</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. The proof finds a factor 2 and a factor 3 separately, then combines them.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the abandoned attempt</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>smexp</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The solution tried this first and abandoned it (<q>start again</q>): \(n^3 + 3n^2 + 2n\) shows no factor of 6. Summarise the argument that came after the fresh start.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: empirical checking</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>smemp</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Checking some products gives evidence, not a proof: there are infinitely many sets of three consecutive integers. The proof deals with all of them at once.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Three consecutive integers need not include a multiple of 6: 7, 8 and 9 do not, although their product, \(504 = 6 \times 84\), is a multiple of 6. So the proof cannot rest on this claim. Look again at where the proof finds its factors.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Best summary</description>
+    <testinput><name>ans1</name><value>smpar</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>The abandoned attempt</description>
+    <testinput><name>ans1</name><value>smexp</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Empirical checking</description>
+    <testinput><name>ans1</name><value>smemp</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>False premise: a multiple of 6</description>
+    <testinput><name>ans1</name><value>smsix</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

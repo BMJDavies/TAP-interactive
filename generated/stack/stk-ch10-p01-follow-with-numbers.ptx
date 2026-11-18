@@ -1,0 +1,45 @@
+<stack-static>
+    <statement><p><p>Here is the proof that <m>2 = 1</m> from the example above, in numbered lines.</p>
+<tabular>
+<row><cell>1</cell><cell>Suppose that <m>a = b</m>.</cell></row>
+<row><cell>2</cell><cell>Then <m>a^2 = ab</m>.</cell></row>
+<row><cell>3</cell><cell><m>a^2 - b^2 = ab - b^2</m></cell></row>
+<row><cell>4</cell><cell><m>(a - b)(a + b) = b(a - b)</m></cell></row>
+<row><cell>5</cell><cell><m>a + b = b</m></cell></row>
+<row><cell>6</cell><cell><m>b + b = b</m></cell></row>
+<row><cell>7</cell><cell><m>2b = b</m></cell></row>
+<row><cell>8</cell><cell><m>2 = 1</m></cell></row>
+</tabular>
+<p>A correct step never leads from true lines to a false one. So if you choose values that make line 1 true, the first line that is false for your values cannot follow from the lines before it.</p>
+<ol class="tb-parts">
+<li><p>Take <m>a = b = 3</m>. Which is the first line that is false?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div></li>
+<li><p>Now take <m>a = b = 0</m>. Which is the first line that is false?</p>
+<div>Line <fillin characters="3" name="ans2"/>  </div></li>
+<li><p>Line 1 is the assumption. Which of lines 2 to 8 do not follow from the lines before them? Enter the set of line numbers in curly brackets, for example <c>{2, 3}</c>.</p>
+<div><fillin characters="10" name="ans3"/>  </div></li>
+<li><p>Why does each of these lines not follow? (Optional: this box is not marked and not saved.)</p>
+<div><fillin characters="40" name="ans4"/> </div></li>
+</ol></p></statement>
+    <solution><p><p>A correct step never leads from true lines to a false one. So follow the proof with numbers that make line 1 true, and look for the first line that becomes false: the step to that line cannot be valid.</p>
+<p>With <m>a = b = 3</m>, the two sides of each line are:</p>
+<tabular>
+<row><cell>Line</cell><cell>Left side</cell><cell>Right side</cell></row>
+<row><cell>1</cell><cell>3</cell><cell>3</cell></row>
+<row><cell>2</cell><cell>9</cell><cell>9</cell></row>
+<row><cell>3</cell><cell>0</cell><cell>0</cell></row>
+<row><cell>4</cell><cell>0</cell><cell>0</cell></row>
+<row><cell>5</cell><cell>6</cell><cell>3</cell></row>
+<row><cell>6</cell><cell>6</cell><cell>3</cell></row>
+<row><cell>7</cell><cell>6</cell><cell>3</cell></row>
+<row><cell>8</cell><cell>2</cell><cell>1</cell></row>
+</tabular>
+<p>The first false line is line 5, so line 5 does not follow from lines 1 to 4. It divides both sides of line 4 by <m>a - b</m>, which is 0 because <m>a = b</m>. From <m>xy = xz</m> we may conclude <m>y = z</m> only when <m>x \neq 0</m>.</p>
+<p>With <m>a = b = 0</m>, every line from 1 to 7 reads <m>0 = 0</m>, which is true, and line 8 says <m>2 = 1</m>. So line 8 does not follow from line 7: it divides both sides of <m>2b = b</m> by <m>b</m>, which is 0 here, and nothing in the proof says that <m>b \neq 0</m>.</p>
+<p>So the lines that do not follow are 5 and 8. Lines 6 and 7 are false when <m>a = b = 3</m>, but each follows correctly from the line before it: line 6 replaces <m>a</m> by <m>b</m>, and line 7 collects <m>b + b = 2b</m>. Truth and validity are different things: a valid step can lead from a false line to another false line. A false proof can contain more than one invalid step, and one can hide behind another.</p>
+<p>A reason you might have written: <q>Line 5 divides both sides by <m>a - b</m>, which is 0; line 8 divides both sides by <m>b</m>, which might be 0.</q></p></p></solution>
+    <answer><p><m>5</m></p></answer>
+    <answer><p><m>8</m></p></answer>
+    <answer><p><m>\left \{5 , 8 \right \}</m></p></answer>
+    <answer><p></p></answer>
+</stack-static>

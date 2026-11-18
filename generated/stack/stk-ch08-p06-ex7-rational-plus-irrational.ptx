@@ -1,0 +1,21 @@
+<stack-static>
+    <statement><p><ol class="tb-parts">
+<li><p>The statement in the exercise above is about a rational number plus an irrational number. Give an example of two irrational numbers whose sum is rational. Type <m>\sqrt{2}</m> as sqrt(2) and <m>\pi</m> as pi.</p>
+<div>First number: <fillin characters="15" name="ans1"/> </div>
+<div>Second number: <fillin characters="15" name="ans2"/>  </div></li>
+<li><p>A proof of the exercise begins: ‘Suppose that <m>r</m> is rational, <m>x</m> is irrational and <m>r + x = s</m> is rational. Then <m>x = s - r</m>.’ Which fact shows that <m>x</m> is then rational, giving the contradiction?</p>
+<div><ol marker="(1)">
+<li>The sum of two irrational numbers is irrational.</li>
+<li>The product of two rational numbers is rational.</li>
+<li>The difference of two rational numbers is rational.</li>
+<li>Every real number is either rational or irrational.</li>
+</ol>  </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p>An irrational number together with its negative works: <m>\sqrt{2} + \left(-\sqrt{2}\right) = 0</m>. So do <m>1 + \sqrt{2}</m> and <m>1 - \sqrt{2}</m>, which add up to 2, and <m>\pi</m> and <m>1 - \pi</m>, which add up to 1. So the sum of two irrational numbers can be rational, and the statement in the exercise really needs one of its numbers to be rational.</p></li>
+<li><p>The step uses the fact that the difference of two rational numbers is rational. If <m>r = \dfrac{a}{b}</m> and <m>s = \dfrac{c}{d}</m>, with integers <m>a, b, c, d</m> and <m>b, d \neq 0</m>, then <me>x = s - r = \dfrac{bc - ad}{bd},</me> a ratio of integers with <m>bd \neq 0</m>. So <m>x</m> would be rational, contradicting the assumption that it is irrational. The other facts are either false (the sum of two irrational numbers, as part (a) shows) or true but not what this step uses.</p></li>
+</ol></p></solution>
+    <answer><p><m>\sqrt{2}</m></p></answer>
+    <answer><p><m>-\sqrt{2}</m></p></answer>
+    <answer><p><m>(3)</m></p></answer>
+</stack-static>

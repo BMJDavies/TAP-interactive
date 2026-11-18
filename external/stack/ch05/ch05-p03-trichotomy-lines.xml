@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch05_P03_Trichotomy_lines</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here is the proof from the example above that the square of every real number is non-negative, written in numbered lines. The three cases may come in a different order from the example.</p>
+<div>
+<p><strong>(1)</strong> {@pl[1]@}</p>
+<p><strong>(2)</strong> {@pl[2]@}</p>
+<p><strong>(3)</strong> {@pl[3]@}</p>
+<p><strong>(4)</strong> {@pl[4]@}</p>
+<p><strong>(5)</strong> {@pl[5]@}</p>
+<p><strong>(6)</strong> {@pl[6]@}</p>
+<p><strong>(7)</strong> {@pl[7]@}</p>
+<p><strong>(8)</strong> {@pl[8]@}</p>
+<p><strong>(9)</strong> {@pl[9]@}</p>
+</div>
+<ol type="a">
+<li><p>In which line is the rule &#8216;multiplying both sides of an inequality by a negative number reverses the inequality&#8217; used?</p>
+<div>Line [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>The last line concludes \(a^2 \ge 0\), not \(a^2 > 0\). Which line is the reason the conclusion needs \(\ge\)?</p>
+<div>Line [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<ol type="a">
+<li><p>In line {@lineN2@}, the case \(a \lt 0\), both sides of \(a \lt 0\) are multiplied by \(a\), which is negative in this case, so the inequality reverses: \(a \lt 0\) becomes \(a \times a > 0 \times a\). Line {@lineP2@} has the same algebra but keeps the direction, because there \(a\) is positive.</p></li>
+<li><p>The conclusion needs \(\ge\) because of the case \(a = 0\) (lines {@lineZ1@} and {@lineZ2@}), where \(a^2 = 0\); the other two cases give \(a^2 > 0\). Together the three cases give \(a^2 \ge 0\) for every real number.</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* The three case blocks of the trichotomy proof in a random order: 1 = a > 0, 2 = a < 0, 3 = a = 0. */
+corder: random_permutation([1, 2, 3]);
+posP: sublist_indices(corder, lambda([b], b = 1))[1];
+posN: sublist_indices(corder, lambda([b], b = 2))[1];
+posZ: sublist_indices(corder, lambda([b], b = 3))[1];
+lineP1: 1 + 2*posP; lineP2: lineP1 + 1;
+lineN1: 1 + 2*posN; lineN2: lineN1 + 1;
+lineZ1: 1 + 2*posZ; lineZ2: lineZ1 + 1;
+blockP: ["Case \\(a > 0\\).", "Multiplying both sides of \\(a > 0\\) by \\(a\\) gives \\(a \\times a > 0 \\times a\\), so \\(a^2 > 0\\)."];
+blockN: ["Case \\(a \\lt 0\\).", "Multiplying both sides of \\(a \\lt 0\\) by \\(a\\) gives \\(a \\times a > 0 \\times a\\), so \\(a^2 > 0\\)."];
+blockZ: ["Case \\(a = 0\\).", "Then \\(a^2 = 0 \\times 0 = 0\\)."];
+caseblocks: [blockP, blockN, blockZ];
+pl: append(["Let \\(a\\) be any real number.", "By trichotomy, \\(a > 0\\), \\(a \\lt 0\\) or \\(a = 0\\)."],
+  caseblocks[corder[1]], caseblocks[corder[2]], caseblocks[corder[3]],
+  ["So in every case \\(a^2 > 0\\) or \\(a^2 = 0\\); that is, \\(a^2 \\ge 0\\) for every real number \\(a\\)."]);
+validate_line(ex) := if integerp(ex) and ex >= 1 and ex <= 9 then "" else "Enter a line number from 1 to 9.";
+s_assert(is(length(unique([lineN2, lineP2, lineN1, 2, 9])) = 5), true);
+]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Case order {@corder@} (1 = positive, 2 = negative, 3 = zero); (a) line {@lineN2@}; (b) line {@lineZ2@} or {@lineZ1@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 5.1 (Using trichotomy), p. 17, in Section 5 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>lineN2</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>lineZ2</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>The reversal line</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>lineN2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the positive case</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>lineP2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>In line {@lineP2@} the case is \(a > 0\). Multiplying both sides of an inequality by a positive number keeps its direction, so no reversal is used there.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the case heading</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>lineN1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line {@lineN1@} only names the case \(a \lt 0\): nothing is multiplied there. Look for the line in which the multiplication is carried out.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Find the line where both sides of an inequality are multiplied by a number that is negative in that case. Compare the inequality before and after the multiplication.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Either line of the zero case</description><answertest>AlgEquiv</answertest><sans>is(member(ans2, [lineZ1, lineZ2]))</sans><tans>true</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: a line giving a^2 &gt; 0</description><answertest>AlgEquiv</answertest><sans>is(member(ans2, [lineP2, lineN2]))</sans><tans>true</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line {@ans2@} shows \(a^2 > 0\). If every case gave \(a^2 > 0\), the conclusion could say \(a^2 > 0\). Which case gives something weaker?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>The sign \(\ge\) means greater than or equal to. Which case shows only the equal to part?</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>5</deployedseed>
+  <deployedseed>6</deployedseed>
+  <deployedseed>7</deployedseed>
+  <qtest><testcase>1</testcase><description>Both correct</description>
+    <testinput><name>ans1</name><value>lineN2</value></testinput><testinput><name>ans2</name><value>lineZ2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>(a) the positive case; (b) the heading of the zero case, also correct</description>
+    <testinput><name>ans1</name><value>lineP2</value></testinput><testinput><name>ans2</name><value>lineZ1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>(a) the case heading; (b) a line giving a^2 &gt; 0</description>
+    <testinput><name>ans1</name><value>lineN1</value></testinput><testinput><name>ans2</name><value>lineP2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Fixed lines 2 and 9, never a case line</description>
+    <testinput><name>ans1</name><value>2</value></testinput><testinput><name>ans2</name><value>9</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Invalid (a): line 10 does not exist</description>
+    <testinput><name>ans1</name><value>10</value></testinput><testinput><name>ans2</name><value>lineZ2</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

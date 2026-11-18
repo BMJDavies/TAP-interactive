@@ -1,0 +1,38 @@
+<stack-static>
+    <statement><p><p>The exercise above asks you to prove that <m>n^7 - n</m> is divisible by 7. One way to start:
+<me>n^7 - n = n(n - 1)(n + 1)(n^2 + n + 1)(n^2 - n + 1)</me>
+(expand to check). Every integer is <m>n = 7k + r</m> with <m>r</m> one of <m>0, 1, \ldots, 6</m>, and in each case one of the five factors is a multiple of 7.</p>
+<p>Three rows are done. Type the factor that is a multiple of 7 for each of the other four.</p>
+<tabular>
+<row><cell><m>r</m></cell><cell>factor that is a multiple of 7 when <m>n = 7k + r</m></cell></row>
+
+<row><cell>0</cell><cell><m>n = 7k</m></cell></row>
+<row><cell>1</cell><cell><m>n - 1 = 7k</m></cell></row>
+<row><cell>2</cell><cell><div><fillin characters="10" name="ans1"/>  </div></cell></row>
+<row><cell>3</cell><cell><div><fillin characters="10" name="ans2"/>  </div></cell></row>
+<row><cell>4</cell><cell><div><fillin characters="10" name="ans3"/>  </div></cell></row>
+<row><cell>5</cell><cell><div><fillin characters="10" name="ans4"/>  </div></cell></row>
+<row><cell>6</cell><cell><m>n + 1 = 7k + 7 = 7(k + 1)</m></cell></row>
+
+</tabular></p></statement>
+    <solution><p><p>For <m>n = 7k + r</m>, each factor equals its value at <m>n = r</m> plus a multiple of 7; for example
+<me>(7k + r)^2 + (7k + r) + 1 = 7(7k^2 + 2kr + k) + (r^2 + r + 1).</me>
+So a factor is a multiple of 7 exactly when its value at <m>n = r</m> is.</p>
+<tabular>
+<row><cell><m>r</m></cell><cell>factor</cell><cell>value at <m>n = r</m></cell><cell>as a multiple of 7</cell></row>
+
+<row><cell>0</cell><cell><m>n</m></cell><cell>0</cell><cell><m>7k</m></cell></row>
+<row><cell>1</cell><cell><m>n - 1</m></cell><cell>0</cell><cell><m>7k</m></cell></row>
+<row><cell>2</cell><cell><m>n^2 + n + 1</m></cell><cell>7</cell><cell><m>7(7k^2 + 5k + 1)</m></cell></row>
+<row><cell>3</cell><cell><m>n^2 - n + 1</m></cell><cell>7</cell><cell><m>7(7k^2 + 5k + 1)</m></cell></row>
+<row><cell>4</cell><cell><m>n^2 + n + 1</m></cell><cell>21</cell><cell><m>7(7k^2 + 9k + 3)</m></cell></row>
+<row><cell>5</cell><cell><m>n^2 - n + 1</m></cell><cell>21</cell><cell><m>7(7k^2 + 9k + 3)</m></cell></row>
+<row><cell>6</cell><cell><m>n + 1</m></cell><cell>7</cell><cell><m>7(k + 1)</m></cell></row>
+
+</tabular>
+<p>In every case one factor is a multiple of 7, so <m>n^7 - n</m> is a multiple of 7.</p></p></solution>
+    <answer><p><m>n^2+n+1</m></p></answer>
+    <answer><p><m>n^2-n+1</m></p></answer>
+    <answer><p><m>n^2+n+1</m></p></answer>
+    <answer><p><m>n^2-n+1</m></p></answer>
+</stack-static>

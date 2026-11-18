@@ -1,0 +1,21 @@
+<stack-static>
+    <statement><p><ol class="tb-parts">
+<li><p>For which of <m>n = 1, 2, 3, 4, 5, 6</m> is <m>2^n &gt; n^2</m>? Enter them as a set, for example <c>{1, 2}</c>.</p>
+<div><fillin characters="12" name="ans1"/>  </div></li>
+<li><p>In the induction step you show <m>2^{k+1} = 2 \times 2^k &gt; 2k^2</m>, and then you need <m>2k^2 \geq (k+1)^2</m>. What is the smallest positive integer <m>k</m> for which <m>2k^2 \geq (k+1)^2</m>?</p>
+<div><m>k =</m> <fillin characters="3" name="ans2"/>  </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p>Compare <m>2^n</m> and <m>n^2</m>:</p>
+<tabular>
+<row><cell><m>n</m></cell><cell>1</cell><cell>2</cell><cell>3</cell><cell>4</cell><cell>5</cell><cell>6</cell></row>
+<row><cell><m>2^n</m></cell><cell>2</cell><cell>4</cell><cell>8</cell><cell>16</cell><cell>32</cell><cell>64</cell></row>
+<row><cell><m>n^2</m></cell><cell>1</cell><cell>4</cell><cell>9</cell><cell>16</cell><cell>25</cell><cell>36</cell></row>
+</tabular>
+<p>The strict inequality holds for <m>n = 1, 5, 6</m>. At <m>n = 2</m> and <m>n = 4</m> the two sides are equal, and at <m>n = 3</m> it is false. So the answer is <m>\{1, 5, 6\}</m>.</p></li>
+<li><p><m>2k^2 - (k+1)^2 = k^2 - 2k - 1 = (k-1)^2 - 2</m>, which is at least 0 exactly when <m>(k-1)^2 \geq 2</m>, that is, for <m>k \geq 3</m>. At <m>k = 2</m>, <m>8 &lt; 9</m>; at <m>k = 3</m>, <m>18 \geq 16</m>. So the smallest <m>k</m> is 3.</p>
+<p>The induction step therefore works from <m>k = 3</m>. But the statement is false at <m>n = 3</m> and <m>n = 4</m>, so the chain can only start at <m>n = 5</m>, the first true case from which it never breaks. <m>P(1)</m> is true, but the step cannot carry it on: <m>P(2)</m> is false, so the step does not work from <m>k = 1</m>.</p></li>
+</ol></p></solution>
+    <answer><p><m>\left \{1 , 5 , 6 \right \}</m></p></answer>
+    <answer><p><m>3</m></p></answer>
+</stack-static>

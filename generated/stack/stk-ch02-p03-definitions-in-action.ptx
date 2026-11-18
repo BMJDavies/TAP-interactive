@@ -1,0 +1,34 @@
+<stack-static>
+    <statement><p><p>(a) Use the definitions above to decide whether each statement is true or false.</p>
+<ol>
+<li><p><m>0</m> is an even number.</p>
+<div>[ True | False ]  </div></li>
+<li><p>Every integer is a rational number.</p>
+<div>[ True | False ]  </div></li>
+<li><p><m>-7</m> is an odd number.</p>
+<div>[ True | False ]  </div></li>
+<li><p><m>6</m> is a multiple of <m>12</m>.</p>
+<div>[ True | False ]  </div></li>
+</ol>
+<p>(b) Give an example of an integer that is divisible by <m>{10}</m> and by <m>{15}</m>, but not by <m>{150}</m>.</p>
+<div><fillin characters="6" name="ans5"/>  </div></p></statement>
+    <solution><p><p>Each definition says that a number can be written in a certain form <em>for some integer</em>: there must be at least one integer that makes the equation true.</p>
+<ul>
+<li><p>An integer <m>n</m> is even if <m>n = 2k</m> for some integer <m>k</m>, and odd if <m>n = 2k + 1</m> for some integer <m>k</m>.</p></li>
+<li><p>An integer <m>a</m> divides an integer <m>b</m> if <m>b = a \times q</m> for some integer <m>q</m>.</p></li>
+<li><p>A real number is rational if it can be written as <m>\dfrac{p}{q}</m>, where <m>p</m> and <m>q</m> are integers and <m>q \ne 0</m>.</p></li>
+</ul>
+<p>(a)</p>
+<ol>
+<li><p><m>0</m> is an even number. True. <m>0 = 2 \times 0</m>, and <m>0</m> is an integer, so <m>0</m> is even.</p></li>
+<li><p>Every integer is a rational number. True. Any integer <m>n</m> can be written as <m>\dfrac{n}{1}</m>.</p></li>
+<li><p><m>-7</m> is an odd number. True. <m>-7 = 2 \times (-4) + 1</m>, and <m>-4</m> is an integer, so <m>-7</m> is odd.</p></li>
+<li><p><m>6</m> is a multiple of <m>12</m>. False. The multiples of <m>12</m> are <m>12 \times</m> (an integer): <m>0, 12, -12, 24, \ldots</m> It is <m>12</m> that is a multiple of <m>6</m>.</p></li>
+</ol>
+<p>(b) <m>{30}</m> is divisible by <m>{10}</m> and by <m>{15}</m>, and it is not divisible by <m>{150}</m>, because <m>{10}</m> and <m>{15}</m> share a factor. Divisible by both does mean divisible by the product when the two numbers have no common factor other than 1, such as 2 and 3: later proofs use exactly that fact.</p></p></solution>
+    <answer><p>True</p></answer>
+    <answer><p>True</p></answer>
+    <answer><p>True</p></answer>
+    <answer><p>False</p></answer>
+    <answer><p><m>30</m></p></answer>
+</stack-static>

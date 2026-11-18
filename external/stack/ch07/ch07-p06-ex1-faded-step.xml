@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch07_P06_Ex1_Faded_Step</text></name>
+  <questiontext format="html"><text><![CDATA[<p>The exercise above asks you to prove that \(1^3 + 2^3 + \cdots + n^3 = \left(\dfrac{n(n+1)}{2}\right)^2\) for \(n \geq 1\). Here is its induction step with some parts missing.</p>
+<p>Assume that the statement holds for \(n = k\):</p>
+<p>\[1^3 + 2^3 + \cdots + k^3 = \left(\dfrac{k(k+1)}{2}\right)^2.\]</p>
+<p>Then</p>
+<div>\(1^3 + 2^3 + \cdots + k^3 + (k+1)^3 =\) [[input:ans1]] \(+\ (k+1)^3\), because of [[input:ans4]] [[validation:ans1]] [[validation:ans4]]</div>
+<div>[[feedback:prt1]] [[feedback:prt4]]</div>
+<div>\(= \dfrac{(k+1)^2}{4} \times \Big(\) [[input:ans2]] \(\Big)\) [[validation:ans2]] [[feedback:prt2]]</div>
+<div>\(= \dfrac{(k+1)^2 (k+2)^2}{4}\)</div>
+<div>\(= \Big(\) [[input:ans3]] \(\Big)^2,\) [[validation:ans3]] [[feedback:prt3]]</div>
+<p>which is the statement for \(n = k+1\).</p>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>The induction step starts from the left-hand side of the statement for \(n = k+1\) and uses the induction hypothesis to replace the first \(k\) terms. Each line has one reason.</p>
+<p>\[1^3 + 2^3 + \cdots + k^3 + (k+1)^3 = \dfrac{k^2(k+1)^2}{4} + (k+1)^3\]</p>
+<p>by the induction hypothesis. Taking out the common factor \(\dfrac{(k+1)^2}{4}\),</p>
+<p>\[= \dfrac{(k+1)^2}{4}\left(k^2 + 4(k+1)\right) = \dfrac{(k+1)^2}{4}\left(k^2 + 4k + 4\right).\]</p>
+<p>Since \(k^2 + 4k + 4 = (k+2)^2\) and \(4 = 2^2\),</p>
+<p>\[= \dfrac{(k+1)^2 (k+2)^2}{4} = \left(\dfrac{(k+1)(k+2)}{2}\right)^2.\]</p>
+<p>So the blanks are \(\dfrac{k^2(k+1)^2}{4}\) (by the induction hypothesis), \(k^2 + 4k + 4\) and \(\dfrac{(k+1)(k+2)}{2}\). The last line is \(\left(\dfrac{(k+1)\big((k+1)+1\big)}{2}\right)^2\), which is the statement for \(n = k+1\).</p>]]></text></generalfeedback>
+  <defaultgrade>4</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: k^2*(k+1)^2/4;
+ta2: k^2+4*k+4;
+ta3: (k+1)*(k+2)/2;
+d1a: k*(k+1)/2;
+d1b: k^3;
+d2: k^2+k+1;
+d3a: (k+1)*(k+2);
+d3b: (k+1)^2*(k+2)^2/4;
+ta4: [[w_base, false, "the base case"], [w_hyp, true, "the induction hypothesis"], [w_expand, false, "expanding the brackets"], [w_factor, false, "taking out a common factor"]];
+validate_k(ex) := if every(lambda([v], is(v = k)), listofvars(ex)) then "" else "Write your answer in terms of k only.";]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: sum of cubes faded step]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is adapted from Exercise 1 (p. 36) in Section 7 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: the induction step is given as a faded worked example, with blanks and one reason to supply.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_k</options></input>
+  <input><name>ans2</name><type>algebraic</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_k</options></input>
+  <input><name>ans3</name><type>algebraic</type><tans>ta3</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_k</options></input>
+  <input><name>ans4</name><type>dropdown</type><tans>ta4</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>The hypothesis applied</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: by the induction hypothesis the first \(k\) terms add up to \(\left(\dfrac{k(k+1)}{2}\right)^2\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the square forgotten</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>d1a</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The hypothesis says the sum of the first \(k\) cubes is the square of \(\dfrac{k(k+1)}{2}\). The sum \(1 + 2 + \cdots + k = \dfrac{k(k+1)}{2}\) is a different result.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: only the last term replaced</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>d1b</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The hypothesis replaces the whole sum \(1^3 + 2^3 + \cdots + k^3\), not just its last term.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Replace \(1^3 + 2^3 + \cdots + k^3\) by what the induction hypothesis says it equals.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Bracket after taking out the common factor</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>ta2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(k^2 + 4(k+1) = k^2 + 4k + 4\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the 4 dropped</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>d2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Check the term that comes from \((k+1)^3\). It has no 4 underneath, so taking out \(\dfrac{(k+1)^2}{4}\) leaves more than \(k+1\). What must \(\dfrac{(k+1)^2}{4}\) be multiplied by to give \((k+1)^3\)?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Take the common factor \(\dfrac{(k+1)^2}{4}\) out of both terms of the line above.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Expression inside the square</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>ta3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(\dfrac{(k+1)(k+2)}{2} = \dfrac{(k+1)\big((k+1)+1\big)}{2}\), the bracket of the statement with \(n = k+1\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the square root of 4 taken as 1</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>d3a</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Check the 4 underneath. Squaring your bracket gives \((k+1)^2 (k+2)^2\) with no denominator. What must the bracket be divided by, given that \(4 = 2^2\)?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the squared expression entered</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>d3b</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The bracket in the last line is squared. Enter the expression inside it.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Write \(\dfrac{(k+1)^2 (k+2)^2}{4}\) as the square of a single fraction.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt4</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Reason for the first line</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>w_hyp</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: the first line uses the induction hypothesis.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>The first line replaces the sum \(1^3 + 2^3 + \cdots + k^3\) by a formula in \(k\). Which part of the proof tells you what that sum equals?</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct, in other equivalent forms</description>
+    <testinput><name>ans1</name><value>(k*(k+1)/2)^2</value></testinput>
+    <testinput><name>ans2</name><value>k^2+4*(k+1)</value></testinput>
+    <testinput><name>ans3</name><value>(k+1)*((k+1)+1)/2</value></testinput>
+    <testinput><name>ans4</name><value>w_hyp</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Diagnostics: square forgotten; 4 dropped; root of 4 as 1; wrong reason</description>
+    <testinput><name>ans1</name><value>d1a</value></testinput>
+    <testinput><name>ans2</name><value>d2</value></testinput>
+    <testinput><name>ans3</name><value>d3a</value></testinput>
+    <testinput><name>ans4</name><value>w_base</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Diagnostics: last term only; generic (b); squared expression; reason correct</description>
+    <testinput><name>ans1</name><value>d1b</value></testinput>
+    <testinput><name>ans2</name><value>ta2+1</value></testinput>
+    <testinput><name>ans3</name><value>d3b</value></testinput>
+    <testinput><name>ans4</name><value>w_hyp</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Generic (a) and (c); (b) correct; another wrong reason</description>
+    <testinput><name>ans1</name><value>ta1+1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>ta3+1</value></testinput>
+    <testinput><name>ans4</name><value>w_factor</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Invalid (a): written in n, rejected by validate_k; the rest still marked</description>
+    <testinput><name>ans1</name><value>n^2*(n+1)^2/4</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>ta3</value></testinput>
+    <testinput><name>ans4</name><value>w_hyp</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

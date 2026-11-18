@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch09_P04_Parsons_sum_of_irrationals</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Prove that every rational number is the sum of two irrational numbers. Use the method of the example above: a direct proof with a proof by contradiction inside it.</p>
+<p>Drag the blocks you need into the box, in order. Not every block is needed: three of the blocks contain a logical mistake. Any order in which each step comes after the steps it relies on is accepted.</p>
+[[parsons input="ans1"]]
+{"steps": {# parsons_encode(proof_steps) #},
+ "headers": ["Your proof:"],
+ "available_header": ["Drag from here:"]}
+[[/parsons]]
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>One correct proof:</p>
+<div>
+<p>Let \(r\) be a rational number. Then \(r = \dfrac{a}{b}\) for some integers \(a\) and \(b\) with \(b \neq 0\).</p>
+<p>Then \(r = (r - \sqrt{2}) + \sqrt{2}\).</p>
+<p>We know that \(\sqrt{2}\) is irrational.</p>
+<p>Suppose, for contradiction, that \(r - \sqrt{2}\) is rational. Then \(r - \sqrt{2} = \dfrac{c}{d}\) for some integers \(c\) and \(d\) with \(d \neq 0\).</p>
+<p>So \(\sqrt{2} = r - \dfrac{c}{d} = \dfrac{a}{b} - \dfrac{c}{d} = \dfrac{ad - bc}{bd}\).</p>
+<p>Since \(ad - bc\) and \(bd\) are integers and \(bd \neq 0\), \(\sqrt{2}\) is rational. This is a contradiction, so \(r - \sqrt{2}\) is irrational.</p>
+<p>So \(r = (r - \sqrt{2}) + \sqrt{2}\) is the sum of the two irrational numbers \(r - \sqrt{2}\) and \(\sqrt{2}\).</p>
+</div>
+<p>The outer proof is direct and the inner proof is by contradiction, exactly as in the example, with a sum in place of a product. The fact that \(\sqrt{2}\) is irrational may come anywhere before the contradiction that uses it, and the inner proof may come before or after the line \(r = (r - \sqrt{2}) + \sqrt{2}\).</p>
+<p>The three wrong blocks: assuming that \(r - \sqrt{2}\) is irrational assumes what the inner proof must show; assuming that every rational number is such a sum assumes the whole statement; and two examples prove nothing about every rational number.</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.0000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[stack_include("contribl://prooflib.mac");
+proof_steps: [
+ ["intro", "Let \\(r\\) be a rational number. Then \\(r = \\dfrac{a}{b}\\) for some integers \\(a\\) and \\(b\\) with \\(b \\neq 0\\)."],
+ ["split", "Then \\(r = (r - \\sqrt{2}) + \\sqrt{2}\\)."],
+ ["known", "We know that \\(\\sqrt{2}\\) is irrational."],
+ ["assume", "Suppose, for contradiction, that \\(r - \\sqrt{2}\\) is rational. Then \\(r - \\sqrt{2} = \\dfrac{c}{d}\\) for some integers \\(c\\) and \\(d\\) with \\(d \\neq 0\\)."],
+ ["derive", "So \\(\\sqrt{2} = r - \\dfrac{c}{d} = \\dfrac{a}{b} - \\dfrac{c}{d} = \\dfrac{ad - bc}{bd}\\)."],
+ ["contra", "Since \\(ad - bc\\) and \\(bd\\) are integers and \\(bd \\neq 0\\), \\(\\sqrt{2}\\) is rational. This is a contradiction, so \\(r - \\sqrt{2}\\) is irrational."],
+ ["conc", "So \\(r = (r - \\sqrt{2}) + \\sqrt{2}\\) is the sum of the two irrational numbers \\(r - \\sqrt{2}\\) and \\(\\sqrt{2}\\)."],
+ ["d_irr", "Suppose, for contradiction, that \\(r - \\sqrt{2}\\) is irrational."],
+ ["d_all", "Suppose, for contradiction, that every rational number is the sum of two irrational numbers."],
+ ["d_eg", "For example, \\(1 = (1 - \\sqrt{2}) + \\sqrt{2}\\) and \\(2 = (2 - \\sqrt{2}) + \\sqrt{2}\\). So every rational number is the sum of two irrational numbers."]
+];
+proof_steps: random_permutation(proof_steps);
+/* Dependency graph: each path is a chain of steps that must come in this order.
+   known may come anywhere before contra; split anywhere after intro and before conc;
+   the inner proof before or after split. d_irr, d_all and d_eg are logically wrong blocks in no path. */
+tdag: [["intro", "assume", "derive", "contra", "conc"], ["known", "contra"], ["intro", "split", "conc"]];
+ta: proof("intro", "split", "known", "assume", "derive", "contra", "conc");
+]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Parsons sum of two irrationals; shuffled order {@map(first, proof_steps)@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 8.9 (pp. 53-54) in Section 9 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>parsons</type><tans>[ta, proof_steps]</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sa: parsons_decode(ans1);
+saprob: proof_assessment_dag(sa, tdag);
+usedkeys: args(sa);
+usedirr: member("d_irr", usedkeys);
+usedall: member("d_all", usedkeys);
+usedeg: member("d_eg", usedkeys);
+usedwrong: usedirr or usedall or usedeg;
+missk: listify(apply(union, cons({}, map(lambda([ex], first(args(ex))), sublist(saprob, lambda([ex], safe_op(ex) = "proof_step_missing"))))));
+mustp: map(args, sublist(saprob, lambda([ex], safe_op(ex) = "proof_step_must")));]]></text></feedbackvariables>
+    <node><name>0</name><description>A valid order of the correct blocks</description><answertest>AlgEquiv</answertest><sans>emptyp(saprob)</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. The outer proof is direct: it writes \(r = (r - \sqrt{2}) + \sqrt{2}\). The inner proof by contradiction shows that \(r - \sqrt{2}\) is irrational, just as the example showed that \(\dfrac{r}{\sqrt{2}}\) is irrational. Unlike the product, this works for \(r = 0\) too.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: a block with a logical mistake used</description><answertest>AlgEquiv</answertest><sans>usedwrong</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[[[if test="usedirr"]]<p>One of your blocks assumes that \(r - \sqrt{2}\) is irrational. To prove by contradiction that \(r - \sqrt{2}\) is irrational, assume the opposite, that it is rational, and show that this is impossible.</p>[[/if]][[if test="usedall"]]<p>One of your blocks assumes that every rational number is the sum of two irrational numbers. That is the statement you are proving, so the proof would be circular.</p>[[/if]][[if test="usedeg"]]<p>One of your blocks checks two examples and concludes that the statement holds for every rational number. Two cases cannot prove a statement about infinitely many numbers.</p>[[/if]]]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Some steps are missing, or come before a step they rely on.</p>[[if test="not(emptyp(missk))"]]<p>Your proof also needs these steps:</p><ul>[[foreach kk="missk"]]<li>{@proof_getstep(kk, proof_steps)@}</li>[[/foreach]]</ul>[[/if]][[if test="not(emptyp(mustp))"]]<p>In each pair, the first step must come before the second:</p><ul>[[foreach pr="mustp"]]<li>{@proof_getstep(first(pr), proof_steps)@} <em>must come before</em> {@proof_getstep(second(pr), proof_steps)@}</li>[[/foreach]]</ul>[[/if]]]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>4</deployedseed>
+  <deployedseed>5</deployedseed>
+  <qtest><testcase>1</testcase><description>Teacher's order</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [ta, proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Known fact first</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("known", "intro", "split", "assume", "derive", "contra", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Inner proof before the split</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "assume", "derive", "known", "contra", "split", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Wrong assumption</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "split", "known", "d_irr", "derive", "contra", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Circular opening</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("d_all", "intro", "split", "known", "assume", "derive", "contra", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Examples for the conclusion</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "split", "known", "assume", "derive", "contra", "d_eg"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Distractor after a complete proof</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "split", "known", "assume", "derive", "contra", "conc", "d_eg"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>Contradiction missing</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "split", "known", "assume", "derive", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Derive before the assumption</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "split", "known", "derive", "assume", "contra", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>10</testcase><description>Known fact after it is used</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "split", "assume", "derive", "contra", "known", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>11</testcase><description>Conclusion first</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("conc", "intro", "split", "known", "assume", "derive", "contra"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

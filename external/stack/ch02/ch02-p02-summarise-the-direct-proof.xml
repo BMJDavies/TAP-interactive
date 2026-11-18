@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch02_P02_Summarise_the_direct_proof</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Which sentence best summarises the direct proof above, including why it proves the proposition for every real number \(x\)?</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A direct proof starts from what is known and reaches the conclusion by steps that are valid for every value of the variable. Here the known facts are the rules for multiplying out brackets, which hold for all real numbers, so the conclusion holds for all real numbers. That is the second sentence.</p>
+<ul>
+<li><p>Substituting \(x = 1\) shows only that the two sides are equal when \(x = 1\). No single value, or finite list of values, covers every real number.</p></li>
+<li><p>Starting from the statement to be proved and simplifying it is circular: it assumes what was to be shown. Simplifying a false statement can also lead to something true: from \(1 = -1\), squaring gives \(1 = 1\).</p></li>
+<li><p>A graph shows only what you can see, to the accuracy of the drawing, and different curves can look the same. The algebraic proof works exactly, for every value of \(x\).</p></li>
+</ul>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Fixed: one specific proof. The best summary is second. */
+ta1: [
+ [sum_check, false, "Substitute \\(x = 1\\) into both sides. Each side equals \\(0\\), so the two sides are equal, and the proposition is proved."],
+ [sum_rules, true, "Multiply out \\((x - 1)(x + 1)\\) using rules of algebra that hold for every real number. It simplifies to \\(x^2 - 1\\), so the two sides are equal whatever \\(x\\) is."],
+ [sum_assume, false, "Assume that \\(x^2 - 1 = (x - 1)(x + 1)\\), then simplify both sides until they look the same, which shows that the assumption was true."],
+ [sum_graph, false, "Draw the graphs of \\(y = x^2 - 1\\) and \\(y = (x - 1)(x + 1)\\). The graphs look exactly the same, so the two sides are equal for every \\(x\\)."]
+];]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Best summary: sum_rules]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the direct proof of x^2 - 1 = (x - 1)(x + 1) by multiplying out the brackets (pp. 5-6) in Section 2 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>radio</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>nonotanswered</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Best summary</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>sum_rules</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. The argument never uses a particular value of \(x\), and every rule it uses is true for all real numbers, so it proves the proposition for every \(x\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: one check taken as a proof</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>sum_check</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Substituting \(x = 1\) shows only that the two sides are equal when \(x = 1\). The proposition is about every real number, and no single value, or finite list of values, can cover them all.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: circular argument</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>sum_assume</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Starting from the statement you want to prove and simplifying it is circular: it assumes what was to be shown. Simplifying a false statement can also lead to something true: from \(1 = -1\), squaring gives \(1 = 1\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>A graph shows only what you can see, to the accuracy of the drawing, and different curves can look the same. The proof above works exactly, for every value of \(x\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Best summary</description>
+    <testinput><name>ans1</name><value>sum_rules</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>One check taken as a proof</description>
+    <testinput><name>ans1</name><value>sum_check</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Circular</description>
+    <testinput><name>ans1</name><value>sum_assume</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Graphs</description>
+    <testinput><name>ans1</name><value>sum_graph</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

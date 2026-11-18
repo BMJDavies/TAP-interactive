@@ -1,0 +1,16 @@
+<stack-static>
+    <statement><p><p>Which sentence best summarises the direct proof above, including why it proves the proposition for every real number <m>x</m>?</p>
+<div><ol marker="(1)">
+<li>Substitute <m>x = 1</m> into both sides. Each side equals <m>0</m>, so the two sides are equal, and the proposition is proved.</li>
+<li>Multiply out <m>(x - 1)(x + 1)</m> using rules of algebra that hold for every real number. It simplifies to <m>x^2 - 1</m>, so the two sides are equal whatever <m>x</m> is.</li>
+<li>Assume that <m>x^2 - 1 = (x - 1)(x + 1)</m>, then simplify both sides until they look the same, which shows that the assumption was true.</li>
+<li>Draw the graphs of <m>y = x^2 - 1</m> and <m>y = (x - 1)(x + 1)</m>. The graphs look exactly the same, so the two sides are equal for every <m>x</m>.</li>
+</ol> </div></p></statement>
+    <solution><p><p>A direct proof starts from what is known and reaches the conclusion by steps that are valid for every value of the variable. Here the known facts are the rules for multiplying out brackets, which hold for all real numbers, so the conclusion holds for all real numbers. That is the second sentence.</p>
+<ul>
+<li><p>Substituting <m>x = 1</m> shows only that the two sides are equal when <m>x = 1</m>. No single value, or finite list of values, covers every real number.</p></li>
+<li><p>Starting from the statement to be proved and simplifying it is circular: it assumes what was to be shown. Simplifying a false statement can also lead to something true: from <m>1 = -1</m>, squaring gives <m>1 = 1</m>.</p></li>
+<li><p>A graph shows only what you can see, to the accuracy of the drawing, and different curves can look the same. The algebraic proof works exactly, for every value of <m>x</m>.</p></li>
+</ul></p></solution>
+    <answer><p><m>(2)</m></p></answer>
+</stack-static>

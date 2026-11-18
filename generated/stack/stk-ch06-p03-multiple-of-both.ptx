@@ -1,0 +1,18 @@
+<stack-static>
+    <statement><p><p>(a) Give an example of a whole number that is a multiple of both <m>{6}</m> and <m>{9}</m>, but is not a multiple of <m>{6} \times {9} = {54}</m>.</p>
+<div><fillin characters="6" name="ans1"/> </div>
+<div/>
+<p>(b) The example above ends: the product is a multiple of 2 and a multiple of 3, and therefore a multiple of 6. Part (a) shows that the same step fails for <m>{6}</m> and <m>{9}</m>. Which fact about 2 and 3 makes the step valid?</p>
+<div><ol marker="(1)">
+<li><m>2 \times 3 = 6</m></li>
+<li>6 is a multiple of both 2 and 3</li>
+<li>6 is even</li>
+<li>2 and 3 have no common factor other than 1</li>
+</ol> </div>
+<div/></p></statement>
+    <solution><p><p>A number that is a multiple of <m>a</m> and of <m>b</m> is a multiple of their least common multiple. <m>{6}</m> and <m>{9}</m> share the factor <m>{3}</m>, so their least common multiple is <m>{18}</m>, not <m>{54}</m>: <m>{18}</m> itself is a multiple of both <m>{6}</m> and <m>{9}</m>, but not of <m>{54}</m>. So <q>a multiple of <m>a</m> and of <m>b</m> is a multiple of <m>ab</m></q> is not true in general.</p>
+<p>When two numbers have no common factor other than 1, their least common multiple is their product. 2 and 3 have no common factor other than 1, so a multiple of 2 and of 3 is a multiple of <m>2 \times 3 = 6</m>. That is the reason the last step of the example is valid. The other three facts are true, but each is just as true for <m>{6}</m> and <m>{9}</m>, where the step fails, so none of them can be the reason.</p>
+<p>The same reasoning with 8 and 3 gives 24, which the last exercise in this chapter needs.</p></p></solution>
+    <answer><p><m>18</m></p></answer>
+    <answer><p><m>(4)</m></p></answer>
+</stack-static>

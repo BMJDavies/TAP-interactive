@@ -1,0 +1,27 @@
+<stack-static>
+    <statement><p><p>The proof that <m>\sqrt{2}</m> is irrational can be copied almost word for word for <m>\sqrt{4}</m>, as below. But <m>\sqrt{4} = 2 = \dfrac{2}{1}</m> is rational, so this ‘proof’ must go wrong somewhere.</p>
+<tabular>
+<row><cell>1</cell><cell>Assume that <m>\sqrt{4}</m> is rational.</cell></row>
+<row><cell>2</cell><cell>Then <m>\sqrt{4} = \dfrac{p}{q}</m> for some integers <m>p</m> and <m>q</m> with <m>q \neq 0</m>, and we may choose the fraction <m>\dfrac{p}{q}</m> in its simplest form.</cell></row>
+<row><cell>3</cell><cell>Squaring, <m>4 = \dfrac{p^2}{q^2}</m>, so <m>p^2 = 4q^2</m>.</cell></row>
+<row><cell>4</cell><cell>So <m>p^2</m> is even, and therefore <m>p</m> is even.</cell></row>
+<row><cell>5</cell><cell>So <m>p = 2k</m> for some integer <m>k</m>, and <m>p^2 = 4k^2</m>.</cell></row>
+<row><cell>6</cell><cell>From lines 3 and 5, <m>4q^2 = 4k^2</m>, so <m>q^2 = k^2</m>.</cell></row>
+<row><cell>7</cell><cell>So <m>q^2</m> is even, and therefore <m>q</m> is even.</cell></row>
+<row><cell>8</cell><cell>So <m>p</m> and <m>q</m> are both even, and <m>\dfrac{p}{q}</m> is not in its simplest form. This contradicts line 2.</cell></row>
+<row><cell>9</cell><cell>So the assumption in line 1 is false, and <m>\sqrt{4}</m> is irrational.</cell></row>
+</tabular>
+<ol class="tb-parts">
+<li><p>Which is the first line that does not follow from the lines before it?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div></li>
+<li><p>Give an example of integers <m>p</m> and <m>q</m>, with <m>q \neq 0</m> and <m>\dfrac{p}{q}</m> in its simplest form, that satisfy line 3.</p>
+<div><m>p =</m> <fillin characters="4" name="ans2"/>  <m>q =</m> <fillin characters="4" name="ans3"/>  </div></li>
+</ol></p></statement>
+    <solution><p><p>Test the lines with actual numbers. Take <m>p = 2</m> and <m>q = 1</m>: <m>\sqrt{4} = \dfrac{2}{1}</m>, in its simplest form. Line 3: <m>p^2 = 4 = 4 \times 1^2 = 4q^2</m>. Line 4: <m>p^2 = 4</m> is even, and <m>p = 2</m> is even. Line 5: <m>k = 1</m>. Line 6: <m>q^2 = 1 = k^2</m>. Line 7 claims that <m>q^2</m> is even, but <m>q^2 = 1</m>.</p>
+<p>So line 7 is the first line that does not follow: from <m>q^2 = k^2</m> nothing follows about whether <m>q^2</m> is even. In the proof for <m>\sqrt{2}</m> the same step gave <m>q^2 = 2k^2</m>, which is even. Lines 8 and 9 follow from line 7, so once line 7 fails they prove nothing.</p>
+<p>The examples for part (b) are <m>p = 2, q = 1</m>, and the same numbers with signs changed. If <m>p^2 = 4q^2</m> and <m>\dfrac{p}{q}</m> is in its simplest form, then <m>q = \pm 1</m>, so <m>q</m> is always odd.</p>
+<p>The method of a proof is not a recipe that works for every number: each step has to be checked again when the proof is copied to a new case.</p></p></solution>
+    <answer><p><m>7</m></p></answer>
+    <answer><p><m>2</m></p></answer>
+    <answer><p><m>1</m></p></answer>
+</stack-static>

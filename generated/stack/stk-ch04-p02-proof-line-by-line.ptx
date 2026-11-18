@@ -1,0 +1,32 @@
+<stack-static>
+    <statement><p><p>Here is the proof from the example above, in numbered lines.</p>
+<tabular>
+<row><cell>1</cell><cell>Let <m>n</m> be an odd number.</cell></row>
+<row><cell>2</cell><cell>Then <m>n = 2k + 1</m> for some integer <m>k</m>.</cell></row>
+<row><cell>3</cell><cell>So <m>n^2 - 1 = (2k + 1)^2 - 1</m></cell></row>
+<row><cell>4</cell><cell><m>= 4k^2 + 4k + 1 - 1</m></cell></row>
+<row><cell>5</cell><cell><m>= 4k^2 + 4k</m></cell></row>
+<row><cell>6</cell><cell><m>= 4k(k + 1)</m>.</cell></row>
+<row><cell>7</cell><cell>Since <m>k</m> and <m>k + 1</m> are consecutive integers, one of them is even,</cell></row>
+<row><cell>8</cell><cell>so <m>k(k + 1)</m> is even.</cell></row>
+<row><cell>9</cell><cell>So <m>k(k + 1) = 2m</m> for some integer <m>m</m>.</cell></row>
+<row><cell>10</cell><cell>So <m>n^2 - 1 = 4 \times 2m = 8m</m>,</cell></row>
+<row><cell>11</cell><cell>which is divisible by 8.</cell></row>
+<row><cell>12</cell><cell>So <m>n^2 - 1</m> is divisible by 8 for every odd number <m>n</m>.</cell></row>
+</tabular>
+<p>(a) In which line is the definition of an odd number used?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div>
+<p>(b) In which line is the fact that <m>k(k + 1)</m> is even used?</p>
+<div>Line <fillin characters="3" name="ans2"/>  </div>
+<p>(c) Lines 1 to 11 are about one odd number, <m>n</m>. Line 12 is about every odd number. Which line makes this last step allowed?</p>
+<div>Line <fillin characters="3" name="ans3"/>  </div></p></statement>
+    <solution><p><p>Each line of the proof makes one step, and each step has one reason.</p>
+<ul>
+<li><p>Line 1 is the hypothesis. The definition of odd turns it into line 2, so (a) is line 2.</p></li>
+<li><p>Lines 3 to 6 are algebra. Line 7 uses the fact that <m>k</m> is an integer (line 2), and line 8 follows from line 7. Line 9 uses the fact that <m>k(k + 1)</m> is even: by the definition of even, it is <m>2m</m> for some integer <m>m</m>. So (b) is line 9. Line 10 then puts lines 6 and 9 together.</p></li>
+<li><p>Line 1 lets <m>n</m> be any odd number, and nothing else about <m>n</m> is used. So the same argument works for every odd number, and the conclusion in line 12 may say ‘every’: (c) is line 1.</p></li>
+</ul></p></solution>
+    <answer><p><m>2</m></p></answer>
+    <answer><p><m>9</m></p></answer>
+    <answer><p><m>1</m></p></answer>
+</stack-static>

@@ -1,0 +1,18 @@
+<stack-static>
+    <statement><p><p>To repair the proof, the induction step must go from an odd number <m>k</m> to the next odd number, <m>k + 2</m>. Assume that <m>7^k + 1 = 8m</m> for some integer <m>m</m>.</p>
+<ol class="tb-parts">
+<li><p>Complete the line.</p>
+<div><m>7^{k+2} + 1 = 49 \times 7^k + 1 = 49(7^k + 1) -</m> <fillin characters="4" name="ans1"/>  </div></li>
+<li><p>Hence <m>7^{k+2} + 1</m> is 8 times an expression in <m>m</m>, so it is a multiple of 8. Complete the line, giving your answer in terms of <m>m</m>.</p>
+<div><m>7^{k+2} + 1 = 8 \times \big(</m> <fillin characters="12" name="ans2"/> <m>\big)</m>  </div></li>
+<li><p>Why <m>k + 2</m>? Suppose the step went from <m>k</m> to <m>2k + 1</m> instead, which is also odd. Starting from the base case <m>n = 1</m>, the chain of cases would be <m>n = 1</m>, then 3, then 7, and so on. What is the smallest odd number that this chain never reaches?</p>
+<div><fillin characters="4" name="ans3"/>  </div></li>
+</ol></p></statement>
+    <solution><p><p>The corrected induction step goes from an odd number <m>k</m> to the next odd number, <m>k + 2</m>. Assume that <m>7^k + 1 = 8m</m> for some integer <m>m</m> (the induction hypothesis). Then</p>
+<me>\begin{aligned} 7^{k+2} + 1 &amp;= 49 \times 7^k + 1 &amp;&amp;\text{since } 7^{k+2} = 7^2 \times 7^k\\ &amp;= 49(7^k + 1) - 48 &amp;&amp;\text{since } 49(7^k + 1) = 49 \times 7^k + 49\\ &amp;= 49 \times 8m - 48 &amp;&amp;\text{by the induction hypothesis}\\ &amp;= 8(49m - 6) &amp;&amp;\text{since } 48 = 8 \times 6.\end{aligned}</me>
+<p>Since <m>49m - 6</m> is an integer, <m>7^{k+2} + 1</m> is a multiple of 8. So if the statement holds for an odd number <m>k</m>, it holds for <m>k + 2</m>. With the base case <m>n = 1</m>, this gives <m>n = 3</m>, then <m>n = 5</m>, then <m>n = 7</m>, and so on: every odd positive integer.</p>
+<p>A step from <m>k</m> to <m>2k + 1</m> would also preserve the property, but the chain of cases it gives, <m>1, 3, 7, 15, 31, \ldots</m>, misses 5 (and 9, 11, 13, ...). The induction step must lead to the next case, so that the base case and the step together cover every case of the statement.</p></p></solution>
+    <answer><p><m>48</m></p></answer>
+    <answer><p><m>49\times m-6</m></p></answer>
+    <answer><p><m>5</m></p></answer>
+</stack-static>

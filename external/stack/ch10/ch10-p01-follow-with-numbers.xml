@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch10_P01_Follow_with_numbers</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here is the proof that \(2 = 1\) from the example above, in numbered lines.</p>
+<table>
+<tr><td>1</td><td>Suppose that \(a = b\).</td></tr>
+<tr><td>2</td><td>Then \(a^2 = ab\).</td></tr>
+<tr><td>3</td><td>\(a^2 - b^2 = ab - b^2\)</td></tr>
+<tr><td>4</td><td>\((a - b)(a + b) = b(a - b)\)</td></tr>
+<tr><td>5</td><td>\(a + b = b\)</td></tr>
+<tr><td>6</td><td>\(b + b = b\)</td></tr>
+<tr><td>7</td><td>\(2b = b\)</td></tr>
+<tr><td>8</td><td>\(2 = 1\)</td></tr>
+</table>
+<p>A correct step never leads from true lines to a false one. So if you choose values that make line 1 true, the first line that is false for your values cannot follow from the lines before it.</p>
+<ol class="tb-parts">
+<li><p>Take \(a = b = 3\). Which is the first line that is false?</p>
+<div>Line [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>Now take \(a = b = 0\). Which is the first line that is false?</p>
+<div>Line [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+<li><p>Line 1 is the assumption. Which of lines 2 to 8 do not follow from the lines before them? Enter the set of line numbers in curly brackets, for example <code>{2, 3}</code>.</p>
+<div>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+<li><p>Why does each of these lines not follow? (Optional: this box is not marked and not saved.)</p>
+<div>[[input:ans4]] [[validation:ans4]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A correct step never leads from true lines to a false one. So follow the proof with numbers that make line 1 true, and look for the first line that becomes false: the step to that line cannot be valid.</p>
+<p>With \(a = b = 3\), the two sides of each line are:</p>
+<table>
+<tr><th>Line</th><th>Left side</th><th>Right side</th></tr>
+<tr><td>1</td><td>3</td><td>3</td></tr>
+<tr><td>2</td><td>9</td><td>9</td></tr>
+<tr><td>3</td><td>0</td><td>0</td></tr>
+<tr><td>4</td><td>0</td><td>0</td></tr>
+<tr><td>5</td><td>6</td><td>3</td></tr>
+<tr><td>6</td><td>6</td><td>3</td></tr>
+<tr><td>7</td><td>6</td><td>3</td></tr>
+<tr><td>8</td><td>2</td><td>1</td></tr>
+</table>
+<p>The first false line is line 5, so line 5 does not follow from lines 1 to 4. It divides both sides of line 4 by \(a - b\), which is 0 because \(a = b\). From \(xy = xz\) we may conclude \(y = z\) only when \(x \neq 0\).</p>
+<p>With \(a = b = 0\), every line from 1 to 7 reads \(0 = 0\), which is true, and line 8 says \(2 = 1\). So line 8 does not follow from line 7: it divides both sides of \(2b = b\) by \(b\), which is 0 here, and nothing in the proof says that \(b \neq 0\).</p>
+<p>So the lines that do not follow are 5 and 8. Lines 6 and 7 are false when \(a = b = 3\), but each follows correctly from the line before it: line 6 replaces \(a\) by \(b\), and line 7 collects \(b + b = 2b\). Truth and validity are different things: a valid step can lead from a false line to another false line. A false proof can contain more than one invalid step, and one can hide behind another.</p>
+<p>A reason you might have written: <q>Line 5 divides both sides by \(a - b\), which is 0; line 8 divides both sides by \(b\), which might be 0.</q></p>]]></text></generalfeedback>
+  <defaultgrade>3</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: 5;
+ta2: 8;
+ta3: {5, 8};
+validate_line8(ex) := block([vv], vv: ev(ex, simp), if integerp(vv) and vv >= 1 and vv <= 8 then "" else "Enter a line number from 1 to 8.");
+validate_lines28(ex) := block([vv], vv: ev(ex, simp), if not(setp(vv)) then "Enter a set of line numbers in curly brackets, for example {2, 3}." else if elementp(1, vv) then "Line 1 is the assumption: a proof may begin by supposing that a = b. Choose from lines 2 to 8." else if every(lambda([v], integerp(v) and v >= 2 and v <= 8), listify(vv)) then "" else "Use line numbers from 2 to 8.");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: (a) 5, (b) 8, (c) {5, 8}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 10.1 (p. 55) in Section 10 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line8</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line8</options></input>
+  <input><name>ans3</name><type>algebraic</type><tans>ta3</tans><boxsize>10</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_lines28</options></input>
+  <input><name>ans4</name><type>notes</type><tans>""</tans><boxsize>40</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>hideanswer</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>First false line for a = b = 3</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. With \(a = b = 3\), lines 1 to 4 are true (\(3 = 3\), \(9 = 9\), \(0 = 0\) and \(0 = 0\)), and line 5 says \(6 = 3\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the last line taken as the first false one</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 8 is false, but an earlier line is already false for \(a = b = 3\). Substitute \(a = b = 3\) into each line in turn.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: a later false line</description><answertest>AlgEquiv</answertest><sans>is(member(ans1, [6, 7]))</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line {@ans1@} is false for \(a = b = 3\), but an earlier line is already false. Work through the lines in order.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Line {@ans1@} is true for \(a = b = 3\): its two sides are equal. Keep going until you reach a line whose two sides differ.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>First false line for a = b = 0</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>ta2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. With \(a = b = 0\), every line from 1 to 7 reads \(0 = 0\), which is true, and line 8 says \(2 = 1\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: line 5 again</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>With \(a = b = 0\), line 5 says \(0 + 0 = 0\), which is true.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>With \(a = b = 0\), both sides of line {@ans2@} are 0, so it is true. Keep going.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[has67: if elementp(6, ans3) or elementp(7, ans3) then 1 else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>The invalid steps</description><answertest>Sets</answertest><sans>ans3</sans><tans>ta3</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. Line 5 divides both sides of line 4 by \(a - b\), which is 0 because \(a = b\). Line 8 divides both sides of line 7 by \(b\), which is allowed only if \(b \neq 0\), and nothing in the proof says so. Every other line follows from the lines before it, even lines 6 and 7, which are false when \(a = b = 3\): a line can follow correctly from a false line.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: false lines taken as invalid steps</description><answertest>AlgEquiv</answertest><sans>has67</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Lines 6 and 7 are false when \(a = b = 3\), but each follows from the lines before it: line 6 replaces \(a\) by \(b\) in line 5, and line 7 collects \(b + b\). A false line can follow correctly from an earlier false line. The question is which steps are not valid.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: only the division the example named</description><answertest>Sets</answertest><sans>ans3</sans><tans>{5}</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 5 is one. There is another step that divides both sides of an equation by something that might be 0.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt3-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: only line 8</description><answertest>Sets</answertest><sans>ans3</sans><tans>{8}</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 8 is one. There is another, earlier step that divides by something that is 0.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>4</falsenextnode><falseanswernote>prt3-4-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>4</name><description>Diagnostic: no invalid step</description><answertest>Sets</answertest><sans>ans3</sans><tans>{}</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-5-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>If every line followed from the lines before it, a true line 1 (for example \(a = b = 3\)) would lead to a true line 8. But \(2 = 1\) is false, so at least one step is not valid.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-5-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Lines 2, 3 and 4 each follow from the line before: multiply both sides by \(a\); subtract \(b^2\) from both sides; factorise each side. Which steps divide both sides by something that is, or might be, 0?</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct, with a reason typed in the box</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>{8, 5}</value></testinput>
+    <testinput><name>ans4</name><value>Both divide by zero.</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Last line; line 5 for zero; false lines included</description>
+    <testinput><name>ans1</name><value>ta2</value></testinput>
+    <testinput><name>ans2</name><value>ta1</value></testinput>
+    <testinput><name>ans3</name><value>{5, 6, 7, 8}</value></testinput>
+    <testinput><name>ans4</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>A later false line; a true line; only line 5</description>
+    <testinput><name>ans1</name><value>6</value></testinput>
+    <testinput><name>ans2</name><value>4</value></testinput>
+    <testinput><name>ans3</name><value>{5}</value></testinput>
+    <testinput><name>ans4</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>A true line; a true line; only line 8</description>
+    <testinput><name>ans1</name><value>3</value></testinput>
+    <testinput><name>ans2</name><value>7</value></testinput>
+    <testinput><name>ans3</name><value>{8}</value></testinput>
+    <testinput><name>ans4</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-F | prt3-4-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>No invalid step</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>{}</value></testinput>
+    <testinput><name>ans4</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-F | prt3-4-F | prt3-5-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>A valid line included (generic)</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>{4, 5, 8}</value></testinput>
+    <testinput><name>ans4</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-F | prt3-4-F | prt3-5-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid: line 9</description>
+    <testinput><name>ans1</name><value>9</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>ta3</value></testinput>
+    <testinput><name>ans4</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>Invalid: line 1 in the set</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>{1, 5, 8}</value></testinput>
+    <testinput><name>ans4</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Invalid: a list, not a set</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>[5, 8]</value></testinput>
+    <testinput><name>ans4</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

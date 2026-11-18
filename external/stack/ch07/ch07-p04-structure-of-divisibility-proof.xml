@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch07_P04_Structure_Of_Divisibility_Proof</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here is the induction step of the proof that \(f(n) = 4^n + 15n - 1\) is a multiple of 9, in numbered lines. The lemma is the result proved by the second induction: \(3 \times 4^j + 15\) is a multiple of 9 for every positive integer \(j\).</p>
+<table>
+<tr><td>1</td><td>Assume that \(4^k + 15k - 1 = 9m\) for some integer \(m\).</td></tr>
+<tr><td>2</td><td>Then \(4^{k+1} + 15(k+1) - 1 = 4 \times 4^k + 15k + 15 - 1\)</td></tr>
+<tr><td>3</td><td>\(= 4^k + 3 \times 4^k + 15k + 15 - 1\)</td></tr>
+<tr><td>4</td><td>\(= \left(4^k + 15k - 1\right) + 3 \times 4^k + 15\)</td></tr>
+<tr><td>5</td><td>\(= 9m + 3 \times 4^k + 15\)</td></tr>
+<tr><td>6</td><td>\(= 9m + 9s\) for some integer \(s\)</td></tr>
+<tr><td>7</td><td>\(= 9(m + s)\),</td></tr>
+<tr><td>8</td><td>so \(4^{k+1} + 15(k+1) - 1\) is a multiple of 9.</td></tr>
+</table>
+<ol class="tb-parts">
+<li><p>In which line is the induction hypothesis (line 1) used?</p>
+<div>Line [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>In which line is the lemma used?</p>
+<div>Line [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+<li><p>Which is the best summary of the whole proof?</p>
+<div>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>The proof has two modules: the main induction on \(n\), and the lemma, proved by an induction of its own. Each hypothesis enters at one line.</p>
+<ol class="tb-parts">
+<li><p>Line 4 only regroups the terms so that \(4^k + 15k - 1\) appears. Line 5 uses the induction hypothesis of the main proof, replacing \(4^k + 15k - 1\) by \(9m\).</p></li>
+<li><p>Line 6 uses the lemma with \(j = k\), replacing \(3 \times 4^k + 15\) by \(9s\).</p></li>
+<li><p>In summary: write \(f(k+1)\) as \(f(k) + 3 \times 4^k + 15\). The first part is a multiple of 9 by the induction hypothesis, and the second is a multiple of 9 by the lemma, a second induction. Checking a few values is evidence, not proof; assuming the result for every \(n\) would be circular; and the terms of \(f(k+1)\) are not multiples of 9 one by one, since \(4^{k+1}\) never is.</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>3</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: 5;
+ta2: 6;
+ta3: [[s_check, false, "Check that \\(f(1) = 18\\), \\(f(2) = 45\\) and \\(f(3) = 108\\) are multiples of 9, then conclude that \\(f(n)\\) is a multiple of 9 for every \\(n\\)."],
+      [s_assume, false, "Assume that \\(f(n)\\) is a multiple of 9 for every \\(n\\), and use this to show that \\(3 \\times 4^n + 15\\) is also a multiple of 9."],
+      [s_split, true, "Write \\(f(k+1)\\) as \\(f(k) + 3 \\times 4^k + 15\\): \\(f(k)\\) is a multiple of 9 by the induction hypothesis, and \\(3 \\times 4^k + 15\\) is a multiple of 9 by a second induction."],
+      [s_terms, false, "Expand \\(f(k+1) = 4^{k+1} + 15(k+1) - 1\\) and show that each of its terms is a multiple of 9."]];
+validate_line8(ex) := block([vv], vv: ev(ex, simp), if integerp(vv) and vv >= 1 and vv <= 8 then "" else "Enter a line number from 1 to 8.");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: (a) line 5, (b) line 6, (c) s_split]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 7.3 (pp. 31-35) in Section 7 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line8</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line8</options></input>
+  <input><name>ans3</name><type>radio</type><tans>ta3</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>nonotanswered</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Where the induction hypothesis is used</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: line 5 replaces \(4^k + 15k - 1\) by \(9m\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the regrouping line</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 4 only regroups the terms so that \(4^k + 15k - 1\) appears, ready for the hypothesis. Nothing has been replaced yet. In which line is that bracket replaced?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: stating taken for using</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 1 states the hypothesis. Which line puts it to work?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Look for the line where \(4^k + 15k - 1\) is replaced by something else.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Where the lemma is used</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>ta2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: line 6 replaces \(3 \times 4^k + 15\) by \(9s\), using the lemma with \(j = k\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the two hypotheses confused</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>5</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 5 uses the induction hypothesis of the main proof (line 1). The lemma is about \(3 \times 4^k + 15\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Look for the line where \(3 \times 4^k + 15\) is replaced by something else.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Best summary</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>s_split</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Correct: this summary names both parts, the main induction and the lemma, and how they fit together.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: empirical summary</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>s_check</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Checking a few values is evidence, not proof, and it is not what this proof does.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: circular summary</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>s_assume</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>That would be circular. The proof assumes the result for one \(k\) only (the induction hypothesis), never for every \(n\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>\(4^{k+1}\) is not a multiple of 9, so the terms are not multiples of 9 one by one. Look at how line 4 groups the terms, and at what replaces each group in lines 5 and 6.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>5</value></testinput>
+    <testinput><name>ans2</name><value>6</value></testinput>
+    <testinput><name>ans3</name><value>s_split</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Diagnostics: regrouping line; hypotheses confused; empirical</description>
+    <testinput><name>ans1</name><value>4</value></testinput>
+    <testinput><name>ans2</name><value>5</value></testinput>
+    <testinput><name>ans3</name><value>s_check</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Diagnostics: stating line; generic (b); circular</description>
+    <testinput><name>ans1</name><value>1</value></testinput>
+    <testinput><name>ans2</name><value>2</value></testinput>
+    <testinput><name>ans3</name><value>s_assume</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Generic (a) and (b); term by term</description>
+    <testinput><name>ans1</name><value>7</value></testinput>
+    <testinput><name>ans2</name><value>7</value></testinput>
+    <testinput><name>ans3</name><value>s_terms</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Invalid (a): no line 12, rejected by validate_line8; (b) and (c) still marked</description>
+    <testinput><name>ans1</name><value>12</value></testinput>
+    <testinput><name>ans2</name><value>6</value></testinput>
+    <testinput><name>ans3</name><value>s_split</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

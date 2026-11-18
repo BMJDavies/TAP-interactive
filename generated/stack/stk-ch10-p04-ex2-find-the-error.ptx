@@ -1,0 +1,28 @@
+<stack-static>
+    <statement><p><p>Here is the argument from the exercise above, in numbered lines.</p>
+<tabular>
+<row><cell>1</cell><cell><m>\cos^2\theta + \sin^2\theta \equiv 1</m></cell></row>
+<row><cell>2</cell><cell><m>\cos^2\theta \equiv 1 - \sin^2\theta</m></cell></row>
+<row><cell>3</cell><cell><m>\cos\theta \equiv \sqrt{1 - \sin^2\theta}</m></cell></row>
+<row><cell>4</cell><cell><m>1 + \cos\theta \equiv 1 + \sqrt{1 - \sin^2\theta}</m></cell></row>
+<row><cell>5</cell><cell>Line 4 holds for every <m>\theta</m>, so substitute <m>\theta = \pi</m>: <m>1 + \cos\pi = 1 + \sqrt{1 - \sin^2\pi}</m></cell></row>
+<row><cell>6</cell><cell><m>1 + (-1) = 1 + \sqrt{1 - 0^2}</m></cell></row>
+<row><cell>7</cell><cell><m>0 = 2</m></cell></row>
+</tabular>
+<ol class="tb-parts">
+<li><p>Which is the first line that does not follow from the lines before it?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div></li>
+<li><p>Why not? (Optional: this box is not marked and not saved.)</p>
+<div><fillin characters="40" name="ans2"/> </div></li>
+<li><p>Give an example of a value of <m>\theta</m>, in radians, with <m>0 \leq \theta \leq 2\pi</m>, for which one of lines 1 to 4 is false. Type <c>pi</c> for <m>\pi</m>, for example <c>pi/6</c>.</p>
+<div><m>\theta =</m> <fillin characters="8" name="ans3"/>  </div></li>
+</ol></p></statement>
+    <solution><p><p>Lines 1 and 2 are correct: line 1 is the Pythagorean identity, and line 2 subtracts <m>\sin^2\theta</m> from both sides.</p>
+<p>Line 3 takes square roots, and that is where the argument fails. A square root is never negative: <m>\sqrt{x^2} = |x|</m>, not <m>x</m>. So what follows from line 2 is <m>|\cos\theta| \equiv \sqrt{1 - \sin^2\theta}</m>. Line 3 drops the modulus, and it is false wherever <m>\cos\theta \lt 0</m>, that is for <m>\dfrac{\pi}{2} \lt \theta \lt \dfrac{3\pi}{2}</m>, including <m>\theta = \pi</m>. For example, at <m>\theta = \dfrac{2\pi}{3}</m> the left-hand side of line 3 is <m>-\dfrac{1}{2}</m> and the right-hand side is <m>\dfrac{1}{2}</m>.</p>
+<p>Lines 4 to 7 then follow correctly: substituting a value into an identity is allowed, and the arithmetic in line 6 is right. So the false conclusion <m>0 = 2</m> comes from line 3. With the modulus, <m>\theta = \pi</m> gives <m>1 + |\cos\pi| = 2 = 1 + \sqrt{1}</m>, and there is no contradiction.</p>
+<p>The same care is needed when solving equations: <m>x^2 = 9</m> gives <m>x = 3</m> or <m>x = -3</m>.</p>
+<p>A reason you might have written: <q>Line 3: the square root of <m>\cos^2\theta</m> is <m>|\cos\theta|</m>, not <m>\cos\theta</m>, and <m>\cos\theta</m> can be negative.</q></p></p></solution>
+    <answer><p><m>3</m></p></answer>
+    <answer><p></p></answer>
+    <answer><p><m>\pi</m></p></answer>
+</stack-static>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch07_P06_Ex3_Cases_And_Step</text></name>
+  <questiontext format="html"><text><![CDATA[<ol class="tb-parts">
+<li><p>For which of \(n = 1, 2, 3, 4, 5, 6\) is \(2^n > n^2\)? Enter them as a set, for example <code>{1, 2}</code>.</p>
+<div>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>In the induction step you show \(2^{k+1} = 2 \times 2^k > 2k^2\), and then you need \(2k^2 \geq (k+1)^2\). What is the smallest positive integer \(k\) for which \(2k^2 \geq (k+1)^2\)?</p>
+<div>\(k =\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<ol class="tb-parts">
+<li><p>Compare \(2^n\) and \(n^2\):</p>
+<table>
+<tr><td>\(n\)</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+<tr><td>\(2^n\)</td><td>2</td><td>4</td><td>8</td><td>16</td><td>32</td><td>64</td></tr>
+<tr><td>\(n^2\)</td><td>1</td><td>4</td><td>9</td><td>16</td><td>25</td><td>36</td></tr>
+</table>
+<p>The strict inequality holds for \(n = 1, 5, 6\). At \(n = 2\) and \(n = 4\) the two sides are equal, and at \(n = 3\) it is false. So the answer is \(\{1, 5, 6\}\).</p></li>
+<li><p>\(2k^2 - (k+1)^2 = k^2 - 2k - 1 = (k-1)^2 - 2\), which is at least 0 exactly when \((k-1)^2 \geq 2\), that is, for \(k \geq 3\). At \(k = 2\), \(8 < 9\); at \(k = 3\), \(18 \geq 16\). So the smallest \(k\) is 3.</p>
+<p>The induction step therefore works from \(k = 3\). But the statement is false at \(n = 3\) and \(n = 4\), so the chain can only start at \(n = 5\), the first true case from which it never breaks. \(P(1)\) is true, but the step cannot carry it on: \(P(2)\) is false, so the step does not work from \(k = 1\).</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: {1, 5, 6};
+ta2: 3;
+validate_set16(ex) := block([sv], sv: ev(ex, simp), if setp(sv) and every(lambda([v], integerp(v) and v >= 1 and v <= 6), listify(sv)) then "" else "Enter a set of whole numbers from 1 to 6, for example {1, 2}.");
+validate_posint(ex) := block([vv], vv: ev(ex, simp), if integerp(vv) and vv >= 1 then "" else "Enter a positive whole number.");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: {1, 5, 6}; k = 3]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is adapted from Exercise 3 (p. 36) in Section 7 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: it checks the cases n = 1 to 6 and the condition the induction step needs, rather than the proof itself.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>12</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_set16</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_posint</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[eqf: if elementp(2, ans1) or elementp(4, ans1) then 1 else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>The set where 2^n &gt; n^2</description><answertest>Sets</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(2 > 1\), then \(4 = 4\), \(8 < 9\), \(16 = 16\), then \(32 > 25\) and \(64 > 36\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: n = 1 missed</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>{5, 6}</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Check \(n = 1\) as well: \(2^1 = 2\) and \(1^2 = 1\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: equality taken as strict inequality</description><answertest>AlgEquiv</answertest><sans>eqf</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>At \(n = 2\) and \(n = 4\) the two sides are equal (\(4 = 4\) and \(16 = 16\)), so the strict inequality \(2^n > n^2\) is false there.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Work out \(2^n\) and \(n^2\) for each \(n\) from 1 to 6 and compare them.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[/* An exact comparison of integers. The GT answer test fails on integers beyond the floating point range. */
+toobig: if is(ans2 > ta2) then 1 else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>Smallest k with 2k^2 &gt;= (k+1)^2</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>ta2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(2 \times 9 = 18 \geq 16\), while at \(k = 2\), \(8 < 9\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the base case value</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>5</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>5 is where the statement starts (the base case), but this inequality holds earlier. Try smaller values of \(k\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Too large or too small</description><answertest>AlgEquiv</answertest><sans>toobig</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>It already holds for a smaller \(k\) than {@ans2@}. Try smaller values.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>At \(k = {@ans2@}\), \(2k^2 = {@2*ans2^2@}\) but \((k+1)^2 = {@(ans2+1)^2@}\), so the inequality fails there.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>{1,5,6}</value></testinput>
+    <testinput><name>ans2</name><value>3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Diagnostics: n = 1 missed; base case value</description>
+    <testinput><name>ans1</name><value>{5,6}</value></testinput>
+    <testinput><name>ans2</name><value>5</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Diagnostics: equalities included; too large</description>
+    <testinput><name>ans1</name><value>{1,2,4,5,6}</value></testinput>
+    <testinput><name>ans2</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Generic (a); too small</description>
+    <testinput><name>ans1</name><value>{1,3,5,6}</value></testinput>
+    <testinput><name>ans2</name><value>2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Invalid (a): a list, rejected by validate_set16; (b) still marked</description>
+    <testinput><name>ans1</name><value>[1,5,6]</value></testinput>
+    <testinput><name>ans2</name><value>3</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Invalid (b): 0, rejected by validate_posint; (a) still marked</description>
+    <testinput><name>ans1</name><value>{1,5,6}</value></testinput>
+    <testinput><name>ans2</name><value>0</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>A very large k, beyond the floating point range, is still marked; (a) with an unsimplified element</description>
+    <testinput><name>ans1</name><value>{1,5,2*3}</value></testinput>
+    <testinput><name>ans2</name><value>10^400</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

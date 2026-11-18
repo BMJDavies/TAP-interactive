@@ -1,0 +1,13 @@
+<stack-static>
+    <statement><p><p>(a) What is the least value of <m>\sin x\cos x + 1</m>?</p>
+<div><fillin characters="5" name="ans1"/> </div>
+<div/>
+<p>(b) For which values of <m>c</m> are the graphs of <m>y = \lvert {3}\sin x\cos x + c\rvert</m> and <m>y = {3}\sin x\cos x + c</m> identical? Enter the smallest such value of <m>c</m>.</p>
+<div><m>c =</m> <fillin characters="5" name="ans2"/> </div>
+<div/></p></statement>
+    <solution><p><p><m>\lvert t\rvert = t</m> exactly when <m>t \ge 0</m>, so the graphs of <m>y = \lvert f(x)\rvert</m> and <m>y = f(x)</m> are identical exactly when <m>f(x) \ge 0</m> for every <m>x</m>.</p>
+<p>(a) By the double angle formula, <m>\sin x\cos x = \dfrac12\sin 2x</m>, and <m>-1 \le \sin 2x \le 1</m>. So <m>\sin x\cos x + 1</m> lies between <m>\dfrac12</m> and <m>\dfrac32</m>. Its least value is <m>\dfrac12</m>, at <m>x = \dfrac{3\pi}{4}</m> for example. In particular it is never negative, and this proves the exercise.</p>
+<p>(b) In the same way <m>\displaystyle {3}\sin x\cos x = {\frac{3}{2}}\sin 2x</m>, so <m>{3}\sin x\cos x + c</m> has least value <m>\displaystyle c - {\frac{3}{2}}</m>, which is at least 0 exactly when <m>\displaystyle c \ge {\frac{3}{2}}</m>. The smallest such value is <m>\displaystyle c = {\frac{3}{2}}</m>. For a smaller <m>c</m> the expression is negative near <m>x = \dfrac{3\pi}{4}</m>, and there the modulus reflects the graph in the <m>x</m>-axis.</p></p></solution>
+    <answer><p><m>\frac{1}{2}</m></p></answer>
+    <answer><p><m>\frac{3}{2}</m></p></answer>
+</stack-static>

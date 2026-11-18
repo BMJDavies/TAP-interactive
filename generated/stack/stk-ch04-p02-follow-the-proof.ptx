@@ -1,0 +1,22 @@
+<stack-static>
+    <statement><p><p>Follow the proof with the odd number <m>n = {15}</m>.</p>
+<p>(a) The proof writes <m>n = 2k + 1</m>. What is <m>k</m> here?</p>
+<div><m>k =</m> <fillin characters="4" name="ans1"/>  </div>
+<p>(b) The proof says that one of <m>k</m> and <m>k + 1</m> is even. Which one, here?</p>
+<div>[ k | k + 1 ]  </div>
+<p>(c) The proof writes <m>k(k + 1) = 2m</m> and then <m>n^2 - 1 = 8m</m>. What is <m>m</m> here?</p>
+<div><m>m =</m> <fillin characters="5" name="ans3"/>  </div>
+<p>(d) The proof shows that <m>n^2 - 1</m> is divisible by 8 for every odd number <m>n</m>. Is it always divisible by 16? Give an example of an odd number <m>n</m> for which <m>n^2 - 1</m> is not divisible by 16.</p>
+<div><m>n =</m> <fillin characters="4" name="ans4"/>  </div></p></statement>
+    <solution><p><p>Follow each line of the proof with <m>n = {15}</m>.</p>
+<ul>
+<li><p>(a) <m>n = 2k + 1</m> gives <m>k = \dfrac{n - 1}{2} = {7}</m>. Check: <m>2 \times {7} + 1 = {15}</m>.</p></li>
+<li><p>(b) <m>k = {7}</m> and <m>k + 1 = {8}</m>. The even one is <m>k + 1</m>.</p></li>
+<li><p>(c) <m>k(k + 1) = {7} \times {8} = {56} = 2 \times {28}</m>, so <m>m = {28}</m>, and <m>n^2 - 1 = {224} = 8 \times {28}</m>.</p></li>
+</ul>
+<p>(d) The proof gives <m>n^2 - 1 = 8m</m>, and <m>m = \dfrac{k(k + 1)}{2}</m> is sometimes odd. For <m>n = 3</m>, <m>k = 1</m> and <m>m = 1</m>, so <m>n^2 - 1 = 8</m>, which is not divisible by 16. The proof's ‘4 times an even number’ guarantees a factor 8 and no more.</p></p></solution>
+    <answer><p><m>7</m></p></answer>
+    <answer><p>k + 1</p></answer>
+    <answer><p><m>28</m></p></answer>
+    <answer><p><m>3</m></p></answer>
+</stack-static>

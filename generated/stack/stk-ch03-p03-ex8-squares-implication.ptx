@@ -1,0 +1,25 @@
+<stack-static>
+    <statement><p><p>Conjecture: for all real numbers <m>x</m> and <m>y</m>, if <m>x^2\gt y^2</m> then <m>x\gt y</m>. (In symbols, <m>x^2\gt y^2\Rightarrow x\gt y</m>.)</p>
+<ol class="tb-parts">
+<li><p>Give a counterexample.</p>
+<div><m>x=</m> <fillin characters="5" name="ans1"/>  <m>y=</m> <fillin characters="5" name="ans2"/>  </div></li>
+<li><p>Alex wrote this disproof:</p>
+<blockquote><p>Take <m>x=1</m> and <m>y=2</m>. Then <m>x\gt y</m> is false, because <m>1\lt 2</m>. So the statement is false.</p></blockquote>
+<p>What is wrong with Alex's disproof?</p>
+<div><ol marker="(1)">
+<li>Alex's values make <m>x\gt y</m> false, but a counterexample needs values that make <m>x\gt y</m> true.</li>
+<li>One pair of values can never show that a statement about all real numbers is false.</li>
+<li>Alex's values do not make <m>x^2\gt y^2</m> true, so they do not test the statement: it only claims <m>x\gt y</m> when <m>x^2\gt y^2</m>.</li>
+<li>Nothing is wrong: <m>x\gt y</m> is false for Alex's values, so the statement is false.</li>
+</ol>  </div></li>
+</ol></p></statement>
+    <solution><p><p>The statement is an implication: <q>if <m>x^2\gt y^2</m> then <m>x\gt y</m></q>. A counterexample to an implication has two parts. It must make the condition <m>x^2\gt y^2</m> true, and it must make the conclusion <m>x\gt y</m> false.</p>
+<ol class="tb-parts">
+<li><p>Take <m>x=-2</m> and <m>y=1</m>. Then <m>x^2=4\gt 1=y^2</m>, so the condition holds, but <m>x=-2\lt 1=y</m>, so <m>x\gt y</m> is false. The implication fails for this pair, and the statement is false. The counterexamples are exactly the pairs with <m>x\lt -|y|</m>: <m>x</m> must be negative, and further from <m>0</m> than <m>y</m>.</p></li>
+<li><p>Alex's pair does not satisfy the condition: <m>1^2\gt 2^2</m> is false. The statement makes no claim at all about pairs with <m>x^2\le y^2</m>, so Alex's pair cannot be a counterexample, even though <m>x\gt y</m> is false for it. Alex checked only the second part of a counterexample, not the first.</p></li>
+</ol>
+<p>A true statement nearby is <m>x^2\gt y^2\Rightarrow |x|\gt |y|</m>.</p></p></solution>
+    <answer><p><m>-2</m></p></answer>
+    <answer><p><m>1</m></p></answer>
+    <answer><p><m>(3)</m></p></answer>
+</stack-static>

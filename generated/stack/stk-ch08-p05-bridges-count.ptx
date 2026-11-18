@@ -1,0 +1,22 @@
+<stack-static>
+    <statement><p><p>A town has two areas of land, A and B, joined by <m>{5}</m> bridges as in the table.</p>
+<tabular>
+<row><cell>Bridge</cell><cell>Joins</cell></row>
+<row><cell>a</cell><cell>A and B</cell></row><row><cell>b</cell><cell>A and B</cell></row><row><cell>c</cell><cell>A and B</cell></row><row><cell>d</cell><cell>A and B</cell></row><row><cell>e</cell><cell>A and B</cell></row>
+</tabular>
+<p>Suppose that a route crosses every bridge exactly once, and write it as a list of areas, as Euler did.</p>
+<ol class="tb-parts">
+<li><p>How many letters does the list have?</p>
+<div><fillin characters="4" name="ans1"/>  </div></li>
+<li><p>Euler's rule says how many times each area must appear in the list. What is the total of these numbers, over all the areas?</p>
+<div><fillin characters="4" name="ans2"/>  </div></li>
+<li><p>Does Euler's counting prove that there is no such route?</p>
+<div>[ Yes | No ]  </div></li>
+</ol></p></statement>
+    <solution><p><p>A route that crosses <m>{5}</m> bridges is a list of <m>{6}</m> letters: the starting area, and one more letter for each bridge crossed.</p>
+<p>By Euler's rule, an area with an odd number <m>d</m> of bridges appears <m>\dfrac{d + 1}{2}</m> times in the list. Here A and B each have 5 bridges, so each appears <m>\dfrac{5 + 1}{2} = 3</m> times. So the list needs 3 + 3 = <m>{6}</m> letters in all.</p>
+<p>The list has <m>{6}</m> letters too, so the counts agree and the argument gives no contradiction. In fact there is such a route: start in A and cross a, b, c, d and e in turn, giving the list A, B, A, B, A, B. Euler's argument proves that a route is impossible only when the counts are too big for the list.</p></p></solution>
+    <answer><p><m>6</m></p></answer>
+    <answer><p><m>6</m></p></answer>
+    <answer><p>No</p></answer>
+</stack-static>

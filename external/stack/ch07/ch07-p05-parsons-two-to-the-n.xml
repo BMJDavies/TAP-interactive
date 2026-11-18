@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch07_P05_Parsons_Two_To_The_n</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Prove that \(2^n > n\) for every positive integer \(n\). Drag the blocks you need into the box, in order. Not every block belongs in the proof.</p>
+[[parsons input="ans1"]]
+{"steps": {# parsons_encode(proof_steps) #},
+ "headers": ["Your proof:"],
+ "available_header": ["Drag from here:"]}
+[[/parsons]]
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A proof by induction has four parts: say what \(P(n)\) is, prove the base case, prove the induction step, and conclude. Here is one complete proof.</p>
+{@proof_display(ta, proof_steps)@}
+<p>The base case and the induction step do not depend on each other, so they may come in either order; only the conclusion needs both. Two blocks do not belong: assuming \(2^n > n\) for every \(n\) assumes what is to be proved, and checking \(n = 1, 2, 3\) does not prove the statement for every \(n\).</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.0000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[stack_include("contribl://prooflib.mac");
+proof_steps: [
+  ["defn",    "Let \\(P(n)\\) be the statement \\(2^n > n\\)."],
+  ["base",    "When \\(n = 1\\), \\(2^1 = 2 > 1\\), so \\(P(1)\\) is true."],
+  ["hyp",     "Assume that \\(P(k)\\) is true for some positive integer \\(k\\), that is, \\(2^k > k\\)."],
+  ["s1",      "Then \\(2^{k+1} = 2 \\times 2^k\\)"],
+  ["s2",      "\\(> 2k\\), by the induction hypothesis,"],
+  ["s3",      "\\(\\geq k + 1\\), because \\(k \\geq 1\\)."],
+  ["sc",      "So \\(2^{k+1} > k + 1\\), which means that \\(P(k+1)\\) is true."],
+  ["conc",    "\\(P(1)\\) is true, and \\(P(k)\\) implies \\(P(k+1)\\) for every positive integer \\(k\\), so by the principle of mathematical induction \\(P(n)\\) is true for every positive integer \\(n\\)."],
+  ["d_all",   "Assume that \\(2^n > n\\) for every positive integer \\(n\\)."],
+  ["d_check", "Since \\(2 > 1\\), \\(4 > 2\\) and \\(8 > 3\\), \\(P(n)\\) is true for every positive integer \\(n\\)."]
+];
+proof_steps: random_permutation(proof_steps);
+ta: proof_ind("defn", proof("base"), proof("hyp", "s1", "s2", "s3", "sc"), "conc");]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[2^n > n Parsons; order {@map(first, proof_steps)@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is original to this project and does not come from Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>parsons</type><tans>[ta, proof_steps]</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sa: parsons_decode(ans1);
+sal: args(proof_flatten(sa));
+[pd, saa]: proof_assessment(sa, proof_alternatives(ta));
+has_all: if member("d_all", sal) then 1 else 0;
+has_check: if member("d_check", sal) then 1 else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>Distance to the nearest valid proof</description><answertest>AlgEquiv</answertest><sans>pd</sans><tans>0</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>This is a complete proof. The base case and the induction step do not depend on each other, so either may come first; only the conclusion needs both.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: circular block used</description><answertest>AlgEquiv</answertest><sans>has_all</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The block ‘Assume that \(2^n > n\) for every positive integer \(n\)’ assumes what is to be proved, so the proof would be circular. The induction hypothesis assumes the statement for one value, \(k\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: empirical block used</description><answertest>AlgEquiv</answertest><sans>has_check</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Checking \(n = 1, 2\) and \(3\) does not prove the statement for every \(n\). The conclusion follows from the base case together with the induction step.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>This is not yet a correct proof: every valid order scores, so something here needs to change. Here is your proof compared with one correct proof:</p>
+{@proof_assessment_display(saa, proof_steps)@}]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>4</deployedseed>
+  <deployedseed>5</deployedseed>
+  <qtest><testcase>1</testcase><description>The teacher's order</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [ta, proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>The other valid order: induction step before base case</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("defn","hyp","s1","s2","s3","sc","base","conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Circular block in place of the hypothesis</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("defn","base","d_all","s1","s2","s3","sc","conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Empirical block in place of the conclusion</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("defn","base","hyp","s1","s2","s3","sc","d_check"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Out of order, no distractor</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("defn","base","s1","hyp","s2","s3","sc","conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

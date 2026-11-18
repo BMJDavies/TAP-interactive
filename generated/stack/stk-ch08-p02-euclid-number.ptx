@@ -1,0 +1,15 @@
+<stack-static>
+    <statement><p><p>Follow Euclid's proof in a particular case. Suppose, for the sake of argument, that the only primes were 2, 3 and 5. You may use a calculator.</p>
+<ol class="tb-parts">
+<li><p>Work out the number <m>N</m> that the proof uses.</p>
+<div><m>N =</m> <fillin characters="9" name="ans1"/>  </div></li>
+<li><p>Give an example of a prime number that divides <m>N</m>.</p>
+<div><fillin characters="7" name="ans2"/>  </div></li>
+</ol></p></statement>
+    <solution><p><p>Euclid's number is one more than the product of all the primes in the list: <me>N = {2\times 3\times 5} + 1 = {31}.</me></p>
+<p>Dividing <m>N</m> by any of 2, 3 and 5 leaves remainder 1, because each of them divides the product <m>{30}</m>. So none of them divides <m>N</m>. But <m>N</m> is greater than 1, so some prime divides <m>N</m>, and it cannot be in the list.</p>
+<p>Here <m>N = {31}</m> is itself a new prime.</p>
+<p>The proof never claims that <m>N</m> is prime: with the primes 2, 3, 5, 7, 11 and 13, <m>N = 30031 = 59 \times 509</m>. It only needs <m>N</m> to have a prime factor that is not in the list.</p></p></solution>
+    <answer><p><m>31</m></p></answer>
+    <answer><p><m>31</m></p></answer>
+</stack-static>

@@ -1,0 +1,60 @@
+<stack-static>
+    <statement><p><p>Each argument below is meant to prove the claim stated with it. Choose the best description of each argument, using the names in the box above. If more than one name seems to fit, choose the one that the box's description fits most exactly.</p>
+<ol>
+<li><p>Claim: the sum of any two odd numbers is even.</p>
+<p>Argument: Write the two numbers as <m>2j + 1</m> and <m>2k + 1</m>, where <m>j</m> and <m>k</m> are integers. Their sum is <m>2j + 2k + 2 = 2(j + k + 1)</m>, which is even.</p>
+<div>The argument <ol marker="(1)">
+<li>divides by zero</li>
+<li>makes an algebra slip</li>
+<li>uses a false claim</li>
+<li>assumes what it should prove</li>
+<li>proves the converse</li>
+<li>covers only some cases</li>
+<li>has no flaw: it is a proof</li>
+</ol>  </div></li>
+<li><p>Claim: <m>(n + 2)^2 - n^2</m> is a multiple of 4 for every integer <m>n</m>.</p>
+<p>Argument: <m>(n + 2)^2 - n^2 = n^2 + 4 - n^2 = 4</m>, which is a multiple of 4.</p>
+<div>The argument <ol marker="(1)">
+<li>divides by zero</li>
+<li>makes an algebra slip</li>
+<li>uses a false claim</li>
+<li>assumes what it should prove</li>
+<li>proves the converse</li>
+<li>covers only some cases</li>
+<li>has no flaw: it is a proof</li>
+</ol>  </div></li>
+<li><p>Claim: for real numbers <m>x</m> and <m>y</m>, if <m>xy = 0</m>, then <m>x = 0</m> or <m>y = 0</m>.</p>
+<p>Argument: If <m>x = 0</m>, then <m>xy = 0 \times y = 0</m>. If <m>y = 0</m>, then <m>xy = x \times 0 = 0</m>.</p>
+<div>The argument <ol marker="(1)">
+<li>divides by zero</li>
+<li>makes an algebra slip</li>
+<li>uses a false claim</li>
+<li>assumes what it should prove</li>
+<li>proves the converse</li>
+<li>covers only some cases</li>
+<li>has no flaw: it is a proof</li>
+</ol>  </div></li>
+<li><p>Claim: if <m>p</m> is a prime number, then <m>p^2 + 2</m> is odd.</p>
+<p>Argument: Every prime number is odd, so <m>p^2</m> is odd, and so <m>p^2 + 2</m> is odd.</p>
+<div>The argument <ol marker="(1)">
+<li>divides by zero</li>
+<li>makes an algebra slip</li>
+<li>uses a false claim</li>
+<li>assumes what it should prove</li>
+<li>proves the converse</li>
+<li>covers only some cases</li>
+<li>has no flaw: it is a proof</li>
+</ol>  </div></li>
+</ol></p></statement>
+    <solution><p><p>For each argument, ask the two questions from the start of the chapter: does each line follow from the lines before it, and do the lines, taken together, prove the claim that was stated? A true claim does not make an argument a proof, and an argument with correct algebra can still prove the wrong thing.</p>
+<ol>
+<li><p>Claim: the sum of any two odd numbers is even. This is a proof. Using two different letters, <m>j</m> and <m>k</m>, covers every pair of odd numbers, and each step is correct.</p></li>
+<li><p>Claim: <m>(n + 2)^2 - n^2</m> is a multiple of 4 for every integer <m>n</m>. This argument makes an algebra slip: <m>(n + 2)^2 = n^2 + 4n + 4</m>, not <m>n^2 + 4</m>. The claim is true, since <m>(n + 2)^2 - n^2 = 4(n + 1)</m>, but this argument does not prove it.</p></li>
+<li><p>Claim: for real numbers <m>x</m> and <m>y</m>, if <m>xy = 0</m>, then <m>x = 0</m> or <m>y = 0</m>. This argument proves the converse: it starts from the conclusion, <m>x = 0</m> or <m>y = 0</m>, and shows that <m>xy = 0</m>. The claim is true, but this argument does not prove it.</p></li>
+<li><p>Claim: if <m>p</m> is a prime number, then <m>p^2 + 2</m> is odd. This argument uses a false claim: not every prime is odd. For <m>p = 2</m>, <m>p^2 + 2 = 6</m>, which is even.</p></li>
+</ol></p></solution>
+    <answer><p><m>(7)</m></p></answer>
+    <answer><p><m>(2)</m></p></answer>
+    <answer><p><m>(5)</m></p></answer>
+    <answer><p><m>(3)</m></p></answer>
+</stack-static>

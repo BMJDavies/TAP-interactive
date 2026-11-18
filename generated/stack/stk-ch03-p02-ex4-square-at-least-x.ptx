@@ -1,0 +1,9 @@
+<stack-static>
+    <statement><p><p>Conjecture: for all real numbers <m>x</m>, <m>x^2\ge x</m>.</p>
+<p>Give a counterexample. Type fractions as 1/2.</p>
+<div><m>x=</m> <fillin characters="8" name="ans1"/> </div></p></statement>
+    <solution><p><p>A counterexample is a real number <m>x</m> for which <m>x^2\ge x</m> is false, that is <m>x^2\lt x</m>.</p>
+<p>Take <m>x=\dfrac{1}{2}</m>. Then <m>x^2=\dfrac{1}{4}</m>, and <m>\dfrac{1}{4}\lt \dfrac{1}{2}</m>, so <m>x^2\ge x</m> is false when <m>x=\dfrac{1}{2}</m>. The conjecture is false.</p>
+<p>Which values work? Factorising, <m>x^2-x=x(x-1)</m>, which is negative exactly when <m>0\lt x\lt 1</m>. So the counterexamples are exactly the numbers strictly between <m>0</m> and <m>1</m>. At <m>x=0</m> and <m>x=1</m> the two sides are equal, which <m>\ge</m> allows; for negative <m>x</m>, <m>x^2</m> is positive and <m>x</m> is negative; and for <m>x\gt 1</m>, squaring makes <m>x</m> bigger.</p></p></solution>
+    <answer><p><m>\frac{1}{2}</m></p></answer>
+</stack-static>

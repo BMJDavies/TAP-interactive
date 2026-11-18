@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch10_P04_Ex2_Find_the_error</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here is the argument from the exercise above, in numbered lines.</p>
+<table>
+<tr><td>1</td><td>\(\cos^2\theta + \sin^2\theta \equiv 1\)</td></tr>
+<tr><td>2</td><td>\(\cos^2\theta \equiv 1 - \sin^2\theta\)</td></tr>
+<tr><td>3</td><td>\(\cos\theta \equiv \sqrt{1 - \sin^2\theta}\)</td></tr>
+<tr><td>4</td><td>\(1 + \cos\theta \equiv 1 + \sqrt{1 - \sin^2\theta}\)</td></tr>
+<tr><td>5</td><td>Line 4 holds for every \(\theta\), so substitute \(\theta = \pi\): \(1 + \cos\pi = 1 + \sqrt{1 - \sin^2\pi}\)</td></tr>
+<tr><td>6</td><td>\(1 + (-1) = 1 + \sqrt{1 - 0^2}\)</td></tr>
+<tr><td>7</td><td>\(0 = 2\)</td></tr>
+</table>
+<ol class="tb-parts">
+<li><p>Which is the first line that does not follow from the lines before it?</p>
+<div>Line [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>Why not? (Optional: this box is not marked and not saved.)</p>
+<div>[[input:ans2]] [[validation:ans2]]</div></li>
+<li><p>Give an example of a value of \(\theta\), in radians, with \(0 \leq \theta \leq 2\pi\), for which one of lines 1 to 4 is false. Type <code>pi</code> for \(\pi\), for example <code>pi/6</code>.</p>
+<div>\(\theta =\) [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Lines 1 and 2 are correct: line 1 is the Pythagorean identity, and line 2 subtracts \(\sin^2\theta\) from both sides.</p>
+<p>Line 3 takes square roots, and that is where the argument fails. A square root is never negative: \(\sqrt{x^2} = |x|\), not \(x\). So what follows from line 2 is \(|\cos\theta| \equiv \sqrt{1 - \sin^2\theta}\). Line 3 drops the modulus, and it is false wherever \(\cos\theta \lt 0\), that is for \(\dfrac{\pi}{2} \lt \theta \lt \dfrac{3\pi}{2}\), including \(\theta = \pi\). For example, at \(\theta = \dfrac{2\pi}{3}\) the left-hand side of line 3 is \(-\dfrac{1}{2}\) and the right-hand side is \(\dfrac{1}{2}\).</p>
+<p>Lines 4 to 7 then follow correctly: substituting a value into an identity is allowed, and the arithmetic in line 6 is right. So the false conclusion \(0 = 2\) comes from line 3. With the modulus, \(\theta = \pi\) gives \(1 + |\cos\pi| = 2 = 1 + \sqrt{1}\), and there is no contradiction.</p>
+<p>The same care is needed when solving equations: \(x^2 = 9\) gives \(x = 3\) or \(x = -3\).</p>
+<p>A reason you might have written: <q>Line 3: the square root of \(\cos^2\theta\) is \(|\cos\theta|\), not \(\cos\theta\), and \(\cos\theta\) can be negative.</q></p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: 3;
+ta3: %pi;
+validate_line7(ex) := block([vv], vv: ev(ex, simp), if integerp(vv) and vv >= 1 and vv <= 7 then "" else "Enter a line number from 1 to 7.");
+validate_theta(ex) := block([fv, vv], fv: errcatch(ev(float(ex), simp, numer)), if is(fv = []) then "Give the angle in radians, between 0 and 2*pi." else (vv: first(fv), if not(numberp(vv)) then "Enter a number, such as 2*pi/5." else if vv < 0 or vv > 6.2831853072 then "Give the angle in radians, between 0 and 2*pi." else ""));]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: (a) line 3, (c) any theta with cos(theta) < 0]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is directly adapted from Exercise 10.2 (p. 58) in Section 10 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line7</options></input>
+  <input><name>ans2</name><type>notes</type><tans>""</tans><boxsize>40</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>hideanswer</options></input>
+  <input><name>ans3</name><type>algebraic</type><tans>ta3</tans><boxsize>8</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>0</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_theta</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>The square root step</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. Line 3 takes the square root of both sides of line 2, and that step is not valid for every \(\theta\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: substitution doubted</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>5</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 5 substitutes \(\theta = \pi\) into line 4. If line 4 really held for every \(\theta\), that would be allowed: it is what an identity means. So the trouble is earlier.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: arithmetic doubted</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>6</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 6 is correct arithmetic: \(\cos\pi = -1\) and \(\sin\pi = 0\). Look for an earlier line that does not follow.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: the false line</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>7</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 7 is false, but it follows from line 6: \(1 + (-1) = 0\) and \(1 + \sqrt{1} = 2\). Look for the first line that does not follow.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Line {@ans1@} is correct: line 1 is the identity \(\cos^2\theta + \sin^2\theta \equiv 1\), line 2 subtracts \(\sin^2\theta\) from both sides of line 1, and line 4 adds 1 to both sides of line 3. Look for the first line that does not follow.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[cosv: ev(float(cos(ans3)), numer);
+neg: if is(cosv < -1.0e-9) then 1 else 0;
+zer: if is(abs(cosv) <= 1.0e-9) then 1 else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>cos theta negative</description><answertest>AlgEquiv</answertest><sans>neg</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. For this \(\theta\), \(\cos\theta\) is negative, but a square root is never negative, so \(\cos\theta = \sqrt{1 - \sin^2\theta}\) is false here.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: cos theta zero</description><answertest>AlgEquiv</answertest><sans>zer</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>For this \(\theta\), \(\cos\theta = 0\) and \(\sqrt{1 - \sin^2\theta} = \sqrt{0} = 0\), so every one of lines 1 to 4 holds here.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>For this \(\theta\), \(\cos\theta\) is positive, and then \(\sqrt{1 - \sin^2\theta} = \cos\theta\), so every one of lines 1 to 4 holds here. Look for a line whose two sides could have opposite signs.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct, with a reason typed in the box</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>Square roots are never negative.</value></testinput>
+    <testinput><name>ans3</name><value>2*pi/3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Substitution doubted; cos zero</description>
+    <testinput><name>ans1</name><value>5</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>pi/2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Arithmetic doubted; cos positive</description>
+    <testinput><name>ans1</name><value>6</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>The false line; cos zero at 3pi/2</description>
+    <testinput><name>ans1</name><value>7</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>3*pi/2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>A valid line; pi itself</description>
+    <testinput><name>ans1</name><value>2</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>ta3</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>A decimal in radians</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>2.5</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid: degrees</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>180</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>Invalid: line 8</description>
+    <testinput><name>ans1</name><value>8</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>3</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Invalid: not a real number</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>%i</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>10</testcase><description>Invalid: a number too large to evaluate</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>10^400</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

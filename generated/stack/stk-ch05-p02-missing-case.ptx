@@ -1,0 +1,8 @@
+<stack-static>
+    <statement><p><p>A student plans to prove a statement about every integer <m>n</m> by splitting into cases by the remainder on division by <m>{3}</m>. The cases listed are <m>{n=3 k+1}</m> and <m>{n=3 k+2}</m>. One case is missing.</p>
+<p>Write an expression for <m>n</m> in the missing case, using an integer <m>k</m>. Any correct form is accepted.</p>
+<div><m>n =</m> <fillin characters="12" name="ans1"/> </div></p></statement>
+    <solution><p><p>Every integer leaves exactly one of the remainders <m>0, 1, \ldots, {2}</m> on division by <m>{3}</m>, so a split by remainders needs all <m>{3}</m> of them. The list has remainders <m>{1}</m> and <m>{2}</m>; remainder <m>{0}</m> is missing, so the missing case is <m>n = {3 k}</m>.</p>
+<p>Other correct forms include <m>n = {3 k-3}</m> and <m>n = {-3 k}</m>: as <m>k</m> runs through all the integers, each gives exactly the same integers. An expression such as <m>{6 k}</m> is not enough: it gives only some of them (it never gives <m>{3}</m>).</p></p></solution>
+    <answer><p><m>3 k</m></p></answer>
+</stack-static>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch10_P01_Lost_solution</text></name>
+  <questiontext format="html"><text><![CDATA[<p>A student claims that the equation in line 1 has only one solution, \(x = {@claimed@}\), and argues as follows.</p>
+<table>
+<tr><td>1</td><td>\({@eqn@}\)</td></tr>
+<tr><td>2</td><td>[[if test='is(tmpl = 1)']]\(x(x - {@pp@}) = {@qq@}(x - {@pp@})\)[[else]]\(x - {@pp@} = {@qq@}\)[[/if]]</td></tr>
+<tr><td>3</td><td>[[if test='is(tmpl = 1)']]\(x = {@qq@}\)[[else]]\(x = {@pp + qq@}\)[[/if]]</td></tr>
+<tr><td>4</td><td>Check: when \(x = {@claimed@}\), both sides of line 1 equal {@chk@}.</td></tr>
+<tr><td>5</td><td>So \(x = {@claimed@}\) is the only solution.</td></tr>
+</table>
+<ol class="tb-parts">
+<li><p>Which is the first line that does not follow from the lines before it?</p>
+<div>Line [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>Give a solution of the equation in line 1 that is not \(x = {@claimed@}\).</p>
+<div>\(x =\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+<li><p>Why does that line not follow? (Optional: this box is not marked and not saved.)</p>
+<div>[[input:ans3]] [[validation:ans3]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Line {@errline@} divides both sides by \(x - {@pp@}\). That is valid only when \(x - {@pp@} \neq 0\), so the argument has quietly assumed that \(x \neq {@pp@}\). But \(x = {@pp@}\) is a solution: both sides of line 1 are 0 there. So line {@errline@} is the first line that does not follow; the lines before it are correct, and the check in line 4 shows only that \(x = {@claimed@}\) is one solution, not that it is the only one.</p>
+<p>The safe method is to collect everything on one side and factorise, rather than divide. This gives [[if test='is(tmpl = 1)']]\[(x - {@pp@})(x - {@qq@}) = 0,\][[else]]\[(x - {@pp@})(x - {@pp + qq@}) = 0,\][[/if]] so the equation has two solutions, \(x = {@pp@}\) and \(x = {@claimed@}\).</p>
+<p>This is the flaw in the proof that \(2 = 1\), in a form you may meet when solving equations. There the expression divided by, \(a - b\), was always 0; here it is 0 for one value of \(x\), and that value is lost.</p>
+<p>A reason you might have written: <q>Line {@errline@} divides by \(x - {@pp@}\), which is 0 when \(x = {@pp@}\).</q></p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[tmpl: rand([1, 2]);
+pp: 2 + rand(8);
+qq: rand_with_prohib(2, 9, [pp]);
+claimed: if is(tmpl = 1) then qq else pp + qq;
+errline: if is(tmpl = 1) then 3 else 2;
+algline: if is(tmpl = 1) then 2 else 3;
+eqn: if is(tmpl = 1) then (x^2 - pp*x = qq*x - pp*qq) else ((x - pp)^2 = qq*(x - pp));
+chk: if is(tmpl = 1) then qq*(qq - pp) else qq^2;
+ta1: errline;
+ta2: pp;
+validate_line5(ex) := block([vv], vv: ev(ex, simp), if integerp(vv) and vv >= 1 and vv <= 5 then "" else "Enter a line number from 1 to 5.");
+validate_real(ex) := block([sv, fv], sv: ev(ex, simp), fv: errcatch(ev(bfloat(sv), simp)), if ratnump(sv) then "" else if is(fv = []) then "Enter a single real number, for example 3, -1/2 or sqrt(2)." else if bfloatp(first(fv)) then "" else "Enter a single real number, for example 3, -1/2 or sqrt(2).");
+s_assert(is(pp # claimed) and is(errline # algline), true);]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Template {@tmpl@}: p = {@pp@}, q = {@qq@}; error in line {@errline@}; lost solution x = {@pp@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is original to this project and does not come from Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line5</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_real</options></input>
+  <input><name>ans3</name><type>notes</type><tans>""</tans><boxsize>40</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>hideanswer</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>The line that divides by x - p</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>errline</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. In line {@errline@} both sides are divided by an expression that can be 0.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the check taken as proof of uniqueness</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 4 is a correct check: \(x = {@claimed@}\) does satisfy the equation. But checking one value cannot show that there are no other solutions.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the conclusion blamed</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>5</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 5 draws its conclusion from the lines before it, and if they were all valid it would follow. Look for an earlier line that does not follow.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: the equation itself</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 1 is the equation that the student is solving.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>[[if test='is(tmpl = 1)']]Line 2 factorises each side of line 1: expanding \(x(x - {@pp@})\) and \({@qq@}(x - {@pp@})\) gives line 1 back.[[else]]Line 3 adds {@pp@} to both sides of line 2, which is a valid step.[[/if]] Look for the line where both sides are divided by something.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[lv: ev(subst(x = ans2, lhs(eqn)), simp);
+rv: ev(subst(x = ans2, rhs(eqn)), simp);]]></text></feedbackvariables>
+    <node><name>0</name><description>Diagnostic: the student's own solution</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>claimed</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\(x = {@claimed@}\) is the solution the student found. The equation has another one.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Another solution: the two sides of line 1 agree</description><answertest>AlgEquiv</answertest><sans>lv - rv</sans><tans>0</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. When \(x = {@ans2@}\), both sides of line 1 are 0.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>When \(x = {@ans2@}\), the left-hand side of line 1 is {@lv@} and the right-hand side is {@rv@}, so this is not a solution. To find every solution, collect all the terms on one side and factorise.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>5</deployedseed>
+  <deployedseed>14</deployedseed>
+  <deployedseed>24</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct, with a reason typed in the box</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>It divides by zero.</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>The check blamed; the student's own solution</description>
+    <testinput><name>ans1</name><value>4</value></testinput>
+    <testinput><name>ans2</name><value>claimed</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>The conclusion blamed; not a solution</description>
+    <testinput><name>ans1</name><value>5</value></testinput>
+    <testinput><name>ans2</name><value>-pp</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>The equation blamed</description>
+    <testinput><name>ans1</name><value>1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>The valid algebra line blamed</description>
+    <testinput><name>ans1</name><value>algline</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Invalid: line 6</description>
+    <testinput><name>ans1</name><value>6</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid: a letter for x</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>x</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>Invalid: both solutions as a list</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>[pp, claimed]</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Invalid: an equation</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>pp = pp</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>10</testcase><description>Invalid: not a real number</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>%i</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>11</testcase><description>The lost solution in a form that does not simplify on its own; the student's solution likewise</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>sin(1)^2+cos(1)^2+pp-1</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>12</testcase><description>A surd: valid, not a solution</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>sqrt(2)</value></testinput>
+    <testinput><name>ans3</name><value></value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

@@ -1,0 +1,11 @@
+<stack-static>
+    <statement><p><p>Here is another conjecture: for all real numbers <m>a</m> and <m>b</m> with <m>a \ge 0</m> and <m>b \ge 0</m>, <m>\sqrt{a+b}=\sqrt{a}+\sqrt{b}</m>.</p>
+<p>Disprove it by giving a counterexample. Type fractions as 1/2 and <m>\sqrt{2}</m> as sqrt(2).</p>
+<div><m>a=</m> <fillin characters="8" name="ans1"/>  <m>b=</m> <fillin characters="8" name="ans2"/> </div></p></statement>
+    <solution><p><p>To disprove a <q>for all</q> statement, choose values that satisfy its conditions and show that the two sides differ for those values.</p>
+<p>Here the conjecture is about real numbers <m>a</m> and <m>b</m> with <m>a \ge 0</m> and <m>b \ge 0</m>. Take <m>a={9}</m> and <m>b={16}</m>, which satisfy these conditions. Then the left-hand side of <m>\sqrt{a+b}=\sqrt{a}+\sqrt{b}</m> is <m>{5}</m> and the right-hand side is <m>{7}</m>. These are different, so the conjecture is false.</p>
+<p>The conjecture is true for some values, for example <m>a={0}</m>, <m>b={4}</m>, where both sides equal <m>{2}</m>. That is why trying one or two values is not enough to decide whether a conjecture is true. (For <m>a \ge 0</m> and <m>b \ge 0</m>, the two sides are equal exactly when <m>a=0</m> or <m>b=0</m>.)</p>
+<p>The correct relationship is the inequality <m>\sqrt{a+b}\le\sqrt{a}+\sqrt{b}</m>: squaring the right-hand side gives <m>a+b+2\sqrt{ab}</m>, not <m>a+b</m>.</p></p></solution>
+    <answer><p><m>9</m></p></answer>
+    <answer><p><m>16</m></p></answer>
+</stack-static>

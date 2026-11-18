@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch07_P04_Transfer_The_Method</text></name>
+  <questiontext format="html"><text><![CDATA[<p>In the example above, \(f(k+1) = f(k) + \left(3 \times 4^k + 15\right)\), and a second induction (the lemma) showed that \(3 \times 4^k + 15\) is always a multiple of 9. Use the same method for</p>
+<p>\[g(n) = {@aa@}^n + {@cc@}n - 1,\]</p>
+<p>which is a multiple of {@dd@} for every positive integer \(n\).</p>
+<ol class="tb-parts">
+<li><p>Find \(h(k)\) such that \(g(k+1) = g(k) + h(k)\).</p>
+<div>\(h(k) =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>The lemma you would need says that \(h(j)\) is a multiple of {@dd@} for every positive integer \(j\). Its induction step writes \(h(t+1) = {@aa@} \times h(t) - N\), where \(N\) is a number. Find \(N\).</p>
+<div>\(N =\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>The method needs a lemma because \(g(k+1) - g(k)\) still contains a power of {@aa@}, so it needs an induction of its own.</p>
+<ol class="tb-parts">
+<li><p>Work out \(g(k+1) - g(k)\) term by term. Since \({@aa@}^{k+1} = {@aa@} \times {@aa@}^k\), we have \({@aa@}^{k+1} - {@aa@}^k = {@aa-1@} \times {@aa@}^k\), and \({@cc@}(k+1) - {@cc@}k = {@cc@}\). So</p>
+<p>\[h(k) = {@aa-1@} \times {@aa@}^k + {@cc@}.\]</p></li>
+<li><p>The lemma's base case is \(h(1) = {@aa-1@} \times {@aa@} + {@cc@} = {@h1@} = {@dd@} \times {@h1q@}\). For its induction step, \({@aa@} \times h(t) = {@aa-1@} \times {@aa@}^{t+1} + {@dg3@}\), while \(h(t+1) = {@aa-1@} \times {@aa@}^{t+1} + {@cc@}\). So</p>
+<p>\[h(t+1) = {@aa@} \times h(t) - {@ta2@},\]</p>
+<p>and \(N = {@ta2@} = {@dd@} \times {@qq@}\), a multiple of {@dd@}. If \(h(t) = {@dd@}s\) for some integer \(s\), then \(h(t+1) = {@aa@} \times {@dd@}s - {@ta2@} = {@dd@}\left({@aa@}s - {@qq@}\right)\), which is a multiple of {@dd@}.</p>
+<p>Then, as in the example, if \(g(k) = {@dd@}m\), the lemma with \(j = k\) gives \(h(k) = {@dd@}s\), and \(g(k+1) = {@dd@}m + {@dd@}s = {@dd@}(m + s)\).</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[trip: rand([[4,6,9],[7,3,9],[3,2,4],[5,4,8],[7,6,12],[9,8,16],[5,12,16]]);
+aa: trip[1];
+cc: trip[2];
+dd: trip[3];
+ta1: (aa-1)*aa^k + cc;
+ta2: (aa-1)*cc;
+dg1: aa + cc;
+dg2: aa^k + cc;
+dg3: aa*cc;
+dg4: -ta2;
+qq: ta2/dd;
+h1: (aa-1)*aa + cc;
+h1q: h1/dd;
+s_assert(integerp(qq) and integerp(h1q), true);
+validate_k(ex) := if every(lambda([v], is(v = k)), listofvars(ex)) then "" else "Write your answer in terms of k only.";
+validate_real(ex) := block([sv, fv], sv: ev(ex, simp), fv: errcatch(ev(bfloat(sv), simp)), if ratnump(sv) then "" else if is(fv = []) then "Enter a single real number, for example 3, -1/2 or sqrt(2)." else if bfloatp(first(fv)) then "" else "Enter a single real number, for example 3, -1/2 or sqrt(2).");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[g(n) = {@aa@}^n + {@cc@}n - 1, d = {@dd@}: h(k) = {@ta1@}, N = {@ta2@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 7.3 (pp. 31-35) in Section 7 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>cross</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_k</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_real</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>h(k) = g(k+1) - g(k)</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \({@aa@}^{k+1} - {@aa@}^k = {@aa-1@} \times {@aa@}^k\), and \({@cc@}(k+1) - {@cc@}k = {@cc@}\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: indices subtracted</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>dg1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\({@aa@}^{k+1} - {@aa@}^k\) is not {@aa@}: you cannot subtract powers by subtracting their indices. Write \({@aa@}^{k+1} = {@aa@} \times {@aa@}^k\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: factor a - 1 dropped</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>dg2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\({@aa@}^{k+1} - {@aa@}^k = {@aa@} \times {@aa@}^k - {@aa@}^k\). How many lots of \({@aa@}^k\) is that?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Work out \(g(k+1) - g(k)\) term by term: \(\left({@aa@}^{k+1} + {@cc@}(k+1) - 1\right) - \left({@aa@}^k + {@cc@}k - 1\right)\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>N in the lemma's step</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>ta2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(N = {@ta2@} = {@dd@} \times {@qq@}\), a multiple of {@dd@}, so the lemma's step works.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: N = ac</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>dg3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Compare the constant terms: \({@aa@} \times h(t)\) ends in \(+\,{@dg3@}\), while \(h(t+1)\) ends in \(+\,{@cc@}\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the sign of N</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>dg4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Check the sign. The line already has a minus sign in front of \(N\): since \(h(t+1) = {@aa@} \times h(t) - N\), we have \(N = {@aa@} \times h(t) - h(t+1)\), which is positive here.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Write out \({@aa@} \times h(t)\) and \(h(t+1)\) and compare them. In the example, \(4\left(3 \times 4^t + 15\right) = 3 \times 4^{t+1} + 60\), so \(3 \times 4^{t+1} + 15 = 4\left(3 \times 4^t + 15\right) - 45\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>4</deployedseed>
+  <deployedseed>5</deployedseed>
+  <deployedseed>9</deployedseed>
+  <deployedseed>14</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct, entered as the derivation g(k+1) - g(k) and as ac - c</description>
+    <testinput><name>ans1</name><value>aa^(k+1)+cc*(k+1)-1-(aa^k+cc*k-1)</value></testinput>
+    <testinput><name>ans2</name><value>aa*cc-cc</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Diagnostics: indices subtracted; N = ac</description>
+    <testinput><name>ans1</name><value>dg1</value></testinput>
+    <testinput><name>ans2</name><value>dg3</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Diagnostic: factor dropped; generic N</description>
+    <testinput><name>ans1</name><value>dg2</value></testinput>
+    <testinput><name>ans2</name><value>ta2+1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Generic h(k); N correct</description>
+    <testinput><name>ans1</name><value>ta1+1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Invalid (a): written in n, rejected by validate_k; (b) still marked</description>
+    <testinput><name>ans1</name><value>(aa-1)*aa^n+cc</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Diagnostic: N with the wrong sign; h(k) in another correct form</description>
+    <testinput><name>ans1</name><value>aa*aa^k-aa^k+cc</value></testinput>
+    <testinput><name>ans2</name><value>dg4</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid (b): not a real number, rejected by validate_real; (a) still marked</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>%i</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

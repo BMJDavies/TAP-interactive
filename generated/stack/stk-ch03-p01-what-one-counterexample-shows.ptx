@@ -1,0 +1,31 @@
+<stack-static>
+    <statement><p><p>The worked example showed that the conjecture <q>for all real numbers <m>a</m> and <m>b</m>, <m>a^3+b^3=(a+b)^3</m></q> is false, using <m>a=4</m> and <m>b=1</m>.</p>
+<p>(a) Decide whether each statement is true or false.</p>
+<ol class="tb-parts">
+<li><p>The conjecture is false.</p>
+<div>[ True | False ]  </div></li>
+<li><p>There is no pair of real numbers <m>a</m> and <m>b</m> for which <m>a^3+b^3=(a+b)^3</m>.</p>
+<div>[ True | False ]  </div></li>
+<li><p>To be certain that the conjecture is false, we would need more than one counterexample.</p>
+<div>[ True | False ]  </div></li>
+<li><p>If we found 50 different pairs <m>(a,b)</m> for which <m>a^3+b^3=(a+b)^3</m>, that would prove the conjecture.</p>
+<div>[ True | False ]  </div></li>
+</ol>
+<p>(b) Give an example of a pair <m>a</m>, <m>b</m>, with neither <m>a</m> nor <m>b</m> equal to <m>0</m>, for which <m>a^3+b^3=(a+b)^3</m> is true. Type fractions as 1/2 and <m>\sqrt{2}</m> as sqrt(2).</p>
+<div><m>a=</m> <fillin characters="5" name="ans5"/>  <m>b=</m> <fillin characters="5" name="ans6"/>  </div></p></statement>
+    <solution><p><p>(a)</p>
+<ol class="tb-parts">
+<li><p>True. The pair <m>a=4</m>, <m>b=1</m> gives <m>65\neq 125</m>. The conjecture claims the equation for all <m>a</m> and <m>b</m>, so this one pair shows that the claim is false.</p></li>
+<li><p>False. A counterexample shows that the equation fails for at least one pair, not for every pair. For example, when <m>a=0</m> both sides equal <m>b^3</m>.</p></li>
+<li><p>False. One counterexample is enough: the conjecture says the equation holds for every pair, and a single pair where it fails contradicts that.</p></li>
+<li><p>False. No number of examples can prove a statement about infinitely many pairs. In fact the equation holds for infinitely many pairs (see part (b)), and the conjecture is still false.</p></li>
+</ol>
+<p>(b) Expanding, <m>(a+b)^3=a^3+3a^2b+3ab^2+b^3</m>, so <me>(a+b)^3-(a^3+b^3)=3ab(a+b).</me> This is <m>0</m> exactly when <m>a=0</m>, <m>b=0</m> or <m>b=-a</m>. With <m>a</m> and <m>b</m> both non-zero we need <m>b=-a</m>: for example <m>a=2</m>, <m>b=-2</m>, where both sides are <m>0</m>.</p>
+<p>So the conjecture is true for infinitely many pairs, and it is still false: a <q>for all</q> claim must hold for every pair.</p></p></solution>
+    <answer><p>True</p></answer>
+    <answer><p>False</p></answer>
+    <answer><p>False</p></answer>
+    <answer><p>False</p></answer>
+    <answer><p><m>2</m></p></answer>
+    <answer><p><m>-2</m></p></answer>
+</stack-static>

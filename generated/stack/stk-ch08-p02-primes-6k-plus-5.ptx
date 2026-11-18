@@ -1,0 +1,20 @@
+<stack-static>
+    <statement><p><p>Use the idea of Euclid's proof to show that there are infinitely many primes of the form <m>6k + 5</m>: primes that leave remainder 5 on division by 6, such as 5, 11, 17 and 23.</p>
+<p>Suppose, for contradiction, that there are only finitely many, <m>p_1, p_2, \ldots, p_n</m>, and let <m>P = p_1 p_2 \cdots p_n</m> be their product. You may use this fact: every integer greater than 1 that leaves remainder 5 on division by 6 has at least one prime factor that leaves remainder 5 on division by 6.</p>
+<ol class="tb-parts">
+<li><p>Give an example of a number <m>M</m>, in terms of <m>P</m>, that the proof can use in place of Euclid's <m>N</m>.</p>
+<div><m>M =</m> <fillin characters="12" name="ans1"/>  </div></li>
+<li><p>A student suggests <m>M = 6P + 5</m>. Why does this not work?</p>
+<div><ol marker="(1)">
+<li><m>6P + 5</m> does not leave remainder 5 on division by 6.</li>
+<li><m>6P + 5</m> is divisible by 5, one of the primes <m>p_1, \ldots, p_n</m>, so its prime factor of the form <m>6k + 5</m> could be one already in the list.</li>
+<li><m>6P + 5</m> might be prime, and the proof needs <m>M</m> to be a product of several primes.</li>
+<li><m>6P + 5</m> is larger than every prime of the form <m>6k + 5</m>, so it cannot have such a prime factor.</li>
+</ol>  </div></li>
+</ol></p></statement>
+    <solution><p><p>Take <m>M = 6P - 1 = 6p_1 p_2 \cdots p_n - 1</m>. It is greater than 1, and it leaves remainder 5 on division by 6, since <m>6P - 1 = 6(P - 1) + 5</m>. So, by the fact given, <m>M</m> has a prime factor <m>q</m> of the form <m>6k + 5</m>. But dividing <m>M</m> by any <m>p_i</m> leaves remainder <m>p_i - 1</m>, so <m>q</m> is not one of <m>p_1, \ldots, p_n</m>. This contradicts the assumption that the list contains all such primes.</p>
+<p>Other choices work too, such as <m>12P - 1</m> or <m>6P - 7</m>. What matters is that <m>M \gt 1</m>, that <m>M</m> leaves remainder 5 on division by 6, and that no <m>p_i</m> divides <m>M</m>. Euclid's <m>P + 1</m> fails the second condition: if the list were 5 and 11, then <m>P + 1 = 56 = 2^3 \times 7</m>, with no prime factor of the form <m>6k + 5</m>. The student's <m>6P + 5</m> fails the third, because 5 is in the list and divides it.</p>
+<p>Why the fact holds: a number of the form <m>6k + 5</m> is odd and not a multiple of 3, so each of its prime factors leaves remainder 1 or 5 on division by 6. A product of numbers that all leave remainder 1 leaves remainder 1, so at least one factor leaves remainder 5.</p></p></solution>
+    <answer><p><m>6 P-1</m></p></answer>
+    <answer><p><m>(2)</m></p></answer>
+</stack-static>

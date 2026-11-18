@@ -1,0 +1,24 @@
+<stack-static>
+    <statement><p><p>For each pair of statements, decide which implications are true.</p>
+<ol>
+<li><p>Where <m>n</m> is an integer: <m>P</m> is ‘<m>n</m> is odd’ and <m>Q</m> is ‘<m>n</m> is a prime number greater than <m>2</m>’.</p>
+<div>[ P ⇒ Q, but not Q ⇒ P | Q ⇒ P, but not P ⇒ Q | P ⇔ Q | neither ]  </div></li>
+<li><p>Where <m>n</m> is an integer: <m>P</m> is ‘<m>n</m> is a multiple of <m>4</m>’ and <m>Q</m> is ‘<m>n</m> is a multiple of <m>6</m>’.</p>
+<div>[ P ⇒ Q, but not Q ⇒ P | Q ⇒ P, but not P ⇒ Q | P ⇔ Q | neither ]  </div></li>
+<li><p>Where <m>ABCD</m> is a quadrilateral: <m>P</m> is ‘<m>ABCD</m> is a rectangle’ and <m>Q</m> is ‘<m>ABCD</m> is a square’.</p>
+<div>[ P ⇒ Q, but not Q ⇒ P | Q ⇒ P, but not P ⇒ Q | P ⇔ Q | neither ]  </div></li>
+<li><p>Where <m>x</m> is a real number: <m>P</m> is ‘<m>2x \gt 6</m>’ and <m>Q</m> is ‘<m>x \gt 3</m>’.</p>
+<div>[ P ⇒ Q, but not Q ⇒ P | Q ⇒ P, but not P ⇒ Q | P ⇔ Q | neither ]  </div></li>
+</ol></p></statement>
+    <solution><p><p><m>P \Rightarrow Q</m> means: whenever <m>P</m> is true, <m>Q</m> is true. Its converse is <m>Q \Rightarrow P</m>. To show that an implication is false, one case where the first statement is true and the second is false is enough. <m>P \Leftrightarrow Q</m> needs both implications.</p>
+<ol>
+<li><p><m>P</m>: <m>n</m> is odd; <m>Q</m>: <m>n</m> is a prime number greater than <m>2</m>. <m>Q \Rightarrow P</m>, but not <m>P \Rightarrow Q</m>. A prime greater than <m>2</m> is not divisible by <m>2</m>, so it is odd: <m>Q \Rightarrow P</m>. But <m>9</m> is odd and not prime, so <m>P \Rightarrow Q</m> is false.</p></li>
+<li><p><m>P</m>: <m>n</m> is a multiple of <m>4</m>; <m>Q</m>: <m>n</m> is a multiple of <m>6</m>.  <m>4</m> is a multiple of <m>4</m> and not of <m>6</m>; <m>6</m> is a multiple of <m>6</m> and not of <m>4</m>. Neither implication holds.</p></li>
+<li><p><m>P</m>: <m>ABCD</m> is a rectangle; <m>Q</m>: <m>ABCD</m> is a square. <m>Q \Rightarrow P</m>, but not <m>P \Rightarrow Q</m>. Every square is a rectangle, so <m>Q \Rightarrow P</m>. But a <m>1</m> by <m>2</m> rectangle is not a square, so <m>P \Rightarrow Q</m> is false.</p></li>
+<li><p><m>P</m>: <m>2x \gt 6</m>; <m>Q</m>: <m>x \gt 3</m>.  Dividing both sides of <m>2x \gt 6</m> by the positive number <m>2</m> gives <m>x \gt 3</m>, and multiplying both sides of <m>x \gt 3</m> by <m>2</m> gives <m>2x \gt 6</m>. So <m>P \Leftrightarrow Q</m>.</p></li>
+</ol></p></solution>
+    <answer><p>Q ⇒ P, but not P ⇒ Q</p></answer>
+    <answer><p>neither</p></answer>
+    <answer><p>Q ⇒ P, but not P ⇒ Q</p></answer>
+    <answer><p>P ⇔ Q</p></answer>
+</stack-static>

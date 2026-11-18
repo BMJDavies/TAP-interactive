@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch08_P01_Simplest_form</text></name>
+  <questiontext format="html"><text><![CDATA[<p>In the proof above that \(\sqrt{2}\) is irrational, the fraction \(\dfrac{p}{q}\) is chosen in its simplest form. Which of these statements about that choice are correct? Select all that apply.</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Choosing \(\dfrac{p}{q}\) in its simplest form costs nothing: every rational number can be written that way, by cancelling common factors, as in \(\dfrac{6}{4} = \dfrac{3}{2}\). It is also essential. Showing that \(p\) and \(q\) are both even is not impossible in itself (6 and 4 are both even); it is impossible for a fraction in its simplest form. So the contradiction is with the choice of \(\dfrac{p}{q}\), and the proof rules out every fraction: if \(\sqrt{2}\) were equal to any fraction, it would be equal to one in its simplest form.</p>
+<p>The correct statements are the second and the fourth. The first is false: any fraction equal to \(\sqrt{2}\) could be cancelled down to one in its simplest form, and the proof shows that there is no such fraction. The third is false: two integers can both be even, and the contradiction is only with the choice of a fraction in its simplest form.</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: [[c_only, false, "The proof shows only that \\(\\sqrt{2}\\) is not a fraction in its simplest form; a fraction such as \\(6/4\\) could still equal \\(\\sqrt{2}\\)."],
+      [c_every, true, "Every rational number can be written as a fraction in its simplest form, so this choice does not leave out any rational number."],
+      [c_both, false, "The contradiction is that \\(p\\) and \\(q\\) are both even, which is impossible for any two integers."],
+      [c_need, true, "The contradiction comes from this choice: the proof shows that \\(p\\) and \\(q\\) are both even, so \\(p/q\\) could not have been in its simplest form."]];]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: c_every and c_need]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 8.1 (Solution 8.1, pp. 37-38) in Section 8 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>checkbox</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sel: setify(ans1);
+h_only: if elementp(c_only, sel) then 1 else 0;
+h_both: if elementp(c_both, sel) then 1 else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>Exactly the two correct statements</description><answertest>AlgEquiv</answertest><sans>sel</sans><tans>{c_every, c_need}</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Correct. The choice costs nothing, and it is exactly what the proof contradicts.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: only fractions in simplest form ruled out</description><answertest>AlgEquiv</answertest><sans>h_only</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Any fraction can be cancelled down to its simplest form: \(\dfrac{6}{4} = \dfrac{3}{2}\). So if \(\sqrt{2}\) were equal to some fraction, it would be equal to one in its simplest form, and the proof shows that this is impossible. The proof rules out every fraction.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: both even taken as impossible in itself</description><answertest>AlgEquiv</answertest><sans>h_both</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Two integers can perfectly well both be even: 6 and 4 are. What is impossible is a fraction in its simplest form with an even numerator and an even denominator.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Two of the statements are correct. Ask what would go wrong if \(\dfrac{p}{q}\) were not in its simplest form, and whether choosing it in its simplest form loses anything.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>mcq_correct(ta1)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Only-simplest-form misconception with one correct</description>
+    <testinput><name>ans1</name><value>[c_every, c_only]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Both-even misconception with one correct</description>
+    <testinput><name>ans1</name><value>[c_need, c_both]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Only one of the two correct statements</description>
+    <testinput><name>ans1</name><value>[c_need]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

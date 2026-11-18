@@ -1,0 +1,31 @@
+<stack-static>
+    <statement><p><p>Here are four short arguments. For each, choose the kind of argument it is.</p>
+<ol>
+<li><p><m>3^1 - 1 = 2</m> is even. If <m>3^k - 1</m> is even, then <m>3^{k+1} - 1 = 3(3^k - 1) + 2</m> is even too. So <m>3^n - 1</m> is even for every positive integer <m>n</m>.</p>
+<div>[ direct proof | proof by exhaustion | proof by induction | proof by contradiction | disproof by counterexample ]  </div></li>
+<li><p>The claim that every prime number is odd is false, because <m>2</m> is a prime number and <m>2</m> is even.</p>
+<div>[ direct proof | proof by exhaustion | proof by induction | proof by contradiction | disproof by counterexample ]  </div></li>
+<li><p>Every integer <m>n</m> is even or odd. If <m>n = 2k</m>, then <m>n^2 + n = 2k(2k + 1)</m>, which is even. If <m>n = 2k + 1</m>, then <m>n^2 + n = (2k + 1)(2k + 2) = 2(2k + 1)(k + 1)</m>, which is even. So <m>n^2 + n</m> is always even.</p>
+<div>[ direct proof | proof by exhaustion | proof by induction | proof by contradiction | disproof by counterexample ]  </div></li>
+<li><p>Let <m>n</m> be an even number, so <m>n = 2k</m> for some integer <m>k</m>. Then <m>n^2 = 4k^2 = 2(2k^2)</m>, so <m>n^2</m> is even.</p>
+<div>[ direct proof | proof by exhaustion | proof by induction | proof by contradiction | disproof by counterexample ]  </div></li>
+</ol></p></statement>
+    <solution><p><p>Each kind of argument has its own shape.</p>
+<ul>
+<li><p>A direct proof starts from what is known and reaches the conclusion by a chain of logical steps.</p></li>
+<li><p>A proof by exhaustion splits the statement into a finite number of cases that cover everything, and proves each one.</p></li>
+<li><p>A proof by induction proves a first case, then proves that each case leads to the next.</p></li>
+<li><p>A proof by contradiction assumes that the statement is false and shows that this leads to something impossible.</p></li>
+<li><p>A disproof by counterexample gives one example for which the statement is false.</p></li>
+</ul>
+<ol>
+<li><p>It checks <m>n = 1</m>, then shows that if the statement holds for <m>n = k</m> it holds for <m>n = k + 1</m>: a proof by induction.</p></li>
+<li><p>One case where the claim fails, the prime 2, is enough to show that it is false: a disproof by counterexample.</p></li>
+<li><p>It splits the integers into a finite number of cases, even and odd, and proves the statement in each: a proof by exhaustion.</p></li>
+<li><p>It starts from what is given, that <m>n</m> is even, and deduces the conclusion step by step for any even <m>n</m>. A direct proof.</p></li>
+</ol></p></solution>
+    <answer><p>proof by induction</p></answer>
+    <answer><p>disproof by counterexample</p></answer>
+    <answer><p>proof by exhaustion</p></answer>
+    <answer><p>direct proof</p></answer>
+</stack-static>

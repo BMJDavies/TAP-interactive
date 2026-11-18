@@ -1,0 +1,18 @@
+<stack-static>
+    <statement><p><p>Conjecture: for all real numbers <m>x</m>, <m>\mathrm{e}^{2x}=\mathrm{e}^x+\mathrm{e}^2</m>.</p>
+<p>Disprove it.</p>
+<ol class="tb-parts">
+<li><p>Choose a value of <m>x</m>.</p>
+<div><m>x=</m> <fillin characters="6" name="ans1"/>  </div></li>
+<li><p>At your value of <m>x</m>, work out each side exactly. Type <m>\mathrm{e}^2</m> as e^2.</p>
+<div><m>\mathrm{e}^{2x}=</m> <fillin characters="12" name="ans2"/>  </div>
+<div><m>\mathrm{e}^x+\mathrm{e}^2=</m> <fillin characters="12" name="ans3"/>  </div></li>
+</ol></p></statement>
+    <solution><p><p>A disproof by counterexample chooses a value, works out both sides exactly, and checks that they differ.</p>
+<p>Take <m>x=0</m>. Then <m>\mathrm{e}^{2x}=\mathrm{e}^0=1</m>, while <m>\mathrm{e}^x+\mathrm{e}^2=1+\mathrm{e}^2</m>. Since <m>\mathrm{e}^2\gt 0</m>, <m>1\neq 1+\mathrm{e}^2</m>, so the conjecture is false.</p>
+<p>The correct law of indices is <m>\mathrm{e}^{2x}=\left(\mathrm{e}^x\right)^2</m>. The conjecture mixes up a sum with a product: <m>\mathrm{e}^x\times\mathrm{e}^2=\mathrm{e}^{x+2}</m>, but <m>\mathrm{e}^x+\mathrm{e}^2</m> cannot be written as a single power.</p>
+<p>The equation does have one solution. Writing <m>u=\mathrm{e}^x</m>, it becomes <m>u^2-u-\mathrm{e}^2=0</m>, which has one positive root, so the equation is true for exactly one value, <m>x=\ln\left(\dfrac{1+\sqrt{1+4\mathrm{e}^2}}{2}\right)\approx 1.18</m>. So a conjecture can be true at a value you happen to try, and every other value of <m>x</m> is a counterexample.</p></p></solution>
+    <answer><p><m>0</m></p></answer>
+    <answer><p><m>1</m></p></answer>
+    <answer><p><m>e^2+1</m></p></answer>
+</stack-static>

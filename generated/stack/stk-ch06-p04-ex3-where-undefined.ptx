@@ -1,0 +1,9 @@
+<stack-static>
+    <statement><p><p>The identity in the exercise above is <m>\cos\theta\cot\theta + \sin\theta \equiv \operatorname{cosec}\theta</m>. For which values of <m>\theta</m> with <m>{-180}^{\circ} \le \theta \le {180}^{\circ}</m> is it not defined?</p>
+<p>Enter the set of these values in degrees, for example <c>{30, 45}</c>, or <c>{}</c> if there are none.</p>
+<div><fillin characters="25" name="ans1"/> </div></p></statement>
+    <solution><p><p><m>\cot\theta = \dfrac{\cos\theta}{\sin\theta}</m> and <m>\operatorname{cosec}\theta = \dfrac{1}{\sin\theta}</m> both divide by <m>\sin\theta</m>, so the identity is not defined where <m>\sin\theta = 0</m>: at every multiple of <m>180^{\circ}</m>. In this interval that is <m>{\left \{-180 , 0 , 180 \right \}}</m>. Where <m>\cos\theta = 0</m> nothing goes wrong: <m>\cot\theta = 0</m> there.</p>
+<p>Wherever <m>\sin\theta \ne 0</m>, the identity itself follows from <m>\cos^2\theta + \sin^2\theta = 1</m>:</p>
+<p><me>\cos\theta\cot\theta + \sin\theta = \frac{\cos^2\theta}{\sin\theta} + \sin\theta = \frac{\cos^2\theta + \sin^2\theta}{\sin\theta} = \frac{1}{\sin\theta} = \operatorname{cosec}\theta.</me></p></p></solution>
+    <answer><p><m>\left \{-180 , 0 , 180 \right \}</m></p></answer>
+</stack-static>

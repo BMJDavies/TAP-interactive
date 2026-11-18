@@ -1,0 +1,13 @@
+<stack-static>
+    <statement><p><p>Conjecture: the product of two different irrational numbers is always irrational.</p>
+<p>Give a counterexample. Type <m>\sqrt{2}</m> as sqrt(2) and <m>\pi</m> as pi.</p>
+<div>First number: <fillin characters="15" name="ans1"/> </div>
+<div>Second number: <fillin characters="15" name="ans2"/> </div></p></statement>
+    <solution><p><p>A counterexample needs two numbers that satisfy the conditions of the conjecture (both irrational, and different from each other) whose product is rational.</p>
+<p>Take <m>\sqrt{2}</m> and <m>\sqrt{8}=2\sqrt{2}</m>. Both are irrational: <m>\sqrt{2}</m> is irrational, and if <m>2\sqrt{2}=\dfrac{p}{q}</m> with <m>p</m>, <m>q</m> integers, then <m>\sqrt{2}=\dfrac{p}{2q}</m> would be rational. They are different. Their product is <m>\sqrt{2}\times\sqrt{8}=\sqrt{16}=4</m>, which is rational. So the conjecture is false. (The irrationality of <m>\sqrt{2}</m> is proved in a later chapter, by contradiction.)</p>
+<p>Other counterexamples: <m>\sqrt{2}</m> and <m>-\sqrt{2}</m> (product <m>-2</m>); <m>\sqrt{2}</m> and <m>\dfrac{1}{\sqrt{2}}</m> (product <m>1</m>); <m>1+\sqrt{2}</m> and <m>1-\sqrt{2}</m> (product <m>-1</m>); <m>\pi</m> and <m>\dfrac{1}{\pi}</m> (product <m>1</m>).</p>
+<p>Some choices do not count. <m>0</m> is rational (<m>0=\dfrac{0}{1}</m>), so <m>0\times\sqrt{2}=0</m> is not a counterexample. <m>\sqrt{4}=2</m> is rational. And <m>\sqrt{2}\times\sqrt{2}=2</m> uses the same number twice, but the conjecture is about two <em>different</em> irrational numbers.</p>
+<p>A true statement nearby: the product of a non-zero rational number and an irrational number is irrational.</p></p></solution>
+    <answer><p><m>\sqrt{2}</m></p></answer>
+    <answer><p><m>2^{\frac{3}{2}}</m></p></answer>
+</stack-static>

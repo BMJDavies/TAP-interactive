@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch08_P03_Sum_1001_reasons</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here is the proof above in numbered lines.</p>
+<table>
+<tr><td>1</td><td>Suppose, for contradiction, that \(n\) and \(m\) are positive integers with \(n + m = 1001\), and that \(nm\) is divisible by 1001.</td></tr>
+<tr><td>2</td><td>Since \(1001 = 7 \times 11 \times 13\), the product \(nm\) is divisible by 7.</td></tr>
+<tr><td>3</td><td>So \(n\) is divisible by 7, or \(m\) is divisible by 7.</td></tr>
+<tr><td>4</td><td>Swapping the names if necessary, we may suppose that \(n\) is divisible by 7. Also, \(n + m = 1001\) is divisible by 7.</td></tr>
+<tr><td>5</td><td>So \(m = (n + m) - n\) is divisible by 7. Now \(n\) and \(m\) are both divisible by 7.</td></tr>
+<tr><td>6</td><td>In the same way, \(n\) and \(m\) are both divisible by 11, and both divisible by 13.</td></tr>
+<tr><td>7</td><td>So \(n\) and \(m\) are both divisible by \(7 \times 11 \times 13 = 1001\).</td></tr>
+<tr><td>8</td><td>Since \(n\) and \(m\) are positive, \(n \geq 1001\) and \(m \geq 1001\), so \(n + m \geq 2002\).</td></tr>
+<tr><td>9</td><td>This contradicts \(n + m = 1001\). So \(nm\) is not divisible by 1001.</td></tr>
+</table>
+<p>Here are five possible reasons.</p>
+<ol type="A">
+<li>If a number divides the sum of two integers, then it divides each of them.</li>
+<li>If a number divides two integers, then it divides their difference.</li>
+<li>Every integer greater than 1 is divisible by a prime.</li>
+<li>If different primes each divide an integer, then their product divides it.</li>
+<li>If a prime divides the product of two integers, then it divides at least one of them.</li>
+</ol>
+<ol class="tb-parts">
+<li><p>Which reason justifies each of these lines?</p>
+<div>Line 3: [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div>
+<div>Line 5: [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div>
+<div>Line 7: [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+<li><p>The proof needs all three primes 7, 11 and 13. Lines 2 to 7 with \(77 = 7 \times 11\) in place of 1001 show only that \(n\) and \(m\) are both multiples of 77, and that gives no contradiction. Give an example of positive integers \(n\) and \(m\) with \(n + m = 1001\) and \(nm\) divisible by 77.</p>
+<div>\(n =\) [[input:ans4]] [[validation:ans4]] \(m =\) [[input:ans5]] [[validation:ans5]] [[feedback:prt4]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<ol class="tb-parts">
+<li><p>Line 3 uses reason E: 7 is a prime that divides the product \(nm\), so it divides \(n\) or \(m\). (This needs 7 to be prime: 6 divides \(2 \times 3\) but divides neither 2 nor 3.)</p>
+<p>Line 5 uses reason B: 7 divides both \(n + m\) and \(n\), so it divides their difference, \((n + m) - n = m\).</p>
+<p>Line 7 uses reason D: the different primes 7, 11 and 13 each divide \(n\), so their product, 1001, divides \(n\); the same holds for \(m\).</p>
+<p>Reason A is false: 7 divides \(1001 = 1000 + 1\), but 7 divides neither 1000 nor 1. Reason C is true, but no line of this proof uses it.</p></li>
+<li><p>Take \(n = 77\) and \(m = 924 = 77 \times 12\). Then \(n + m = 1001\) and \(nm = 71148 = 77 \times 924\). Any pair \(n = 77a\), \(m = 77b\) with \(a + b = 13\) works.</p>
+<p>The contradiction in the proof comes from the size of 1001 compared with the sum: two positive multiples of 1001 add up to at least 2002, which is more than 1001. Two positive multiples of 77 can add up to 1001, so with 77 in place of 1001 there is no contradiction.</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>4</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: [[rA, false, "A"], [rB, false, "B"], [rC, false, "C"], [rD, false, "D"], [rE, true, "E"]];
+ta2: [[rA, false, "A"], [rB, true, "B"], [rC, false, "C"], [rD, false, "D"], [rE, false, "E"]];
+ta3: [[rA, false, "A"], [rB, false, "B"], [rC, false, "C"], [rD, true, "D"], [rE, false, "E"]];
+ta4: 77;
+ta5: 924;]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: (a) E, B, D; (b) n = 77, m = 924]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 8.3 (Solution 8.3, p. 39) in Section 8 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>dropdown</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans2</name><type>dropdown</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans3</name><type>dropdown</type><tans>ta3</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans4</name><type>numerical</type><tans>ta4</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>intnum</options></input>
+  <input><name>ans5</name><type>numerical</type><tans>ta5</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>intnum</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Line 3: reason E</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>rE</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: 7 is a prime that divides the product \(nm\), so it divides at least one of \(n\) and \(m\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: direction mixed up (D)</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>rD</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Reason D puts several primes together into their product. Line 3 uses only one prime, 7, and it starts from 7 dividing a product, \(nm\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Line 3 goes from ‘7 divides \(nm\)’ to ‘7 divides \(n\) or \(m\)’. Which reason is about a prime dividing a product?</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Line 5: reason B</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>rB</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: 7 divides \(n + m\) and \(n\), so it divides their difference, \(m\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the false rule A</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>rA</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Reason A is false: 7 divides \(1001 = 1000 + 1\), but 7 divides neither 1000 nor 1. Line 5 knows more than that 7 divides a sum: look at what it knows about \(n\) and \(n + m\), and at how it writes \(m\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Line 5 knows that 7 divides \(n\) and \(n + m\), and concludes that 7 divides \(m = (n + m) - n\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Line 7: reason D</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>rD</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: the different primes 7, 11 and 13 each divide \(n\), so their product, 1001, divides \(n\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: direction mixed up (E)</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>rE</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Reason E starts from a prime dividing a product and ends with one of the factors. Line 7 goes the other way: it starts from 7, 11 and 13 each dividing \(n\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Line 7 goes from ‘7, 11 and 13 each divide \(n\)’ to ‘1001 divides \(n\)’.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt4</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sn: ev(ans4, simp);
+sm: ev(ans5, simp);
+pr: sn*sm;]]></text></feedbackvariables>
+    <node><name>0</name><description>Both positive</description><answertest>AlgEquiv</answertest><sans>is(sn &gt; 0) and is(sm &gt; 0)</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>1</truenextnode><trueanswernote>prt4-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Both numbers must be positive.</p>]]></text></falsefeedback></node>
+    <node><name>1</name><description>Sum 1001</description><answertest>AlgEquiv</answertest><sans>sn + sm</sans><tans>1001</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>2</truenextnode><trueanswernote>prt4-2-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>For your numbers \(n + m = {@sn+sm@}\), not 1001.</p>]]></text></falsefeedback></node>
+    <node><name>2</name><description>Product divisible by 77</description><answertest>AlgEquiv</answertest><sans>is(mod(pr, 77) = 0)</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(nm = {@pr@} = 77 \times {@pr/77@}\). Here \(n\) and \(m\) are multiples of 77, so \(n \geq 77\), \(m \geq 77\) and \(n + m \geq 154\), which is no contradiction with \(n + m = 1001\). With 1001 itself, \(n, m \geq 1001\) gives \(n + m \geq 2002\), which is.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt4-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: divisible by only one of 7 and 11</description><answertest>AlgEquiv</answertest><sans>is(mod(pr, 7) = 0) or is(mod(pr, 11) = 0)</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\(nm = {@pr@}\) is divisible by [[if test='is(mod(pr, 7) = 0)']]7 but not by 11[[else]]11 but not by 7[[/if]]. For \(77 = 7 \times 11\) it needs both. By lines 2 to 7, \(n\) and \(m\) must then both be multiples of 77.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>By lines 2 to 7 (with 77 in place of 1001), \(n\) and \(m\) must both be multiples of 77, and they must add up to \(1001 = 77 \times 13\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>rE</value></testinput>
+    <testinput><name>ans2</name><value>rB</value></testinput>
+    <testinput><name>ans3</name><value>rD</value></testinput>
+    <testinput><name>ans4</name><value>ta4</value></testinput>
+    <testinput><name>ans5</name><value>ev(1001 - ta4, simp)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T | prt4-2-T | prt4-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Diagnostics D, A, E; divisible by 7 only</description>
+    <testinput><name>ans1</name><value>rD</value></testinput>
+    <testinput><name>ans2</name><value>rA</value></testinput>
+    <testinput><name>ans3</name><value>rE</value></testinput>
+    <testinput><name>ans4</name><value>7</value></testinput>
+    <testinput><name>ans5</name><value>994</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-T | prt4-2-T | prt4-3-F | prt4-4-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Generic C everywhere; divisible by neither</description>
+    <testinput><name>ans1</name><value>rC</value></testinput>
+    <testinput><name>ans2</name><value>rC</value></testinput>
+    <testinput><name>ans3</name><value>rC</value></testinput>
+    <testinput><name>ans4</name><value>500</value></testinput>
+    <testinput><name>ans5</name><value>501</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-T | prt4-2-T | prt4-3-F | prt4-4-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Sum not 1001</description>
+    <testinput><name>ans1</name><value>rE</value></testinput>
+    <testinput><name>ans2</name><value>rB</value></testinput>
+    <testinput><name>ans3</name><value>rD</value></testinput>
+    <testinput><name>ans4</name><value>77</value></testinput>
+    <testinput><name>ans5</name><value>77</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-T | prt4-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Zero is not positive</description>
+    <testinput><name>ans1</name><value>rE</value></testinput>
+    <testinput><name>ans2</name><value>rB</value></testinput>
+    <testinput><name>ans3</name><value>rD</value></testinput>
+    <testinput><name>ans4</name><value>0</value></testinput>
+    <testinput><name>ans5</name><value>1001</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Alternative pair 462, 539</description>
+    <testinput><name>ans1</name><value>rE</value></testinput>
+    <testinput><name>ans2</name><value>rB</value></testinput>
+    <testinput><name>ans3</name><value>rD</value></testinput>
+    <testinput><name>ans4</name><value>462</value></testinput>
+    <testinput><name>ans5</name><value>539</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T | prt4-2-T | prt4-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid: a fraction for n</description>
+    <testinput><name>ans1</name><value>rE</value></testinput>
+    <testinput><name>ans2</name><value>rB</value></testinput>
+    <testinput><name>ans3</name><value>rD</value></testinput>
+    <testinput><name>ans4</name><value>1/2</value></testinput>
+    <testinput><name>ans5</name><value>1001</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

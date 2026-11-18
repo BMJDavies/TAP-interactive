@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch09_P01_Openings_and_frameworks</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Statement: {@stmt@}</p>
+<p>Here A is ‘{@Atext@}’ and B is ‘{@Btext@}’. Each line below could be the first line of a proof. For each line, choose the kind of proof it starts: a direct proof of the statement, a proof of its contrapositive, a proof by contradiction, or a proof of a different statement. The first three would all prove the statement; the last would not.</p>
+<ol>
+<li><p>{@txt1@}</p>
+<div>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>{@txt2@}</p>
+<div>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+<li><p>{@txt3@}</p>
+<div>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+<li><p>{@txt4@}</p>
+<div>[[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</div></li>
+<li><p>{@txt5@}</p>
+<div>[[input:ans5]] [[validation:ans5]] [[feedback:prt5]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>For a statement ‘if A, then B’: a direct proof assumes A and aims for B; a proof of the contrapositive assumes not B and aims for not A; a proof by contradiction assumes A and not B and aims for something impossible. All three prove the statement. A proof that assumes B and aims for A proves the converse; one that assumes not A and aims for not B proves a different statement again (it is the contrapositive of the converse). Neither proves the statement, even when the converse happens to be true as well.</p>
+<p>The five lines for this statement:</p>
+<ul>
+<li><p>{@ldir@} This starts a direct proof.</p></li>
+<li><p>{@lcp@} This starts a proof of the contrapositive.</p></li>
+<li><p>{@lcon@} This starts a proof by contradiction.</p></li>
+<li><p>{@lconv@} This starts a proof of the converse, a different statement.</p></li>
+<li><p>{@linv@} This starts a proof of ‘if not A, then not B’, a different statement.</p></li>
+</ul>
+<p>{@best@}</p>]]></text></generalfeedback>
+  <defaultgrade>5</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Six true statements 'if A, then B': [vnum, statement, A, B, direct, contrapositive, contradiction, converse, inverse, best route]. */
+vbank: [
+ [1, "Let \\(n\\) be an integer. If \\(n\\) is odd, then \\(n^3 + 1\\) is even.", "\\(n\\) is odd", "\\(n^3 + 1\\) is even", "Suppose that \\(n\\) is odd, so \\(n = 2k + 1\\) for some integer \\(k\\). We show that \\(n^3 + 1\\) is even.", "Suppose that \\(n^3 + 1\\) is odd. We show that \\(n\\) is even.", "Suppose that \\(n\\) is odd and that \\(n^3 + 1\\) is odd. We look for a contradiction.", "Suppose that \\(n^3 + 1\\) is even. We show that \\(n\\) is odd.", "Suppose that \\(n\\) is even. We show that \\(n^3 + 1\\) is odd.", "Here the direct proof is the natural one: \\(n = 2k + 1\\) gives \\(n^3 + 1 = 2(4k^3 + 6k^2 + 3k + 1)\\)."],
+ [2, "Let \\(n\\) be an integer. If \\(n^2\\) is odd, then \\(n\\) is odd.", "\\(n^2\\) is odd", "\\(n\\) is odd", "Suppose that \\(n^2\\) is odd, so \\(n^2 = 2k + 1\\) for some integer \\(k\\). We show that \\(n\\) is odd.", "Suppose that \\(n\\) is even, so \\(n = 2k\\) for some integer \\(k\\). We show that \\(n^2\\) is even.", "Suppose that \\(n^2\\) is odd and that \\(n\\) is even. We look for a contradiction.", "Suppose that \\(n\\) is odd. We show that \\(n^2\\) is odd.", "Suppose that \\(n^2\\) is even. We show that \\(n\\) is even.", "Here the contrapositive is easiest: \\(n = 2k\\) gives \\(n^2 = 2(2k^2)\\). Starting from \\(n^2 = 2k + 1\\) tells you little about \\(n\\)."],
+ [3, "Let \\(n\\) be an integer. If \\(3n + 2\\) is odd, then \\(n\\) is odd.", "\\(3n + 2\\) is odd", "\\(n\\) is odd", "Suppose that \\(3n + 2\\) is odd, so \\(3n + 2 = 2k + 1\\) for some integer \\(k\\). We show that \\(n\\) is odd.", "Suppose that \\(n\\) is even, so \\(n = 2k\\) for some integer \\(k\\). We show that \\(3n + 2\\) is even.", "Suppose that \\(3n + 2\\) is odd and that \\(n\\) is even. We look for a contradiction.", "Suppose that \\(n\\) is odd. We show that \\(3n + 2\\) is odd.", "Suppose that \\(3n + 2\\) is even. We show that \\(n\\) is even.", "Here the contrapositive is easiest: \\(n = 2k\\) gives \\(3n + 2 = 2(3k + 1)\\)."],
+ [4, "Let \\(x\\) be a real number. If \\(x\\) is irrational, then \\(x + 1\\) is irrational.", "\\(x\\) is irrational", "\\(x + 1\\) is irrational", "Suppose that \\(x\\) is irrational. We show that \\(x + 1\\) is irrational.", "Suppose that \\(x + 1\\) is rational, so \\(x + 1 = \\dfrac{a}{b}\\) for some integers \\(a\\) and \\(b\\) with \\(b \\neq 0\\). We show that \\(x\\) is rational.", "Suppose that \\(x\\) is irrational and that \\(x + 1\\) is rational. We look for a contradiction.", "Suppose that \\(x + 1\\) is irrational. We show that \\(x\\) is irrational.", "Suppose that \\(x\\) is rational. We show that \\(x + 1\\) is rational.", "Here ‘\\(x\\) is irrational’ gives nothing to calculate with, so the contrapositive (or a contradiction) is the natural route: \\(x + 1 = \\dfrac{a}{b}\\) gives \\(x = \\dfrac{a - b}{b}\\), which is rational."],
+ [5, "Let \\(a\\) and \\(b\\) be integers. If \\(ab\\) is even, then \\(a\\) is even or \\(b\\) is even.", "\\(ab\\) is even", "\\(a\\) is even or \\(b\\) is even", "Suppose that \\(ab\\) is even, so \\(ab = 2k\\) for some integer \\(k\\). We show that \\(a\\) is even or \\(b\\) is even.", "Suppose that \\(a\\) and \\(b\\) are both odd. We show that \\(ab\\) is odd.", "Suppose that \\(ab\\) is even and that \\(a\\) and \\(b\\) are both odd. We look for a contradiction.", "Suppose that \\(a\\) is even or \\(b\\) is even. We show that \\(ab\\) is even.", "Suppose that \\(ab\\) is odd. We show that \\(a\\) and \\(b\\) are both odd.", "Here the contrapositive is natural: \\(a = 2k + 1\\) and \\(b = 2l + 1\\) give \\(ab = 2(2kl + k + l) + 1\\). The opposite of ‘\\(a\\) is even or \\(b\\) is even’ is ‘\\(a\\) and \\(b\\) are both odd’."],
+ [6, "Let \\(n\\) be an integer. If \\(n\\) is a multiple of 6, then \\(n\\) is a multiple of 3.", "\\(n\\) is a multiple of 6", "\\(n\\) is a multiple of 3", "Suppose that \\(n\\) is a multiple of 6, so \\(n = 6k\\) for some integer \\(k\\). We show that \\(n\\) is a multiple of 3.", "Suppose that \\(n\\) is not a multiple of 3. We show that \\(n\\) is not a multiple of 6.", "Suppose that \\(n\\) is a multiple of 6 and that \\(n\\) is not a multiple of 3. We look for a contradiction.", "Suppose that \\(n\\) is a multiple of 3. We show that \\(n\\) is a multiple of 6.", "Suppose that \\(n\\) is not a multiple of 6. We show that \\(n\\) is not a multiple of 3.", "Here the direct proof is immediate: \\(n = 6k = 3(2k)\\). The converse and ‘if not A, then not B’ are false here (take \\(n = 3\\)), so proofs of them could never be finished."]
+];
+vrec: rand(vbank);
+vnum: vrec[1]; stmt: vrec[2]; Atext: vrec[3]; Btext: vrec[4];
+ldir: vrec[5]; lcp: vrec[6]; lcon: vrec[7]; lconv: vrec[8]; linv: vrec[9]; best: vrec[10];
+/* Rows [type, line, correct, likely error, other wrong option]. */
+rowsall: [[rdir, ldir, fdir, fcon, foth], [rcp, lcp, fcp, fcon, fdir], [rcon, lcon, fcon, fcp, fdir], [rconv, lconv, foth, fdir, fcp], [rinv, linv, foth, fcp, fcon]];
+qrows: random_permutation(rowsall);
+expl(t) := if t = rdir then "This line assumes A and aims for B: a direct proof." else if t = rcp then "This line assumes not B and aims for not A. It proves the contrapositive, ‘if not B, then not A’, which is true exactly when the statement is." else if t = rcon then "This line assumes A and not B together and looks for something impossible: a proof by contradiction." else if t = rconv then "This line assumes B and aims for A. It proves the converse, ‘if B, then A’, which is a different statement." else if t = rinv then "This line assumes not A and aims for not B. It proves ‘if not A, then not B’, which is a different statement." else "";
+/* Wrong-answer feedback says why the chosen kind does not fit and never names the right kind. leaddiag: the likely confusion for each kind of line. kindsays: any other wrong choice, by the option chosen. */
+leaddiag(t) := if t = rdir then "A proof by contradiction assumes two things together, A and not B, and looks for something impossible. Count the things this line assumes, and look at what it aims for." else if t = rcp then "A proof by contradiction assumes A and not B together, and looks for something impossible. Does this line assume A? Look at what it sets out to show." else if t = rcon then "A proof of the contrapositive assumes only not B, and aims to show not A. This line assumes more than that. Look at everything it assumes, and at what it is looking for." else if t = rconv then "A direct proof starts from A, the ‘if’ part, and aims for B. Check which part this line starts from: starting from what you want to prove is a common slip." else if t = rinv then "The contrapositive swaps the two parts as well as negating them: ‘if not B, then not A’. Check which part this line assumes and which part it aims for." else "";
+kindsays(c) := if c = fdir then "A direct proof assumes A and aims for B. Compare that with what this line assumes and what it aims for." else if c = fcp then "A proof of the contrapositive assumes not B and aims for not A. Compare that with what this line assumes and what it aims for." else if c = fcon then "A proof by contradiction assumes A and not B together and looks for something impossible. Compare that with what this line assumes and what it aims for." else "This line does start a proof of the statement itself. Decide which of A, B, not A and not B it assumes, and what it aims for.";
+opts(c) := [[fdir, is(c = fdir), "direct proof"], [fcp, is(c = fcp), "proof of the contrapositive"], [fcon, is(c = fcon), "proof by contradiction"], [foth, is(c = foth), "proof of a different statement"]];
+typ1: qrows[1][1]; txt1: qrows[1][2]; cor1: qrows[1][3]; diag1: qrows[1][4]; oth1: qrows[1][5];
+ta1: opts(cor1); expl1: expl(typ1); lead1: leaddiag(typ1);
+typ2: qrows[2][1]; txt2: qrows[2][2]; cor2: qrows[2][3]; diag2: qrows[2][4]; oth2: qrows[2][5];
+ta2: opts(cor2); expl2: expl(typ2); lead2: leaddiag(typ2);
+typ3: qrows[3][1]; txt3: qrows[3][2]; cor3: qrows[3][3]; diag3: qrows[3][4]; oth3: qrows[3][5];
+ta3: opts(cor3); expl3: expl(typ3); lead3: leaddiag(typ3);
+typ4: qrows[4][1]; txt4: qrows[4][2]; cor4: qrows[4][3]; diag4: qrows[4][4]; oth4: qrows[4][5];
+ta4: opts(cor4); expl4: expl(typ4); lead4: leaddiag(typ4);
+typ5: qrows[5][1]; txt5: qrows[5][2]; cor5: qrows[5][3]; diag5: qrows[5][4]; oth5: qrows[5][5];
+ta5: opts(cor5); expl5: expl(typ5); lead5: leaddiag(typ5);
+s_assert(every(lambda([rw], is(length(unique([rw[3], rw[4], rw[5]])) = 3)), qrows), true);
+]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Statement {@vnum@}; rows {@map(first, qrows)@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the advice that a statement of the form ‘if A, then B’ is proved by a direct proof or by a proof by contradiction (pp. 46-47) in Section 9 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>dropdown</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans2</name><type>dropdown</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans3</name><type>dropdown</type><tans>ta3</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans4</name><type>dropdown</type><tans>ta4</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans5</name><type>dropdown</type><tans>ta5</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct kind of proof</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>cor1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. {@expl1@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely confusion for this kind of line</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>diag1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@lead1@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@kindsays(ans1)@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct kind of proof</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>cor2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. {@expl2@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely confusion for this kind of line</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>diag2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@lead2@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@kindsays(ans2)@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct kind of proof</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>cor3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. {@expl3@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely confusion for this kind of line</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>diag3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@lead3@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@kindsays(ans3)@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt4</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct kind of proof</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>cor4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. {@expl4@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt4-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely confusion for this kind of line</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>diag4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@lead4@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@kindsays(ans4)@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt5</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct kind of proof</description><answertest>AlgEquiv</answertest><sans>ans5</sans><tans>cor5</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt5-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. {@expl5@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt5-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely confusion for this kind of line</description><answertest>AlgEquiv</answertest><sans>ans5</sans><tans>diag5</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt5-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@lead5@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt5-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@kindsays(ans5)@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>5</deployedseed>
+  <deployedseed>6</deployedseed>
+  <deployedseed>7</deployedseed>
+  <qtest><testcase>1</testcase><description>All correct</description>
+    <testinput><name>ans1</name><value>cor1</value></testinput><testinput><name>ans2</name><value>cor2</value></testinput><testinput><name>ans3</name><value>cor3</value></testinput><testinput><name>ans4</name><value>cor4</value></testinput><testinput><name>ans5</name><value>cor5</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt5-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Every row the likely confusion</description>
+    <testinput><name>ans1</name><value>diag1</value></testinput><testinput><name>ans2</name><value>diag2</value></testinput><testinput><name>ans3</name><value>diag3</value></testinput><testinput><name>ans4</name><value>diag4</value></testinput><testinput><name>ans5</name><value>diag5</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt5-1-F | prt5-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Every row the other wrong option</description>
+    <testinput><name>ans1</name><value>oth1</value></testinput><testinput><name>ans2</name><value>oth2</value></testinput><testinput><name>ans3</name><value>oth3</value></testinput><testinput><name>ans4</name><value>oth4</value></testinput><testinput><name>ans5</name><value>oth5</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-F</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt5-1-F | prt5-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Mixed</description>
+    <testinput><name>ans1</name><value>cor1</value></testinput><testinput><name>ans2</name><value>cor2</value></testinput><testinput><name>ans3</name><value>diag3</value></testinput><testinput><name>ans4</name><value>oth4</value></testinput><testinput><name>ans5</name><value>cor5</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-F</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt5-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

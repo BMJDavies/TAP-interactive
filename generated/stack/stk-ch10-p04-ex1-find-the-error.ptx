@@ -1,0 +1,34 @@
+<stack-static>
+    <statement><p><p>Here is the proof from the exercise above, in numbered lines. The statement is true: <m>7^n + 1</m> is divisible by 8 for every odd positive integer <m>n</m>. But the proof below does not prove it.</p>
+<tabular>
+<row><cell>1</cell><cell>When <m>n = 1</m>, <m>f(1) = 7^1 + 1 = 8</m>, which is divisible by 8, so the statement holds for <m>n = 1</m>.</cell></row>
+<row><cell>2</cell><cell>Assume that the statement holds for <m>n = k</m>, so that <m>7^k + 1 = 8m</m> for some positive integer <m>m</m>.</cell></row>
+<row><cell>3</cell><cell>We need to show that the statement holds for <m>n = k + 1</m>, that is, that <m>7^{k+1} + 1 = 8l</m> for some positive integer <m>l</m>.</cell></row>
+<row><cell>4</cell><cell><m>7^{k+1} + 1 = 7 \times 7^k + 1</m></cell></row>
+<row><cell>5</cell><cell><m>\phantom{7^{k+1} + 1} = 7 \times 7^k + 7 - 6</m></cell></row>
+<row><cell>6</cell><cell><m>\phantom{7^{k+1} + 1} = 7(7^k + 1) - 6</m></cell></row>
+<row><cell>7</cell><cell><m>\phantom{7^{k+1} + 1} = 7 \times 8m - 6</m></cell></row>
+<row><cell>8</cell><cell><m>\phantom{7^{k+1} + 1} = 8(7m) - 6</m>, which is not a multiple of 8.</cell></row>
+</tabular>
+<ol class="tb-parts">
+<li><p>Which line contains the error?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div></li>
+<li><p>What is wrong with it? (Optional: this box is not marked and not saved.)</p>
+<div><fillin characters="40" name="ans2"/> </div></li>
+<li><p>For which <m>n</m> from 1 to 6 is <m>7^n + 1</m> divisible by 8? Enter the set of these values of <m>n</m> in curly brackets, for example <c>{1, 2}</c>.</p>
+<div><fillin characters="12" name="ans3"/>  </div></li>
+</ol></p></statement>
+    <solution><p><p>Check the proof against what an induction must do: a base case, and a step from each case covered by the statement to the next one. The base case (line 1) is correct, and so is every line of algebra (lines 4 to 8): each follows from the one before it.</p>
+<p>The error is the target in line 3. The statement is only about odd <m>n</m>, so the hypothesis in line 2 is about an odd number <m>k</m>, and the next case is the next odd number, <m>k + 2</m>. Line 3 aims instead at <m>k + 1</m>, which is even, and the statement says nothing about even numbers.</p>
+<p>In fact line 8 is true: <m>8(7m) - 6</m> is not a multiple of 8. It leaves remainder 2 on division by 8, so for even <m>n</m> the number <m>7^n + 1</m> is never a multiple of 8. The values in part (c) confirm this:</p>
+<tabular>
+<row><cell><m>n</m></cell><cell>1</cell><cell>2</cell><cell>3</cell><cell>4</cell><cell>5</cell><cell>6</cell></row>
+<row><cell><m>7^n + 1</m></cell><cell>8</cell><cell>50</cell><cell>344</cell><cell>2402</cell><cell>16808</cell><cell>117650</cell></row>
+<row><cell>remainder on division by 8</cell><cell>0</cell><cell>2</cell><cell>0</cell><cell>2</cell><cell>0</cell><cell>2</cell></row>
+</tabular>
+<p>So <m>7^n + 1</m> is divisible by 8 exactly for <m>n = 1, 3, 5</m>, and no proof could ever pass from <m>k</m> to <m>k + 1</m>. The next check repairs the proof.</p>
+<p>A reason you might have written: <q>Line 3: if <m>k</m> is odd, then <m>k + 1</m> is even, and the statement says nothing about even numbers; the step should go to <m>k + 2</m>.</q></p></p></solution>
+    <answer><p><m>3</m></p></answer>
+    <answer><p></p></answer>
+    <answer><p><m>\left \{1 , 3 , 5 \right \}</m></p></answer>
+</stack-static>

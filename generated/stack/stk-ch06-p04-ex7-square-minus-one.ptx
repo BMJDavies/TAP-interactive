@@ -1,0 +1,20 @@
+<stack-static>
+    <statement><p><p>Statement: <m>{9}^n - 1</m> is a multiple of 8 for every positive integer <m>n</m>. This is the statement of the exercise above.</p>
+<p>(a) Write <m>{9}^n - 1</m> in the form <m>m^2 - 1</m>.</p>
+<div><m>m =</m> <fillin characters="10" name="ans1"/> </div>
+<div/>
+<p>(b) <m>m</m> is odd, because it is a product of odd numbers. Which of these results, applied to <m>m</m>, finishes the proof?</p>
+<div><ol marker="(1)">
+<li>The sum of any two consecutive odd numbers is a multiple of 4.</li>
+<li>The cube of any even number is a multiple of 8.</li>
+<li>If <m>m</m> is odd, then <m>m^2 - 1</m> is a multiple of 8.</li>
+<li>The product of any three consecutive integers is a multiple of 6.</li>
+</ol> </div>
+<div/></p></statement>
+    <solution><p><p>Since <m>{9} = {3}^2</m>, <m>{9}^n = ({3}^2)^n = ({3}^n)^2</m>. So <m>{9}^n - 1 = m^2 - 1</m> with <m>m = {3}^n</m>.</p>
+<p>A product of odd numbers is odd, so <m>m</m> is odd. For every odd number <m>m</m>, <m>m^2 - 1</m> is a multiple of 8: writing <m>m = 2k + 1</m>, where <m>k</m> is an integer, gives <m>m^2 - 1 = 4k^2 + 4k = 4k(k + 1)</m>, and <m>k(k + 1)</m> is a product of two consecutive integers, so it is even. So <m>{9}^n - 1</m> is a multiple of 8 for every positive integer <m>n</m>.</p>
+<p>The other results are true, but they do not apply here: <m>m^2 - 1 = (m - 1)(m + 1)</m> is a product, not a sum; <m>m</m> is odd, not even; and three consecutive integers give a factor of 6, not 8.</p>
+<p>Another proof: <m>9^n - 1 = (9 - 1)(9^{n-1} + \cdots + 9 + 1)</m>, which is 8 times an integer.</p></p></solution>
+    <answer><p><m>3^{n}</m></p></answer>
+    <answer><p><m>(3)</m></p></answer>
+</stack-static>

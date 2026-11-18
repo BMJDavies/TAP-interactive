@@ -1,0 +1,24 @@
+<stack-static>
+    <statement><p><p>A student wants to prove each claim below by exhaustion, using the cases shown. For each one, choose <em>finite and exhaustive</em> if the cases would do the job, <em>not exhaustive</em> if some number the claim is about lies in none of the cases, or <em>not finite</em> if the list of cases never ends.</p>
+<ol>
+<li><p>A claim about every integer <m>n</m>. Cases: <m>n = 3k - 1</m>, <m>n = 3k</m>, <m>n = 3k + 1</m>, where <m>k</m> is an integer.</p>
+<div>[ finite and exhaustive | not exhaustive | not finite ]  </div></li>
+<li><p>A claim about every integer <m>n</m>. Cases: one case for each integer: <m>n = 0</m>, <m>n = 1</m>, <m>n = -1</m>, <m>n = 2</m>, <m>n = -2</m>, and so on.</p>
+<div>[ finite and exhaustive | not exhaustive | not finite ]  </div></li>
+<li><p>A claim about every real number <m>x</m>. Cases: <m>x \ge 0</m>, <m>x \lt 0</m>.</p>
+<div>[ finite and exhaustive | not exhaustive | not finite ]  </div></li>
+<li><p>A claim about every positive integer <m>n</m>. Cases: <m>n = 1</m>, <m>n = 2</m>, <m>n = 3</m>, <m>n = 4</m>, <m>n = 5</m>.</p>
+<div>[ finite and exhaustive | not exhaustive | not finite ]  </div></li>
+</ol></p></statement>
+    <solution><p><p>A set of cases works for a proof by exhaustion when it is <em>finite</em>, so the proof can be finished, and <em>exhaustive</em>, so every number the claim is about lies in at least one case.</p>
+<ol>
+<li><p>A claim about every integer <m>n</m>, with cases <m>n = 3k - 1</m>, <m>n = 3k</m>, <m>n = 3k + 1</m>, where <m>k</m> is an integer. These cases are finite and exhaustive. Every integer is 1 less than, equal to, or 1 more than a multiple of 3 (note that <m>3k - 1 = 3(k - 1) + 2</m>), so the three cases cover every integer.</p></li>
+<li><p>A claim about every integer <m>n</m>, with cases one case for each integer: <m>n = 0</m>, <m>n = 1</m>, <m>n = -1</m>, <m>n = 2</m>, <m>n = -2</m>, and so on. These cases are not finite. Every integer appears in the list, but the list never ends, so a proof that treats the cases one at a time could never be finished.</p></li>
+<li><p>A claim about every real number <m>x</m>, with cases <m>x \ge 0</m>, <m>x \lt 0</m>. These cases are finite and exhaustive. Every real number is either at least 0 or less than 0, so two cases cover every real number.</p></li>
+<li><p>A claim about every positive integer <m>n</m>, with cases <m>n = 1</m>, <m>n = 2</m>, <m>n = 3</m>, <m>n = 4</m>, <m>n = 5</m>. These cases are not exhaustive. The claim is about every positive integer, but the cases stop at 5, so <m>n = 6, 7, \ldots</m> are not covered. Checking some values does not prove a claim about all of them.</p></li>
+</ol></p></solution>
+    <answer><p>finite and exhaustive</p></answer>
+    <answer><p>not finite</p></answer>
+    <answer><p>finite and exhaustive</p></answer>
+    <answer><p>not exhaustive</p></answer>
+</stack-static>

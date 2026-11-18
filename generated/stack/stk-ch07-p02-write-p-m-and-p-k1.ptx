@@ -1,0 +1,24 @@
+<stack-static>
+    <statement><p><p>In a proof by induction you write the statement for particular values of <m>n</m>: for the base case, and for <m>n = k+1</m>, which is what the induction step has to prove. Practise both on this statement about positive integers <m>n</m>:</p>
+<p><me>P(n):\quad {1^2 + 2^2 + 3^2 + \cdots + n^2} = {\dfrac{n(n+1)(2n+1)}{6}}.</me></p>
+<ol class="tb-parts">
+<li><p>Write out the statement <m>P({4})</m>.</p>
+<div><fillin characters="30" name="ans1"/> </div>
+<p>Type <c>*</c> for multiplication and <c>^</c> for powers.</p>
+<div/></li>
+<li><p>Complete the statement <m>P(k+1)</m>.</p>
+<div><m>P(k+1):\quad {1^2 + 2^2 + 3^2 + \cdots + k^2} +</m> <fillin characters="12" name="ans2"/> <m>=</m> <fillin characters="25" name="ans3"/>  </div>
+<div> </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p><m>P({4})</m> is <m>P(n)</m> with every <m>n</m> replaced by <m>{4}</m>. It is a statement, an equation with a left-hand side and a right-hand side, not a number. Its left-hand side has <m>{4}</m> terms, following the pattern of <m>P(n)</m>:</p>
+<p><me>P({4}):\quad {1^2 + 2^2 + 3^2 + 4^2 = \dfrac{4 \times 5 \times 9}{6}}.</me></p>
+<p>Both sides equal <m>{30}</m>, so <m>P({4})</m> is true.</p></li>
+<li><p><m>P(k+1)</m> is <m>P(n)</m> with every <m>n</m> replaced by <m>k+1</m>. The sum runs one term further than in <m>P(k)</m>: the new last term is the general term <m>{n^2}</m> with <m>n = k+1</m>, which is <m>{{\left(k+1\right)}^2}</m>. The right-hand side is <m>{\dfrac{n(n+1)(2n+1)}{6}}</m> with <m>n = k+1</m>:</p>
+<p><me>P(k+1):\quad {1^2 + 2^2 + 3^2 + \cdots + k^2} + {{\left(k+1\right)}^2} = {\dfrac{(k+1)(k+2)(2k+3)}{6}}.</me></p>
+<p>This is not <m>P(k)</m> with 1 added: that would give <m>{\frac{k\times \left(k+1\right)\times \left(2\times k+1\right)}{6}+1}</m> on the right-hand side.</p></li>
+</ol></p></solution>
+    <answer><p><m>30=30</m></p></answer>
+    <answer><p><m>{\left(k+1\right)}^2</m></p></answer>
+    <answer><p><m>\frac{\left(k+1\right)\times \left(k+2\right)\times \left(2\times k+3\right)}{6}</m></p></answer>
+</stack-static>

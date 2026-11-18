@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch05_P05_Ex10_factor_cases</text></name>
+  <questiontext format="html"><text><![CDATA[<p>The exercise above asks you to prove that \(n^7 - n\) is divisible by 7. One way to start:
+\[n^7 - n = n(n - 1)(n + 1)(n^2 + n + 1)(n^2 - n + 1)\]
+(expand to check). Every integer is \(n = 7k + r\) with \(r\) one of \(0, 1, \ldots, 6\), and in each case one of the five factors is a multiple of 7.</p>
+<p>Three rows are done. Type the factor that is a multiple of 7 for each of the other four.</p>
+<table>
+<thead><tr><th>\(r\)</th><th>factor that is a multiple of 7 when \(n = 7k + r\)</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>\(n = 7k\)</td></tr>
+<tr><td>1</td><td>\(n - 1 = 7k\)</td></tr>
+<tr><td>2</td><td><div>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></td></tr>
+<tr><td>3</td><td><div>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></td></tr>
+<tr><td>4</td><td><div>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></td></tr>
+<tr><td>5</td><td><div>[[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</div></td></tr>
+<tr><td>6</td><td>\(n + 1 = 7k + 7 = 7(k + 1)\)</td></tr>
+</tbody>
+</table>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>For \(n = 7k + r\), each factor equals its value at \(n = r\) plus a multiple of 7; for example
+\[(7k + r)^2 + (7k + r) + 1 = 7(7k^2 + 2kr + k) + (r^2 + r + 1).\]
+So a factor is a multiple of 7 exactly when its value at \(n = r\) is.</p>
+<table>
+<thead><tr><th>\(r\)</th><th>factor</th><th>value at \(n = r\)</th><th>as a multiple of 7</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>\(n\)</td><td>0</td><td>\(7k\)</td></tr>
+<tr><td>1</td><td>\(n - 1\)</td><td>0</td><td>\(7k\)</td></tr>
+<tr><td>2</td><td>\(n^2 + n + 1\)</td><td>7</td><td>\(7(7k^2 + 5k + 1)\)</td></tr>
+<tr><td>3</td><td>\(n^2 - n + 1\)</td><td>7</td><td>\(7(7k^2 + 5k + 1)\)</td></tr>
+<tr><td>4</td><td>\(n^2 + n + 1\)</td><td>21</td><td>\(7(7k^2 + 9k + 3)\)</td></tr>
+<tr><td>5</td><td>\(n^2 - n + 1\)</td><td>21</td><td>\(7(7k^2 + 9k + 3)\)</td></tr>
+<tr><td>6</td><td>\(n + 1\)</td><td>7</td><td>\(7(k + 1)\)</td></tr>
+</tbody>
+</table>
+<p>In every case one factor is a multiple of 7, so \(n^7 - n\) is a multiple of 7.</p>]]></text></generalfeedback>
+  <defaultgrade>4</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Fixed. Factor carrying the 7 for r = 2, 3, 4, 5, and the other quadratic (the swap). */
+tq1: n^2 + n + 1;
+tq2: n^2 - n + 1;
+tq3: n^2 + n + 1;
+tq4: n^2 - n + 1;
+sq1: n^2 - n + 1;
+sq2: n^2 + n + 1;
+sq3: n^2 - n + 1;
+sq4: n^2 + n + 1;
+validate_factor(ex) := if some(lambda([ff], is(ev(expand(ex - ff), simp) = 0)), [n, n - 1, n + 1, n^2 + n + 1, n^2 - n + 1]) then ""
+  else "Type one of the five factors: \\(n\\), \\(n - 1\\), \\(n + 1\\), \\(n^2 + n + 1\\) or \\(n^2 - n + 1\\).";
+]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Factors for r = 2, 3, 4, 5: n^2+n+1, n^2-n+1, n^2+n+1, n^2-n+1]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is adapted from Exercise 10, p. 22, in Section 5 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: given the factorisation of n^7 − n, students identify the factor that is a multiple of 7 in four of the seven cases.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>tq1</tans><boxsize>10</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_factor</options></input>
+  <input><name>ans2</name><type>algebraic</type><tans>tq2</tans><boxsize>10</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_factor</options></input>
+  <input><name>ans3</name><type>algebraic</type><tans>tq3</tans><boxsize>10</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_factor</options></input>
+  <input><name>ans4</name><type>algebraic</type><tans>tq4</tans><boxsize>10</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_factor</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Factor for r = 2</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>tq1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the other quadratic</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>sq1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>With \(n = 2\), that factor equals 3, which is not a multiple of 7. Substitute \(n = 2\) into the other factors to find the one that is.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>With \(n = 2\), the factors \(n\), \(n - 1\), \(n + 1\) are 2, 1 and 3, and none is a multiple of 7. Substitute \(n = 2\) into each quadratic factor.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Factor for r = 3</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>tq2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the other quadratic</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>sq2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>With \(n = 3\), that factor equals 13, which is not a multiple of 7. Substitute \(n = 3\) into the other factors to find the one that is.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>With \(n = 3\), the factors \(n\), \(n - 1\), \(n + 1\) are 3, 2 and 4, and none is a multiple of 7. Substitute \(n = 3\) into each quadratic factor.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Factor for r = 4</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>tq3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the other quadratic</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>sq3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>With \(n = 4\), that factor equals 13, which is not a multiple of 7. Substitute \(n = 4\) into the other factors to find the one that is.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>With \(n = 4\), the factors \(n\), \(n - 1\), \(n + 1\) are 4, 3 and 5, and none is a multiple of 7. Substitute \(n = 4\) into each quadratic factor.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt4</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Factor for r = 5</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>tq4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt4-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the other quadratic</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>sq4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>With \(n = 5\), that factor equals 31, which is not a multiple of 7. Substitute \(n = 5\) into the other factors to find the one that is.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>With \(n = 5\), the factors \(n\), \(n - 1\), \(n + 1\) are 5, 4 and 6, and none is a multiple of 7. Substitute \(n = 5\) into each quadratic factor.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>All correct</description>
+    <testinput><name>ans1</name><value>tq1</value></testinput><testinput><name>ans2</name><value>tq2</value></testinput><testinput><name>ans3</name><value>tq3</value></testinput><testinput><name>ans4</name><value>tq4</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Quadratics swapped</description>
+    <testinput><name>ans1</name><value>sq1</value></testinput><testinput><name>ans2</name><value>sq2</value></testinput><testinput><name>ans3</name><value>sq3</value></testinput><testinput><name>ans4</name><value>sq4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>A linear factor in every row</description>
+    <testinput><name>ans1</name><value>n + 1</value></testinput><testinput><name>ans2</name><value>n + 1</value></testinput><testinput><name>ans3</name><value>n + 1</value></testinput><testinput><name>ans4</name><value>n + 1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Mixed</description>
+    <testinput><name>ans1</name><value>tq1</value></testinput><testinput><name>ans2</name><value>tq2</value></testinput><testinput><name>ans3</name><value>n</value></testinput><testinput><name>ans4</name><value>n - 1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Invalid row 1: not one of the five factors</description>
+    <testinput><name>ans1</name><value>n^2 + 1</value></testinput><testinput><name>ans2</name><value>tq2</value></testinput><testinput><name>ans3</name><value>tq3</value></testinput><testinput><name>ans4</name><value>tq4</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

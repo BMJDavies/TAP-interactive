@@ -1,0 +1,10 @@
+<stack-static>
+    <statement><p><p>(a) The first conjecture fails at <m>n = 41</m> and <m>n = 42</m>, where <m>n^2 - n + 41</m> is divisible by 41. Find a value of <m>n</m> greater than 42 for which <m>n^2 - n + 41</m> is divisible by 41.</p>
+<div><m>n =</m> <fillin characters="6" name="ans1"/>  </div>
+<p>(b) <m>n^2 - n + 41</m> is divisible by 41 exactly when <m>n</m> leaves certain remainders on division by 41. Enter the set of these remainders, for example <c>{3, 7}</c>.</p>
+<div><fillin characters="10" name="ans2"/>  </div></p></statement>
+    <solution><p><p>Write <m>n^2 - n + 41 = n(n - 1) + 41</m>. If <m>n</m> is a multiple of 41, or one more than a multiple of 41, then <m>n(n - 1)</m> is a multiple of 41, and so is <m>n^2 - n + 41</m>. For example <m>n = 82</m> gives <m>82 \times 81 + 41 = 41(2 \times 81 + 1) = 41 \times 163</m>, and <m>n = 83</m> gives <m>41 \times 2 \times 83 + 41 = 41 \times 167</m>.</p>
+<p>Conversely, since 41 is prime, 41 divides <m>n(n - 1)</m> only if it divides <m>n</m> or <m>n - 1</m>. So the remainders are 0 and 1: the set <m>\{0, 1\}</m>.</p></p></solution>
+    <answer><p><m>82</m></p></answer>
+    <answer><p><m>\left \{0 , 1 \right \}</m></p></answer>
+</stack-static>

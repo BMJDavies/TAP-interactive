@@ -1,0 +1,25 @@
+<stack-static>
+    <statement><p><p>A student claims that the equation in line 1 has only one solution, <m>x = {12}</m>, and argues as follows.</p>
+<tabular>
+<row><cell>1</cell><cell><m>{{\left(x-5\right)}^2=7 \left(x-5\right)}</m></cell></row>
+<row><cell>2</cell><cell><m>x - {5} = {7}</m></cell></row>
+<row><cell>3</cell><cell><m>x = {12}</m></cell></row>
+<row><cell>4</cell><cell>Check: when <m>x = {12}</m>, both sides of line 1 equal <m>{49}</m>.</cell></row>
+<row><cell>5</cell><cell>So <m>x = {12}</m> is the only solution.</cell></row>
+</tabular>
+<ol class="tb-parts">
+<li><p>Which is the first line that does not follow from the lines before it?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div></li>
+<li><p>Give a solution of the equation in line 1 that is not <m>x = {12}</m>.</p>
+<div><m>x =</m> <fillin characters="5" name="ans2"/>  </div></li>
+<li><p>Why does that line not follow? (Optional: this box is not marked and not saved.)</p>
+<div><fillin characters="40" name="ans3"/> </div></li>
+</ol></p></statement>
+    <solution><p><p>Line <m>{2}</m> divides both sides by <m>x - {5}</m>. That is valid only when <m>x - {5} \neq 0</m>, so the argument has quietly assumed that <m>x \neq {5}</m>. But <m>x = {5}</m> is a solution: both sides of line 1 are 0 there. So line <m>{2}</m> is the first line that does not follow; the lines before it are correct, and the check in line 4 shows only that <m>x = {12}</m> is one solution, not that it is the only one.</p>
+<p>The safe method is to collect everything on one side and factorise, rather than divide. This gives <me>(x - {5})(x - {12}) = 0,</me> so the equation has two solutions, <m>x = {5}</m> and <m>x = {12}</m>.</p>
+<p>This is the flaw in the proof that <m>2 = 1</m>, in a form you may meet when solving equations. There the expression divided by, <m>a - b</m>, was always 0; here it is 0 for one value of <m>x</m>, and that value is lost.</p>
+<p>A reason you might have written: <q>Line <m>{2}</m> divides by <m>x - {5}</m>, which is 0 when <m>x = {5}</m>.</q></p></p></solution>
+    <answer><p><m>2</m></p></answer>
+    <answer><p><m>5</m></p></answer>
+    <answer><p></p></answer>
+</stack-static>

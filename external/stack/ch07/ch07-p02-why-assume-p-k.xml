@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch07_P02_Why_Assume_P_k</text></name>
+  <questiontext format="html"><text><![CDATA[<p>In Step 2 of the proof above we assume that the statement holds for \(n = k\). A student objects: ‘That is assuming what we are trying to prove.’</p>
+<p>Which of these statements are correct? Select all that apply.</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Step 3 proves an implication: for every positive integer \(k\), if the statement holds for \(n = k\), then it holds for \(n = k+1\). To prove ‘if A then B’ you assume A and deduce B. So Step 2 assumes the statement for one value, \(n = k\), as the ‘if’ part of that implication. This is the induction hypothesis. Nothing is assumed about every \(n\), so the proof is not circular.</p>
+<p>The assumption is not deduced from Step 1 either. Step 1 gives only \(n = 1\). The value of \(k\) is arbitrary, so the argument in Step 3 must work whichever positive integer \(k\) is.</p>
+<p>Think of the dominoes: Step 3 shows that each domino knocks over the next one, and Step 1 pushes the first one. Neither step on its own knocks them all down; together they do.</p>
+<p>The correct statements are the second and the fourth.</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: [[e_alln, false, "Step 2 assumes that the statement holds for every positive integer \\(n\\)."],
+      [e_impl, true, "Step 2 assumes the statement for one value, \\(n = k\\), in order to prove that if it holds for \\(n = k\\) then it holds for \\(n = k+1\\)."],
+      [e_fromone, false, "Step 2 is justified because Step 1 showed that the statement holds for \\(n = 1\\), so it holds for \\(n = k\\)."],
+      [e_arb, true, "The value of \\(k\\) is arbitrary, so the argument in Step 3 has to work whichever positive integer \\(k\\) is."]];]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: e_impl and e_arb]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 7.1 (Step 2 of Solution 7.1-B, pp. 28-29) in Section 7 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>checkbox</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sel: setify(ans1);
+a1: if elementp(e_alln, sel) then 1 else 0;
+a3: if elementp(e_fromone, sel) then 1 else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>Exactly the two correct statements</description><answertest>AlgEquiv</answertest><sans>sel</sans><tans>{e_impl, e_arb}</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Correct. Step 3 proves an implication for an arbitrary \(k\), and to prove ‘if A then B’ you assume A. Nothing is assumed about every \(n\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the circular reading chosen</description><answertest>AlgEquiv</answertest><sans>a1</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Assuming the statement for every \(n\) would indeed be circular, but Step 2 does not do that. Read Step 2 again: for how many values of \(n\) is the statement assumed?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: P(k) deduced from P(1)</description><answertest>AlgEquiv</answertest><sans>a3</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Step 1 gives only \(n = 1\), and nothing follows from it about \(n = k\). The assumption in Step 2 is not deduced from anything that came before.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Nothing you have chosen is wrong, but more than one of the statements is correct. Think about what Step 3 has to prove, and for which values of \(k\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>mcq_correct(ta1)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>The circular reading added to the two correct</description>
+    <testinput><name>ans1</name><value>[e_alln, e_impl, e_arb]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>P(k) deduced from P(1)</description>
+    <testinput><name>ans1</name><value>[e_impl, e_fromone]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Only one of the two correct statements</description>
+    <testinput><name>ans1</name><value>[e_impl]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

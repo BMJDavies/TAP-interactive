@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch04_P02_Best_summary</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Which is the best summary of the proof in the example above, that \(n^2 - 1\) is divisible by 8 for every odd number \(n\)?</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A good summary names the structure and the key step: write the odd number as \(2k + 1\), factorise \(n^2 - 1\) as \(4k(k + 1)\), and use the fact that one of two consecutive integers is even to get a second factor 2. That is the second option.</p>
+<ul>
+<li><p>Checking five values is the rough work, not the proof: it cannot cover every odd number.</p></li>
+<li><p>A multiple of 4 need not be a multiple of 8: 12 is not. The proof needs the extra factor 2 from \(k(k + 1)\).</p></li>
+<li><p>The parity argument was the first attempt in the rough work, and it was abandoned: an even number need not be a multiple of 8 (2, 4, 6, 10, …).</p></li>
+</ul>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Fixed: one specific proof. The best summary is second. */
+ta1: [
+ [s_check, false, "Check that \\(n^2 - 1\\) is a multiple of 8 for \\(n = 1, 3, 5, 7\\) and \\(9\\), and conclude that it is a multiple of 8 for every odd number \\(n\\)."],
+ [s_pair, true, "Write \\(n = 2k + 1\\), so that \\(n^2 - 1 = 4k(k + 1)\\). One of the consecutive integers \\(k\\) and \\(k + 1\\) is even, so \\(n^2 - 1\\) is 8 times an integer."],
+ [s_four, false, "Write \\(n = 2k + 1\\), so that \\(n^2 - 1 = 4k^2 + 4k\\). This is a multiple of 4, and so it is also a multiple of 8 for every odd \\(n\\)."],
+ [s_parity, false, "Since \\(n\\) is odd, \\(n^2\\) is odd, so \\(n^2 - 1\\) is even. Every even number is a multiple of 8, so \\(n^2 - 1\\) is a multiple of 8."]
+];]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Best summary: s_pair]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 4.1 and Solution 4.2 (pp. 11-12) in Section 4 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>radio</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>nonotanswered</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Best summary</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>s_pair</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. It names the two ideas of the proof: writing \(n = 2k + 1\), and the even factor among two consecutive integers, which turns 4 into 8.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the rough work's values</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>s_check</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Checking five values is the rough work, not the proof: it cannot cover every odd number.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: a multiple of 4 taken as a multiple of 8</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>s_four</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>A multiple of 4 need not be a multiple of 8: 12 is not. Where does the proof get its extra factor 2?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>This is the first attempt in the rough work, which was abandoned: an even number need not be a multiple of 8 (2, 4, 6, 10, …).</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Best summary</description>
+    <testinput><name>ans1</name><value>s_pair</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>The rough work's values</description>
+    <testinput><name>ans1</name><value>s_check</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>A multiple of 4</description>
+    <testinput><name>ans1</name><value>s_four</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>The abandoned parity argument</description>
+    <testinput><name>ans1</name><value>s_parity</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

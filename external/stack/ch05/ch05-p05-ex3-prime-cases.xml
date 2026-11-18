@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch05_P05_Ex3_prime_cases</text></name>
+  <questiontext format="html"><text><![CDATA[<p>A statement like the one in the exercise above: if \(p\) is a prime number with \({@lo@} \lt p \lt {@hi@}\), then \((p - 1)(p + 1)\) is a multiple of 12.</p>
+<p>A proof by exhaustion checks one case for each such prime. Enter the set of these primes. Type a set in curly brackets, for example {5, 6}.</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>The hypothesis says exactly which numbers are cases: primes, strictly between {@lo@} and {@hi@}. So the cases are {@ta1@}, and the proof checks each one.</p>
+<table>
+<thead><tr><th>\(p\)</th><th>\((p - 1)(p + 1)\)</th><th>\((p - 1)(p + 1) \div 12\)</th></tr></thead>
+<tbody>
+[[foreach row="ptable"]]<tr><td>{@row[1]@}</td><td>{@row[2]@}</td><td>{@row[3]@}</td></tr>
+[[/foreach]]</tbody>
+</table>
+<p>Each value is a multiple of 12. The endpoints {@lo@} and {@hi@} are not cases, because the inequalities are strict, and odd numbers such as {@oddc@} are not cases, because they are not prime.[[if test="is(lo = 3)"]] (For \(p = 3\) the claim is in fact false: \((3 - 1)(3 + 1) = 8\), which is not a multiple of 12.)[[/if]]</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* [low, high, an odd composite strictly inside the range] */
+plist: [[3, 25, 9], [5, 30, 15], [3, 20, 9], [7, 31, 21], [5, 23, 15], [11, 37, 25]];
+ppick: rand(plist);
+lo: ppick[1];
+hi: ppick[2];
+oddc: ppick[3];
+ta1: setify(sublist(makelist(jj, jj, lo + 1, hi - 1), primep));
+endp: setify(sublist([lo, hi], primep));
+pmax: lmax(listify(ta1));
+ptable: makelist([pp, (pp - 1)*(pp + 1), (pp - 1)*(pp + 1)/12], pp, listify(ta1));
+/* Validators run with simp:false, where -1 and 6/2 are not yet integers, so simplify first. */
+validate_intset(ex) := block([vv], vv: ev(ex, simp), if not(setp(vv)) then "Type a set in curly brackets, for example {5, 6}, or {} for no values."
+  else if not(every(integerp, listify(vv))) then "Type whole numbers only." else "");
+s_assert(every(lambda([pp], is(mod((pp - 1)*(pp + 1), 12) = 0)), listify(ta1)), true);
+s_assert(is(endp # {} and not(primep(oddc)) and oddc > lo and oddc < hi), true);
+]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Primes strictly between {@lo@} and {@hi@}: {@ta1@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is adapted from Exercise 3, p. 22, in Section 5 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: it asks for the set of cases a proof by exhaustion must check, and other variants change the range of primes.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>25</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>1</showvalidation><options>validator:validate_intset</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sl: listify(ans1);
+outside: sublist(sl, lambda([xx], xx <= lo or xx >= hi));
+nonprime: sublist(sl, lambda([xx], not(primep(xx))));]]></text></feedbackvariables>
+    <node><name>0</name><description>The primes in the range</description><answertest>Sets</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: endpoints or values outside the range</description><answertest>AlgEquiv</answertest><sans>is(outside # [])</sans><tans>true</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The statement is about primes with \({@lo@} \lt p \lt {@hi@}\). The numbers in {@setify(outside)@} are not in that range, so they are not cases. Both inequalities are strict, so {@lo@} and {@hi@} themselves are left out.[[if test="member(3, outside)"]] (In fact the claim is false for \(p = 3\): \((3 - 1)(3 + 1) = 8\), which is not a multiple of 12.)[[/if]]</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: a number that is not prime</description><answertest>AlgEquiv</answertest><sans>is(nonprime # [])</sans><tans>true</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The numbers in {@setify(nonprime)@} are not prime, so they are not cases of this statement.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Some primes between {@lo@} and {@hi@} are missing. Go through the odd numbers in the range one at a time.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>5</deployedseed>
+  <deployedseed>6</deployedseed>
+  <deployedseed>7</deployedseed>
+  <qtest><testcase>1</testcase><description>The primes in the range</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Prime endpoints included</description>
+    <testinput><name>ans1</name><value>union(ta1, endp)</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>An odd composite included</description>
+    <testinput><name>ans1</name><value>union(ta1, {oddc})</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>The largest prime missing</description>
+    <testinput><name>ans1</name><value>setdifference(ta1, {pmax})</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Invalid: a number, not a set</description>
+    <testinput><name>ans1</name><value>oddc</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

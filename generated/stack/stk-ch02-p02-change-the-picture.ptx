@@ -1,0 +1,20 @@
+<stack-static>
+    <statement><p><p>The same idea works with a bigger square cut from the corner. Start with a square of side <m>x</m> and cut a square of side <m>{2}</m> from one corner.</p>
+<p>(a) The strip along the top is <m>{2}</m> high. How long is it?</p>
+<div><fillin characters="8" name="ans1"/>  </div>
+<p>(b) After the strip is moved to the side, the pieces form a rectangle. Write its area as a product of two factors.</p>
+<div><fillin characters="14" name="ans2"/>  </div>
+<p>(c) Complete the condition: the picture can be drawn exactly when</p>
+<div><m>x \gt</m> <fillin characters="3" name="ans3"/>  </div>
+<p>Type products with <c>*</c>, for example <c>2*(x+3)</c>.</p></p></statement>
+    <solution><p><p>The method is the same as in the picture proof: cut a strip, move it, and compare areas.</p>
+<ul>
+<li><p>The square has area <m>x^2</m>. Cutting a <m>{2}</m> by <m>{2}</m> square from the corner leaves area <m>{x^2-4}</m>.</p></li>
+<li><p>The strip along the top is <m>x - {2}</m> long and <m>{2}</m> high.</p></li>
+<li><p>Moved to the side, it makes a rectangle <m>x + {2}</m> long and <m>x - {2}</m> high.</p></li>
+</ul>
+<p>So <m>{x^2-4} = (x + {2})(x - {2})</m>. The picture needs <m>x - {2} \gt 0</m>, that is <m>x \gt {2}</m>. Multiplying out <m>(x + {2})(x - {2})</m> proves the same identity for every real number <m>x</m>.</p></p></solution>
+    <answer><p><m>x-2</m></p></answer>
+    <answer><p><m>\left(x-2\right) \left(x+2\right)</m></p></answer>
+    <answer><p><m>2</m></p></answer>
+</stack-static>

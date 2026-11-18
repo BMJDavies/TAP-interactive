@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch07_P03_Where_Does_It_Start</text></name>
+  <questiontext format="html"><text><![CDATA[<ol class="tb-parts">
+<li><p>For which positive integers \(n\) is the inequality \(n! > 2^n\) false? Enter them as a set, for example <code>{1, 2}</code>.</p>
+<div>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>The induction step in the example used \(k \geq 4\), but it only needs \(k + 1 \geq 2\): if \(k! > 2^k\), then</p>
+<p>\[(k+1)! = (k+1) \times k! > (k+1) \times 2^k \geq 2 \times 2^k = 2^{k+1}.\]</p>
+<p>So the step works for every \(k \geq 1\). Which statement explains why the proof shows \(n! > 2^n\) only for \(n \geq 4\)?</p>
+<div>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<ol class="tb-parts">
+<li><p>Compare \(n!\) and \(2^n\) for the first few values of \(n\):</p>
+<table>
+<tr><td>\(n\)</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+<tr><td>\(n!\)</td><td>1</td><td>2</td><td>6</td><td>24</td><td>120</td></tr>
+<tr><td>\(2^n\)</td><td>2</td><td>4</td><td>8</td><td>16</td><td>32</td></tr>
+</table>
+<p>The inequality is false for \(n = 1, 2, 3\) and true for \(n = 4\). The example proves it for every \(n \geq 4\), so the answer is \(\{1, 2, 3\}\).</p></li>
+<li><p>The induction step needs only \(k + 1 \geq 2\), so it passes the truth of the statement from \(k\) to \(k+1\) for every \(k \geq 1\). But the statement is false for \(n = 1, 2\) and \(3\), so there is no true case to pass on until \(n = 4\). The base case must be a true statement, and the chain of implications starts from it: the first true case is \(n = 4\). An induction step on its own proves nothing.</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: {1, 2, 3};
+ta2: [[g_step, false, "The induction step fails for \\(k = 1, 2\\) and \\(3\\), so the proof has to start at \\(n = 4\\)."],
+      [g_true, true, "The statement is false for \\(n = 1, 2\\) and \\(3\\), and the chain of implications needs a true starting case; the first one is \\(n = 4\\)."],
+      [g_formal, false, "The base case is a formality, because the induction step on its own proves \\(n! > 2^n\\) for every \\(n \\geq 1\\)."],
+      [g_any, false, "Any base case would give a valid proof, and \\(n = 4\\) was chosen because it is the easiest case to check."]];
+validate_posset(ex) := block([sv], sv: ev(ex, simp), if setp(sv) and every(lambda([v], integerp(v) and v >= 1), listify(sv)) then "" else "Enter a set of positive whole numbers, for example {1, 2}.");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: {1, 2, 3}; g_true]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 7.2 (pp. 30-31) in Section 7 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>12</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_posset</options></input>
+  <input><name>ans2</name><type>radio</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>nonotanswered</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[big: if every(lambda([v], v <= 3), listify(ans1)) then 0 else 1;]]></text></feedbackvariables>
+    <node><name>0</name><description>The set of n where it is false</description><answertest>Sets</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(1! = 1 < 2\), \(2! = 2 < 4\), \(3! = 6 < 8\), and the example proves the inequality for every \(n \geq 4\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: n = 3 missed</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>{1, 2}</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Check \(n = 3\): \(3! = 6\) and \(2^3 = 8\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: a value of 4 or more included</description><answertest>AlgEquiv</answertest><sans>big</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The example proves \(n! > 2^n\) for every \(n \geq 4\), so it can only be false below 4. For \(n = 4\), \(4! = 24 > 16\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Work out \(n!\) and \(2^n\) for \(n = 1, 2, 3\) and \(4\) and compare them.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Why the proof starts at 4</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>g_true</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Correct. The induction step only passes truth from \(k\) to \(k+1\). It needs a true case to start from, and \(n = 4\) is the first.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the step sets the start</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>g_step</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The step works for every \(k \geq 1\), as shown above. The problem is elsewhere: is the statement itself true for \(n = 1, 2\) and \(3\)?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the base case is a formality</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>g_formal</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The step alone proves nothing: it only passes truth from one case to the next. Since \(1! = 1 < 2 = 2^1\), there is no true case at \(n = 1\) to pass on.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Not every case will do: a base case has to be a true statement. Is the statement true at \(n = 1\)?</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>{1,2,3}</value></testinput>
+    <testinput><name>ans2</name><value>g_true</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Diagnostics: n = 3 missed; the step sets the start</description>
+    <testinput><name>ans1</name><value>{1,2}</value></testinput>
+    <testinput><name>ans2</name><value>g_step</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Diagnostics: 4 included; the base case is a formality</description>
+    <testinput><name>ans1</name><value>{1,2,3,4}</value></testinput>
+    <testinput><name>ans2</name><value>g_formal</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Generic: n = 1 missed; any base case will do</description>
+    <testinput><name>ans1</name><value>{2,3}</value></testinput>
+    <testinput><name>ans2</name><value>g_any</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Invalid (a): a list, not a set, rejected by validate_posset; (b) still marked</description>
+    <testinput><name>ans1</name><value>[1,2,3]</value></testinput>
+    <testinput><name>ans2</name><value>g_true</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Correct, with an unsimplified element</description>
+    <testinput><name>ans1</name><value>{1,2,2+1}</value></testinput>
+    <testinput><name>ans2</name><value>g_true</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

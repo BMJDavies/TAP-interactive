@@ -1,0 +1,15 @@
+<stack-static>
+    <statement><p><p>In Step 2 of the proof above we assume that the statement holds for <m>n = k</m>. A student objects: ‘That is assuming what we are trying to prove.’</p>
+<p>Which of these statements are correct? Select all that apply.</p>
+<div><ol marker="(1)">
+<li>Step 2 assumes that the statement holds for every positive integer <m>n</m>.</li>
+<li>Step 2 assumes the statement for one value, <m>n = k</m>, in order to prove that if it holds for <m>n = k</m> then it holds for <m>n = k+1</m>.</li>
+<li>Step 2 is justified because Step 1 showed that the statement holds for <m>n = 1</m>, so it holds for <m>n = k</m>.</li>
+<li>The value of <m>k</m> is arbitrary, so the argument in Step 3 has to work whichever positive integer <m>k</m> is.</li>
+</ol> </div></p></statement>
+    <solution><p><p>Step 3 proves an implication: for every positive integer <m>k</m>, if the statement holds for <m>n = k</m>, then it holds for <m>n = k+1</m>. To prove ‘if A then B’ you assume A and deduce B. So Step 2 assumes the statement for one value, <m>n = k</m>, as the ‘if’ part of that implication. This is the induction hypothesis. Nothing is assumed about every <m>n</m>, so the proof is not circular.</p>
+<p>The assumption is not deduced from Step 1 either. Step 1 gives only <m>n = 1</m>. The value of <m>k</m> is arbitrary, so the argument in Step 3 must work whichever positive integer <m>k</m> is.</p>
+<p>Think of the dominoes: Step 3 shows that each domino knocks over the next one, and Step 1 pushes the first one. Neither step on its own knocks them all down; together they do.</p>
+<p>The correct statements are the second and the fourth.</p></p></solution>
+    <answer><p><m>(2), (4)</m></p></answer>
+</stack-static>

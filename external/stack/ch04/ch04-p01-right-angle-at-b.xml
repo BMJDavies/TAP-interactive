@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch04_P01_Right_angle_at_B</text></name>
+  <questiontext format="html"><text><![CDATA[<p>In the text, \(P\) is \(AB^2 + BC^2 = AC^2\), and \(Q\) says that the angle at \(B\) is a right angle; then \(P \Leftrightarrow Q\).</p>
+<p>Suppose instead that \(Q\) said only ‘triangle \(ABC\) is right-angled’. Then \(Q \Rightarrow P\) would be false. Show this with a counterexample: give the side lengths of an example of a right-angled triangle \(ABC\) for which \(AB^2 + BC^2 \neq AC^2\).</p>
+<div>\(AB =\) [[input:ans1]] [[validation:ans1]]</div>
+<div>\(BC =\) [[input:ans2]] [[validation:ans2]]</div>
+<div>\(AC =\) [[input:ans3]] [[validation:ans3]]</div>
+<p>Type \(\sqrt{2}\) as <code>sqrt(2)</code>.</p>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A counterexample to \(Q \Rightarrow P\) needs \(Q\) true and \(P\) false: a triangle that is right-angled, but for which \(AB^2 + BC^2 \neq AC^2\).</p>
+<p>Put the right angle at \(A\): \(AB = 3\), \(AC = 4\), \(BC = 5\). Then \(AB^2 + AC^2 = 9 + 16 = 25 = BC^2\), so the triangle is right-angled, but \(AB^2 + BC^2 = 9 + 25 = 34\) and \(AC^2 = 16\). So ‘\(ABC\) is right-angled’ does not imply \(AB^2 + BC^2 = AC^2\).</p>
+<p>By Pythagoras' theorem, \(AB^2 + BC^2 = AC^2\) only when the right angle is at \(B\), opposite \(AC\). So \(Q\) has to say where the right angle is. With \(Q\) ‘the angle at \(B\) is a right angle’, \(Q \Rightarrow P\) is Pythagoras' theorem and \(P \Rightarrow Q\) is its converse.</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Fixed: any right-angled triangle with the right angle at A or C scores. */
+ta1: 3; ta2: 5; ta3: 4;
+/* The numerical input type alone accepts %i, inf, sets, lists, booleans and equations: this validator keeps them from the PRT. */
+validate_real(ex) := block([sv, fv], sv: ev(ex, simp), fv: errcatch(ev(bfloat(sv), simp)), if ratnump(sv) then "" else if is(fv = []) then "Enter a single real number, for example 3, -1/2 or sqrt(2)." else if bfloatp(first(fv)) then "" else "Enter a single real number, for example 3, -1/2 or sqrt(2).");
+/* True when u is positive. Exact for a rational number. Otherwise bigfloats (float() overflows on very large lengths), and a value below 10^(-40) of the scale sz counts as zero, so that a zero typed in a form that does not simplify, such as sin(1)^2 + cos(1)^2 - 1, is not taken for a tiny positive length. */
+ispos(u, sz) := block([rr, fpprec: 60], rr: ev(trigsimp(ratsimp(radcan(u))), simp), if ratnump(rr) then is(rr > 0) else is(bfloat(rr) > 10^(-40)*sz));
+/* True when u^2 + v^2 = w^2. Exact whenever the difference simplifies to a rational number. A form that does not simplify exactly is compared with 60-digit bigfloats, to 10^(-40) of w^2. */
+pythag(u, v, w) := block([rr, fpprec: 60], rr: ev(trigsimp(ratsimp(radcan(u^2 + v^2 - w^2))), simp), if ratnump(rr) then is(rr = 0) else is(abs(bfloat(rr)) < 10^(-40)*bfloat(w^2)));]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Any right-angled triangle with the right angle at A or C]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the example P: AB^2 + BC^2 = AC^2, Q: triangle ABC is right-angled (p. 10) in Section 4 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>6</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_real</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>6</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_real</options></input>
+  <input><name>ans3</name><type>numerical</type><tans>ta3</tans><boxsize>6</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_real</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[/* AB = sa, BC = sb, AC = sc: the right angle at B is opposite AC, at A opposite BC, at C opposite AB. */
+sa: ev(ans1, simp); sb: ev(ans2, simp); sc: ev(ans3, simp);
+/* ispos and pythag are in the question variables: they survive very large lengths and forms that do not simplify exactly. */
+sz: bfloat(abs(sa) + abs(sb) + abs(sc));
+istri: ispos(sa, sz) and ispos(sb, sz) and ispos(sc, sz) and ispos(sa + sb - sc, sz) and ispos(sb + sc - sa, sz) and ispos(sa + sc - sb, sz);
+atB: pythag(sa, sb, sc);
+atA: pythag(sa, sc, sb);
+atC: pythag(sb, sc, sa);
+rightQ: atA or atB or atC;]]></text></feedbackvariables>
+    <node><name>0</name><description>The lengths make a triangle</description><answertest>AlgEquiv</answertest><sans>istri</sans><tans>true</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>These lengths do not make a triangle: each side must be positive and shorter than the other two together.</p>]]></text></falsefeedback></node>
+    <node><name>1</name><description>The triangle is right-angled, so Q is true</description><answertest>AlgEquiv</answertest><sans>rightQ</sans><tans>true</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>2</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Your triangle is not right-angled, so \(Q\) is false for it. A counterexample to \(Q \Rightarrow P\) must make \(Q\) true and \(P\) false. Try side lengths that satisfy Pythagoras' theorem, such as 3, 4 and 5.</p>]]></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the right angle at B makes P true</description><answertest>AlgEquiv</answertest><sans>atB</sans><tans>false</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. The triangle is right-angled, so \(Q\) is true, but \(AB^2 + BC^2 = {@ev(sa^2 + sb^2, simp)@}\) and \(AC^2 = {@ev(sc^2, simp)@}\), so \(P\) is false. The right angle is at [[if test="atA"]]\(A\)[[/if]][[if test="atC"]]\(C\)[[/if]], not \(B\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Your triangle has its right angle at \(B\), so \(AB^2 + BC^2 = AC^2\): \(P\) is true as well as \(Q\). Put the right angle at \(A\) or at \(C\) instead.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Right angle at A</description>
+    <testinput><name>ans1</name><value>3</value></testinput><testinput><name>ans2</name><value>5</value></testinput><testinput><name>ans3</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Right angle at C</description>
+    <testinput><name>ans1</name><value>5</value></testinput><testinput><name>ans2</name><value>3</value></testinput><testinput><name>ans3</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Surds, right angle at A</description>
+    <testinput><name>ans1</name><value>1</value></testinput><testinput><name>ans2</name><value>sqrt(2)</value></testinput><testinput><name>ans3</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Fractions, right angle at C</description>
+    <testinput><name>ans1</name><value>5/2</value></testinput><testinput><name>ans2</name><value>3/2</value></testinput><testinput><name>ans3</name><value>2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Right angle at B: P is true</description>
+    <testinput><name>ans1</name><value>3</value></testinput><testinput><name>ans2</name><value>4</value></testinput><testinput><name>ans3</name><value>5</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Not right-angled</description>
+    <testinput><name>ans1</name><value>2</value></testinput><testinput><name>ans2</name><value>3</value></testinput><testinput><name>ans3</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Not a triangle</description>
+    <testinput><name>ans1</name><value>1</value></testinput><testinput><name>ans2</name><value>2</value></testinput><testinput><name>ans3</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>A zero side</description>
+    <testinput><name>ans1</name><value>0</value></testinput><testinput><name>ans2</name><value>3</value></testinput><testinput><name>ans3</name><value>3</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Invalid: a letter</description>
+    <testinput><name>ans1</name><value>x</value></testinput><testinput><name>ans2</name><value>5</value></testinput><testinput><name>ans3</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>10</testcase><description>A form that does not simplify exactly, right angle at A</description>
+    <testinput><name>ans1</name><value>sin(1)</value></testinput><testinput><name>ans2</name><value>1</value></testinput><testinput><name>ans3</name><value>cos(1)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>11</testcase><description>The same form with the right angle at B: P is true</description>
+    <testinput><name>ans1</name><value>sin(1)</value></testinput><testinput><name>ans2</name><value>cos(1)</value></testinput><testinput><name>ans3</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>12</testcase><description>Very large lengths, right angle at A</description>
+    <testinput><name>ans1</name><value>3*10^400</value></testinput><testinput><name>ans2</name><value>5*10^400</value></testinput><testinput><name>ans3</name><value>4*10^400</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>13</testcase><description>Near miss in surd form: not right-angled</description>
+    <testinput><name>ans1</name><value>1</value></testinput><testinput><name>ans2</name><value>sqrt(2) + 1/1000</value></testinput><testinput><name>ans3</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>17</testcase><description>A zero side typed in a form that does not simplify</description>
+    <testinput><name>ans1</name><value>3</value></testinput><testinput><name>ans2</name><value>3</value></testinput><testinput><name>ans3</name><value>sin(1)^2 + cos(1)^2 - 1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>14</testcase><description>Invalid: not a real number</description>
+    <testinput><name>ans1</name><value>%i</value></testinput><testinput><name>ans2</name><value>5</value></testinput><testinput><name>ans3</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>15</testcase><description>Invalid: infinity</description>
+    <testinput><name>ans1</name><value>3</value></testinput><testinput><name>ans2</name><value>inf</value></testinput><testinput><name>ans3</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>16</testcase><description>Invalid: a set</description>
+    <testinput><name>ans1</name><value>3</value></testinput><testinput><name>ans2</name><value>5</value></testinput><testinput><name>ans3</name><value>{4}</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

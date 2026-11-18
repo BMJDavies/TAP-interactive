@@ -1,0 +1,12 @@
+<stack-static>
+    <statement><p><p>In the proof above that <m>\sqrt{2}</m> is irrational, the fraction <m>\dfrac{p}{q}</m> is chosen in its simplest form. Which of these statements about that choice are correct? Select all that apply.</p>
+<div><ol marker="(1)">
+<li>The proof shows only that <m>\sqrt{2}</m> is not a fraction in its simplest form; a fraction such as <m>6/4</m> could still equal <m>\sqrt{2}</m>.</li>
+<li>Every rational number can be written as a fraction in its simplest form, so this choice does not leave out any rational number.</li>
+<li>The contradiction is that <m>p</m> and <m>q</m> are both even, which is impossible for any two integers.</li>
+<li>The contradiction comes from this choice: the proof shows that <m>p</m> and <m>q</m> are both even, so <m>p/q</m> could not have been in its simplest form.</li>
+</ol> </div></p></statement>
+    <solution><p><p>Choosing <m>\dfrac{p}{q}</m> in its simplest form costs nothing: every rational number can be written that way, by cancelling common factors, as in <m>\dfrac{6}{4} = \dfrac{3}{2}</m>. It is also essential. Showing that <m>p</m> and <m>q</m> are both even is not impossible in itself (6 and 4 are both even); it is impossible for a fraction in its simplest form. So the contradiction is with the choice of <m>\dfrac{p}{q}</m>, and the proof rules out every fraction: if <m>\sqrt{2}</m> were equal to any fraction, it would be equal to one in its simplest form.</p>
+<p>The correct statements are the second and the fourth. The first is false: any fraction equal to <m>\sqrt{2}</m> could be cancelled down to one in its simplest form, and the proof shows that there is no such fraction. The third is false: two integers can both be even, and the contradiction is only with the choice of a fraction in its simplest form.</p></p></solution>
+    <answer><p><m>(2), (4)</m></p></answer>
+</stack-static>

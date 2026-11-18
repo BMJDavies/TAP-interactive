@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch03_P01_What_one_counterexample_shows</text></name>
+  <questiontext format="html"><text><![CDATA[<p>The worked example showed that the conjecture <q>for all real numbers \(a\) and \(b\), \(a^3+b^3=(a+b)^3\)</q> is false, using \(a=4\) and \(b=1\).</p>
+<p>(a) Decide whether each statement is true or false.</p>
+<ol class="tb-parts">
+<li><p>The conjecture is false.</p>
+<div>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>There is no pair of real numbers \(a\) and \(b\) for which \(a^3+b^3=(a+b)^3\).</p>
+<div>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+<li><p>To be certain that the conjecture is false, we would need more than one counterexample.</p>
+<div>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+<li><p>If we found 50 different pairs \((a,b)\) for which \(a^3+b^3=(a+b)^3\), that would prove the conjecture.</p>
+<div>[[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</div></li>
+</ol>
+<p>(b) Give an example of a pair \(a\), \(b\), with neither \(a\) nor \(b\) equal to \(0\), for which \(a^3+b^3=(a+b)^3\) is true. Type fractions as 1/2 and \(\sqrt{2}\) as sqrt(2).</p>
+<div>\(a=\) [[input:ans5]] [[validation:ans5]] \(b=\) [[input:ans6]] [[validation:ans6]] [[feedback:prt5]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>(a)</p>
+<ol class="tb-parts">
+<li><p>True. The pair \(a=4\), \(b=1\) gives \(65\neq 125\). The conjecture claims the equation for all \(a\) and \(b\), so this one pair shows that the claim is false.</p></li>
+<li><p>False. A counterexample shows that the equation fails for at least one pair, not for every pair. For example, when \(a=0\) both sides equal \(b^3\).</p></li>
+<li><p>False. One counterexample is enough: the conjecture says the equation holds for every pair, and a single pair where it fails contradicts that.</p></li>
+<li><p>False. No number of examples can prove a statement about infinitely many pairs. In fact the equation holds for infinitely many pairs (see part (b)), and the conjecture is still false.</p></li>
+</ol>
+<p>(b) Expanding, \((a+b)^3=a^3+3a^2b+3ab^2+b^3\), so \[(a+b)^3-(a^3+b^3)=3ab(a+b).\] This is \(0\) exactly when \(a=0\), \(b=0\) or \(b=-a\). With \(a\) and \(b\) both non-zero we need \(b=-a\): for example \(a=2\), \(b=-2\), where both sides are \(0\).</p>
+<p>So the conjecture is true for infinitely many pairs, and it is still false: a <q>for all</q> claim must hold for every pair.</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[tf1: [[t1, true, "True"], [f1, false, "False"]];
+tf2: [[t2, false, "True"], [f2, true, "False"]];
+tf3: [[t3, false, "True"], [f3, true, "False"]];
+tf4: [[t4, false, "True"], [f4, true, "False"]];
+ta5: 2;
+ta6: -2;
+/* validate_real: the numerical input accepts i, inf, sets, lists, booleans and equations; only a real number may reach the PRT. Same validator as Ch02_P01_Checks_are_not_a_proof. */
+validate_real(ex) := block([sv, fv], sv: ev(ex, simp), fv: errcatch(ev(bfloat(sv), simp)), if ratnump(sv) then "" else if is(fv = []) then "Enter a single real number, for example 3, -1/2 or sqrt(2)." else if bfloatp(first(fv)) then "" else "Enter a single real number, for example 3, -1/2 or sqrt(2).");
+/* nearzero: a numerical fallback for entries that do not simplify exactly, such as sin(1)^2+cos(1)^2 for 1. True when the size of z is less than 10^(-12) times the size of sc: z is 0 to within rounding error, on the scale sc. */
+nearzero(z, sc) := block([fz, fs], fz: errcatch(ev(float(z), numer, simp)), fs: errcatch(ev(float(sc), numer, simp)), if is(fz = []) or is(fs = []) then return(false), fz: first(fz), fs: first(fs), if floatnump(fz) and floatnump(fs) then is(abs(fz) < 10^(-12)*abs(fs)) else false);]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: logical status after one counterexample to a^3+b^3=(a+b)^3; part (b) any pair with b=-a, both non-zero.]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 3.1 in Section 3 (p. 7) of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>dropdown</type><tans>tf1</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans2</name><type>dropdown</type><tans>tf2</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans3</name><type>dropdown</type><tans>tf3</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans4</name><type>dropdown</type><tans>tf4</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans5</name><type>numerical</type><tans>ta5</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_real</options></input>
+  <input><name>ans6</name><type>numerical</type><tans>ta6</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_real</options></input>
+  <prt>
+    <name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle>
+    <feedbackvariables><text></text></feedbackvariables>
+    <node>
+      <name>0</name><description>Statement 1</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>first(mcq_correct(tf1))</tans><testoptions></testoptions><quiet>0</quiet>
+      <truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Yes. One pair for which the equation fails shows that it does not hold for all \(a\) and \(b\).</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>The example found a pair, \(a=4\) and \(b=1\), with \(65\neq 125\). The conjecture claims the equation for all \(a\) and \(b\), so this one pair shows the claim is false.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+  <prt>
+    <name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle>
+    <feedbackvariables><text></text></feedbackvariables>
+    <node>
+      <name>0</name><description>Statement 2</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>first(mcq_correct(tf2))</tans><testoptions></testoptions><quiet>0</quiet>
+      <truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Yes. The equation fails for some pairs but holds for others, for example whenever \(a=0\).</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>A counterexample shows that the equation fails for at least one pair, not for every pair. For example, when \(a=0\) both sides equal \(b^3\).</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+  <prt>
+    <name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle>
+    <feedbackvariables><text></text></feedbackvariables>
+    <node>
+      <name>0</name><description>Statement 3</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>first(mcq_correct(tf3))</tans><testoptions></testoptions><quiet>0</quiet>
+      <truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Yes. One counterexample is enough to show that a <q>for all</q> statement is false.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>One is enough. The conjecture says the equation holds for every pair; a single pair where it fails contradicts that.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+  <prt>
+    <name>prt4</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle>
+    <feedbackvariables><text></text></feedbackvariables>
+    <node>
+      <name>0</name><description>Statement 4</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>first(mcq_correct(tf4))</tans><testoptions></testoptions><quiet>0</quiet>
+      <truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Yes. Checking examples cannot prove a statement about infinitely many pairs.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>No number of examples can prove a statement about infinitely many pairs. In fact the equation holds for infinitely many pairs (see part (b)), and the conjecture is still false.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+  <prt>
+    <name>prt5</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle>
+    <feedbackvariables><text><![CDATA[sa: ev(ans5, simp);
+sb: ev(ans6, simp);
+/* The zero test is exact, in canonical form, so that a zero such as (sqrt(2)+1)*(sqrt(2)-1)-1 is caught. */
+zeroflag: is(ev(ratsimp(radcan(sa*sb)), algebraic:true, simp) = 0);
+diffA: ev(expand((sa+sb)^3 - sa^3 - sb^3), simp);
+/* With a and b both non-zero the equation holds exactly when a + b = 0. Exact test first; a pair that does not simplify exactly, such as sin(1)^2+cos(1)^2 and -1, is then compared numerically, relative to the size of a. Rational pairs are only compared exactly. */
+holdsA: is(ev(ratsimp(radcan(diffA)), algebraic:true, simp) = 0) or (not (ratnump(sa) and ratnump(sb)) and nearzero(sa + sb, sa));]]></text></feedbackvariables>
+    <node>
+      <name>0</name><description>Diagnostic: a zero value</description><answertest>AlgEquiv</answertest><sans>zeroflag</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet>
+      <truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt5-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>The question asks for \(a\) and \(b\) both non-zero. (With \(a=0\), for example, the equation becomes \(b^3=b^3\), which is true but tells us little.)</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt5-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name><description>Equation holds</description><answertest>AlgEquiv</answertest><sans>holdsA</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet>
+      <truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt5-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>Yes: \(a+b=0\) for your values, so both sides equal \(0\).</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt5-2-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>For your values \(a^3+b^3={@sa^3+sb^3@}\) but \((a+b)^3={@(sa+sb)^3@}\), so the equation is false for this pair. Expand \((a+b)^3\) and compare it with \(a^3+b^3\): the extra terms must add up to \(0\). Factorise them to see when that happens with \(a\) and \(b\) both non-zero.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest>
+    <testcase>1</testcase><description>All correct</description>
+    <testinput><name>ans1</name><value>t1</value></testinput>
+    <testinput><name>ans2</name><value>f2</value></testinput>
+    <testinput><name>ans3</name><value>f3</value></testinput>
+    <testinput><name>ans4</name><value>f4</value></testinput>
+    <testinput><name>ans5</name><value>ta5</value></testinput>
+    <testinput><name>ans6</name><value>ta6</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt5-1-F | prt5-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>2</testcase><description>All wrong</description>
+    <testinput><name>ans1</name><value>f1</value></testinput>
+    <testinput><name>ans2</name><value>t2</value></testinput>
+    <testinput><name>ans3</name><value>t3</value></testinput>
+    <testinput><name>ans4</name><value>t4</value></testinput>
+    <testinput><name>ans5</name><value>1</value></testinput>
+    <testinput><name>ans6</name><value>2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt5-1-F | prt5-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>3</testcase><description>Diagnostic: a zero in part (b)</description>
+    <testinput><name>ans1</name><value>t1</value></testinput>
+    <testinput><name>ans2</name><value>f2</value></testinput>
+    <testinput><name>ans3</name><value>f3</value></testinput>
+    <testinput><name>ans4</name><value>f4</value></testinput>
+    <testinput><name>ans5</name><value>0</value></testinput>
+    <testinput><name>ans6</name><value>3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt5-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>4</testcase><description>Alternative correct in surds</description>
+    <testinput><name>ans1</name><value>t1</value></testinput>
+    <testinput><name>ans2</name><value>f2</value></testinput>
+    <testinput><name>ans3</name><value>f3</value></testinput>
+    <testinput><name>ans4</name><value>f4</value></testinput>
+    <testinput><name>ans5</name><value>sqrt(2)</value></testinput>
+    <testinput><name>ans6</name><value>-sqrt(2)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt5-1-F | prt5-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>5</testcase><description>Mixed; near-miss (4, 1) in part (b)</description>
+    <testinput><name>ans1</name><value>t1</value></testinput>
+    <testinput><name>ans2</name><value>f2</value></testinput>
+    <testinput><name>ans3</name><value>t3</value></testinput>
+    <testinput><name>ans4</name><value>t4</value></testinput>
+    <testinput><name>ans5</name><value>4</value></testinput>
+    <testinput><name>ans6</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt5-1-F | prt5-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>6</testcase><description>Invalid: a decimal in part (b)</description>
+    <testinput><name>ans1</name><value>t1</value></testinput>
+    <testinput><name>ans2</name><value>f2</value></testinput>
+    <testinput><name>ans3</name><value>f3</value></testinput>
+    <testinput><name>ans4</name><value>f4</value></testinput>
+    <testinput><name>ans5</name><value>0.5</value></testinput>
+    <testinput><name>ans6</name><value>-1/2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>7</testcase><description>Alternative correct: b = -a written in a different surd form</description>
+    <testinput><name>ans1</name><value>t1</value></testinput>
+    <testinput><name>ans2</name><value>f2</value></testinput>
+    <testinput><name>ans3</name><value>f3</value></testinput>
+    <testinput><name>ans4</name><value>f4</value></testinput>
+    <testinput><name>ans5</name><value>1/(sqrt(2)-1)</value></testinput>
+    <testinput><name>ans6</name><value>-(1+sqrt(2))</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt5-1-F | prt5-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>8</testcase><description>Invalid: i is not a real number, in part (b)</description>
+    <testinput><name>ans1</name><value>t1</value></testinput>
+    <testinput><name>ans2</name><value>f2</value></testinput>
+    <testinput><name>ans3</name><value>f3</value></testinput>
+    <testinput><name>ans4</name><value>f4</value></testinput>
+    <testinput><name>ans5</name><value>%i</value></testinput>
+    <testinput><name>ans6</name><value>-2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>9</testcase><description>Invalid: infinity is not a real number, in part (b)</description>
+    <testinput><name>ans1</name><value>t1</value></testinput>
+    <testinput><name>ans2</name><value>f2</value></testinput>
+    <testinput><name>ans3</name><value>f3</value></testinput>
+    <testinput><name>ans4</name><value>f4</value></testinput>
+    <testinput><name>ans5</name><value>2</value></testinput>
+    <testinput><name>ans6</name><value>-inf</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>10</testcase><description>Alternative correct: a value that does not simplify exactly (a = 1, b = -1)</description>
+    <testinput><name>ans1</name><value>t1</value></testinput>
+    <testinput><name>ans2</name><value>f2</value></testinput>
+    <testinput><name>ans3</name><value>f3</value></testinput>
+    <testinput><name>ans4</name><value>f4</value></testinput>
+    <testinput><name>ans5</name><value>sin(1)^2+cos(1)^2</value></testinput>
+    <testinput><name>ans6</name><value>-1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt5-1-F | prt5-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>11</testcase><description>Diagnostic: a zero written in a form that does not simplify at once</description>
+    <testinput><name>ans1</name><value>t1</value></testinput>
+    <testinput><name>ans2</name><value>f2</value></testinput>
+    <testinput><name>ans3</name><value>f3</value></testinput>
+    <testinput><name>ans4</name><value>f4</value></testinput>
+    <testinput><name>ans5</name><value>(sqrt(2)+1)*(sqrt(2)-1)-1</value></testinput>
+    <testinput><name>ans6</name><value>3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt5-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

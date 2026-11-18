@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch09_P03_Best_summary</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Which is the best summary of the proof by contradiction above, that no quadratic is always prime?</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A good summary names the logical structure and the mechanism. Here: assume, for contradiction, that \(f(n)\) is prime for every integer \(n\); let \(p = f(1)\); the values at \(n = 1 + p\) and \(n = 1 + 2p\) are multiples of \(p\), so, being prime, all three values are \(p\); but a quadratic takes each value at most twice. So \(f(n)\) is not prime for at least one \(n\). The best summary is the third.</p>
+<p>The other summaries fail. Trying examples can never prove the conjecture: you might miss the one counterexample. Putting \(n = c\) is the first attempt, which does not work when \(c\) or \(ac + b + 1\) is 1 or \(-1\). Expanding \(f(1 + p)\) is a correct step of the proof, but it is one step, not a summary of the whole proof.</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: [[g_try, false, "Try many quadratic expressions, such as \\(n^2 + 7n + 5\\), \\(n^2 - 1\\) and \\(3n^2 + 2\\), and for each one find a value of \\(n\\) that gives a number that is not prime."],
+      [g_put, false, "Suppose \\(f(n) = an^2 + bn + c\\) and put \\(n = c\\). Then \\(f(c) = c(ac + b + 1)\\) has the two factors \\(c\\) and \\(ac + b + 1\\), so it cannot be prime."],
+      [g_three, true, "Suppose \\(f(n)\\) is prime for every \\(n\\), and let \\(p = f(1)\\). Then \\(f(1 + p)\\) and \\(f(1 + 2p)\\) are multiples of \\(p\\), so all three values equal \\(p\\), which no quadratic can do."],
+      [g_expand, false, "Expand \\(a(p + 1)^2 + b(p + 1) + c\\), then use \\(a + b + c = p\\) to collect the terms into the product \\((ap + 2a + b + 1)p\\), which is a multiple of \\(p\\)."]];]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Best summary: three values equal p]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the second attempted proof of the second conjecture (p. 53) in Section 9 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>radio</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>nonotanswered</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Best summary</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>g_three</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. It names the method (suppose \(f(n)\) is always prime), the key step (three values that are multiples of \(p\)) and the contradiction (a quadratic cannot take one value three times).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: empirical summary</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>g_try</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Trying examples is how the quest began, and it can never prove the conjecture: you might miss the one counterexample. The proof argues about every quadratic at once.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the flawed first attempt</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>g_put</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>That is the first attempt, which does not work: when \(c\) or \(ac + b + 1\) is 1 or \(-1\), \(c(ac + b + 1)\) can be prime.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>That describes one step of the proof correctly, but not the whole proof: it leaves out the assumption, the third value and the contradiction.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>g_three</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Empirical</description>
+    <testinput><name>ans1</name><value>g_try</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>First attempt</description>
+    <testinput><name>ans1</name><value>g_put</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>One step</description>
+    <testinput><name>ans1</name><value>g_expand</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

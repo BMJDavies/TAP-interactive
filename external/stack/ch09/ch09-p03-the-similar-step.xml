@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch09_P03_The_similar_step</text></name>
+  <questiontext format="html"><text><![CDATA[<p>(a) In the proof above, \(f(1 + 2p)\) is a multiple of \(p\) ‘in the same way’ as \(f(1 + p)\). Find the other factor, in terms of \(a\), \(b\) and \(p\).</p>
+<div>\(f(1 + 2p) = p \times\) ( [[input:ans1]] ) [[validation:ans1]] [[feedback:prt1]]</div>
+<p>(b) The proof needs \(f(n)\) to be a multiple of \(p\) at three values of \(n\), not just two. To see why, give an example of a quadratic \(f(n)\), with whole-number coefficients, for which \(f(1) = {@pp@}\) and \(f({@q1@}) = {@pp@}\).</p>
+<div>\(f(n) =\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>(a) Expand, and use \(a + b + c = p\) to replace the terms left over:</p>
+\[f(1 + 2p) = a(1 + 4p + 4p^2) + b(1 + 2p) + c = 4ap^2 + 4ap + 2bp + (a + b + c) = 4ap^2 + 4ap + 2bp + p = p(4ap + 4a + 2b + 1).\]
+<p>(b) \(f(1) = f({@q1@}) = {@pp@}\) means that \(f(n) - {@pp@}\) has the roots 1 and {@q1@}, so \(f(n) = k(n - 1)(n - {@q1@}) + {@pp@}\) for any whole number \(k \neq 0\); for \(k = 1\), \(f(n) = {@ta2@}\). So a quadratic can equal {@pp@} at two values of \(n\). It cannot at three, because \(f(n) - {@pp@} = 0\) is a quadratic equation, with at most two solutions. For \(k = 1\), \(f({@q2@}) = {@val3t@} = {@pp@} \times {@2*pp+1@}\), which is not prime: exactly what the proof predicts.</p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[pp: rand([3, 5, 7, 11, 13]);
+q1: 1 + pp;
+q2: 1 + 2*pp;
+/* ans1 uses insertstars 5 (single-letter variables), so 4ap reads as 4*a*p. */
+validate_abp(ex) := if not(every(lambda([v], member(v, [a, b, p])), listofvars(ex))) then "Use only the letters a, b and p."
+  else if not(polynomialp(ev(expand(ex), simp), [a, b, p])) then "Enter an expression in a, b and p without dividing by a letter. Put * before a bracket, as in a*(p + 1)."
+  else "";
+validate_quad(ex) := block([e],
+  if not(every(lambda([v], is(v = n)), listofvars(ex))) then "Use only the letter n."
+  else (e: ev(expand(ex), simp),
+    if not(polynomialp(e, [n])) then "Enter a polynomial in n, such as 2*n^2 + 3*n + 5."
+    else if not(is(hipow(e, n) = 2)) then "Enter a quadratic: the highest power of n must be 2."
+    else if not(ev(integerp(coeff(e, n, 2)) and integerp(coeff(e, n, 1)) and integerp(coeff(e, n, 0)), simp)) then "Use whole-number coefficients."
+    else ""));
+ta1: 4*a*p + 4*a + 2*b + 1;
+dcopy: a*p + 2*a + b + 1;
+dmid: 4*a*p + 2*a + 2*b + 1;
+dnoone: 4*a*p + 4*a + 2*b;
+dwhole: ev(expand(p*ta1), simp);
+ta2: ev(expand((n - 1)*(n - q1) + pp), simp);
+val3t: pp*(2*pp + 1);]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[p = {@pp@}: f(1 + 2p) = p(4ap + 4a + 2b + 1); example {@ta2@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the second attempted proof of the second conjecture, and its step ‘Similarly, we can find a similar expression ... when n = 1 + 2p’ (p. 53), in Section 9 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>20</boxsize><strictsyntax>1</strictsyntax><insertstars>5</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_abp</options></input>
+  <input><name>ans2</name><type>algebraic</type><tans>ta2</tans><boxsize>20</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_quad</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>The other factor</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(f(1 + 2p) = a(1 + 2p)^2 + b(1 + 2p) + c = 4ap^2 + 4ap + 2bp + (a + b + c) = 4ap^2 + 4ap + 2bp + p = p(4ap + 4a + 2b + 1)\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the factor for n = 1 + p copied</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>dcopy</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>That is the factor for \(n = 1 + p\). Expand \(f(1 + 2p) = a(1 + 2p)^2 + b(1 + 2p) + c\) in the same way.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: (1 + 2p)^2 expanded as 1 + 2p + 4p^2</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>dmid</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Check the expansion of \((1 + 2p)^2\): the middle term is \(2 \times 1 \times 2p = 4p\), so \((1 + 2p)^2 = 1 + 4p + 4p^2\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: the + 1 from a + b + c = p lost</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>dnoone</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>After expanding, the terms \(a\), \(b\) and \(c\) are left over, and \(a + b + c = p\). Dividing that \(p\) by \(p\) gives the final \(+ 1\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>4</falsenextnode><falseanswernote>prt1-4-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>4</name><description>Diagnostic: f(1 + 2p) itself entered</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>dwhole</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-5-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>That is \(f(1 + 2p)\) itself. Write it as \(p \times\) (something) and enter the something.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-5-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Expand \(f(1 + 2p) = a(1 + 2p)^2 + b(1 + 2p) + c\), replace \(a + b + c\) by \(p\), and take out the factor \(p\), as the proof did for \(n = 1 + p\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[ex2: ev(expand(ans2), simp);
+v1: ev(subst(n = 1, ex2), simp);
+v2: ev(subst(n = q1, ex2), simp);
+v3: ev(subst(n = q2, ex2), simp);
+both: is(v1 = pp) and is(v2 = pp);
+one: is(v1 = pp) or is(v2 = pp);]]></text></feedbackvariables>
+    <node><name>0</name><description>f(1) = f(1 + p) = p</description><answertest>AlgEquiv</answertest><sans>both</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(f(1) = f({@q1@}) = {@pp@}\). A quadratic can take the same value at two different values of \(n\), so two values would give no contradiction. That is why the proof uses a third value, \(n = 1 + 2p = {@q2@}\): no quadratic takes the same value three times. For your example \(f({@q2@}) = {@v3@}\), a multiple of {@pp@} but not equal to {@pp@}, so it is not prime.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: only one of the two values right</description><answertest>AlgEquiv</answertest><sans>one</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\(f(1) = {@v1@}\) and \(f({@q1@}) = {@v2@}\): only one of them is {@pp@}. Both must be: \(f(n) - {@pp@}\) has to be 0 at \(n = 1\) and at \(n = {@q1@}\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>\(f(1) = {@v1@}\) and \(f({@q1@}) = {@v2@}\). You need \(f(n) - {@pp@}\) to be 0 at \(n = 1\) and at \(n = {@q1@}\). Which quadratics have these two roots?</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>10</deployedseed>
+  <deployedseed>17</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput><testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Unsimplified quotient; another example</description>
+    <testinput><name>ans1</name><value>(a*(1+2*p)^2+b*(1+2*p)+(p-a-b))/p</value></testinput><testinput><name>ans2</name><value>-(n-1)*(n-q1)+pp</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Factor for 1 + p; only f(1) right</description>
+    <testinput><name>ans1</name><value>dcopy</value></testinput><testinput><name>ans2</name><value>n^2+pp-1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Middle term slip; neither value right</description>
+    <testinput><name>ans1</name><value>dmid</value></testinput><testinput><name>ans2</name><value>n^2+1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Lost + 1; example with k = 2</description>
+    <testinput><name>ans1</name><value>dnoone</value></testinput><testinput><name>ans2</name><value>2*(n-1)*(n-q1)+pp</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>f(1 + 2p) itself</description>
+    <testinput><name>ans1</name><value>dwhole</value></testinput><testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F | prt1-5-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Generic wrong factor</description>
+    <testinput><name>ans1</name><value>ta1+1</value></testinput><testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F | prt1-5-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>Invalid (a): uses c</description>
+    <testinput><name>ans1</name><value>4*a*p+4*a+2*b+c</value></testinput><testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Invalid (b): a constant</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput><testinput><name>ans2</name><value>pp</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>10</testcase><description>Invalid (a): divides by p</description>
+    <testinput><name>ans1</name><value>4*a*p+4*a+2*b+1/p</value></testinput><testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>11</testcase><description>Spaced entries with implied multiplication are valid</description>
+    <testinput><name>ans1</name><value>4 a*p + 4 a + 2 b + 1</value></testinput><testinput><name>ans2</name><value>2 n^2 + 3 n + 1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>12</testcase><description>Products of letters typed without stars (insertstars 5)</description>
+    <testinput><name>ans1</name><value>4ap + 4a + 2b + 1</value></testinput><testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>13</testcase><description>Copied factor typed without stars reaches its diagnostic</description>
+    <testinput><name>ans1</name><value>ap + 2a + b + 1</value></testinput><testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

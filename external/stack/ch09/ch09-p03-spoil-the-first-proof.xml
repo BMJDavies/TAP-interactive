@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch09_P03_Spoil_the_first_proof</text></name>
+  <questiontext format="html"><text><![CDATA[<p>In the first attempt, \(f(n) = an^2 + bn + c\) and \(f(c) = c(ac + b + 1)\).</p>
+<p>(a) Give an example of a quadratic \(f(n)\), with whole-number coefficients, for which \(f(c)\) is prime. Then the attempt is wrong for that quadratic. Type, for example, <code>2*n^2 + 3*n + 5</code>.</p>
+<div>\(f(n) =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div>
+<p>(b) The attempt claims that \(c(ac + b + 1)\) cannot be prime because it has the two factors \(c\) and \(ac + b + 1\). In which of these cases can \(c(ac + b + 1)\) still be prime? Select all that apply.</p>
+<div>[[input:ans2]] [[validation:ans2]]</div>
+[[feedback:prt2]]]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A prime number is a whole number greater than 1 whose only positive divisors are 1 and itself. So a prime \(p\) does have two factors, 1 and \(p\). The first attempt forgets this: \(f(c) = c(ac + b + 1)\) can still be prime when one of its factors is 1 or \(-1\).</p>
+<p>For example: \(f(n) = n^2 + 1\) has \(c = 1\) and \(f(1) = 2\); \(f(n) = n^2 - 3n + 3\) has \(ac + b + 1 = 1\) and \(f(3) = 3\); \(f(n) = 4n^2 - 1\) has \(c = -1\) and \(f(-1) = 3\).</p>
+<p>When \(c = 0\), \(f(c) = 0\), and when both factors are at least 2, \(f(c)\) has a factor other than 1 and itself: in those cases the attempt’s step is right. But a proof must work for every quadratic, so the attempt fails.</p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[validate_quad(ex) := block([e],
+  if not(every(lambda([v], is(v = n)), listofvars(ex))) then "Use only the letter n."
+  else (e: ev(expand(ex), simp),
+    if not(polynomialp(e, [n])) then "Enter a polynomial in n, such as 2*n^2 + 3*n + 5."
+    else if not(is(hipow(e, n) = 2)) then "Enter a quadratic: the highest power of n must be 2."
+    else if not(ev(integerp(coeff(e, n, 2)) and integerp(coeff(e, n, 1)) and integerp(coeff(e, n, 0)), simp)) then "Use whole-number coefficients."
+    else ""));
+ta1: n^2 + 1;
+ta2: [[u_c0, false, "\\(c = 0\\)"], [u_c1, true, "\\(c = 1\\)"], [u_cm1, true, "\\(c = -1\\)"], [u_big, false, "\\(c \\geq 2\\) and \\(ac + b + 1 \\geq 2\\)"], [u_m1, true, "\\(ac + b + 1 = 1\\)"]];]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Example n^2+1; cases c = 1, c = -1, ac + b + 1 = 1]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the first attempted proof of the second conjecture and its question ‘Which particular cases spoil the proof?’ (pp. 52-53) in Section 9 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>20</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_quad</options></input>
+  <input><name>ans2</name><type>checkbox</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[ex: ev(expand(ans1), simp);
+qa: coeff(ex, n, 2);
+qb: coeff(ex, n, 1);
+qc: coeff(ex, n, 0);
+fac2: ev(qa*qc + qb + 1, simp);
+val: ev(qc*fac2, simp);
+okp: is(val > 1) and primep(val);
+unitf: is(abs(qc) = 1) or is(abs(fac2) = 1);]]></text></feedbackvariables>
+    <node><name>0</name><description>f(c) is prime</description><answertest>AlgEquiv</answertest><sans>okp</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. Here \(c = {@qc@}\) and \(ac + b + 1 = {@fac2@}\), so \(f(c) = {@val@}\), which is prime. So ‘it has two factors’ does not show that \(f(c)\) is not prime: every prime \(p\) has the two factors 1 and \(p\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: c = 0</description><answertest>AlgEquiv</answertest><sans>qc</sans><tans>0</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Here \(c = 0\), so \(f(c) = f(0) = 0\), which is not prime: the attempt is right for this quadratic. Think of the definition of a prime number: when can a product of two whole numbers be prime?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: a unit factor, but f(c) not prime</description><answertest>AlgEquiv</answertest><sans>unitf</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Here \(c = {@qc@}\) and \(ac + b + 1 = {@fac2@}\). You are close: with these two factors the attempt’s reason fails. But \(f(c) = {@val@}\) happens not to be prime[[if test='is(val < 2)']] (a prime is greater than 1)[[/if]]. Try changing \(b\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Here \(c = {@qc@}\) and \(ac + b + 1 = {@fac2@}\), so \(f(c) = {@val@}\), which is not prime: the attempt is right for this quadratic. Think of the definition of a prime number: when can a product of two whole numbers be prime?</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sel: setify(ans2);]]></text></feedbackvariables>
+    <node><name>0</name><description>Exactly the three unit cases</description><answertest>AlgEquiv</answertest><sans>sel</sans><tans>{u_c1, u_cm1, u_m1}</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. In each of these cases one factor is 1 or \(-1\), and then the product is plus or minus the other factor, which can be prime.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: both factors at least 2 chosen</description><answertest>AlgEquiv</answertest><sans>elementp(u_big, sel)</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>If \(c\) and \(ac + b + 1\) are both at least 2, their product has a factor other than 1 and itself, so it is not prime. In that case the attempt is right.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: c = 0 chosen</description><answertest>AlgEquiv</answertest><sans>elementp(u_c0, sel)</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>If \(c = 0\), the product is 0, which is not prime.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Each case you chose is right, but there are more. For each of the other cases, work out what \(c(ac + b + 1)\) becomes, and ask whether that number could be prime.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput><testinput><name>ans2</name><value>mcq_correct(ta2)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Other factor 1; extra wrong case</description>
+    <testinput><name>ans1</name><value>n^2-3*n+3</value></testinput><testinput><name>ans2</name><value>[u_c1, u_cm1, u_m1, u_big]</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>c = 0; c = 0 chosen</description>
+    <testinput><name>ans1</name><value>n^2+3*n</value></testinput><testinput><name>ans2</name><value>[u_c1, u_c0]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>c = 1 but f(1) = 4; two cases missed one</description>
+    <testinput><name>ans1</name><value>n^2+2*n+1</value></testinput><testinput><name>ans2</name><value>[u_c1, u_m1]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Both factors large; one case only</description>
+    <testinput><name>ans1</name><value>n^2+n+41</value></testinput><testinput><name>ans2</name><value>[u_cm1]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>c = -1</description>
+    <testinput><name>ans1</name><value>4*n^2-1</value></testinput><testinput><name>ans2</name><value>mcq_correct(ta2)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>A bracketed entry</description>
+    <testinput><name>ans1</name><value>(2*n+1)*(n-1)</value></testinput><testinput><name>ans2</name><value>mcq_correct(ta2)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>c = 1 but f(1) negative</description>
+    <testinput><name>ans1</name><value>n^2-7*n+1</value></testinput><testinput><name>ans2</name><value>mcq_correct(ta2)</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Invalid: not a quadratic</description>
+    <testinput><name>ans1</name><value>n^3+1</value></testinput><testinput><name>ans2</name><value>mcq_correct(ta2)</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>10</testcase><description>Spaced entry with implied multiplication</description>
+    <testinput><name>ans1</name><value>n^2 - 3 n + 3</value></testinput><testinput><name>ans2</name><value>mcq_correct(ta2)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

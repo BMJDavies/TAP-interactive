@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch02_P03_Definitions_in_action</text></name>
+  <questiontext format="html"><text><![CDATA[<p>(a) Use the definitions above to decide whether each statement is true or false.</p>
+<ol>
+<li><p>{@stm1@}</p>
+<div>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>{@stm2@}</p>
+<div>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+<li><p>{@stm3@}</p>
+<div>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+<li><p>{@stm4@}</p>
+<div>[[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</div></li>
+</ol>
+<p>(b) Give an example of an integer that is divisible by {@pp@} and by {@qq@}, but not by {@pp*qq@}.</p>
+<div>[[input:ans5]] [[validation:ans5]] [[feedback:prt5]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Each definition says that a number can be written in a certain form <em>for some integer</em>: there must be at least one integer that makes the equation true.</p>
+<ul>
+<li><p>An integer \(n\) is even if \(n = 2k\) for some integer \(k\), and odd if \(n = 2k + 1\) for some integer \(k\).</p></li>
+<li><p>An integer \(a\) divides an integer \(b\) if \(b = a \times q\) for some integer \(q\).</p></li>
+<li><p>A real number is rational if it can be written as \(\dfrac{p}{q}\), where \(p\) and \(q\) are integers and \(q \ne 0\).</p></li>
+</ul>
+<p>(a)</p>
+<ol>
+<li><p>{@stm1@} {@labtf(tr1)@} {@expl1@}</p></li>
+<li><p>{@stm2@} {@labtf(tr2)@} {@expl2@}</p></li>
+<li><p>{@stm3@} {@labtf(tr3)@} {@expl3@}</p></li>
+<li><p>{@stm4@} {@labtf(tr4)@} {@expl4@}</p></li>
+</ol>
+<p>(b) {@tl@} is divisible by {@pp@} and by {@qq@}, and it is not divisible by {@pp*qq@}, because {@pp@} and {@qq@} share a factor. Divisible by both does mean divisible by the product when the two numbers have no common factor other than 1, such as 2 and 3: later proofs use exactly that fact.</p>]]></text></generalfeedback>
+  <defaultgrade>5</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Pool rows: [id, statement, truth, explanation], in three groups. */
+poolEO: [
+ ["EO1", "\\(0\\) is an even number.", true, "\\(0 = 2 \\times 0\\), and \\(0\\) is an integer, so \\(0\\) is even."],
+ ["EO2", "\\(-7\\) is an odd number.", true, "\\(-7 = 2 \\times (-4) + 1\\), and \\(-4\\) is an integer, so \\(-7\\) is odd."],
+ ["EO3", "\\(7\\) is even, because \\(7 = 2 \\times 3.5\\).", false, "To be even, \\(7\\) would have to be \\(2 \\times\\) (an integer), and \\(3.5\\) is not an integer. In fact \\(7 = 2 \\times 3 + 1\\), so \\(7\\) is odd."],
+ ["EO4", "\\(2\\) is odd, because \\(2 = 2 \\times \\dfrac{1}{2} + 1\\).", false, "In the definition of odd, \\(k\\) must be an integer, and \\(\\dfrac{1}{2}\\) is not. \\(2 = 2 \\times 1\\), so \\(2\\) is even."]
+];
+poolDV: [
+ ["DV1", "\\(4\\) divides \\(12\\).", true, "\\(12 = 4 \\times 3\\), and \\(3\\) is an integer."],
+ ["DV2", "\\(12\\) divides \\(4\\).", false, "This would need \\(4 = 12 \\times q\\) for an integer \\(q\\), but \\(q\\) would be \\(\\dfrac{1}{3}\\). It is \\(4\\) that divides \\(12\\)."],
+ ["DV3", "\\(5\\) divides \\(0\\).", true, "\\(0 = 5 \\times 0\\), and \\(0\\) is an integer. Every integer divides \\(0\\)."],
+ ["DV4", "\\(-3\\) divides \\(12\\).", true, "\\(12 = (-3) \\times (-4)\\), and \\(-4\\) is an integer."],
+ ["DV5", "\\(6\\) is a multiple of \\(12\\).", false, "The multiples of \\(12\\) are \\(12 \\times\\) (an integer): \\(0, 12, -12, 24, \\ldots\\) It is \\(12\\) that is a multiple of \\(6\\)."]
+];
+poolRA: [
+ ["RA1", "\\(0.25\\) is a rational number.", true, "\\(0.25 = \\dfrac{1}{4}\\), a fraction with integer numerator and denominator."],
+ ["RA2", "\\(\\sqrt{9}\\) is irrational.", false, "\\(\\sqrt{9} = 3 = \\dfrac{3}{1}\\), so \\(\\sqrt{9}\\) is rational."],
+ ["RA3", "\\(-5\\) is a rational number.", true, "\\(-5 = \\dfrac{-5}{1}\\)."],
+ ["RA4", "\\(\\pi\\) is rational, because \\(\\pi = \\dfrac{\\pi}{1}\\).", false, "In \\(\\dfrac{p}{q}\\), both \\(p\\) and \\(q\\) must be integers, and \\(\\pi\\) is not an integer. \\(\\pi\\) is irrational."],
+ ["RA5", "Every integer is a rational number.", true, "Any integer \\(n\\) can be written as \\(\\dfrac{n}{1}\\)."]
+];
+/* One row from each group, one more from the 11 left, in a random order. */
+rowEO: rand(poolEO);
+rowDV: rand(poolDV);
+rowRA: rand(poolRA);
+poolleft: sublist(append(poolEO, poolDV, poolRA), lambda([rw], not(member(rw, [rowEO, rowDV, rowRA]))));
+rowX: rand(poolleft);
+qrows: random_permutation([rowEO, rowDV, rowRA, rowX]);
+truths: map(third, qrows);
+stm1: qrows[1][2]; tr1: qrows[1][3]; expl1: qrows[1][4];
+stm2: qrows[2][2]; tr2: qrows[2][3]; expl2: qrows[2][4];
+stm3: qrows[3][2]; tr3: qrows[3][3]; expl3: qrows[3][4];
+stm4: qrows[4][2]; tr4: qrows[4][3]; expl4: qrows[4][4];
+/* True before False in every row; unique tokens per row. */
+ta1: [[t1, tr1, "True"], [f1, not tr1, "False"]];
+ta2: [[t2, tr2, "True"], [f2, not tr2, "False"]];
+ta3: [[t3, tr3, "True"], [f3, not tr3, "False"]];
+ta4: [[t4, tr4, "True"], [f4, not tr4, "False"]];
+cor1: if tr1 then t1 else f1; wrg1: if tr1 then f1 else t1;
+cor2: if tr2 then t2 else f2; wrg2: if tr2 then f2 else t2;
+cor3: if tr3 then t3 else f3; wrg3: if tr3 then f3 else t3;
+cor4: if tr4 then t4 else f4; wrg4: if tr4 then f4 else t4;
+labtf(tv) := if tv then "True." else "False.";
+/* Part (b): divisible by p and by q, not by pq (p and q share a factor). */
+pq: rand([[4,6],[6,10],[4,10],[6,9],[6,8],[10,15],[9,12]]);
+pp: pq[1]; qq: pq[2];
+tl: lcm(pp, qq);
+ta5: tl;
+s_assert(is(member(true, truths) and member(false, truths)), true);
+s_assert(is(mod(tl, pp*qq) # 0), true);]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Rows {@map(first, qrows)@}, truths {@truths@}; p = {@pp@}, q = {@qq@}, example {@tl@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is original to this project and does not come from Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>dropdown</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans2</name><type>dropdown</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans3</name><type>dropdown</type><tans>ta3</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans4</name><type>dropdown</type><tans>ta4</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans5</name><type>numerical</type><tans>ta5</tans><boxsize>6</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>intnum</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[/* Binary choice: the false branch is the diagnostic, and the row's explanation names the misconception. */]]></text></feedbackvariables>
+    <node><name>0</name><description>Correct truth value</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>cor1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Correct. {@expl1@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@expl1@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[/* Binary choice: the false branch is the diagnostic, and the row's explanation names the misconception. */]]></text></feedbackvariables>
+    <node><name>0</name><description>Correct truth value</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>cor2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Correct. {@expl2@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@expl2@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[/* Binary choice: the false branch is the diagnostic, and the row's explanation names the misconception. */]]></text></feedbackvariables>
+    <node><name>0</name><description>Correct truth value</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>cor3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Correct. {@expl3@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@expl3@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt4</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[/* Binary choice: the false branch is the diagnostic, and the row's explanation names the misconception. */]]></text></feedbackvariables>
+    <node><name>0</name><description>Correct truth value</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>cor4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Correct. {@expl4@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@expl4@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt5</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sn: ev(ans5, simp);
+bothpq: is(mod(sn, pp) = 0) and is(mod(sn, qq) = 0);
+bypq: is(mod(sn, pp*qq) = 0);
+q1: sn/pp;
+q2: sn/qq;]]></text></feedbackvariables>
+    <node><name>0</name><description>Divisible by both p and q</description><answertest>AlgEquiv</answertest><sans>bothpq</sans><tans>true</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>1</truenextnode><trueanswernote>prt5-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt5-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>[[if test="is(mod(sn, pp) # 0)"]]{@sn@} is not divisible by {@pp@}. [[/if]][[if test="is(mod(sn, qq) # 0)"]]{@sn@} is not divisible by {@qq@}. [[/if]]Your number must be a multiple of both.</p>]]></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: divisible by pq as well</description><answertest>AlgEquiv</answertest><sans>bypq</sans><tans>false</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt5-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: [[if test="is(sn > 0)"]]\({@sn@} = {@pp@} \times {@q1@} = {@qq@} \times {@q2@}\)[[/if]][[if test="is(sn < 0)"]]\({@sn@} = {@pp@} \times ({@q1@}) = {@qq@} \times ({@q2@})\)[[/if]], but {@sn@} is not a multiple of {@pp*qq@}.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt5-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@sn@} is divisible by {@pp*qq@} as well[[if test="is(sn = 0)"]] (0 is a multiple of every integer)[[/if]]. Because {@pp@} and {@qq@} have a common factor, a number can be divisible by both without being divisible by {@pp*qq@}. Look for a smaller common multiple.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>5</deployedseed>
+  <deployedseed>7</deployedseed>
+  <deployedseed>10</deployedseed>
+  <deployedseed>12</deployedseed>
+  <qtest><testcase>1</testcase><description>All correct; the least common multiple</description>
+    <testinput><name>ans1</name><value>cor1</value></testinput><testinput><name>ans2</name><value>cor2</value></testinput><testinput><name>ans3</name><value>cor3</value></testinput><testinput><name>ans4</name><value>cor4</value></testinput><testinput><name>ans5</name><value>ta5</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt5-1-T | prt5-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>All wrong; the product pq</description>
+    <testinput><name>ans1</name><value>wrg1</value></testinput><testinput><name>ans2</name><value>wrg2</value></testinput><testinput><name>ans3</name><value>wrg3</value></testinput><testinput><name>ans4</name><value>wrg4</value></testinput><testinput><name>ans5</name><value>ev(pp*qq, simp)</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt5-1-T | prt5-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Mixed; a number divisible by neither</description>
+    <testinput><name>ans1</name><value>cor1</value></testinput><testinput><name>ans2</name><value>cor2</value></testinput><testinput><name>ans3</name><value>wrg3</value></testinput><testinput><name>ans4</name><value>wrg4</value></testinput><testinput><name>ans5</name><value>ev(tl + 1, simp)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt5-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Alternative correct: a negative example</description>
+    <testinput><name>ans1</name><value>cor1</value></testinput><testinput><name>ans2</name><value>cor2</value></testinput><testinput><name>ans3</name><value>cor3</value></testinput><testinput><name>ans4</name><value>cor4</value></testinput><testinput><name>ans5</name><value>ev(-tl, simp)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt5-1-T | prt5-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Zero is divisible by every integer, including pq</description>
+    <testinput><name>ans1</name><value>cor1</value></testinput><testinput><name>ans2</name><value>cor2</value></testinput><testinput><name>ans3</name><value>cor3</value></testinput><testinput><name>ans4</name><value>cor4</value></testinput><testinput><name>ans5</name><value>0</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt5-1-T | prt5-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Invalid: not an integer in (b)</description>
+    <testinput><name>ans1</name><value>cor1</value></testinput><testinput><name>ans2</name><value>cor2</value></testinput><testinput><name>ans3</name><value>cor3</value></testinput><testinput><name>ans4</name><value>cor4</value></testinput><testinput><name>ans5</name><value>1/2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+    <expected><name>prt5</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

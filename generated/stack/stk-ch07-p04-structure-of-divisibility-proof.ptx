@@ -1,0 +1,35 @@
+<stack-static>
+    <statement><p><p>Here is the induction step of the proof that <m>f(n) = 4^n + 15n - 1</m> is a multiple of 9, in numbered lines. The lemma is the result proved by the second induction: <m>3 \times 4^j + 15</m> is a multiple of 9 for every positive integer <m>j</m>.</p>
+<tabular>
+<row><cell>1</cell><cell>Assume that <m>4^k + 15k - 1 = 9m</m> for some integer <m>m</m>.</cell></row>
+<row><cell>2</cell><cell>Then <m>4^{k+1} + 15(k+1) - 1 = 4 \times 4^k + 15k + 15 - 1</m></cell></row>
+<row><cell>3</cell><cell><m>= 4^k + 3 \times 4^k + 15k + 15 - 1</m></cell></row>
+<row><cell>4</cell><cell><m>= \left(4^k + 15k - 1\right) + 3 \times 4^k + 15</m></cell></row>
+<row><cell>5</cell><cell><m>= 9m + 3 \times 4^k + 15</m></cell></row>
+<row><cell>6</cell><cell><m>= 9m + 9s</m> for some integer <m>s</m></cell></row>
+<row><cell>7</cell><cell><m>= 9(m + s)</m>,</cell></row>
+<row><cell>8</cell><cell>so <m>4^{k+1} + 15(k+1) - 1</m> is a multiple of 9.</cell></row>
+</tabular>
+<ol class="tb-parts">
+<li><p>In which line is the induction hypothesis (line 1) used?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div></li>
+<li><p>In which line is the lemma used?</p>
+<div>Line <fillin characters="3" name="ans2"/>  </div></li>
+<li><p>Which is the best summary of the whole proof?</p>
+<div><ol marker="(1)">
+<li>Check that <m>f(1) = 18</m>, <m>f(2) = 45</m> and <m>f(3) = 108</m> are multiples of 9, then conclude that <m>f(n)</m> is a multiple of 9 for every <m>n</m>.</li>
+<li>Assume that <m>f(n)</m> is a multiple of 9 for every <m>n</m>, and use this to show that <m>3 \times 4^n + 15</m> is also a multiple of 9.</li>
+<li>Write <m>f(k+1)</m> as <m>f(k) + 3 \times 4^k + 15</m>: <m>f(k)</m> is a multiple of 9 by the induction hypothesis, and <m>3 \times 4^k + 15</m> is a multiple of 9 by a second induction.</li>
+<li>Expand <m>f(k+1) = 4^{k+1} + 15(k+1) - 1</m> and show that each of its terms is a multiple of 9.</li>
+</ol>  </div></li>
+</ol></p></statement>
+    <solution><p><p>The proof has two modules: the main induction on <m>n</m>, and the lemma, proved by an induction of its own. Each hypothesis enters at one line.</p>
+<ol class="tb-parts">
+<li><p>Line 4 only regroups the terms so that <m>4^k + 15k - 1</m> appears. Line 5 uses the induction hypothesis of the main proof, replacing <m>4^k + 15k - 1</m> by <m>9m</m>.</p></li>
+<li><p>Line 6 uses the lemma with <m>j = k</m>, replacing <m>3 \times 4^k + 15</m> by <m>9s</m>.</p></li>
+<li><p>In summary: write <m>f(k+1)</m> as <m>f(k) + 3 \times 4^k + 15</m>. The first part is a multiple of 9 by the induction hypothesis, and the second is a multiple of 9 by the lemma, a second induction. Checking a few values is evidence, not proof; assuming the result for every <m>n</m> would be circular; and the terms of <m>f(k+1)</m> are not multiples of 9 one by one, since <m>4^{k+1}</m> never is.</p></li>
+</ol></p></solution>
+    <answer><p><m>5</m></p></answer>
+    <answer><p><m>6</m></p></answer>
+    <answer><p><m>(3)</m></p></answer>
+</stack-static>

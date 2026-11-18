@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch06_P01_Opening_lines</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Facts such as <q>odd × odd = odd</q> can be quoted in a proof, but each can also be proved directly. Statement: the product of any two odd numbers is odd.</p>
+<p>(a) Which of these opening lines would let the proof cover every pair of odd numbers? Select all that apply.</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>
+<div>[[feedback:prt1]]</div>
+<p>(b) Another correct opening is: let the two odd numbers be \(2k - 1\) and \(2m - 1\), where \(k\) and \(m\) are integers. Complete the algebra. Type \(M\) in terms of \(k\) and \(m\), with * between letters, as in <code>k*m</code>.</p>
+<div>\((2k - 1)(2m - 1) = 2M + 1\), where \(M =\) [[input:ans2]] [[validation:ans2]]</div>
+<div>[[feedback:prt2]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>(a) A proof about every pair of odd numbers must start from two odd numbers that can be any odd numbers, chosen independently of each other. So it needs two different letters, each standing for an integer. The second and fifth openings do this. The fifth says <q>for some integers \(k\) and \(m\)</q>: each odd number has its own \(k\) or \(m\), which depends on the number.</p>
+<ul>
+<li><p>With \(2k + 1\) twice, the two numbers are equal, so the proof would only cover squares of odd numbers.</p></li>
+<li><p>3 and 5 are one pair. A proof has to cover every pair, and checking one pair cannot show that the others behave the same way.</p></li>
+<li><p><q>For all integers \(k\) and \(m\)</q> says something false: \(a\) is one particular odd number, so it equals \(2k + 1\) for one particular integer \(k\).</p></li>
+<li><p>\(2k + 1\) and \(2k + 3\) are consecutive odd numbers, so the proof would only cover pairs such as 5 and 7, not 3 and 11.</p></li>
+</ul>
+<p>(b) Expand and take out a factor of 2 from every term except the final 1:</p>
+<p>\[(2k - 1)(2m - 1) = 4km - 2k - 2m + 1 = 2(2km - k - m) + 1.\]</p>
+<p>So \(M = 2km - k - m\). Since \(k\) and \(m\) are integers, \(M\) is an integer, so the product of any two odd numbers is odd. The same opening with \(2k\) and \(2m + 1\) proves that even × odd = even: \(2k(2m + 1) = 2(2km + k)\).</p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Fixed: one specific proof. Correct openings in positions 2 and 5. */
+opts1: [
+ [oB, false, "Let the two odd numbers be \\(2k + 1\\) and \\(2k + 1\\), where \\(k\\) is an integer."],
+ [oA, true, "Let the two odd numbers be \\(2k + 1\\) and \\(2m + 1\\), where \\(k\\) and \\(m\\) are integers."],
+ [oE, false, "Let the two odd numbers be 3 and 5; any other pair of odd numbers works in the same way."],
+ [oF, false, "Let \\(a\\) and \\(b\\) be odd numbers. Then \\(a = 2k + 1\\) and \\(b = 2m + 1\\) for all integers \\(k\\) and \\(m\\)."],
+ [oD, true, "Let \\(a\\) and \\(b\\) be odd numbers. Then \\(a = 2k + 1\\) and \\(b = 2m + 1\\) for some integers \\(k\\) and \\(m\\)."],
+ [oC, false, "Let the two odd numbers be \\(2k + 1\\) and \\(2k + 3\\), where \\(k\\) is an integer."]
+];
+ta2: 2*k*m - k - m;
+/* Diagnostics: did not halve; signs carried over from 2k + 1 and 2m + 1. */
+dhalf: 4*k*m - 2*k - 2*m;
+dplus: 2*k*m + k + m;
+/* Validators run with simp:false, so simplify explicitly. */
+validate_km(ex) := block([e], e: ev(expand(ex), simp),
+  if equationp(ex) then "Type the expression for \\(M\\) only, without M = in front."
+  else if not(every(lambda([v], member(v, [k, m])), listofvars(ex))) then "Use only the letters \\(k\\) and \\(m\\), with * between letters that are multiplied: type k*m, not km."
+  else if not(polynomialp(e, [k, m])) then "Enter a polynomial in \\(k\\) and \\(m\\), such as 3*k*m - m. Put * before a bracket: type m*(k + 3), not m(k + 3)."
+  else "");
+]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Correct openings oA and oD; M = 2km - k - m]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the facts that can simply be stated within a proof, and the use of n and m for any two integers (p. 23), in Section 6 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>checkbox</type><tans>opts1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans2</name><type>algebraic</type><tans>ta2</tans><boxsize>18</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_km</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sa1: setify(ans1);
+wrongs: intersection(sa1, {oB, oC, oE, oF});]]></text></feedbackvariables>
+    <node><name>0</name><description>Exactly the two correct openings</description><answertest>Sets</answertest><sans>sa1</sans><tans>{oA, oD}</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. Both openings introduce two odd numbers that can be any odd numbers, independently of each other.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: only correct openings chosen, one missed</description><answertest>AlgEquiv</answertest><sans>emptyp(wrongs)</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Each opening you chose works, but there is another correct one. Look again at the openings that use two different letters, and read each one carefully.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>[[if test="elementp(oB, sa1)"]]With \(2k + 1\) twice, the two numbers are equal, so the proof would only cover squares of odd numbers. [[/if]][[if test="elementp(oC, sa1)"]]\(2k + 1\) and \(2k + 3\) are consecutive odd numbers, so the proof would only cover pairs such as 5 and 7, not 3 and 11. [[/if]][[if test="elementp(oE, sa1)"]]3 and 5 are one pair. A proof has to cover every pair, and checking one pair cannot show that the others behave the same way. [[/if]][[if test="elementp(oF, sa1)"]]<q>For all integers \(k\) and \(m\)</q> says something false: \(a\) is one particular odd number, so it equals \(2k + 1\) for one particular integer \(k\). The convention is <q>for some integers \(k\) and \(m\)</q>.[[/if]]</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>2M + 1 equals the product</description><answertest>AlgEquiv</answertest><sans>2*ans2 + 1</sans><tans>(2*k - 1)*(2*m - 1)</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \((2k - 1)(2m - 1) = 4km - 2k - 2m + 1 = 2(2km - k - m) + 1\). Since \(k\) and \(m\) are integers, \(M = 2km - k - m\) is an integer, so the product is odd.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: did not halve</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>dhalf</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Your expression is \(2M\), not \(M\). The product is \(4km - 2k - 2m + 1\); take out the factor 2 from \(4km - 2k - 2m\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: signs carried over from 2k + 1 and 2m + 1</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>dplus</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>That is \(M\) for \(2k + 1\) and \(2m + 1\). Here the numbers are \(2k - 1\) and \(2m - 1\): check the signs of the terms in \(k\) and in \(m\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Expand \((2k - 1)(2m - 1)\), then write everything except the final \(+ 1\) as \(2 \times (\text{something})\). That something is \(M\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Both correct</description>
+    <testinput><name>ans1</name><value>mcq_correct(opts1)</value></testinput><testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>One correct opening only; M in another form</description>
+    <testinput><name>ans1</name><value>[oA]</value></testinput><testinput><name>ans2</name><value>k*(2*m - 1) - m</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Correct openings plus for all; did not halve</description>
+    <testinput><name>ans1</name><value>[oA, oD, oF]</value></testinput><testinput><name>ans2</name><value>dhalf</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Three wrong openings; signs carried over</description>
+    <testinput><name>ans1</name><value>[oB, oC, oE]</value></testinput><testinput><name>ans2</name><value>dplus</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>The other correct opening only; M unexpanded</description>
+    <testinput><name>ans1</name><value>[oD]</value></testinput><testinput><name>ans2</name><value>((2*k - 1)*(2*m - 1) - 1)/2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Correct openings; M wrong</description>
+    <testinput><name>ans1</name><value>[oA, oD]</value></testinput><testinput><name>ans2</name><value>2*k*m</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid: another letter in M</description>
+    <testinput><name>ans1</name><value>[oA, oD]</value></testinput><testinput><name>ans2</name><value>2*k*n</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>Invalid: an equation M = ...</description>
+    <testinput><name>ans1</name><value>[oA, oD]</value></testinput><testinput><name>ans2</name><value>M = 2*k*m - k - m</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

@@ -1,0 +1,31 @@
+<stack-static>
+    <statement><p><p>Statement: Let <m>n</m> be an integer. If <m>n^2</m> is odd, then <m>n</m> is odd.</p>
+<p>Here A is ‘<m>n^2</m> is odd’ and B is ‘<m>n</m> is odd’. Each line below could be the first line of a proof. For each line, choose the kind of proof it starts: a direct proof of the statement, a proof of its contrapositive, a proof by contradiction, or a proof of a different statement. The first three would all prove the statement; the last would not.</p>
+<ol>
+<li><p>Suppose that <m>n^2</m> is even. We show that <m>n</m> is even.</p>
+<div>[ direct proof | proof of the contrapositive | proof by contradiction | proof of a different statement ]  </div></li>
+<li><p>Suppose that <m>n</m> is even, so <m>n = 2k</m> for some integer <m>k</m>. We show that <m>n^2</m> is even.</p>
+<div>[ direct proof | proof of the contrapositive | proof by contradiction | proof of a different statement ]  </div></li>
+<li><p>Suppose that <m>n^2</m> is odd, so <m>n^2 = 2k + 1</m> for some integer <m>k</m>. We show that <m>n</m> is odd.</p>
+<div>[ direct proof | proof of the contrapositive | proof by contradiction | proof of a different statement ]  </div></li>
+<li><p>Suppose that <m>n^2</m> is odd and that <m>n</m> is even. We look for a contradiction.</p>
+<div>[ direct proof | proof of the contrapositive | proof by contradiction | proof of a different statement ]  </div></li>
+<li><p>Suppose that <m>n</m> is odd. We show that <m>n^2</m> is odd.</p>
+<div>[ direct proof | proof of the contrapositive | proof by contradiction | proof of a different statement ]  </div></li>
+</ol></p></statement>
+    <solution><p><p>For a statement ‘if A, then B’: a direct proof assumes A and aims for B; a proof of the contrapositive assumes not B and aims for not A; a proof by contradiction assumes A and not B and aims for something impossible. All three prove the statement. A proof that assumes B and aims for A proves the converse; one that assumes not A and aims for not B proves a different statement again (it is the contrapositive of the converse). Neither proves the statement, even when the converse happens to be true as well.</p>
+<p>The five lines for this statement:</p>
+<ul>
+<li><p>Suppose that <m>n^2</m> is odd, so <m>n^2 = 2k + 1</m> for some integer <m>k</m>. We show that <m>n</m> is odd. This starts a direct proof.</p></li>
+<li><p>Suppose that <m>n</m> is even, so <m>n = 2k</m> for some integer <m>k</m>. We show that <m>n^2</m> is even. This starts a proof of the contrapositive.</p></li>
+<li><p>Suppose that <m>n^2</m> is odd and that <m>n</m> is even. We look for a contradiction. This starts a proof by contradiction.</p></li>
+<li><p>Suppose that <m>n</m> is odd. We show that <m>n^2</m> is odd. This starts a proof of the converse, a different statement.</p></li>
+<li><p>Suppose that <m>n^2</m> is even. We show that <m>n</m> is even. This starts a proof of ‘if not A, then not B’, a different statement.</p></li>
+</ul>
+<p>Here the contrapositive is easiest: <m>n = 2k</m> gives <m>n^2 = 2(2k^2)</m>. Starting from <m>n^2 = 2k + 1</m> tells you little about <m>n</m>.</p></p></solution>
+    <answer><p>proof of a different statement</p></answer>
+    <answer><p>proof of the contrapositive</p></answer>
+    <answer><p>direct proof</p></answer>
+    <answer><p>proof by contradiction</p></answer>
+    <answer><p>proof of a different statement</p></answer>
+</stack-static>

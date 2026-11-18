@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch07_P02_Where_Is_Each_Line_Used</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here is the proof of \(1 + 3 + 5 + \cdots + (2n-1) = n^2\) from the example above, in numbered lines.</p>
+<table>
+<tr><td>1</td><td>When \(n = 1\), the left-hand side is \(1\) and the right-hand side is \(1^2 = 1\), so the statement holds for \(n = 1\).</td></tr>
+<tr><td>2</td><td>Assume that the statement holds for \(n = k\), where \(k\) is a positive integer: \(1 + 3 + 5 + \cdots + (2k-1) = k^2\).</td></tr>
+<tr><td>3</td><td>Then \(1 + 3 + 5 + \cdots + (2k-1) + \big(2(k+1) - 1\big) = k^2 + \big(2(k+1) - 1\big)\)</td></tr>
+<tr><td>4</td><td>\(= k^2 + 2k + 1\)</td></tr>
+<tr><td>5</td><td>\(= (k+1)^2\),</td></tr>
+<tr><td>6</td><td>so the statement holds for \(n = k+1\).</td></tr>
+<tr><td>7</td><td>The statement holds for \(n = 1\), and whenever it holds for \(n = k\) it also holds for \(n = k+1\). So it holds for every positive integer \(n\).</td></tr>
+</table>
+<ol class="tb-parts">
+<li><p>In which line is the assumption made in line 2 used?</p>
+<div>Line [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>In which line is the fact proved in line 1 used?</p>
+<div>Line [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<ol class="tb-parts">
+<li><p>Line 2 states the induction hypothesis. It is used in line 3, where the sum \(1 + 3 + 5 + \cdots + (2k-1)\) is replaced by \(k^2\). Stating an assumption and using it are different things: the hypothesis does its work in line 3.</p></li>
+<li><p>Lines 2 to 6 are the induction step. They prove ‘if the statement holds for \(n = k\), then it holds for \(n = k+1\)’ for an arbitrary positive integer \(k\), and they never mention \(n = 1\). The base case, proved in line 1, is used only in line 7, where the two parts of the proof are put together: the statement holds for \(n = 1\), so for \(n = 2\), so for \(n = 3\), and so on.</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: 3;
+ta2: 7;
+validate_line7(ex) := block([vv], vv: ev(ex, simp), if integerp(vv) and vv >= 1 and vv <= 7 then "" else "Enter a line number from 1 to 7.");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: (a) line 3, (b) line 7]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 7.1 (Solution 7.1-B, pp. 28-30) in Section 7 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line7</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line7</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Where the hypothesis is used</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. Line 3 replaces \(1 + 3 + 5 + \cdots + (2k-1)\) by \(k^2\), which is what line 2 assumes.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: stating taken for using</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 2 makes the assumption. Look for the later line where it is put to work.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Look for the line where the sum \(1 + 3 + 5 + \cdots + (2k-1)\) is replaced by something else.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Where the base case is used</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>ta2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. Lines 2 to 6 never use \(n = 1\): they show that the statement passes from any \(k\) to \(k+1\). Line 7 joins this to line 1.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: a line of the induction step (2 to 6)</description><answertest>GT</answertest><sans>ans2</sans><tans>1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Lines 2 to 6 prove ‘if the statement holds for \(n = k\), then it holds for \(n = k+1\)’. That argument works for any \(k\) and never uses \(n = 1\). Which line puts it together with line 1?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Line 1 proves the statement for \(n = 1\). Which later line relies on that?</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>3</value></testinput>
+    <testinput><name>ans2</name><value>7</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Diagnostics: the line that states the hypothesis; a line of the step</description>
+    <testinput><name>ans1</name><value>2</value></testinput>
+    <testinput><name>ans2</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Generic: another line; line 1 itself</description>
+    <testinput><name>ans1</name><value>5</value></testinput>
+    <testinput><name>ans2</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Invalid (a): no line 9, rejected by validate_line7; (b) still marked</description>
+    <testinput><name>ans1</name><value>9</value></testinput>
+    <testinput><name>ans2</name><value>7</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

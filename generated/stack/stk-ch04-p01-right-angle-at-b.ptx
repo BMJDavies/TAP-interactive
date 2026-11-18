@@ -1,0 +1,14 @@
+<stack-static>
+    <statement><p><p>In the text, <m>P</m> is <m>AB^2 + BC^2 = AC^2</m>, and <m>Q</m> says that the angle at <m>B</m> is a right angle; then <m>P \Leftrightarrow Q</m>.</p>
+<p>Suppose instead that <m>Q</m> said only ‘triangle <m>ABC</m> is right-angled’. Then <m>Q \Rightarrow P</m> would be false. Show this with a counterexample: give the side lengths of an example of a right-angled triangle <m>ABC</m> for which <m>AB^2 + BC^2 \neq AC^2</m>.</p>
+<div><m>AB =</m> <fillin characters="6" name="ans1"/> </div>
+<div><m>BC =</m> <fillin characters="6" name="ans2"/> </div>
+<div><m>AC =</m> <fillin characters="6" name="ans3"/> </div>
+<p>Type <m>\sqrt{2}</m> as <c>sqrt(2)</c>.</p></p></statement>
+    <solution><p><p>A counterexample to <m>Q \Rightarrow P</m> needs <m>Q</m> true and <m>P</m> false: a triangle that is right-angled, but for which <m>AB^2 + BC^2 \neq AC^2</m>.</p>
+<p>Put the right angle at <m>A</m>: <m>AB = 3</m>, <m>AC = 4</m>, <m>BC = 5</m>. Then <m>AB^2 + AC^2 = 9 + 16 = 25 = BC^2</m>, so the triangle is right-angled, but <m>AB^2 + BC^2 = 9 + 25 = 34</m> and <m>AC^2 = 16</m>. So ‘<m>ABC</m> is right-angled’ does not imply <m>AB^2 + BC^2 = AC^2</m>.</p>
+<p>By Pythagoras' theorem, <m>AB^2 + BC^2 = AC^2</m> only when the right angle is at <m>B</m>, opposite <m>AC</m>. So <m>Q</m> has to say where the right angle is. With <m>Q</m> ‘the angle at <m>B</m> is a right angle’, <m>Q \Rightarrow P</m> is Pythagoras' theorem and <m>P \Rightarrow Q</m> is its converse.</p></p></solution>
+    <answer><p><m>3</m></p></answer>
+    <answer><p><m>5</m></p></answer>
+    <answer><p><m>4</m></p></answer>
+</stack-static>

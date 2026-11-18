@@ -1,0 +1,26 @@
+<stack-static>
+    <statement><p><p>Here is the proof from the example above that the square of every real number is non-negative, written in numbered lines. The three cases may come in a different order from the example.</p>
+<div>
+<p><alert>(1)</alert> Let <m>a</m> be any real number.</p>
+<p><alert>(2)</alert> By trichotomy, <m>a &gt; 0</m>, <m>a \lt 0</m> or <m>a = 0</m>.</p>
+<p><alert>(3)</alert> Case <m>a \lt 0</m>.</p>
+<p><alert>(4)</alert> Multiplying both sides of <m>a \lt 0</m> by <m>a</m> gives <m>a \times a &gt; 0 \times a</m>, so <m>a^2 &gt; 0</m>.</p>
+<p><alert>(5)</alert> Case <m>a = 0</m>.</p>
+<p><alert>(6)</alert> Then <m>a^2 = 0 \times 0 = 0</m>.</p>
+<p><alert>(7)</alert> Case <m>a &gt; 0</m>.</p>
+<p><alert>(8)</alert> Multiplying both sides of <m>a &gt; 0</m> by <m>a</m> gives <m>a \times a &gt; 0 \times a</m>, so <m>a^2 &gt; 0</m>.</p>
+<p><alert>(9)</alert> So in every case <m>a^2 &gt; 0</m> or <m>a^2 = 0</m>; that is, <m>a^2 \ge 0</m> for every real number <m>a</m>.</p>
+</div>
+<ol type="a">
+<li><p>In which line is the rule ‘multiplying both sides of an inequality by a negative number reverses the inequality’ used?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div></li>
+<li><p>The last line concludes <m>a^2 \ge 0</m>, not <m>a^2 &gt; 0</m>. Which line is the reason the conclusion needs <m>\ge</m>?</p>
+<div>Line <fillin characters="3" name="ans2"/>  </div></li>
+</ol></p></statement>
+    <solution><p><ol type="a">
+<li><p>In line <m>{4}</m>, the case <m>a \lt 0</m>, both sides of <m>a \lt 0</m> are multiplied by <m>a</m>, which is negative in this case, so the inequality reverses: <m>a \lt 0</m> becomes <m>a \times a &gt; 0 \times a</m>. Line <m>{8}</m> has the same algebra but keeps the direction, because there <m>a</m> is positive.</p></li>
+<li><p>The conclusion needs <m>\ge</m> because of the case <m>a = 0</m> (lines <m>{5}</m> and <m>{6}</m>), where <m>a^2 = 0</m>; the other two cases give <m>a^2 &gt; 0</m>. Together the three cases give <m>a^2 \ge 0</m> for every real number.</p></li>
+</ol></p></solution>
+    <answer><p><m>4</m></p></answer>
+    <answer><p><m>6</m></p></answer>
+</stack-static>

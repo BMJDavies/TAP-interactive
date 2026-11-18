@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch08_P02_Primes_6k_plus_5</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Use the idea of Euclid's proof to show that there are infinitely many primes of the form \(6k + 5\): primes that leave remainder 5 on division by 6, such as 5, 11, 17 and 23.</p>
+<p>Suppose, for contradiction, that there are only finitely many, \(p_1, p_2, \ldots, p_n\), and let \(P = p_1 p_2 \cdots p_n\) be their product. You may use this fact: every integer greater than 1 that leaves remainder 5 on division by 6 has at least one prime factor that leaves remainder 5 on division by 6.</p>
+<ol class="tb-parts">
+<li><p>Give an example of a number \(M\), in terms of \(P\), that the proof can use in place of Euclid's \(N\).</p>
+<div>\(M =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>A student suggests \(M = 6P + 5\). Why does this not work?</p>
+<div>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Take \(M = 6P - 1 = 6p_1 p_2 \cdots p_n - 1\). It is greater than 1, and it leaves remainder 5 on division by 6, since \(6P - 1 = 6(P - 1) + 5\). So, by the fact given, \(M\) has a prime factor \(q\) of the form \(6k + 5\). But dividing \(M\) by any \(p_i\) leaves remainder \(p_i - 1\), so \(q\) is not one of \(p_1, \ldots, p_n\). This contradicts the assumption that the list contains all such primes.</p>
+<p>Other choices work too, such as \(12P - 1\) or \(6P - 7\). What matters is that \(M \gt 1\), that \(M\) leaves remainder 5 on division by 6, and that no \(p_i\) divides \(M\). Euclid's \(P + 1\) fails the second condition: if the list were 5 and 11, then \(P + 1 = 56 = 2^3 \times 7\), with no prime factor of the form \(6k + 5\). The student's \(6P + 5\) fails the third, because 5 is in the list and divides it.</p>
+<p>Why the fact holds: a number of the form \(6k + 5\) is odd and not a multiple of 3, so each of its prime factors leaves remainder 1 or 5 on division by 6. A product of numbers that all leave remainder 1 leaves remainder 1, so at least one factor leaves remainder 5.</p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[tsets: [[5], [5, 11], [5, 11, 17], [5, 11, 17, 23], [5, 11, 17, 23, 29],
+        [5, 11, 17, 23, 29, 41, 47, 53, 59, 71, 83, 89]];
+tsetstxt: ["just 5", "5 and 11", "5, 11 and 17", "5, 11, 17 and 23", "5, 11, 17, 23 and 29", "the twelve primes of the form \\(6k + 5\\) below 100"];
+tprods: map(lambda([s], apply("*", s)), tsets);
+ta1: 6*P - 1;
+ta2: [[w_form, false, "\\(6P + 5\\) does not leave remainder 5 on division by 6."],
+      [w_five, true, "\\(6P + 5\\) is divisible by 5, one of the primes \\(p_1, \\ldots, p_n\\), so its prime factor of the form \\(6k + 5\\) could be one already in the list."],
+      [w_prime, false, "\\(6P + 5\\) might be prime, and the proof needs \\(M\\) to be a product of several primes."],
+      [w_big, false, "\\(6P + 5\\) is larger than every prime of the form \\(6k + 5\\), so it cannot have such a prime factor."]];
+validate_mp(ex) := block([e], e: ev(expand(ex), simp), if not(member(P, listofvars(ex))) then "Write M in terms of P." else if not(every(lambda([v], is(v = P)), listofvars(ex))) then "Use only the letter P." else if not(ev(polynomialp(e, [P], ratnump), simp)) then "Write M using only whole numbers and powers of P, combined with +, -, * and /." else if is(ev(hipow(e, P), simp) > 20) then "Use a power of P no higher than 20." else "");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: (a) any M such as 6P - 1; (b) w_five]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 8.2 (Solution 8.2, p. 38) in Section 8 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: its method is applied to primes of the form 6k + 5.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>12</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_mp</options></input>
+  <input><name>ans2</name><type>radio</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>nonotanswered</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[idx: makelist(i, i, 1, length(tsets));
+mvals: map(lambda([pp], ev(subst(P = pp, ans1), simp)), tprods);
+szbad: sublist(idx, lambda([i], not(integerp(mvals[i]) and (is(i < 4) or is(mvals[i] > 1)))));
+sizeok: is(szbad = []);
+szi: if sizeok then 1 else first(szbad);
+rsbad: if sizeok then sublist(idx, lambda([i], is(mod(mvals[i], 6) # 5))) else [];
+resok: sizeok and is(rsbad = []);
+rsi: if rsbad = [] then 1 else first(rsbad);
+cpbad: if resok then sublist(idx, lambda([i], not(every(lambda([pr], is(mod(mvals[i], pr) # 0)), tsets[i])))) else [];
+rs0: ev(ratsimp(ans1), simp);
+dd0: ev(denom(rs0), simp);
+c0: ev(subst(P = 0, num(rs0)), simp);
+bigp: if resok and is(cpbad = []) and integerp(c0) and integerp(dd0) and is(c0 # 0) and is(abs(c0) < 10^15) then sublist(map(first, ifactors(abs(c0))), lambda([pr], is(mod(pr, 6) = 5) and is(mod(dd0, pr) # 0))) else [];
+bigp1: if bigp = [] then 5 else first(bigp);
+allok: resok and is(cpbad = []) and is(bigp = []);
+badi: if cpbad = [] then 1 else first(cpbad);
+badp: if cpbad = [] then 5 else first(sublist(tsets[badi], lambda([pr], is(mod(mvals[badi], pr) = 0))));]]></text></feedbackvariables>
+    <node><name>0</name><description>M has all three properties on every test list</description><answertest>AlgEquiv</answertest><sans>allok</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. Your \(M\) is greater than 1, leaves remainder 5 on division by 6, and none of \(p_1, \ldots, p_n\) divides it. So it has a prime factor of the form \(6k + 5\) that is not in the list: a contradiction.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: Euclid's N copied</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>P + 1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>That is Euclid's \(N\). None of \(p_1, \ldots, p_n\) divides it, but it need not have a prime factor of the form \(6k + 5\): if the list were 5 and 11, then \(P + 1 = 56 = 2^3 \times 7\), and neither 2 nor 7 has that form. \(M\) has to leave remainder 5 on division by 6, so that the fact in the question applies.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: not a whole number greater than 1</description><answertest>AlgEquiv</answertest><sans>sizeok</sans><tans>false</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\(M\) must be a whole number greater than 1, whatever the primes in the list are; otherwise it need not have any prime factor at all. [[if test='is(szi < 6)']]If the list were {@tsetstxt[szi]@}, then \(P = {@tprods[szi]@}\) and your \(M\) would be {@mvals[szi]@}.[[else]]Your \(M\) is not a whole number greater than 1 when \(P\) is large.[[/if]]</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: wrong remainder on division by 6</description><answertest>AlgEquiv</answertest><sans>resok</sans><tans>false</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The fact in the question applies only to numbers that leave remainder 5 on division by 6. [[if test='is(rsi < 6)']]If the list were {@tsetstxt[rsi]@}, then \(P = {@tprods[rsi]@}\) and your \(M\) would be {@mvals[rsi]@}, which leaves remainder {@mod(mvals[rsi], 6)@}.[[else]]Your \(M\) does not always leave remainder 5.[[/if]]</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Your \(M\) can be divisible by one of the primes in the list. [[if test='is(cpbad = [])']]{@bigp1@} is itself a prime of the form \(6k + 5\), so it would be one of \(p_1, \ldots, p_n\). It would divide \(P\), and so it would divide your \(M\) as well.[[else]][[if test='is(badi < 6)']]If the list were {@tsetstxt[badi]@}, then \(P = {@tprods[badi]@}\) and your \(M\) would be {@mvals[badi]@}, which is divisible by {@badp@}.[[else]]If the list were {@tsetstxt[badi]@}, your \(M\) would be divisible by {@badp@}.[[/if]][[/if]] Then the prime factor of the form \(6k + 5\) could be one of \(p_1, \ldots, p_n\), and there is no contradiction. Compare Euclid's \(N\): dividing it by any listed prime leaves remainder 1.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>The reason: 5 divides 6P + 5</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>w_five</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. 5 is one of the primes in the list, and it divides \(6P + 5\), so the prime factor of the form \(6k + 5\) may be 5 itself, and there is no contradiction.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: remainder thought wrong</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>w_form</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\(6P + 5 = 6 \times P + 5\) does leave remainder 5 on division by 6. Look instead for a prime that divides it.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Look for a prime that divides \(6P + 5\). Is it one of \(p_1, \ldots, p_n\)?</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct: 6P - 1</description>
+    <testinput><name>ans1</name><value>6*P-1</value></testinput>
+    <testinput><name>ans2</name><value>w_five</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Euclid's N copied; remainder thought wrong</description>
+    <testinput><name>ans1</name><value>P+1</value></testinput>
+    <testinput><name>ans2</name><value>w_form</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Negative M; might be prime</description>
+    <testinput><name>ans1</name><value>1-6*P</value></testinput>
+    <testinput><name>ans2</name><value>w_prime</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Remainder 1 instead of 5; too big</description>
+    <testinput><name>ans1</name><value>6*P+1</value></testinput>
+    <testinput><name>ans2</name><value>w_big</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>The student's 6P + 5: a listed prime divides it</description>
+    <testinput><name>ans1</name><value>6*P+5</value></testinput>
+    <testinput><name>ans2</name><value>w_five</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Alternative: 12P - 1</description>
+    <testinput><name>ans1</name><value>12*P-1</value></testinput>
+    <testinput><name>ans2</name><value>w_five</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Alternative: 6P - 7</description>
+    <testinput><name>ans1</name><value>6*P-7</value></testinput>
+    <testinput><name>ans2</name><value>w_five</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>A listed prime caught only by the long list: 6P + 47</description>
+    <testinput><name>ans1</name><value>6*P+47</value></testinput>
+    <testinput><name>ans2</name><value>w_five</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Not an integer: P/2 - 1</description>
+    <testinput><name>ans1</name><value>P/2-1</value></testinput>
+    <testinput><name>ans2</name><value>w_five</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>10</testcase><description>Invalid: another letter</description>
+    <testinput><name>ans1</name><value>6*Q-1</value></testinput>
+    <testinput><name>ans2</name><value>w_five</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>11</testcase><description>A larger prime of the form 6k + 5 added: 6P + 101 passes every test list but 101 would be in the list</description>
+    <testinput><name>ans1</name><value>6*P+101</value></testinput>
+    <testinput><name>ans2</name><value>w_five</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>12</testcase><description>Alternative: 6P - 31, greater than 1 because the list contains 5, 11, 17 and 23</description>
+    <testinput><name>ans1</name><value>6*P-31</value></testinput>
+    <testinput><name>ans2</name><value>w_five</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>13</testcase><description>Invalid: P in an exponent</description>
+    <testinput><name>ans1</name><value>2^P+3</value></testinput>
+    <testinput><name>ans2</name><value>w_five</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

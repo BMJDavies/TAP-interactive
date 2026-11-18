@@ -1,0 +1,22 @@
+<stack-static>
+    <statement><p><p>Three students each wrote a comment on this line of a proof:</p>
+<blockquote><p><m>(x - 1)(x + 1) = x \times x + x \times 1 + (-1) \times x + (-1) \times 1</m></p></blockquote>
+<p>For each comment, decide what kind it is.</p>
+<ol>
+<li><p>‘I am happy with this line and can follow it without any trouble.’</p>
+<div>[ self-explanation | paraphrase | monitoring ]  </div></li>
+<li><p>‘The right-hand side has been written out as four products added together.’</p>
+<div>[ self-explanation | paraphrase | monitoring ]  </div></li>
+<li><p>‘Each term of the first bracket multiplies each term of the second, which is why there are four products.’</p>
+<div>[ self-explanation | paraphrase | monitoring ]  </div></li>
+</ol></p></statement>
+    <solution><p><p>A self-explanation says <em>why</em> a line is true, linking it to earlier lines or to something you already know. A paraphrase restates the line in other words. A monitoring comment reports how well you are following.</p>
+<ol>
+<li><p>‘I am happy with this line and can follow it without any trouble.’ This is monitoring: it reports how well the reader is following, not why the line is true.</p></li>
+<li><p>‘The right-hand side has been written out as four products added together.’ This is a paraphrase: it restates the line without saying why it is true.</p></li>
+<li><p>‘Each term of the first bracket multiplies each term of the second, which is why there are four products.’ This is a self-explanation: it gives a reason why the line is true.</p></li>
+</ol></p></solution>
+    <answer><p>monitoring</p></answer>
+    <answer><p>paraphrase</p></answer>
+    <answer><p>self-explanation</p></answer>
+</stack-static>

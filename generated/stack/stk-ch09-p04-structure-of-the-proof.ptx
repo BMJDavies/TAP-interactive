@@ -1,0 +1,39 @@
+<stack-static>
+    <statement><p><p>Here is the proof of the example above in numbered lines.</p>
+<tabular>
+<row><cell>1</cell><cell>Suppose that <m>r</m> is a nonzero rational number.</cell></row>
+<row><cell>2</cell><cell>Then <m>r = \dfrac{a}{b}</m> for some integers <m>a</m> and <m>b</m> with <m>b \neq 0</m>.</cell></row>
+<row><cell>3</cell><cell>We can write <m>r = \sqrt{2} \times \dfrac{r}{\sqrt{2}}</m>.</cell></row>
+<row><cell>4</cell><cell>We know that <m>\sqrt{2}</m> is irrational.</cell></row>
+<row><cell>5</cell><cell>Suppose, for contradiction, that <m>\dfrac{r}{\sqrt{2}}</m> is rational.</cell></row>
+<row><cell>6</cell><cell>Then <m>\dfrac{r}{\sqrt{2}} = \dfrac{c}{d}</m> for some integers <m>c</m> and <m>d</m> with <m>d \neq 0</m>.</cell></row>
+<row><cell>7</cell><cell>So <m>\sqrt{2} = r \times \dfrac{d}{c} = \dfrac{a}{b} \times \dfrac{d}{c} = \dfrac{ad}{bc}</m>.</cell></row>
+<row><cell>8</cell><cell>Since <m>ad</m> and <m>bc</m> are integers, <m>\sqrt{2}</m> is rational. This contradicts line 4.</cell></row>
+<row><cell>9</cell><cell>So <m>\dfrac{r}{\sqrt{2}}</m> is irrational.</cell></row>
+<row><cell>10</cell><cell>So <m>r = \sqrt{2} \times \dfrac{r}{\sqrt{2}}</m> is a product of two irrational numbers.</cell></row>
+</tabular>
+<p>(a) The proof contains a proof by contradiction inside a direct proof. In which line does the inner proof by contradiction begin?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div>
+<p>(b) How do the two parts fit together?</p>
+<div><ol marker="(1)">
+<li>They are two separate proofs of the whole statement, so either one of them would be enough on its own.</li>
+<li>The inner proof shows that <m>\sqrt{2}</m> is irrational, which the direct proof then uses for the first factor.</li>
+<li>The inner proof uses the conclusion of the direct proof, that <m>r</m> is a product of two irrational numbers.</li>
+<li>The direct proof needs both factors of <m>r = \sqrt{2} \times \dfrac{r}{\sqrt{2}}</m> to be irrational, and the inner proof shows that the second factor is.</li>
+</ol>  </div>
+<p>(c) Line 7 divides by <m>c</m>. Which earlier line guarantees that <m>c \neq 0</m>?</p>
+<div>Line <fillin characters="3" name="ans3"/>  </div>
+<p>(d) Would the statement still be true without the word ‘nonzero’?</p>
+<div><ol marker="(1)">
+<li>Yes: <m>0 = \sqrt{2} \times 0</m>, and <m>\sqrt{2}</m> is irrational.</li>
+<li>No: if a product <m>xy</m> equals 0, then <m>x = 0</m> or <m>y = 0</m>, and 0 is rational.</li>
+<li>Yes: the same proof works for <m>r = 0</m>, so the word ‘nonzero’ is only there to be safe.</li>
+<li>No: for <m>r = 0</m> the proof would divide by <m>c = 0</m> in line 7, and a proof that breaks shows that the statement is false.</li>
+</ol>  </div></p></statement>
+    <solution><p><p>The proof has two modules. The outer one is direct: it starts from a nonzero rational <m>r</m> (lines 1 and 2), writes <m>r = \sqrt{2} \times \dfrac{r}{\sqrt{2}}</m> (line 3), and needs both factors to be irrational. The first factor is irrational by a known result (line 4). The second needs a proof of its own, a proof by contradiction (lines 5 to 9): assume <m>\dfrac{r}{\sqrt{2}} = \dfrac{c}{d}</m>, deduce that <m>\sqrt{2}</m> is rational, and contradict line 4. Line 10 puts the two together.</p>
+<p>Line 7 divides by <m>c</m>. We know <m>c \neq 0</m> because <m>r \neq 0</m> (line 1), so <m>\dfrac{r}{\sqrt{2}} \neq 0</m>, and so <m>\dfrac{c}{d} \neq 0</m>. This is where ‘nonzero’ is used, and it is needed: 0 is not a product of two irrational numbers, since <m>xy = 0</m> forces <m>x = 0</m> or <m>y = 0</m>, and 0 is rational. (A proof that breaks does not on its own show that a statement is false; here the statement is false for 0 for this separate reason.)</p></p></solution>
+    <answer><p><m>5</m></p></answer>
+    <answer><p><m>(4)</m></p></answer>
+    <answer><p><m>1</m></p></answer>
+    <answer><p><m>(2)</m></p></answer>
+</stack-static>

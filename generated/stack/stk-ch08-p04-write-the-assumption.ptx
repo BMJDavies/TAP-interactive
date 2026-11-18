@@ -1,0 +1,11 @@
+<stack-static>
+    <statement><p><p>To prove a statement by contradiction, you start by assuming that it is false.</p>
+<p>Statement: for all real numbers <m>x</m> and <m>y</m>, <m>x^2 + xy + y^2 \geq 0</m>.</p>
+<p>Complete the assumption that starts a proof by contradiction of this statement. Type <m>\leq</m> as <c>&lt;=</c> and <m>\geq</m> as <c>&gt;=</c>.</p>
+<div>Assume that the inequality <fillin characters="20" name="ans2"/>  holds for [ every choice | at least one choice | no choice ]  of real numbers <m>x</m> and <m>y</m>.</div></p></statement>
+    <solution><p><p>The statement says that <m>x^2 + xy + y^2 \geq 0</m> holds for every choice of real numbers <m>x</m> and <m>y</m>. It is false exactly when at least one choice fails it, that is, gives <m>x^2 + xy + y^2 \lt 0</m>. So the proof starts: assume that there is at least one choice of real numbers <m>x</m> and <m>y</m> for which <m>x^2 + xy + y^2 \lt 0</m>.</p>
+<p>Two things change. ‘For every’ becomes ‘for at least one’, and the inequality is replaced by its opposite: <m>\geq</m> becomes <m>\lt</m>, <m>\gt</m> becomes <m>\leq</m>, <m>\leq</m> becomes <m>\gt</m>, and <m>\lt</m> becomes <m>\geq</m>. Any rearrangement of <m>x^2 + xy + y^2 \lt 0</m> is also correct, for example <m>\left(x + \dfrac{y}{2}\right)^2 + \dfrac{3y^2}{4} \lt 0</m>.</p>
+<p>Two slips to avoid. Assuming that <m>x^2 + xy + y^2 \lt 0</m> holds for every choice is far too strong: one failing choice is enough to make the statement false. And <m>x^2 + xy + y^2 \leq 0</m> includes the case where the two sides are equal, which agrees with the statement, so it is not the opposite of <m>x^2 + xy + y^2 \geq 0</m>.</p></p></solution>
+    <answer><p><m>y^2+x y+x^2 &lt; 0</m></p></answer>
+    <answer><p>at least one choice</p></answer>
+</stack-static>

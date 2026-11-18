@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch08_P01_Root_four</text></name>
+  <questiontext format="html"><text><![CDATA[<p>The proof that \(\sqrt{2}\) is irrational can be copied almost word for word for \(\sqrt{4}\), as below. But \(\sqrt{4} = 2 = \dfrac{2}{1}\) is rational, so this ‘proof’ must go wrong somewhere.</p>
+<table>
+<tr><td>1</td><td>Assume that \(\sqrt{4}\) is rational.</td></tr>
+<tr><td>2</td><td>Then \(\sqrt{4} = \dfrac{p}{q}\) for some integers \(p\) and \(q\) with \(q \neq 0\), and we may choose the fraction \(\dfrac{p}{q}\) in its simplest form.</td></tr>
+<tr><td>3</td><td>Squaring, \(4 = \dfrac{p^2}{q^2}\), so \(p^2 = 4q^2\).</td></tr>
+<tr><td>4</td><td>So \(p^2\) is even, and therefore \(p\) is even.</td></tr>
+<tr><td>5</td><td>So \(p = 2k\) for some integer \(k\), and \(p^2 = 4k^2\).</td></tr>
+<tr><td>6</td><td>From lines 3 and 5, \(4q^2 = 4k^2\), so \(q^2 = k^2\).</td></tr>
+<tr><td>7</td><td>So \(q^2\) is even, and therefore \(q\) is even.</td></tr>
+<tr><td>8</td><td>So \(p\) and \(q\) are both even, and \(\dfrac{p}{q}\) is not in its simplest form. This contradicts line 2.</td></tr>
+<tr><td>9</td><td>So the assumption in line 1 is false, and \(\sqrt{4}\) is irrational.</td></tr>
+</table>
+<ol class="tb-parts">
+<li><p>Which is the first line that does not follow from the lines before it?</p>
+<div>Line [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>Give an example of integers \(p\) and \(q\), with \(q \neq 0\) and \(\dfrac{p}{q}\) in its simplest form, that satisfy line 3.</p>
+<div>\(p =\) [[input:ans2]] [[validation:ans2]] \(q =\) [[input:ans3]] [[validation:ans3]] [[feedback:prt2]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Test the lines with actual numbers. Take \(p = 2\) and \(q = 1\): \(\sqrt{4} = \dfrac{2}{1}\), in its simplest form. Line 3: \(p^2 = 4 = 4 \times 1^2 = 4q^2\). Line 4: \(p^2 = 4\) is even, and \(p = 2\) is even. Line 5: \(k = 1\). Line 6: \(q^2 = 1 = k^2\). Line 7 claims that \(q^2\) is even, but \(q^2 = 1\).</p>
+<p>So line 7 is the first line that does not follow: from \(q^2 = k^2\) nothing follows about whether \(q^2\) is even. In the proof for \(\sqrt{2}\) the same step gave \(q^2 = 2k^2\), which is even. Lines 8 and 9 follow from line 7, so once line 7 fails they prove nothing.</p>
+<p>The examples for part (b) are \(p = 2, q = 1\), and the same numbers with signs changed. If \(p^2 = 4q^2\) and \(\dfrac{p}{q}\) is in its simplest form, then \(q = \pm 1\), so \(q\) is always odd.</p>
+<p>The method of a proof is not a recipe that works for every number: each step has to be checked again when the proof is copied to a new case.</p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: 7;
+ta2: 2;
+ta3: 1;
+validate_line9(ex) := block([vv], vv: ev(ex, simp), if integerp(vv) and vv >= 1 and vv <= 9 then "" else "Enter a line number from 1 to 9.");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: (a) line 7; (b) p = 2, q = 1]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 8.1 (Solution 8.1, pp. 37-38) in Section 8 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line9</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>4</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>intnum</options></input>
+  <input><name>ans3</name><type>numerical</type><tans>ta3</tans><boxsize>4</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>intnum</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>First line that fails</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. Line 6 gives \(q^2 = k^2\), and that says nothing about whether \(q^2\) is even. In the proof for \(\sqrt{2}\), the same step gave \(q^2 = 2k^2\), which is what made \(q^2\) even.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the line that changed</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>6</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 6 is correct: \(4q^2 = 4k^2\) does give \(q^2 = k^2\). It is the line that changed from the proof for \(\sqrt{2}\), but a line that has changed need not be wrong. Check whether each later line still follows from what is now known.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the assumption blamed</description><answertest>AlgEquiv</answertest><sans>is(member(ans1, [1, 2]))</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>A proof by contradiction may start from any assumption, true or false. Here the assumption is true (\(\sqrt{4} = \dfrac{2}{1}\), in its simplest form), so no correct argument can reach a contradiction: some later step must fail.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: the false conclusion blamed</description><answertest>AlgEquiv</answertest><sans>is(member(ans1, [8, 9]))</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line {@ans1@} does follow from the lines before it: once \(p\) and \(q\) are both even, \(\dfrac{p}{q}\) is not in its simplest form, which contradicts line 2, and a contradiction shows that the assumption is false. But the conclusion is false, so an earlier step must fail. Try \(p = 2\) and \(q = 1\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Line {@ans1@} is true for \(p = 2\), \(q = 1\) and \(k = 1\). Go through the lines with these numbers and find the first one that is false.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sp: ev(ans2, simp);
+sq: ev(ans3, simp);
+cf: gcd(sp, sq);]]></text></feedbackvariables>
+    <node><name>0</name><description>Line 3 holds</description><answertest>AlgEquiv</answertest><sans>is(sp^2 = 4*sq^2)</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>For your numbers \(p^2 = {@sp^2@}\) and \(4q^2 = {@4*sq^2@}\), so line 3 does not hold.</p>]]></text></falsefeedback></node>
+    <node><name>1</name><description>Simplest form, q not zero</description><answertest>AlgEquiv</answertest><sans>is(sq # 0) and is(cf = 1)</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. With \(p = {@sp@}\) and \(q = {@sq@}\), line 3 holds and the fraction is in its simplest form, so \(\sqrt{4}\) really is rational. Follow these numbers through the lines of the proof: the first line that is false for them is where the proof breaks.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>[[if test='is(sq = 0)']]\(q\) cannot be 0.[[else]]With \(p = {@sp@}\) and \(q = {@sq@}\) the fraction is not in its simplest form: \(p\) and \(q\) have the common factor {@cf@}.[[/if]] Line 2 chooses \(\dfrac{p}{q}\) in its simplest form.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>ta3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Line that changed; example not in simplest form</description>
+    <testinput><name>ans1</name><value>6</value></testinput>
+    <testinput><name>ans2</name><value>4</value></testinput>
+    <testinput><name>ans3</name><value>2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-T | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Assumption blamed; line 3 fails</description>
+    <testinput><name>ans1</name><value>1</value></testinput>
+    <testinput><name>ans2</name><value>2</value></testinput>
+    <testinput><name>ans3</name><value>2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Conclusion blamed; alternative example with negative signs</description>
+    <testinput><name>ans1</name><value>9</value></testinput>
+    <testinput><name>ans2</name><value>-2</value></testinput>
+    <testinput><name>ans3</name><value>-1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>A true line (generic); q = 0</description>
+    <testinput><name>ans1</name><value>4</value></testinput>
+    <testinput><name>ans2</name><value>0</value></testinput>
+    <testinput><name>ans3</name><value>0</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-T | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Invalid line number 10; example still marked</description>
+    <testinput><name>ans1</name><value>10</value></testinput>
+    <testinput><name>ans2</name><value>2</value></testinput>
+    <testinput><name>ans3</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid: a fraction for p</description>
+    <testinput><name>ans1</name><value>7</value></testinput>
+    <testinput><name>ans2</name><value>1/2</value></testinput>
+    <testinput><name>ans3</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

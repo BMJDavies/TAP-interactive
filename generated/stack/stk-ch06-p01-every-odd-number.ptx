@@ -1,0 +1,20 @@
+<stack-static>
+    <statement><p><p>In a proof about every odd number, you need an expression that gives every odd number as <m>k</m> runs through the integers, and nothing else. For each expression below, where <m>k</m> is an integer, decide whether it gives <em>every odd number</em>, <em>only some odd numbers</em> (and nothing that is not odd), or is <em>not always odd</em>.</p>
+<ol>
+<li><div><m>k + 1</m> [ every odd number | only some odd numbers | not always odd ]  </div></li>
+<li><div><m>3k + 2</m> [ every odd number | only some odd numbers | not always odd ]  </div></li>
+<li><div><m>2k - 1</m> [ every odd number | only some odd numbers | not always odd ]  </div></li>
+<li><div><m>k^2 + k + 1</m> [ every odd number | only some odd numbers | not always odd ]  </div></li>
+</ol></p></statement>
+    <solution><p><p>An expression describes every odd number when two things hold: every value is odd, and every odd number is a value. Expressions such as <m>2k + c</m> and <m>c - 2k</m>, with <m>c</m> odd, always work: each can be written as <m>2(\ldots) + 1</m>, and for any odd number you can solve for <m>k</m>. Expressions such as <m>4k + 3</m> are always odd but skip odd numbers, so a proof that starts <q>let <m>n = 4k + 3</m></q> proves the statement only for some odd numbers.</p>
+<ol>
+<li><p><m>k + 1</m>: This is not always odd. When <m>k = 1</m>, <m>k + 1 = 2</m>, which is even.</p></li>
+<li><p><m>3k + 2</m>: This is not always odd. When <m>k = 0</m>, <m>3k + 2 = 2</m>, which is even.</p></li>
+<li><p><m>2k - 1</m>: This gives every odd number. <m>2k - 1 = 2(k - 1) + 1</m> is always odd, and every odd number <m>n</m> is a value: take <m>k = \dfrac{n + 1}{2}</m>, which is an integer.</p></li>
+<li><p><m>k^2 + k + 1</m>: This gives only some odd numbers. <m>k^2 + k = k(k + 1)</m> is a product of two consecutive integers, so it is even and <m>k^2 + k + 1</m> is always odd. But its values are <m>1, 3, 7, 13, 21, \ldots</m>: 5 is missing.</p></li>
+</ol></p></solution>
+    <answer><p>not always odd</p></answer>
+    <answer><p>not always odd</p></answer>
+    <answer><p>every odd number</p></answer>
+    <answer><p>only some odd numbers</p></answer>
+</stack-static>

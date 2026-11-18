@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch03_P03_Ex6_Exponential_sum</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Conjecture: for all real numbers \(x\), \(\mathrm{e}^{2x}=\mathrm{e}^x+\mathrm{e}^2\).</p>
+<p>Disprove it.</p>
+<ol class="tb-parts">
+<li><p>Choose a value of \(x\).</p>
+<div>\(x=\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>At your value of \(x\), work out each side exactly. Type \(\mathrm{e}^2\) as e^2.</p>
+<div>\(\mathrm{e}^{2x}=\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div>
+<div>\(\mathrm{e}^x+\mathrm{e}^2=\) [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A disproof by counterexample chooses a value, works out both sides exactly, and checks that they differ.</p>
+<p>Take \(x=0\). Then \(\mathrm{e}^{2x}=\mathrm{e}^0=1\), while \(\mathrm{e}^x+\mathrm{e}^2=1+\mathrm{e}^2\). Since \(\mathrm{e}^2\gt 0\), \(1\neq 1+\mathrm{e}^2\), so the conjecture is false.</p>
+<p>The correct law of indices is \(\mathrm{e}^{2x}=\left(\mathrm{e}^x\right)^2\). The conjecture mixes up a sum with a product: \(\mathrm{e}^x\times\mathrm{e}^2=\mathrm{e}^{x+2}\), but \(\mathrm{e}^x+\mathrm{e}^2\) cannot be written as a single power.</p>
+<p>The equation does have one solution. Writing \(u=\mathrm{e}^x\), it becomes \(u^2-u-\mathrm{e}^2=0\), which has one positive root, so the equation is true for exactly one value, \(x=\ln\left(\dfrac{1+\sqrt{1+4\mathrm{e}^2}}{2}\right)\approx 1.18\). So a conjecture can be true at a value you happen to try, and every other value of \(x\) is a counterexample.</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: 0;
+ta2: 1;
+ta3: 1+%e^2;
+/* validate_real: the numerical input accepts i, inf, sets, lists, booleans and equations; only a real number may reach the PRT. Same validator as Ch02_P01_Checks_are_not_a_proof. */
+validate_real(ex) := block([sv, fv], sv: ev(ex, simp), fv: errcatch(ev(bfloat(sv), simp)), if ratnump(sv) then "" else if is(fv = []) then "Enter a single real number, for example 3, -1/2 or sqrt(2)." else if bfloatp(first(fv)) then "" else "Enter a single real number, for example 3, -1/2 or sqrt(2).");
+/* nearzero: a numerical fallback for entries that do not simplify exactly, such as sin(1)^2+cos(1)^2 for 1. True when the size of z is less than 10^(-12) times the size of sc: z is 0 to within rounding error, on the scale sc. */
+nearzero(z, sc) := block([fz, fs], fz: errcatch(ev(float(z), numer, simp)), fs: errcatch(ev(float(sc), numer, simp)), if is(fz = []) or is(fs = []) then return(false), fz: first(fz), fs: first(fs), if floatnump(fz) and floatnump(fs) then is(abs(fz) < 10^(-12)*abs(fs)) else false);]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: Exercise 6, any x except ln((1+sqrt(1+4e^2))/2), with both sides evaluated (x = 0: 1 and 1+e^2).]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is directly adapted from Exercise 6 in Section 3 (p. 8) of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>6</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_real</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>12</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options></options></input>
+  <input><name>ans3</name><type>numerical</type><tans>ta3</tans><boxsize>12</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options></options></input>
+  <prt>
+    <name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle>
+    <feedbackvariables><text><![CDATA[sx: ev(ans1, simp);
+/* Exact test first; a value that is not rational is then compared numerically, in case the root is typed in a form that does not simplify. */
+holds6: is(ev(radcan(exp(2*sx) - exp(sx) - exp(2)), simp) = 0) or (not ratnump(sx) and nearzero(exp(2*sx) - exp(sx) - exp(2), exp(2*sx)));]]></text></feedbackvariables>
+    <node>
+      <name>0</name><description>The sides differ at x</description><answertest>AlgEquiv</answertest><sans>holds6</sans><tans>false</tans><testoptions></testoptions><quiet>1</quiet>
+      <truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>At \(x={@sx@}\) the two sides are different, so this value is a counterexample.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>At \(x={@sx@}\) the two sides are equal: you have found the one value of \(x\) for which the equation is true. Any other value of \(x\) is a counterexample.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+  <prt>
+    <name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle>
+    <feedbackvariables><text><![CDATA[sx: ev(ans1, simp);
+lhs6: ev(exp(2*sx), simp);
+twoex: ev(2*exp(sx), simp);]]></text></feedbackvariables>
+    <node>
+      <name>0</name><description>Left side</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>lhs6</tans><testoptions></testoptions><quiet>0</quiet>
+      <truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote>
+      <truefeedback format="html"><text></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name><description>Diagnostic: 2e^x</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>twoex</tans><testoptions></testoptions><quiet>0</quiet>
+      <truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>\(\mathrm{e}^{2x}\) means \(\mathrm{e}\) raised to the power \(2x\), which is \(\left(\mathrm{e}^x\right)^2\), not \(2\mathrm{e}^x\).</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Substitute \(x={@sx@}\) into \(\mathrm{e}^{2x}\): the power is \(2x={@2*sx@}\).</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+  <prt>
+    <name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle>
+    <feedbackvariables><text><![CDATA[sx: ev(ans1, simp);
+rhs6: ev(exp(sx) + exp(2), simp);
+exsum: ev(exp(sx + 2), simp);]]></text></feedbackvariables>
+    <node>
+      <name>0</name><description>Right side</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>rhs6</tans><testoptions></testoptions><quiet>0</quiet>
+      <truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote>
+      <truefeedback format="html"><text></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote>
+      <falsefeedback format="html"><text></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name><description>Diagnostic: e^(x+2)</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>exsum</tans><testoptions></testoptions><quiet>0</quiet>
+      <truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>\(\mathrm{e}^x+\mathrm{e}^2\) is a sum of two powers and cannot be written as a single power. The rule \(\mathrm{e}^x\times\mathrm{e}^2=\mathrm{e}^{x+2}\) is for products, not sums.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-2-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Substitute \(x={@sx@}\) into \(\mathrm{e}^x+\mathrm{e}^2\).</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest>
+    <testcase>1</testcase><description>Correct at x = 1</description>
+    <testinput><name>ans1</name><value>1</value></testinput>
+    <testinput><name>ans2</name><value>%e^2</value></testinput>
+    <testinput><name>ans3</name><value>%e+%e^2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>2</testcase><description>Alternative correct at x = 0 (the teacher's answer)</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>ta3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>3</testcase><description>Diagnostics: 2e^x and e^(x+2)</description>
+    <testinput><name>ans1</name><value>1</value></testinput>
+    <testinput><name>ans2</name><value>2*%e</value></testinput>
+    <testinput><name>ans3</name><value>%e^3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>4</testcase><description>Generic wrong values</description>
+    <testinput><name>ans1</name><value>1</value></testinput>
+    <testinput><name>ans2</name><value>%e^2+1</value></testinput>
+    <testinput><name>ans3</name><value>%e^2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>5</testcase><description>The one root, where the sides agree</description>
+    <testinput><name>ans1</name><value>log((1+sqrt(1+4*%e^2))/2)</value></testinput>
+    <testinput><name>ans2</name><value>((1+sqrt(1+4*%e^2))/2)^2</value></testinput>
+    <testinput><name>ans3</name><value>(1+sqrt(1+4*%e^2))/2+%e^2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>6</testcase><description>Invalid: a decimal x</description>
+    <testinput><name>ans1</name><value>0.5</value></testinput>
+    <testinput><name>ans2</name><value>1</value></testinput>
+    <testinput><name>ans3</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>7</testcase><description>Invalid: i is not a real number (it would otherwise score on all three parts)</description>
+    <testinput><name>ans1</name><value>%i</value></testinput>
+    <testinput><name>ans2</name><value>%e^(2*%i)</value></testinput>
+    <testinput><name>ans3</name><value>%e^%i+%e^2</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>8</testcase><description>Invalid: infinity is not a real number</description>
+    <testinput><name>ans1</name><value>inf</value></testinput>
+    <testinput><name>ans2</name><value>1</value></testinput>
+    <testinput><name>ans3</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>9</testcase><description>The one root in a form that does not simplify exactly</description>
+    <testinput><name>ans1</name><value>log((1+sqrt(1+4*%e^2))/2)*(sin(1)^2+cos(1)^2)</value></testinput>
+    <testinput><name>ans2</name><value>1</value></testinput>
+    <testinput><name>ans3</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

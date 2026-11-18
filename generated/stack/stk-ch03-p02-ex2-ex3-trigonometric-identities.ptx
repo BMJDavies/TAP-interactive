@@ -1,0 +1,16 @@
+<stack-static>
+    <statement><p><p>Give a counterexample to each conjecture. Give <m>\theta</m> in degrees, as a number without the <m>^\circ</m> sign.</p>
+<ol class="tb-parts">
+<li><p>For all <m>\theta</m>, <m>\cos(-\theta)=-\cos\theta</m>.</p>
+<div><m>\theta=</m> <fillin characters="6" name="ans1"/>  </div></li>
+<li><p>For all <m>\theta</m>, <m>\sin(2\theta)=2\sin\theta</m>.</p>
+<div><m>\theta=</m> <fillin characters="6" name="ans2"/>  </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p>The cosine graph is symmetric about the vertical axis, so <m>\cos(-\theta)=\cos\theta</m> for every <m>\theta</m>. The conjecture therefore says <m>\cos\theta=-\cos\theta</m>, that is <m>\cos\theta=0</m>, which is true only for <m>\theta=90^\circ+180^\circ k</m>, where <m>k</m> is an integer. Any other angle is a counterexample. For example, take <m>\theta=0^\circ</m>: <m>\cos(-0^\circ)=\cos 0^\circ=1</m>, but <m>-\cos 0^\circ=-1</m>. Since <m>1\neq -1</m>, the conjecture is false.</p></li>
+<li><p>The double angle formula gives <m>\sin 2\theta=2\sin\theta\cos\theta</m>. So the conjecture needs <m>2\sin\theta\cos\theta=2\sin\theta</m>, that is <m>\sin\theta(\cos\theta-1)=0</m>, which happens only when <m>\sin\theta=0</m>, that is <m>\theta=180^\circ k</m>. Any other angle is a counterexample. For example, take <m>\theta=90^\circ</m>: <m>\sin 180^\circ=0</m>, but <m>2\sin 90^\circ=2</m>. Since <m>0\neq 2</m>, the conjecture is false.</p></li>
+</ol>
+<p>The unit matters. In radians, <m>\theta=90</m> is a counterexample to (a), because <m>\cos 90\neq 0</m> when <m>90</m> is in radians; but <m>90^\circ</m> is not a counterexample, because <m>\cos 90^\circ=0</m>.</p></p></solution>
+    <answer><p><m>0</m></p></answer>
+    <answer><p><m>90</m></p></answer>
+</stack-static>

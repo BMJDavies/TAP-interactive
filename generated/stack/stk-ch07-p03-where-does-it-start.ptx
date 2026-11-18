@@ -1,0 +1,27 @@
+<stack-static>
+    <statement><p><ol class="tb-parts">
+<li><p>For which positive integers <m>n</m> is the inequality <m>n! &gt; 2^n</m> false? Enter them as a set, for example <c>{1, 2}</c>.</p>
+<div><fillin characters="12" name="ans1"/>  </div></li>
+<li><p>The induction step in the example used <m>k \geq 4</m>, but it only needs <m>k + 1 \geq 2</m>: if <m>k! &gt; 2^k</m>, then</p>
+<p><me>(k+1)! = (k+1) \times k! &gt; (k+1) \times 2^k \geq 2 \times 2^k = 2^{k+1}.</me></p>
+<p>So the step works for every <m>k \geq 1</m>. Which statement explains why the proof shows <m>n! &gt; 2^n</m> only for <m>n \geq 4</m>?</p>
+<div><ol marker="(1)">
+<li>The induction step fails for <m>k = 1, 2</m> and <m>3</m>, so the proof has to start at <m>n = 4</m>.</li>
+<li>The statement is false for <m>n = 1, 2</m> and <m>3</m>, and the chain of implications needs a true starting case; the first one is <m>n = 4</m>.</li>
+<li>The base case is a formality, because the induction step on its own proves <m>n! &gt; 2^n</m> for every <m>n \geq 1</m>.</li>
+<li>Any base case would give a valid proof, and <m>n = 4</m> was chosen because it is the easiest case to check.</li>
+</ol>  </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p>Compare <m>n!</m> and <m>2^n</m> for the first few values of <m>n</m>:</p>
+<tabular>
+<row><cell><m>n</m></cell><cell>1</cell><cell>2</cell><cell>3</cell><cell>4</cell><cell>5</cell></row>
+<row><cell><m>n!</m></cell><cell>1</cell><cell>2</cell><cell>6</cell><cell>24</cell><cell>120</cell></row>
+<row><cell><m>2^n</m></cell><cell>2</cell><cell>4</cell><cell>8</cell><cell>16</cell><cell>32</cell></row>
+</tabular>
+<p>The inequality is false for <m>n = 1, 2, 3</m> and true for <m>n = 4</m>. The example proves it for every <m>n \geq 4</m>, so the answer is <m>\{1, 2, 3\}</m>.</p></li>
+<li><p>The induction step needs only <m>k + 1 \geq 2</m>, so it passes the truth of the statement from <m>k</m> to <m>k+1</m> for every <m>k \geq 1</m>. But the statement is false for <m>n = 1, 2</m> and <m>3</m>, so there is no true case to pass on until <m>n = 4</m>. The base case must be a true statement, and the chain of implications starts from it: the first true case is <m>n = 4</m>. An induction step on its own proves nothing.</p></li>
+</ol></p></solution>
+    <answer><p><m>\left \{1 , 2 , 3 \right \}</m></p></answer>
+    <answer><p><m>(2)</m></p></answer>
+</stack-static>

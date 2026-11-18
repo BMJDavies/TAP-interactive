@@ -1,0 +1,19 @@
+<stack-static>
+    <statement><p><p>In the exercise above, <m>x</m> and <m>y</m> are different integers.</p>
+<ol class="tb-parts">
+<li><p>Complete the line below.</p>
+<div><m>x^{k+1} - y^{k+1} = x\left(x^k - y^k\right) +</m> <fillin characters="10" name="ans1"/> <m>(x - y)</m>  </div></li>
+<li><p>Now assume that <m>x^k - y^k = (x - y)q</m> for some integer <m>q</m>. Complete the line below. Give your answer in terms of <m>x</m>, <m>y</m>, <m>k</m> and <m>q</m>.</p>
+<div><m>x^{k+1} - y^{k+1} = (x - y) \times \Big(</m> <fillin characters="15" name="ans2"/> <m>\Big)</m>  </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p>The trick is to add and subtract <m>xy^k</m>, so that <m>x^k - y^k</m> appears:</p>
+<p><me>x^{k+1} - y^{k+1} = x^{k+1} - xy^k + xy^k - y^{k+1} = x\left(x^k - y^k\right) + y^k(x - y).</me></p>
+<p>So the missing factor is <m>y^k</m>.</p></li>
+<li><p>By the induction hypothesis, <m>x^k - y^k = (x - y)q</m>, so</p>
+<p><me>x^{k+1} - y^{k+1} = x(x - y)q + y^k(x - y) = (x - y)\left(xq + y^k\right).</me></p>
+<p>Since <m>x</m>, <m>y</m> and <m>q</m> are integers, <m>xq + y^k</m> is an integer, so <m>x^{k+1} - y^{k+1}</m> is divisible by <m>x - y</m>. Splitting the other way, <m>x^{k+1} - y^{k+1} = y\left(x^k - y^k\right) + x^k(x - y)</m>, gives <m>(x - y)\left(yq + x^k\right)</m>, which is just as good.</p></li>
+</ol></p></solution>
+    <answer><p><m>y^{k}</m></p></answer>
+    <answer><p><m>y^{k}+q x</m></p></answer>
+</stack-static>

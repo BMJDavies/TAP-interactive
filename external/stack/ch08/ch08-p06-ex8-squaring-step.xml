@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch08_P06_Ex8_Squaring_step</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here is the start of a proof of the exercise above, that \(a + b \geq 2\sqrt{ab}\) for all positive real numbers \(a\) and \(b\).</p>
+<p>Suppose, for contradiction, that \(a + b \lt 2\sqrt{ab}\) for some positive real numbers \(a\) and \(b\). Both sides are positive, so squaring keeps the inequality: \((a + b)^2 \lt 4ab\).</p>
+<ol class="tb-parts">
+<li><p>Rearranging gives:</p>
+<div>\(\Big(\) [[input:ans1]] [[validation:ans1]] \(\Big)^2 \lt 0\) [[feedback:prt1]]</div></li>
+<li><p>The proof needs \(a\) and \(b\) to be positive. Give an example of real numbers \(a\) and \(b\) with \(ab \geq 0\), not both positive, for which \(a + b \lt 2\sqrt{ab}\).</p>
+<div>\(a =\) [[input:ans2]] [[validation:ans2]] \(b =\) [[input:ans3]] [[validation:ans3]] [[feedback:prt2]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<ol class="tb-parts">
+<li><p>Here is the whole proof. Suppose, for contradiction, that \(a + b \lt 2\sqrt{ab}\) for some positive real numbers \(a\) and \(b\). Both sides are positive, so squaring keeps the inequality: \[(a + b)^2 \lt 4ab, \quad\text{so}\quad a^2 + 2ab + b^2 \lt 4ab, \quad\text{so}\quad a^2 - 2ab + b^2 \lt 0,\] that is, \((a - b)^2 \lt 0\). But the square of a real number is never negative: a contradiction. So \(a + b \geq 2\sqrt{ab}\), with equality exactly when \(a = b\). The answer \(b - a\) is just as good, since \((b - a)^2 = (a - b)^2\).</p></li>
+<li><p>Take \(a = b = -1\). Then \(ab = 1\), \(a + b = -2\) and \(2\sqrt{ab} = 2\), so \(a + b \lt 2\sqrt{ab}\): the inequality of the exercise fails, so the statement really needs \(a\) and \(b\) to be positive. Here squaring \(-2 \lt 2\) would give \(4 \lt 4\), which is false: an inequality can be squared safely only when both sides are non-negative. That is the step of the proof that needs \(a\) and \(b\) to be positive.</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[validate_ab(ex) := if every(lambda([v], member(v, [a, b])), listofvars(ex)) then "" else "Use only the letters a and b.";
+ta1: a - b;
+ta2: -1;
+ta3: -1;
+d1: a + b;
+d2: sqrt(a) - sqrt(b);
+d3: (a - b)^2;
+validate_real(ex) := block([sv, fv], sv: ev(ex, simp), fv: errcatch(ev(bfloat(sv), simp)), if ratnump(sv) then "" else if is(fv = []) then "Enter a single real number, for example 3, -1/2 or sqrt(2)." else if bfloatp(first(fv)) then "" else "Enter a single real number, for example 3, -1/2 or sqrt(2).");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: (a) a - b; (b) e.g. a = b = -1]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is adapted from Exercise 8 (p. 45) in Section 8 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: with the inequality corrected to a + b at least 2 sqrt(ab), it asks for the key step of the proof and for an example showing why a and b must be positive.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>12</boxsize><strictsyntax>1</strictsyntax><insertstars>5</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_ab</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>6</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_real</options></input>
+  <input><name>ans3</name><type>numerical</type><tans>ta3</tans><boxsize>6</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_real</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>The square is (a - b)^2</description><answertest>AlgEquiv</answertest><sans>ans1^2</sans><tans>ta1^2</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \((a + b)^2 - 4ab = a^2 - 2ab + b^2 = (a - b)^2\). A square of a real number is never negative, so \((a - b)^2 \lt 0\) is the contradiction.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: -4ab dropped</description><answertest>AlgEquiv</answertest><sans>ans1^2</sans><tans>d1^2</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Subtract \(4ab\) from both sides first: \((a + b)^2 - 4ab \lt 0\). Then expand and simplify.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the square for the unsquared line</description><answertest>AlgEquiv</answertest><sans>ans1^2</sans><tans>d2^2</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Good thinking, but that is for the unsquared line: \(a + b - 2\sqrt{ab} = \left(\sqrt{a} - \sqrt{b}\right)^2\). Here, rearrange the squared line, \((a + b)^2 \lt 4ab\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: the whole square typed into the box</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>d3</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Your expression equals the whole left-hand side. The brackets around the box are already squared, so enter only the expression whose square this is.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Expand \((a + b)^2\), subtract \(4ab\), and write the result as a perfect square.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sa: ev(ans2, simp);
+sb: ev(ans3, simp);
+negprod: is(ev(sa*sb, simp) < 0);
+bothpos: is(sa > 0) and is(sb > 0);
+holds: if negprod then false else is(ev(sa + sb - 2*sqrt(sa*sb), simp) < 0);]]></text></feedbackvariables>
+    <node><name>0</name><description>Diagnostic: ab negative</description><answertest>AlgEquiv</answertest><sans>negprod</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>For your numbers \(ab = {@sa*sb@}\) is negative, so \(\sqrt{ab}\) is not a real number.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: both positive</description><answertest>AlgEquiv</answertest><sans>bothpos</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>For positive \(a\) and \(b\), \(a + b \geq 2\sqrt{ab}\) always holds: that is what the exercise proves. Choose numbers that are not both positive.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>The inequality fails</description><answertest>AlgEquiv</answertest><sans>holds</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: here \(a + b = {@sa+sb@}\) and \(2\sqrt{ab} = {@2*sqrt(sa*sb)@}\). Squaring would give \((a + b)^2 = {@(sa+sb)^2@}\) and \(4ab = {@4*sa*sb@}\), so \((a + b)^2 \lt 4ab\) is false: squaring both sides of an inequality need not keep it when one side is negative. That is where the proof needs \(a\) and \(b\) to be positive.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>For your numbers \(a + b = {@sa+sb@}\) and \(2\sqrt{ab} = {@2*sqrt(sa*sb)@}\), so \(a + b \lt 2\sqrt{ab}\) is false. The right-hand side is never negative. Which numbers make the left-hand side negative and still have \(ab \geq 0\)?</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>ta3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Alternative: b - a; zero and a negative</description>
+    <testinput><name>ans1</name><value>b-a</value></testinput>
+    <testinput><name>ans2</name><value>0</value></testinput>
+    <testinput><name>ans3</name><value>-2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>-4ab dropped; both positive</description>
+    <testinput><name>ans1</name><value>a+b</value></testinput>
+    <testinput><name>ans2</name><value>1</value></testinput>
+    <testinput><name>ans3</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Square of the unsquared line; ab negative</description>
+    <testinput><name>ans1</name><value>sqrt(a)-sqrt(b)</value></testinput>
+    <testinput><name>ans2</name><value>-1</value></testinput>
+    <testinput><name>ans3</name><value>2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Generic; zero and zero</description>
+    <testinput><name>ans1</name><value>a^2-b^2</value></testinput>
+    <testinput><name>ans2</name><value>0</value></testinput>
+    <testinput><name>ans3</name><value>0</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Invalid: another letter</description>
+    <testinput><name>ans1</name><value>a-c</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>ta3</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>The whole square in the box (expanded); surds as the example</description>
+    <testinput><name>ans1</name><value>a^2-2*a*b+b^2</value></testinput>
+    <testinput><name>ans2</name><value>-sqrt(2)</value></testinput>
+    <testinput><name>ans3</name><value>-sqrt(3)</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>Invalid: a is not a real number</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>%i</value></testinput>
+    <testinput><name>ans3</name><value>ta3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Invalid: b is minus infinity</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <testinput><name>ans3</name><value>minf</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

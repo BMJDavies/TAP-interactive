@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch07_P06_Ex4_Difference</text></name>
+  <questiontext format="html"><text><![CDATA[<p>For the exercise above, let \(f(n) = 2n^3 + 3n^2 + n\).</p>
+<ol class="tb-parts">
+<li><p>Expand and simplify \(f(k+1) - f(k)\).</p>
+<div>\(f(k+1) - f(k) =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>Now assume that \(f(k) = 6m\) for some integer \(m\). Complete the line below. Give your answer in terms of \(k\) and \(m\).</p>
+<div>\(f(k+1) = 6 \times \Big(\) [[input:ans2]] \(\Big)\) [[validation:ans2]] [[feedback:prt2]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<ol class="tb-parts">
+<li><p>Expand \(f(k+1)\) using \((k+1)^3 = k^3 + 3k^2 + 3k + 1\) and \((k+1)^2 = k^2 + 2k + 1\):</p>
+<p>\[f(k+1) = 2(k+1)^3 + 3(k+1)^2 + (k+1) = 2k^3 + 9k^2 + 13k + 6.\]</p>
+<p>Subtract \(f(k) = 2k^3 + 3k^2 + k\):</p>
+<p>\[f(k+1) - f(k) = 6k^2 + 12k + 6 = 6(k+1)^2.\]</p></li>
+<li><p>So \(f(k+1) = f(k) + 6(k+1)^2\). By the induction hypothesis \(f(k) = 6m\), so</p>
+<p>\[f(k+1) = 6m + 6(k+1)^2 = 6\left(m + (k+1)^2\right),\]</p>
+<p>and \(m + (k+1)^2\) is an integer. So \(f(k+1)\) is divisible by 6, which is the statement for \(n = k+1\).</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[fk: 2*k^3+3*k^2+k;
+fk1: 2*(k+1)^3+3*(k+1)^2+(k+1);
+ta1: 6*k^2+12*k+6;
+ta2: m+(k+1)^2;
+dfk1: expand(fk1);
+fr: [6, 6*k+6, 6*k^2+6*k+6];
+dm0: (k+1)^2;
+dm6: 6*m+6*(k+1)^2;
+/* Structural degree of an expression as written: a sum takes the largest of its terms, a product adds, a power multiplies. The simplified difference has structural degree 2. An answer of degree 3 or more still contains cubes that have not been cancelled. */
+sdeg(ex) := block([oo], if numberp(ex) then return(0), if atom(ex) then return(1), oo: safe_op(ex), if is(oo = "+") then return(lmax(map(sdeg, args(ex)))), if is(oo = "*") then return(apply("+", map(sdeg, args(ex)))), if is(oo = "-") then return(sdeg(first(args(ex)))), if is(oo = "/") then return(sdeg(first(args(ex))) - sdeg(second(args(ex)))), if is(oo = "^") then return(if integerp(second(args(ex))) then second(args(ex))*sdeg(first(args(ex))) else sdeg(first(args(ex)))), 1);
+validate_km(ex) := if every(lambda([v], member(v, [k, m])), listofvars(ex)) then "" else "Write your answer in terms of k and m.";
+validate_k(ex) := if every(lambda([v], is(v = k)), listofvars(ex)) then "" else "Write your answer in terms of k only.";]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: 6(k+1)^2; m+(k+1)^2]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is adapted from Exercise 4 (p. 36) in Section 7 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: the student works out the algebra of the induction step rather than writing the proof.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>20</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_k</options></input>
+  <input><name>ans2</name><type>algebraic</type><tans>ta2</tans><boxsize>20</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_km</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[frf: if some(lambda([w], is(ratsimp(ans1 - w) = 0)), fr) then 1 else 0;
+unsimp: if is(sdeg(ans1) > 2) then 1 else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>f(k+1) - f(k)</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>3</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: f(k) not subtracted</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>dfk1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>That is \(f(k+1)\) itself. Now subtract \(f(k) = 2k^3 + 3k^2 + k\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: a wrong expansion of (k+1)^3 or (k+1)^2</description><answertest>AlgEquiv</answertest><sans>frf</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Check your expansions: \((k+1)^3 = k^3 + 3k^2 + 3k + 1\) and \((k+1)^2 = k^2 + 2k + 1\). Your answer is still a multiple of 6, so getting a multiple of 6 is not a check on the algebra.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Expand \(2(k+1)^3 + 3(k+1)^2 + (k+1)\), then subtract \(2k^3 + 3k^2 + k\).</p>]]></text></falsefeedback></node>
+    <node><name>3</name><description>Form: equal to the difference, but is it expanded and simplified?</description><answertest>AlgEquiv</answertest><sans>unsimp</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>That is equal to \(f(k+1) - f(k)\), but it is not yet expanded and simplified. Multiply out the brackets and collect like terms: the terms in \(k^3\) should cancel.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>1.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Yes: \(f(k+1) - f(k) = 6k^2 + 12k + 6 = 6(k+1)^2\), a multiple of 6.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>f(k+1)/6 using the hypothesis</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>ta2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(f(k+1) = f(k) + 6(k+1)^2 = 6m + 6(k+1)^2 = 6\left(m + (k+1)^2\right)\), and \(m + (k+1)^2\) is an integer.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the hypothesis not used</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>dm0</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\(f(k+1) = f(k) + 6(k+1)^2\), and \(f(k) = 6m\) by the induction hypothesis, so \(m\) must appear.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: not divided by 6</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>dm6</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>That is \(f(k+1)\) itself. The bracket is \(f(k+1)\) divided by 6.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Write \(f(k+1) = f(k) + \big(f(k+1) - f(k)\big)\), use your answer to part (a) and \(f(k) = 6m\), then take out the factor 6.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct, (a) derived from f(k+1) - f(k), expanded and simplified</description>
+    <testinput><name>ans1</name><value>ev(expand(fk1 - fk), simp)</value></testinput>
+    <testinput><name>ans2</name><value>m+k^2+2*k+1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Diagnostics: f(k+1) itself; m missing</description>
+    <testinput><name>ans1</name><value>dfk1</value></testinput>
+    <testinput><name>ans2</name><value>dm0</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Diagnostics: wrong expansion still a multiple of 6; not divided by 6</description>
+    <testinput><name>ans1</name><value>6*k+6</value></testinput>
+    <testinput><name>ans2</name><value>dm6</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Generic wrong answers</description>
+    <testinput><name>ans1</name><value>ta1+1</value></testinput>
+    <testinput><name>ans2</name><value>ta2+1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Invalid (b): stray letter q, rejected by validate_km; (a) still marked</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>q+(k+1)^2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Form: the difference typed without expanding it is equal but not simplified</description>
+    <testinput><name>ans1</name><value>fk1 - fk</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-4-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Correct in factorised forms</description>
+    <testinput><name>ans1</name><value>6*(k+1)^2</value></testinput>
+    <testinput><name>ans2</name><value>(k+1)^2+m</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>Form: expanded with the cubes still showing in a product</description>
+    <testinput><name>ans1</name><value>(k+1)*(2*(k+1)^2+3*(k+1)+1)-k*(2*k^2+3*k+1)</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-4-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Correct, partly factorised</description>
+    <testinput><name>ans1</name><value>6*(k^2+2*k+1)</value></testinput>
+    <testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-4-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

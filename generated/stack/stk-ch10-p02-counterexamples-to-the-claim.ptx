@@ -1,0 +1,32 @@
+<stack-static>
+    <statement><p><p>Here again is the proof that <m>\sqrt{9}</m> is irrational.</p>
+<tabular>
+<row><cell>1</cell><cell>Assume that <m>\sqrt{9} = \dfrac{a}{b}</m>, where <m>a</m> and <m>b</m> are integers with <m>b \neq 0</m>, and <m>a</m> and <m>b</m> are coprime (they have no common factor other than 1).</cell></row>
+<row><cell>2</cell><cell>Then <m>9 = \dfrac{a^2}{b^2}</m>,</cell></row>
+<row><cell>3</cell><cell>so <m>9b^2 = a^2</m>.</cell></row>
+<row><cell>4</cell><cell>Therefore <m>a^2</m> is a multiple of 9,</cell></row>
+<row><cell>5</cell><cell>so <m>a</m> is a multiple of 9, and we can write <m>a = 9k</m> for some integer <m>k</m>.</cell></row>
+<row><cell>6</cell><cell>Then <m>9b^2 = (9k)^2 = 81k^2</m>,</cell></row>
+<row><cell>7</cell><cell>so <m>b^2 = 9k^2</m>.</cell></row>
+<row><cell>8</cell><cell>Therefore <m>b^2</m> is a multiple of 9,</cell></row>
+<row><cell>9</cell><cell>so <m>b</m> is a multiple of 9.</cell></row>
+<row><cell>10</cell><cell>So <m>a</m> and <m>b</m> are both multiples of 9, and they cannot be coprime.</cell></row>
+<row><cell>11</cell><cell>This is a contradiction, so <m>\sqrt{9}</m> is irrational.</cell></row>
+</tabular>
+<p>Line 5 uses this claim: if <m>a^2</m> is a multiple of 9, then <m>a</m> is a multiple of 9.</p>
+<ol class="tb-parts">
+<li><p>Give an example of an integer <m>a</m> for which <m>a^2</m> is a multiple of 9 but <m>a</m> is not a multiple of 9.</p>
+<div><m>a =</m> <fillin characters="5" name="ans1"/>  </div></li>
+<li><p>The proof uses the same false claim once more. In which line?</p>
+<div>Line <fillin characters="3" name="ans2"/>  </div></li>
+<li><p>The claim is false for other numbers too. Give an example of an integer <m>a</m> for which <m>a^2</m> is a multiple of <m>{8}</m> but <m>a</m> is not a multiple of <m>{8}</m>.</p>
+<div><m>a =</m> <fillin characters="5" name="ans3"/>  </div></li>
+</ol></p></statement>
+    <solution><p><p>To test a general claim, try some values: one counterexample shows that the claim is false, and so that a step relying on it does not follow.</p>
+<p>(a) The claim fails for every multiple of 3 that is not a multiple of 9. For example, <m>a = 3</m> gives <m>a^2 = 9</m>, and <m>a = 6</m> gives <m>a^2 = 36 = 9 \times 4</m>, but neither 3 nor 6 is a multiple of 9. What is true is weaker: if <m>a^2</m> is a multiple of 9, then <m>a</m> is a multiple of 3, because 3 is prime.</p>
+<p>(b) Line 9 makes the same false step for <m>b</m>: it concludes that <m>b</m> is a multiple of 9 because <m>b^2</m> is.</p>
+<p>(c) For <m>{8}</m>, <m>a = {4}</m> works: <m>{16} = {8} \times {2}</m>, but <m>{4}</m> is not a multiple of <m>{8}</m>. The claim <q>if <m>a^2</m> is a multiple of <m>N</m>, then <m>a</m> is a multiple of <m>N</m></q> is true when <m>N</m> is prime, which is why the same method proves that <m>\sqrt{2}</m> and <m>\sqrt{3}</m> are irrational (see the chapter on proof by contradiction). It fails whenever <m>N</m> has a square factor greater than 1, as <m>{8}</m> does.</p></p></solution>
+    <answer><p><m>3</m></p></answer>
+    <answer><p><m>9</m></p></answer>
+    <answer><p><m>4</m></p></answer>
+</stack-static>

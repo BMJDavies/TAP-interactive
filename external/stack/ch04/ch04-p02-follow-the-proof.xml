@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch04_P02_Follow_the_proof</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Follow the proof with the odd number \(n = {@nn@}\).</p>
+<p>(a) The proof writes \(n = 2k + 1\). What is \(k\) here?</p>
+<div>\(k =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div>
+<p>(b) The proof says that one of \(k\) and \(k + 1\) is even. Which one, here?</p>
+<div>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div>
+<p>(c) The proof writes \(k(k + 1) = 2m\) and then \(n^2 - 1 = 8m\). What is \(m\) here?</p>
+<div>\(m =\) [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div>
+<p>(d) The proof shows that \(n^2 - 1\) is divisible by 8 for every odd number \(n\). Is it always divisible by 16? Give an example of an odd number \(n\) for which \(n^2 - 1\) is not divisible by 16.</p>
+<div>\(n =\) [[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Follow each line of the proof with \(n = {@nn@}\).</p>
+<ul>
+<li><p>(a) \(n = 2k + 1\) gives \(k = \dfrac{n - 1}{2} = {@tk@}\). Check: \(2 \times [[if test="is(tk < 0)"]]\left({@tk@}\right)[[/if]][[if test="is(tk >= 0)"]]{@tk@}[[/if]] + 1 = {@nn@}\).</p></li>
+<li><p>(b) \(k = {@tk@}\) and \(k + 1 = {@tk1@}\). The even one is [[if test="is(partok = kk)"]]\(k\)[[/if]][[if test="is(partok = kk1)"]]\(k + 1\)[[/if]].</p></li>
+<li><p>(c) \(k(k + 1) = [[if test="is(tk < 0)"]]\left({@tk@}\right)[[/if]][[if test="is(tk >= 0)"]]{@tk@}[[/if]] \times [[if test="is(tk1 < 0)"]]\left({@tk1@}\right)[[/if]][[if test="is(tk1 >= 0)"]]{@tk1@}[[/if]] = {@dq@} = 2 \times {@tq@}\), so \(m = {@tq@}\), and \(n^2 - 1 = {@nsq@} = 8 \times {@tq@}\).</p></li>
+</ul>
+<p>(d) The proof gives \(n^2 - 1 = 8m\), and \(m = \dfrac{k(k + 1)}{2}\) is sometimes odd. For \(n = 3\), \(k = 1\) and \(m = 1\), so \(n^2 - 1 = 8\), which is not divisible by 16. The proof's ‘4 times an even number’ guarantees a factor 8 and no more.</p>]]></text></generalfeedback>
+  <defaultgrade>4</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[nn: rand([13, 15, 21, 23, -7, -13]);
+tk: (nn - 1)/2; dk: (nn + 1)/2;
+tq: tk*(tk + 1)/2; dq: tk*(tk + 1);
+partok: if mod(tk, 2) = 0 then kk else kk1;
+parbad: if mod(tk, 2) = 0 then kk1 else kk;
+ta1: tk;
+ta2: [[kk, is(mod(tk, 2) = 0), "k"], [kk1, is(mod(tk, 2) = 1), "k + 1"]];
+ta3: tq;
+ta4: 3;
+tk1: tk + 1;
+nsq: nn^2 - 1;
+s_assert(is(dk # tk and dq # tq and tk + 2 # dk and tq + 1 # dq), true);]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[n = {@nn@}: k = {@tk@}, even factor {@partok@}, m = {@tq@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 4.1, Figure 4.2 and Solution 4.2 (pp. 11-12) in Section 4 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>4</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans2</name><type>dropdown</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans3</name><type>numerical</type><tans>ta3</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans4</name><type>numerical</type><tans>ta4</tans><boxsize>4</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>intnum</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>k from n = 2k + 1</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>tk</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \({@nn@} = 2 \times [[if test="is(tk < 0)"]]\left({@tk@}\right)[[/if]][[if test="is(tk >= 0)"]]{@tk@}[[/if]] + 1\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: k from n = 2k - 1</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>dk</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\(2 \times [[if test="is(dk < 0)"]]\left({@dk@}\right)[[/if]][[if test="is(dk >= 0)"]]{@dk@}[[/if]] + 1 = {@2*dk + 1@}\), not {@nn@}: you have found \(k\) with \(n = 2k - 1\). The proof writes \(n = 2k + 1\), so solve \({@nn@} = 2k + 1\) for \(k\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Solve \({@nn@} = 2k + 1\) for \(k\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[/* Binary choice: the false branch is the diagnostic. Neither branch shows the value of k or of k(k + 1): they are the answers to parts (a) and (c). */]]></text></feedbackvariables>
+    <node><name>0</name><description>The even factor</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>partok</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. One of two consecutive integers is always even. Here it is [[if test="is(partok = kk)"]]\(k\)[[/if]][[if test="is(partok = kk1)"]]\(k + 1\)[[/if]], so \(k(k + 1)\) is even.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Work out \(k\) and \(k + 1\), using your answer to part (a). Which of them is divisible by 2? If part (a) is not yet correct, put that right first.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>m</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>tq</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(n^2 - 1 = {@nsq@} = 8 \times {@tq@}\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: m taken as k(k + 1)</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>dq</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\(k(k + 1) = {@dq@}\) is \(2m\), so \(m\) is half of it.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Work out \(k(k + 1)\) and halve it. Check that 8 times your answer is \(n^2 - 1\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt4</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sn: ev(ans4, simp);
+isodd: oddp(sn);
+div16: is(mod(sn^2 - 1, 16) = 0);]]></text></feedbackvariables>
+    <node><name>0</name><description>n is odd</description><answertest>AlgEquiv</answertest><sans>isodd</sans><tans>true</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>1</truenextnode><trueanswernote>prt4-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>The statement is about odd numbers, so \(n\) must be odd.</p>]]></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: divisible by 16 after all</description><answertest>AlgEquiv</answertest><sans>div16</sans><tans>false</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \({@sn^2 - 1@} = 16 \times {@(sn^2 - 9)/16@} + 8\), which is not a multiple of 16. The proof gives \(n^2 - 1 = 8m\), and \(m\) can be odd.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>\({@sn^2 - 1@} = 16 \times {@(sn^2 - 1)/16@}\), which is divisible by 16. Try another odd number: for which \(n\) is \(m = \dfrac{k(k + 1)}{2}\) odd?</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>5</deployedseed>
+  <deployedseed>6</deployedseed>
+  <deployedseed>7</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>tk</value></testinput><testinput><name>ans2</name><value>partok</value></testinput><testinput><name>ans3</name><value>tq</value></testinput><testinput><name>ans4</name><value>3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T | prt4-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Diagnostics: n = 2k - 1; the odd factor; m = k(k + 1); a multiple of 16</description>
+    <testinput><name>ans1</name><value>dk</value></testinput><testinput><name>ans2</name><value>parbad</value></testinput><testinput><name>ans3</name><value>dq</value></testinput><testinput><name>ans4</name><value>7</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-T | prt4-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Generic wrong values; an even n</description>
+    <testinput><name>ans1</name><value>ev(tk + 2, simp)</value></testinput><testinput><name>ans2</name><value>partok</value></testinput><testinput><name>ans3</name><value>ev(tq + 1, simp)</value></testinput><testinput><name>ans4</name><value>4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Derivation of k and m from n; a negative example</description>
+    <testinput><name>ans1</name><value>ev((nn - 1)/2, simp)</value></testinput><testinput><name>ans2</name><value>partok</value></testinput><testinput><name>ans3</name><value>ev((nn^2 - 1)/8, simp)</value></testinput><testinput><name>ans4</name><value>-5</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T | prt4-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>n = 1: 0 is a multiple of 16</description>
+    <testinput><name>ans1</name><value>tk</value></testinput><testinput><name>ans2</name><value>partok</value></testinput><testinput><name>ans3</name><value>tq</value></testinput><testinput><name>ans4</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-T | prt4-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Invalid: not an integer in (d)</description>
+    <testinput><name>ans1</name><value>tk</value></testinput><testinput><name>ans2</name><value>partok</value></testinput><testinput><name>ans3</name><value>tq</value></testinput><testinput><name>ans4</name><value>3/2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

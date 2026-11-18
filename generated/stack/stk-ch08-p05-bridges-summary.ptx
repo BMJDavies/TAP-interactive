@@ -1,0 +1,12 @@
+<stack-static>
+    <statement><p><p>Which is the best summary of the proof above that no route crosses each of the seven bridges of Königsberg exactly once?</p>
+<div><ol marker="(1)">
+<li>Euler listed every possible route through the town and checked each one, and found that none of them crossed all seven bridges exactly once.</li>
+<li>Suppose there is such a route. Its list of areas would have 8 letters, one more than the number of bridges, but counting the bridges at each area shows that the list needs 9.</li>
+<li>Seven is an odd number, and a route that crosses every bridge exactly once is only possible when the number of bridges is even.</li>
+<li>Area A has five bridges, which is too many: a route that reaches A by one bridge must leave by another, so one of A's bridges is left over.</li>
+</ol> </div></p></statement>
+    <solution><p><p>A good summary names the method and the key step. Euler supposed that such a route exists, which is the start of a proof by contradiction. He wrote the route as a list of areas: 8 letters for 7 bridges. Then he counted how often each area must appear in the list, from the number of bridges at it: <m>3 + 2 + 2 + 2 = 9</m>. The two counts disagree, so no such route exists. The best summary is the second.</p>
+<p>The other summaries fail. Euler did not list routes: the counting argument shows that no route can exist without listing any. An odd number of bridges is not the obstacle: two areas joined by five bridges have a route. And five bridges at one area is no problem on its own: a route can start or end there and use all five. The contradiction comes from adding up the counts for all four areas.</p></p></solution>
+    <answer><p><m>(2)</m></p></answer>
+</stack-static>

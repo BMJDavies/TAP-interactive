@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch06_P04_Ex6_find_M</text></name>
+  <questiontext format="html"><text><![CDATA[<p>(a) The product \({@t0@} \times {@t0+1@} \times {@t0+2@} \times {@t0+3@} = {@P0@}\) is 1 less than a perfect square. Find a whole number \(M\) with \({@P0@} = M^2 - 1\).</p>
+<div>\(M =\) [[input:ans1]] [[validation:ans1]]</div>
+<div>[[feedback:prt1]]</div>
+<p>(b) Now the general case. Let the four consecutive integers be \({@n+shft@}\), \({@n+shft+1@}\), \({@n+shft+2@}\) and \({@n+shft+3@}\), where \(n\) is an integer. Find \(M\), a polynomial in \(n\), such that their product equals \(M^2 - 1\).</p>
+<div>\(M =\) [[input:ans2]] [[validation:ans2]]</div>
+<div>[[feedback:prt2]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>The idea is to pair the outer two numbers and the inner two. The two products differ by 2, and a product of two numbers that differ by 2 is 1 less than a perfect square: \(t(t + 2) = t^2 + 2t = (t + 1)^2 - 1\).</p>
+<p>(a) \({@t0@} \times {@t0+3@} = {@onum@}\) and \({@t0+1@} \times {@t0+2@} = {@onum+2@}\), so the product is \({@onum@} \times {@onum+2@} = {@onum+1@}^2 - 1\). So \(M = {@Mnum@}\) (or \(-{@Mnum@}\)).</p>
+<p>(b) The same pairing: the outer product is \({@douter@}\) and the inner product is \({@dinner@}\), which is 2 more. Writing \(t = {@douter@}\), the product is \(t(t + 2) = (t + 1)^2 - 1\), so \(M = {@taM@}\). This is an integer for every integer \(n\), so the product of any four consecutive integers is 1 less than a perfect square.</p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* [shift of the representation, first integer of the numerical example] */
+vpick: rand([[0, 3], [-1, 4], [-2, 5], [-3, 6], [1, 7]]);
+shft: vpick[1];
+t0: vpick[2];
+P0: t0*(t0+1)*(t0+2)*(t0+3);
+Mnum: t0^2 + 3*t0 + 1;
+/* Outer-pair product; the inner pair is onum + 2. */
+onum: t0*(t0+3);
+/* Inner-pair product, and a wrong value for the tests (intnum needs a single integer). */
+inum: onum + 2;
+Mwrong: Mnum + 3;
+PP: expand((n+shft)*(n+shft+1)*(n+shft+2)*(n+shft+3));
+taM: expand((n+shft)^2 + 3*(n+shft) + 1);
+/* Diagnostics: a pair product taken as M. */
+douter: expand((n+shft)*(n+shft+3));
+dinner: expand((n+shft+1)*(n+shft+2));
+s_assert(is(Mnum^2 - 1 = P0), true);
+s_assert(is(expand(taM^2 - 1 - PP) = 0), true);
+s_assert(is(expand(douter - taM + 1) = 0 and expand(dinner - taM - 1) = 0), true);
+validate_poly(ex) := block([e], e: ev(expand(ex), simp),
+  if not(every(lambda([v], member(v, [n])), listofvars(ex))) then "Use only the letter \\(n\\)."
+  else if not(polynomialp(e, [n])) then "Enter a polynomial in \\(n\\), such as n^2 - 4*n + 2."
+  else "");
+]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Integers \({@n+shft@}\) to \({@n+shft+3@}\): \(M = {@taM@}\); example {@t0@} to {@t0+3@}: \({@P0@} = {@Mnum@}^2 - 1\)]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is adapted from Exercise 6, p. 26, in Section 6 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: it asks for M with product = M^2 - 1, first for four given integers and then in general.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>Mnum</tans><boxsize>6</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>intnum</options></input>
+  <input><name>ans2</name><type>algebraic</type><tans>taM</tans><boxsize>18</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_poly</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sm: ev(ans1, simp);
+okn: is(sm^2 - 1 = P0);
+pairn: is(member(abs(sm), [onum, inum]));]]></text></feedbackvariables>
+    <node><name>0</name><description>M^2 - 1 equals the product</description><answertest>AlgEquiv</answertest><sans>okn</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(M^2 - 1 = {@Mnum^2@} - 1 = {@P0@}\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: a pair product</description><answertest>AlgEquiv</answertest><sans>pairn</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Pair the outer and the inner numbers: \({@t0@} \times {@t0+3@} = {@onum@}\) and \({@t0+1@} \times {@t0+2@} = {@onum+2@}\). So the product is \({@onum@} \times {@onum+2@}\): two numbers that differ by 2, not a number times itself. How is a product of the form \(t(t + 2)\) related to a perfect square?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Find the perfect square just above {@P0@}: try the square root of {@P0@} on a calculator, or pair the outer and the inner numbers first.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[okM: is(ev(expand(ans2^2 - 1 - PP), simp) = 0);
+pairM: is(ev(expand(ans2 - douter), simp) = 0) or is(ev(expand(ans2 - dinner), simp) = 0);]]></text></feedbackvariables>
+    <node><name>0</name><description>M^2 - 1 equals the product</description><answertest>AlgEquiv</answertest><sans>okM</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(({@taM@})^2 - 1\) expands to the product. Since \({@taM@}\) is an integer whenever \(n\) is, the product is 1 less than a perfect square.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: a pair product</description><answertest>AlgEquiv</answertest><sans>pairM</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>That is the product of one pair. The outer pair gives \({@douter@}\) and the inner pair \({@dinner@}\): two numbers that differ by 2. Write the outer product as \(t\): the whole product is then \(t(t + 2)\). Complete the square to write this as a perfect square minus 1.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Multiply the outer pair and the inner pair first, and compare the two products. Then expand your \(M^2 - 1\) and check it against the product.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>10</deployedseed>
+  <deployedseed>17</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>Mnum</value></testinput><testinput><name>ans2</name><value>taM</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Negatives of M also work</description>
+    <testinput><name>ans1</name><value>-Mnum</value></testinput><testinput><name>ans2</name><value>-taM</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Outer pair product</description>
+    <testinput><name>ans1</name><value>onum</value></testinput><testinput><name>ans2</name><value>douter</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Inner pair product</description>
+    <testinput><name>ans1</name><value>inum</value></testinput><testinput><name>ans2</name><value>dinner</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Other wrong values</description>
+    <testinput><name>ans1</name><value>Mwrong</value></testinput><testinput><name>ans2</name><value>taM + 3</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>M in unexpanded form</description>
+    <testinput><name>ans1</name><value>Mnum</value></testinput><testinput><name>ans2</name><value>(n+shft+1)*(n+shft+2) - 1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid: a square root of the product plus 1</description>
+    <testinput><name>ans1</name><value>Mnum</value></testinput><testinput><name>ans2</name><value>sqrt(PP + 1)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch06_P04_Ex8_Parsons_24</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Prove that if \(p\) is a prime number with \(p \gt 3\), then \(p^2 - 1\) is a multiple of 24.</p>
+<p>Drag blocks into order to make a proof. Not every block is needed: two of the blocks contain a mistake. Any order in which each step comes after the steps it relies on is accepted.</p>
+[[parsons input="ans1"]]
+{"steps": {# parsons_encode(proof_steps) #},
+ "headers": ["Your proof:"],
+ "available_header": ["Drag from here:"]}
+[[/parsons]]
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>One correct proof:</p>
+<div>
+<p>Let \(p\) be a prime number with \(p \gt 3\).</p>
+<p>Then \(p^2 - 1 = (p - 1)(p + 1)\).</p>
+<p>Since \(p\) is a prime greater than 2, \(p\) is odd, so \(p - 1\) and \(p + 1\) are consecutive even numbers.</p>
+<p>Of two consecutive even numbers, one is a multiple of 4 and the other is a multiple of 2, so \((p - 1)(p + 1)\) is a multiple of \(4 \times 2 = 8\).</p>
+<p>Of the three consecutive integers \(p - 1\), \(p\), \(p + 1\), exactly one is a multiple of 3.</p>
+<p>Since \(p\) is a prime greater than 3, \(p\) is not a multiple of 3. So \(p - 1\) or \(p + 1\) is a multiple of 3, and \((p - 1)(p + 1)\) is a multiple of 3.</p>
+<p>So \(p^2 - 1\) is a multiple of 8 and a multiple of 3. Since 8 and 3 have no common factor other than 1, \(p^2 - 1\) is a multiple of \(8 \times 3 = 24\).</p>
+</div>
+<p>The part that finds the factor 8 and the part that finds the factor 3 are independent, so they can come in either order, or interleaved; the factorisation can come anywhere before the conclusion.</p>
+<p>The two blocks with mistakes: two consecutive even numbers are not both multiples of 4 (4 and 6), and a multiple of two numbers need not be a multiple of their product (12 is a multiple of 4 and of 6, but not of 24). The first part of the proof is the result for odd numbers from the chapter on the structure of a proof; the second is the argument of the three-consecutive-integers example in this chapter.</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.0000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[stack_include("contribl://prooflib.mac");
+proof_steps: [
+ ["intro", "Let \\(p\\) be a prime number with \\(p \\gt 3\\)."],
+ ["dots",  "Then \\(p^2 - 1 = (p - 1)(p + 1)\\)."],
+ ["odd",   "Since \\(p\\) is a prime greater than 2, \\(p\\) is odd, so \\(p - 1\\) and \\(p + 1\\) are consecutive even numbers."],
+ ["eight", "Of two consecutive even numbers, one is a multiple of 4 and the other is a multiple of 2, so \\((p - 1)(p + 1)\\) is a multiple of \\(4 \\times 2 = 8\\)."],
+ ["three", "Of the three consecutive integers \\(p - 1\\), \\(p\\), \\(p + 1\\), exactly one is a multiple of 3."],
+ ["notp",  "Since \\(p\\) is a prime greater than 3, \\(p\\) is not a multiple of 3. So \\(p - 1\\) or \\(p + 1\\) is a multiple of 3, and \\((p - 1)(p + 1)\\) is a multiple of 3."],
+ ["conc",  "So \\(p^2 - 1\\) is a multiple of 8 and a multiple of 3. Since 8 and 3 have no common factor other than 1, \\(p^2 - 1\\) is a multiple of \\(8 \\times 3 = 24\\)."],
+ ["dboth", "Two consecutive even numbers are both multiples of 4, so \\((p - 1)(p + 1)\\) is a multiple of \\(4 \\times 4 = 16\\)."],
+ ["drule", "So \\(p^2 - 1\\) is a multiple of 8 and a multiple of 3. A number that is a multiple of two numbers is always a multiple of their product, so \\(p^2 - 1\\) is a multiple of 24."]
+];
+proof_steps: random_permutation(proof_steps);
+/* Dependency graph: every path is a chain of steps that must come in this order.
+   The factor-8 and factor-3 modules commute; the factorisation can come anywhere before the conclusion.
+   dboth and drule are logically wrong blocks and are in no path. */
+tdag: [["intro", "odd", "eight", "conc"], ["intro", "three", "notp", "conc"], ["intro", "dots", "conc"]];
+ta: proof("intro", "dots", "odd", "eight", "three", "notp", "conc");
+]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Parsons p^2 - 1 multiple of 24 (graph marking, 2 wrong blocks); shuffled order {@map(first, proof_steps)@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is adapted from Exercise 8, p. 26, in Section 6 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: a Parsons problem in which the proof is assembled from blocks, two of which contain mistakes.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>parsons</type><tans>[ta, proof_steps]</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sa: parsons_decode(ans1);
+saprob: proof_assessment_dag(sa, tdag);
+usedkeys: args(sa);
+useddboth: member("dboth", usedkeys);
+useddrule: member("drule", usedkeys);
+usedwrong: useddboth or useddrule;
+missk: listify(apply(union, cons({}, map(lambda([ex], first(args(ex))), sublist(saprob, lambda([ex], safe_op(ex) = "proof_step_missing"))))));
+mustp: map(args, sublist(saprob, lambda([ex], safe_op(ex) = "proof_step_must")));]]></text></feedbackvariables>
+    <node><name>0</name><description>A valid order of the correct blocks</description><answertest>AlgEquiv</answertest><sans>emptyp(saprob)</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. The factor 8 and the factor 3 come from independent parts of the proof, and 8 and 3 have no common factor other than 1, so together they give 24.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: a block with a mistake used</description><answertest>AlgEquiv</answertest><sans>usedwrong</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[[[if test="useddboth"]]<p>One of your blocks says that two consecutive even numbers are both multiples of 4. That is false: 4 and 6 are consecutive even numbers, and 6 is not a multiple of 4. Exactly one of the two is.</p>[[/if]][[if test="useddrule"]]<p>One of your blocks says that a multiple of two numbers is always a multiple of their product. That is false: 12 is a multiple of 4 and of 6, but not of 24. The step from 8 and 3 to 24 works because 8 and 3 have no common factor other than 1.</p>[[/if]]]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Some steps are missing, or come before a step they rely on.</p>[[if test="not(emptyp(missk))"]]<p>Your proof also needs these steps:</p><ul>[[foreach kk="missk"]]<li>{@proof_getstep(kk, proof_steps)@}</li>[[/foreach]]</ul>[[/if]][[if test="not(emptyp(mustp))"]]<p>In each pair, the first step must come before the second:</p><ul>[[foreach pr="mustp"]]<li>{@proof_getstep(first(pr), proof_steps)@} <em>must come before</em> {@proof_getstep(second(pr), proof_steps)@}</li>[[/foreach]]</ul>[[/if]]]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>4</deployedseed>
+  <deployedseed>5</deployedseed>
+  <deployedseed>9</deployedseed>
+  <qtest><testcase>1</testcase><description>Teacher's order</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [ta, proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Modules swapped</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "dots", "three", "notp", "odd", "eight", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Modules interleaved, factorisation late</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "odd", "three", "eight", "notp", "dots", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>False rule in the conclusion</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "dots", "odd", "eight", "three", "notp", "drule"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Both multiples of 4</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "dots", "odd", "dboth", "three", "notp", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Both wrong blocks</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "dots", "odd", "dboth", "three", "notp", "drule"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>The factor-3 module missing</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "dots", "odd", "eight", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>A step before the step it relies on</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("intro", "dots", "eight", "odd", "three", "notp", "conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Conclusion first</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("conc", "intro", "dots", "odd", "eight", "three", "notp"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

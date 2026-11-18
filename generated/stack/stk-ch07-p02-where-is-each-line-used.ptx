@@ -1,0 +1,24 @@
+<stack-static>
+    <statement><p><p>Here is the proof of <m>1 + 3 + 5 + \cdots + (2n-1) = n^2</m> from the example above, in numbered lines.</p>
+<tabular>
+<row><cell>1</cell><cell>When <m>n = 1</m>, the left-hand side is <m>1</m> and the right-hand side is <m>1^2 = 1</m>, so the statement holds for <m>n = 1</m>.</cell></row>
+<row><cell>2</cell><cell>Assume that the statement holds for <m>n = k</m>, where <m>k</m> is a positive integer: <m>1 + 3 + 5 + \cdots + (2k-1) = k^2</m>.</cell></row>
+<row><cell>3</cell><cell>Then <m>1 + 3 + 5 + \cdots + (2k-1) + \big(2(k+1) - 1\big) = k^2 + \big(2(k+1) - 1\big)</m></cell></row>
+<row><cell>4</cell><cell><m>= k^2 + 2k + 1</m></cell></row>
+<row><cell>5</cell><cell><m>= (k+1)^2</m>,</cell></row>
+<row><cell>6</cell><cell>so the statement holds for <m>n = k+1</m>.</cell></row>
+<row><cell>7</cell><cell>The statement holds for <m>n = 1</m>, and whenever it holds for <m>n = k</m> it also holds for <m>n = k+1</m>. So it holds for every positive integer <m>n</m>.</cell></row>
+</tabular>
+<ol class="tb-parts">
+<li><p>In which line is the assumption made in line 2 used?</p>
+<div>Line <fillin characters="3" name="ans1"/>  </div></li>
+<li><p>In which line is the fact proved in line 1 used?</p>
+<div>Line <fillin characters="3" name="ans2"/>  </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p>Line 2 states the induction hypothesis. It is used in line 3, where the sum <m>1 + 3 + 5 + \cdots + (2k-1)</m> is replaced by <m>k^2</m>. Stating an assumption and using it are different things: the hypothesis does its work in line 3.</p></li>
+<li><p>Lines 2 to 6 are the induction step. They prove ‘if the statement holds for <m>n = k</m>, then it holds for <m>n = k+1</m>’ for an arbitrary positive integer <m>k</m>, and they never mention <m>n = 1</m>. The base case, proved in line 1, is used only in line 7, where the two parts of the proof are put together: the statement holds for <m>n = 1</m>, so for <m>n = 2</m>, so for <m>n = 3</m>, and so on.</p></li>
+</ol></p></solution>
+    <answer><p><m>3</m></p></answer>
+    <answer><p><m>7</m></p></answer>
+</stack-static>

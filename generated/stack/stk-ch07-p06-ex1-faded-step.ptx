@@ -1,0 +1,23 @@
+<stack-static>
+    <statement><p><p>The exercise above asks you to prove that <m>1^3 + 2^3 + \cdots + n^3 = \left(\dfrac{n(n+1)}{2}\right)^2</m> for <m>n \geq 1</m>. Here is its induction step with some parts missing.</p>
+<p>Assume that the statement holds for <m>n = k</m>:</p>
+<p><me>1^3 + 2^3 + \cdots + k^3 = \left(\dfrac{k(k+1)}{2}\right)^2.</me></p>
+<p>Then</p>
+<div><m>1^3 + 2^3 + \cdots + k^3 + (k+1)^3 =</m> <fillin characters="15" name="ans1"/> <m>+\ (k+1)^3</m>, because of [ the base case | the induction hypothesis | expanding the brackets | taking out a common factor ]  </div>
+<div> </div>
+<div><m>= \dfrac{(k+1)^2}{4} \times \Big(</m> <fillin characters="15" name="ans2"/> <m>\Big)</m>  </div>
+<div><m>= \dfrac{(k+1)^2 (k+2)^2}{4}</m></div>
+<div><m>= \Big(</m> <fillin characters="15" name="ans3"/> <m>\Big)^2,</m>  </div>
+<p>which is the statement for <m>n = k+1</m>.</p></p></statement>
+    <solution><p><p>The induction step starts from the left-hand side of the statement for <m>n = k+1</m> and uses the induction hypothesis to replace the first <m>k</m> terms. Each line has one reason.</p>
+<p><me>1^3 + 2^3 + \cdots + k^3 + (k+1)^3 = \dfrac{k^2(k+1)^2}{4} + (k+1)^3</me></p>
+<p>by the induction hypothesis. Taking out the common factor <m>\dfrac{(k+1)^2}{4}</m>,</p>
+<p><me>= \dfrac{(k+1)^2}{4}\left(k^2 + 4(k+1)\right) = \dfrac{(k+1)^2}{4}\left(k^2 + 4k + 4\right).</me></p>
+<p>Since <m>k^2 + 4k + 4 = (k+2)^2</m> and <m>4 = 2^2</m>,</p>
+<p><me>= \dfrac{(k+1)^2 (k+2)^2}{4} = \left(\dfrac{(k+1)(k+2)}{2}\right)^2.</me></p>
+<p>So the blanks are <m>\dfrac{k^2(k+1)^2}{4}</m> (by the induction hypothesis), <m>k^2 + 4k + 4</m> and <m>\dfrac{(k+1)(k+2)}{2}</m>. The last line is <m>\left(\dfrac{(k+1)\big((k+1)+1\big)}{2}\right)^2</m>, which is the statement for <m>n = k+1</m>.</p></p></solution>
+    <answer><p><m>\frac{k^2 {\left(k+1\right)}^2}{4}</m></p></answer>
+    <answer><p>the induction hypothesis</p></answer>
+    <answer><p><m>k^2+4 k+4</m></p></answer>
+    <answer><p><m>\frac{\left(k+1\right) \left(k+2\right)}{2}</m></p></answer>
+</stack-static>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch09_P04_Structure_of_the_proof</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here is the proof of the example above in numbered lines.</p>
+<table>
+<tr><td>1</td><td>Suppose that \(r\) is a nonzero rational number.</td></tr>
+<tr><td>2</td><td>Then \(r = \dfrac{a}{b}\) for some integers \(a\) and \(b\) with \(b \neq 0\).</td></tr>
+<tr><td>3</td><td>We can write \(r = \sqrt{2} \times \dfrac{r}{\sqrt{2}}\).</td></tr>
+<tr><td>4</td><td>We know that \(\sqrt{2}\) is irrational.</td></tr>
+<tr><td>5</td><td>Suppose, for contradiction, that \(\dfrac{r}{\sqrt{2}}\) is rational.</td></tr>
+<tr><td>6</td><td>Then \(\dfrac{r}{\sqrt{2}} = \dfrac{c}{d}\) for some integers \(c\) and \(d\) with \(d \neq 0\).</td></tr>
+<tr><td>7</td><td>So \(\sqrt{2} = r \times \dfrac{d}{c} = \dfrac{a}{b} \times \dfrac{d}{c} = \dfrac{ad}{bc}\).</td></tr>
+<tr><td>8</td><td>Since \(ad\) and \(bc\) are integers, \(\sqrt{2}\) is rational. This contradicts line 4.</td></tr>
+<tr><td>9</td><td>So \(\dfrac{r}{\sqrt{2}}\) is irrational.</td></tr>
+<tr><td>10</td><td>So \(r = \sqrt{2} \times \dfrac{r}{\sqrt{2}}\) is a product of two irrational numbers.</td></tr>
+</table>
+<p>(a) The proof contains a proof by contradiction inside a direct proof. In which line does the inner proof by contradiction begin?</p>
+<div>Line [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div>
+<p>(b) How do the two parts fit together?</p>
+<div>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div>
+<p>(c) Line 7 divides by \(c\). Which earlier line guarantees that \(c \neq 0\)?</p>
+<div>Line [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div>
+<p>(d) Would the statement still be true without the word ‘nonzero’?</p>
+<div>[[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>The proof has two modules. The outer one is direct: it starts from a nonzero rational \(r\) (lines 1 and 2), writes \(r = \sqrt{2} \times \dfrac{r}{\sqrt{2}}\) (line 3), and needs both factors to be irrational. The first factor is irrational by a known result (line 4). The second needs a proof of its own, a proof by contradiction (lines 5 to 9): assume \(\dfrac{r}{\sqrt{2}} = \dfrac{c}{d}\), deduce that \(\sqrt{2}\) is rational, and contradict line 4. Line 10 puts the two together.</p>
+<p>Line 7 divides by \(c\). We know \(c \neq 0\) because \(r \neq 0\) (line 1), so \(\dfrac{r}{\sqrt{2}} \neq 0\), and so \(\dfrac{c}{d} \neq 0\). This is where ‘nonzero’ is used, and it is needed: 0 is not a product of two irrational numbers, since \(xy = 0\) forces \(x = 0\) or \(y = 0\), and 0 is rational. (A proof that breaks does not on its own show that a statement is false; here the statement is false for 0 for this separate reason.)</p>]]></text></generalfeedback>
+  <defaultgrade>4</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[validate_line10(ex) := block([vv], vv: ev(ex, simp), if integerp(vv) and vv >= 1 and vv <= 10 then "" else "Enter a line number from 1 to 10.");
+ta1: 5;
+ta3: 1;
+ta2: [[m_two, false, "They are two separate proofs of the whole statement, so either one of them would be enough on its own."],
+      [m_first, false, "The inner proof shows that \\(\\sqrt{2}\\) is irrational, which the direct proof then uses for the first factor."],
+      [m_circ, false, "The inner proof uses the conclusion of the direct proof, that \\(r\\) is a product of two irrational numbers."],
+      [m_needs, true, "The direct proof needs both factors of \\(r = \\sqrt{2} \\times \\dfrac{r}{\\sqrt{2}}\\) to be irrational, and the inner proof shows that the second factor is."]];
+ta4: [[z_yes, false, "Yes: \\(0 = \\sqrt{2} \\times 0\\), and \\(\\sqrt{2}\\) is irrational."],
+      [z_no, true, "No: if a product \\(xy\\) equals 0, then \\(x = 0\\) or \\(y = 0\\), and 0 is rational."],
+      [z_same, false, "Yes: the same proof works for \\(r = 0\\), so the word ‘nonzero’ is only there to be safe."],
+      [z_break, false, "No: for \\(r = 0\\) the proof would divide by \\(c = 0\\) in line 7, and a proof that breaks shows that the statement is false."]];]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Inner proof lines 5 to 9; c ≠ 0 from line 1]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on Example 8.9 and Solution 8.9 (every nonzero rational number is a product of two irrational numbers, pp. 53-54) in Section 9 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line10</options></input>
+  <input><name>ans2</name><type>radio</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>nonotanswered</options></input>
+  <input><name>ans3</name><type>numerical</type><tans>ta3</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line10</options></input>
+  <input><name>ans4</name><type>radio</type><tans>ta4</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>nonotanswered</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Line 5</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: line 5 makes the assumption that starts the inner proof, and line 9 states what it proves.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: line 1 (the first suppose)</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 1 starts the whole proof, which is direct: it assumes what the statement gives and works forwards. The inner proof starts with an assumption of its own, made in order to be contradicted.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: line 6</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>6</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 6 already works with the assumption. Where is it made?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Look for the line that assumes the opposite of what the inner proof wants to show.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>The direct proof needs the second factor</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>m_needs</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. The direct proof writes \(r\) as a product and needs both factors to be irrational; the first is known, and the inner proof supplies the second.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the inner proof is about the square root of 2</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>m_first</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 4 quotes the fact that \(\sqrt{2}\) is irrational; it was proved in the chapter on proof by contradiction. The inner proof is about \(\dfrac{r}{\sqrt{2}}\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: two independent proofs</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>m_two</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The inner proof shows only that \(\dfrac{r}{\sqrt{2}}\) is irrational. That is not the whole statement, so it would not be enough on its own.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>The inner proof uses earlier lines and its own assumption, never line 10, so it does not use the conclusion of the direct proof. Which line uses what the inner proof shows?</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Line 1</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>ta3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(r \neq 0\), so \(\dfrac{r}{\sqrt{2}} \neq 0\), so \(\dfrac{c}{d} \neq 0\) and \(c \neq 0\). This is the only place where the proof uses ‘nonzero’.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: line 6 (d not 0)</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>6</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 6 says that \(d \neq 0\), the denominator. Why can the numerator \(c\) not be 0?</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: line 2 (b not 0)</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 2 says that \(b \neq 0\). The question is about \(c\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt3-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: line 5</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>5</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 5 says that \(\dfrac{r}{\sqrt{2}}\) is rational, but 0 is rational too, so line 5 alone allows \(c = 0\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>If \(c\) were 0, then \(\dfrac{r}{\sqrt{2}}\) would be 0. Which line rules that out?</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt4</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>No: 0 is not such a product</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>z_no</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. So the word ‘nonzero’ is needed for the statement to be true, and not only to make this proof work.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt4-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: 0 = root 2 times 0</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>z_yes</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>0 is rational, so \(\sqrt{2} \times 0\) is not a product of two irrational numbers.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt4-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the same proof works</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>z_same</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>For \(r = 0\), line 7 would divide by \(c = 0\), so the proof does not work for 0. And the statement itself fails for 0: think about which numbers multiply to give 0.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>The answer is right, but not the reason. A proof that breaks shows only that this proof does not work; another proof might. To show that the statement is false for 0, think about which numbers multiply to give 0.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>All correct</description>
+    <testinput><name>ans1</name><value>5</value></testinput><testinput><name>ans2</name><value>m_needs</value></testinput><testinput><name>ans3</name><value>1</value></testinput><testinput><name>ans4</name><value>z_no</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>First diagnostics</description>
+    <testinput><name>ans1</name><value>1</value></testinput><testinput><name>ans2</name><value>m_first</value></testinput><testinput><name>ans3</name><value>6</value></testinput><testinput><name>ans4</name><value>z_yes</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Second diagnostics</description>
+    <testinput><name>ans1</name><value>6</value></testinput><testinput><name>ans2</name><value>m_two</value></testinput><testinput><name>ans3</name><value>2</value></testinput><testinput><name>ans4</name><value>z_same</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-F | prt4-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Third diagnostics and remaining options</description>
+    <testinput><name>ans1</name><value>3</value></testinput><testinput><name>ans2</name><value>m_circ</value></testinput><testinput><name>ans3</name><value>5</value></testinput><testinput><name>ans4</name><value>z_break</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-F | prt3-4-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-F | prt4-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Generic wrong lines</description>
+    <testinput><name>ans1</name><value>9</value></testinput><testinput><name>ans2</name><value>m_needs</value></testinput><testinput><name>ans3</name><value>4</value></testinput><testinput><name>ans4</name><value>z_no</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F | prt3-3-F | prt3-4-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Invalid (a): no line 11</description>
+    <testinput><name>ans1</name><value>11</value></testinput><testinput><name>ans2</name><value>m_needs</value></testinput><testinput><name>ans3</name><value>1</value></testinput><testinput><name>ans4</name><value>z_no</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid (c): no line 0</description>
+    <testinput><name>ans1</name><value>5</value></testinput><testinput><name>ans2</name><value>m_needs</value></testinput><testinput><name>ans3</name><value>0</value></testinput><testinput><name>ans4</name><value>z_no</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

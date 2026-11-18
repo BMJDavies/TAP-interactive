@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch10_P04_Ex1_Find_the_error</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here is the proof from the exercise above, in numbered lines. The statement is true: \(7^n + 1\) is divisible by 8 for every odd positive integer \(n\). But the proof below does not prove it.</p>
+<table>
+<tr><td>1</td><td>When \(n = 1\), \(f(1) = 7^1 + 1 = 8\), which is divisible by 8, so the statement holds for \(n = 1\).</td></tr>
+<tr><td>2</td><td>Assume that the statement holds for \(n = k\), so that \(7^k + 1 = 8m\) for some positive integer \(m\).</td></tr>
+<tr><td>3</td><td>We need to show that the statement holds for \(n = k + 1\), that is, that \(7^{k+1} + 1 = 8l\) for some positive integer \(l\).</td></tr>
+<tr><td>4</td><td>\(7^{k+1} + 1 = 7 \times 7^k + 1\)</td></tr>
+<tr><td>5</td><td>\(\phantom{7^{k+1} + 1} = 7 \times 7^k + 7 - 6\)</td></tr>
+<tr><td>6</td><td>\(\phantom{7^{k+1} + 1} = 7(7^k + 1) - 6\)</td></tr>
+<tr><td>7</td><td>\(\phantom{7^{k+1} + 1} = 7 \times 8m - 6\)</td></tr>
+<tr><td>8</td><td>\(\phantom{7^{k+1} + 1} = 8(7m) - 6\), which is not a multiple of 8.</td></tr>
+</table>
+<ol class="tb-parts">
+<li><p>Which line contains the error?</p>
+<div>Line [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>What is wrong with it? (Optional: this box is not marked and not saved.)</p>
+<div>[[input:ans2]] [[validation:ans2]]</div></li>
+<li><p>For which \(n\) from 1 to 6 is \(7^n + 1\) divisible by 8? Enter the set of these values of \(n\) in curly brackets, for example <code>{1, 2}</code>.</p>
+<div>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Check the proof against what an induction must do: a base case, and a step from each case covered by the statement to the next one. The base case (line 1) is correct, and so is every line of algebra (lines 4 to 8): each follows from the one before it.</p>
+<p>The error is the target in line 3. The statement is only about odd \(n\), so the hypothesis in line 2 is about an odd number \(k\), and the next case is the next odd number, \(k + 2\). Line 3 aims instead at \(k + 1\), which is even, and the statement says nothing about even numbers.</p>
+<p>In fact line 8 is true: \(8(7m) - 6\) is not a multiple of 8. It leaves remainder 2 on division by 8, so for even \(n\) the number \(7^n + 1\) is never a multiple of 8. The values in part (c) confirm this:</p>
+<table>
+<tr><th>\(n\)</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+<tr><th>\(7^n + 1\)</th><td>8</td><td>50</td><td>344</td><td>2402</td><td>16808</td><td>117650</td></tr>
+<tr><th>remainder on division by 8</th><td>0</td><td>2</td><td>0</td><td>2</td><td>0</td><td>2</td></tr>
+</table>
+<p>So \(7^n + 1\) is divisible by 8 exactly for \(n = 1, 3, 5\), and no proof could ever pass from \(k\) to \(k + 1\). The next check repairs the proof.</p>
+<p>A reason you might have written: <q>Line 3: if \(k\) is odd, then \(k + 1\) is even, and the statement says nothing about even numbers; the step should go to \(k + 2\).</q></p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[ta1: 3;
+ta3: {1, 3, 5};
+validate_line8(ex) := block([vv], vv: ev(ex, simp), if integerp(vv) and vv >= 1 and vv <= 8 then "" else "Enter a line number from 1 to 8.");
+validate_set16(ex) := block([vv], vv: ev(ex, simp), if setp(vv) and every(lambda([v], integerp(v) and v >= 1 and v <= 6), listify(vv)) then "" else "Enter a set of whole numbers from 1 to 6 in curly brackets, for example {1, 2}.");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Fixed: (a) line 3, (c) {1, 3, 5}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is directly adapted from Exercise 10.1 (pp. 57-58) in Section 10 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>3</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_line8</options></input>
+  <input><name>ans2</name><type>notes</type><tans>""</tans><boxsize>40</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>hideanswer</options></input>
+  <input><name>ans3</name><type>algebraic</type><tans>ta3</tans><boxsize>12</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>3</showvalidation><options>validator:validate_set16</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>The wrong target</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. The statement is only about odd numbers, so the hypothesis in line 2 is about an odd number \(k\). Then \(k + 1\) is even, and the statement says nothing about even numbers: line 3 sets the induction step the wrong target.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: an algebra line blamed</description><answertest>GT</answertest><sans>ans1</sans><tans>3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line {@ans1@} is correct algebra: check it. Every line from 4 to 8 is correct, and line 8 is even true: \(8(7m) - 6\) is not a multiple of 8. So the error is not in the algebra. Compare what the proof sets out to show with what the statement says.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the hypothesis blamed</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Line 2 assumes the statement for \(n = k\). The statement is about odd numbers, so this is an assumption about an odd number \(k\) (it would be clearer to say so), and it is a fair induction hypothesis. Look at what the proof then sets out to show.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Line 1 is a correct base case: \(7 + 1 = 8 = 8 \times 1\). Look at what the proof sets out to show next.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[hasev: if some(lambda([v], evenp(v)), listify(ans3)) then 1 else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>The odd values</description><answertest>Sets</answertest><sans>ans3</sans><tans>ta3</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(8\), \(344 = 8 \times 43\) and \(16808 = 8 \times 2101\) are multiples of 8, while 50, 2402 and 117650 each leave remainder 2. So \(7^n + 1\) is a multiple of 8 exactly when \(n\) is odd.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: an even value included</description><answertest>AlgEquiv</answertest><sans>hasev</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Check the even values of \(n\): for example \(7^2 + 1 = 50\), which is not a multiple of 8.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Work out \(7^n + 1\) for each \(n\) from 1 to 6 and divide each by 8.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct, with a reason typed in the box</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value>k + 1 is even.</value></testinput>
+    <testinput><name>ans3</name><value>ta3</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>An algebra line; every n</description>
+    <testinput><name>ans1</name><value>8</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>{1, 2, 3, 4, 5, 6}</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>The hypothesis; some odd n</description>
+    <testinput><name>ans1</name><value>2</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>{1, 3}</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>The base case; the set in another order</description>
+    <testinput><name>ans1</name><value>1</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>{5, 3, 1}</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Invalid: line 9</description>
+    <testinput><name>ans1</name><value>9</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>ta3</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Invalid: a list, not a set</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <testinput><name>ans2</name><value></value></testinput>
+    <testinput><name>ans3</name><value>[1, 3, 5]</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

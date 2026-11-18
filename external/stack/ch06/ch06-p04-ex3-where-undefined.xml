@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch06_P04_Ex3_where_undefined</text></name>
+  <questiontext format="html"><text><![CDATA[<p>The identity in the exercise above is \(\cos\theta\cot\theta + \sin\theta \equiv \operatorname{cosec}\theta\). For which values of \(\theta\) with \({@lo@}^{\circ} \le \theta \le {@hi@}^{\circ}\) is it not defined?</p>
+<p>Enter the set of these values in degrees, for example <code>{30, 45}</code>, or <code>{}</code> if there are none.</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>\(\cot\theta = \dfrac{\cos\theta}{\sin\theta}\) and \(\operatorname{cosec}\theta = \dfrac{1}{\sin\theta}\) both divide by \(\sin\theta\), so the identity is not defined where \(\sin\theta = 0\): at every multiple of \(180^{\circ}\). In this interval that is \({@ta1@}\). Where \(\cos\theta = 0\) nothing goes wrong: \(\cot\theta = 0\) there.</p>
+<p>Wherever \(\sin\theta \ne 0\), the identity itself follows from \(\cos^2\theta + \sin^2\theta = 1\):</p>
+<p>\[\cos\theta\cot\theta + \sin\theta = \frac{\cos^2\theta}{\sin\theta} + \sin\theta = \frac{\cos^2\theta + \sin^2\theta}{\sin\theta} = \frac{1}{\sin\theta} = \operatorname{cosec}\theta.\]</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Intervals in degrees. The identity is undefined where sin(theta) = 0. */
+ivL: [[0, 360], [-180, 180], [90, 450], [-360, 0], [-90, 270], [0, 540]];
+ivpick: rand(ivL);
+lo: ivpick[1];
+hi: ivpick[2];
+ta1: setify(sublist(makelist(t, t, lo, hi), lambda([t], is(mod(t, 180) = 0))));
+/* Diagnostics: the zeros of cos; both kinds; some values missing; a value outside the interval. */
+cpts: setify(sublist(makelist(t, t, lo, hi), lambda([t], is(mod(t, 180) = 90))));
+dboth: union(ta1, cpts);
+dpart: setdifference(ta1, {lmin(listify(ta1))});
+dout: union(ta1, {lo - 180});
+s_assert(is(cardinality(dpart) > 0), true);
+validate_degset(ex) := if not(setp(ex)) then "Type a set in curly brackets, for example {30, 45}, or {} for no values."
+  else if not(freeof(%pi, ex)) then "Give the angles in degrees: do not use pi."
+  else if not(every(lambda([v], numberp(ev(v, simp))), listify(ex))) then "Type numbers only."
+  else "";
+]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[{@lo@} to {@hi@} degrees: not defined at {@ta1@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is directly adapted from Exercise 3 in Section 6 (p. 26) of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>algebraic</type><tans>ta1</tans><boxsize>25</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>1</showvalidation><options>validator:validate_degset</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sa: ev(ans1, simp);]]></text></feedbackvariables>
+    <node><name>0</name><description>The multiples of 180 in the interval</description><answertest>Sets</answertest><sans>sa</sans><tans>ta1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(\sin\theta = 0\) at each of these angles, and both \(\cot\theta\) and \(\operatorname{cosec}\theta\) divide by \(\sin\theta\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the zeros of cos included too</description><answertest>Sets</answertest><sans>sa</sans><tans>dboth</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>You have also included the angles where \(\cos\theta = 0\). There \(\cot\theta = \dfrac{\cos\theta}{\sin\theta} = 0\), which is defined, and the identity holds: for example, at \(\theta = 90^{\circ}\), \(0 \times 0 + 1 = 1 = \operatorname{cosec} 90^{\circ}\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the zeros of cos instead</description><answertest>Sets</answertest><sans>sa</sans><tans>cpts</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>When \(\cos\theta = 0\), \(\cot\theta = \dfrac{\cos\theta}{\sin\theta}\) is 0, not undefined. The trouble is division by zero: both \(\cot\theta\) and \(\operatorname{cosec}\theta\) divide by \(\sin\theta\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: some values missing</description><answertest>AlgEquiv</answertest><sans>is(subsetp(sa, ta1) and not(emptyp(sa)))</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Every value you gave is right, but some are missing. Check the whole interval from \({@lo@}^{\circ}\) to \({@hi@}^{\circ}\), including its ends.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>The identity is not defined where \(\cot\theta\) or \(\operatorname{cosec}\theta\) is not defined. Write each of them in terms of \(\sin\theta\) and \(\cos\theta\) and find where a denominator is zero. List every such angle from \({@lo@}^{\circ}\) to \({@hi@}^{\circ}\), and no others.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>5</deployedseed>
+  <deployedseed>6</deployedseed>
+  <deployedseed>7</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Zeros of cos included too</description>
+    <testinput><name>ans1</name><value>dboth</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Zeros of cos instead</description>
+    <testinput><name>ans1</name><value>cpts</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>One value missing</description>
+    <testinput><name>ans1</name><value>dpart</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>A value outside the interval</description>
+    <testinput><name>ans1</name><value>dout</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Invalid: radians</description>
+    <testinput><name>ans1</name><value>{pi}</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid: a number, not a set</description>
+    <testinput><name>ans1</name><value>lo</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>The empty set</description>
+    <testinput><name>ans1</name><value>{}</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

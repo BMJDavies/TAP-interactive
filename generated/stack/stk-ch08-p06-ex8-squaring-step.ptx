@@ -1,0 +1,17 @@
+<stack-static>
+    <statement><p><p>Here is the start of a proof of the exercise above, that <m>a + b \geq 2\sqrt{ab}</m> for all positive real numbers <m>a</m> and <m>b</m>.</p>
+<p>Suppose, for contradiction, that <m>a + b \lt 2\sqrt{ab}</m> for some positive real numbers <m>a</m> and <m>b</m>. Both sides are positive, so squaring keeps the inequality: <m>(a + b)^2 \lt 4ab</m>.</p>
+<ol class="tb-parts">
+<li><p>Rearranging gives:</p>
+<div><m>\Big(</m> <fillin characters="12" name="ans1"/>  <m>\Big)^2 \lt 0</m> </div></li>
+<li><p>The proof needs <m>a</m> and <m>b</m> to be positive. Give an example of real numbers <m>a</m> and <m>b</m> with <m>ab \geq 0</m>, not both positive, for which <m>a + b \lt 2\sqrt{ab}</m>.</p>
+<div><m>a =</m> <fillin characters="6" name="ans2"/>  <m>b =</m> <fillin characters="6" name="ans3"/>  </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p>Here is the whole proof. Suppose, for contradiction, that <m>a + b \lt 2\sqrt{ab}</m> for some positive real numbers <m>a</m> and <m>b</m>. Both sides are positive, so squaring keeps the inequality: <me>(a + b)^2 \lt 4ab, \quad\text{so}\quad a^2 + 2ab + b^2 \lt 4ab, \quad\text{so}\quad a^2 - 2ab + b^2 \lt 0,</me> that is, <m>(a - b)^2 \lt 0</m>. But the square of a real number is never negative: a contradiction. So <m>a + b \geq 2\sqrt{ab}</m>, with equality exactly when <m>a = b</m>. The answer <m>b - a</m> is just as good, since <m>(b - a)^2 = (a - b)^2</m>.</p></li>
+<li><p>Take <m>a = b = -1</m>. Then <m>ab = 1</m>, <m>a + b = -2</m> and <m>2\sqrt{ab} = 2</m>, so <m>a + b \lt 2\sqrt{ab}</m>: the inequality of the exercise fails, so the statement really needs <m>a</m> and <m>b</m> to be positive. Here squaring <m>-2 \lt 2</m> would give <m>4 \lt 4</m>, which is false: an inequality can be squared safely only when both sides are non-negative. That is the step of the proof that needs <m>a</m> and <m>b</m> to be positive.</p></li>
+</ol></p></solution>
+    <answer><p><m>a-b</m></p></answer>
+    <answer><p><m>-1</m></p></answer>
+    <answer><p><m>-1</m></p></answer>
+</stack-static>

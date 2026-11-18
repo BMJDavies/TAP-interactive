@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch05_P01_Exhaustive_or_not</text></name>
+  <questiontext format="html"><text><![CDATA[<p>A student wants to prove each claim below by exhaustion, using the cases shown. For each one, choose <em>finite and exhaustive</em> if the cases would do the job, <em>not exhaustive</em> if some number the claim is about lies in none of the cases, or <em>not finite</em> if the list of cases never ends.</p>
+<ol>
+<li><p>A claim about {@dom1@}. Cases: {@cs1@}.</p>
+<div>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>A claim about {@dom2@}. Cases: {@cs2@}.</p>
+<div>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+<li><p>A claim about {@dom3@}. Cases: {@cs3@}.</p>
+<div>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+<li><p>A claim about {@dom4@}. Cases: {@cs4@}.</p>
+<div>[[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A set of cases works for a proof by exhaustion when it is <em>finite</em>, so the proof can be finished, and <em>exhaustive</em>, so every number the claim is about lies in at least one case.</p>
+<ol>
+<li><p>A claim about {@dom1@}, with cases {@cs1@}. {@labsent(cor1)@} {@expl1@}</p></li>
+<li><p>A claim about {@dom2@}, with cases {@cs2@}. {@labsent(cor2)@} {@expl2@}</p></li>
+<li><p>A claim about {@dom3@}, with cases {@cs3@}. {@labsent(cor3)@} {@expl3@}</p></li>
+<li><p>A claim about {@dom4@}, with cases {@cs4@}. {@labsent(cor4)@} {@expl4@}</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>4</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Pool of proposed case splits: [id, claim domain, cases, correct category, explanation]. */
+poolV: [
+ ["V1", "every real number \\(x\\)", "\\(x > 0\\), \\(x \\lt 0\\), \\(x = 0\\)", exh, "Every real number is positive, negative or zero, so the three cases cover every real number, and there are only three of them."],
+ ["V2", "every real number \\(x\\)", "\\(x \\ge 0\\), \\(x \\lt 0\\)", exh, "Every real number is either at least 0 or less than 0, so two cases cover every real number."],
+ ["V3", "every integer \\(n\\)", "\\(n = 3k - 1\\), \\(n = 3k\\), \\(n = 3k + 1\\), where \\(k\\) is an integer", exh, "Every integer is 1 less than, equal to, or 1 more than a multiple of 3 (note that \\(3k - 1 = 3(k - 1) + 2\\)), so the three cases cover every integer."],
+ ["V4", "every integer \\(n\\) that is not a multiple of 3", "\\(n = 3k + 1\\), \\(n = 3k + 2\\), where \\(k\\) is an integer", exh, "The claim is only about integers that are not multiples of 3, and each of these leaves remainder 1 or 2 on division by 3. The case \\(n = 3k\\) is not needed."],
+ ["V5", "every odd integer \\(n\\)", "\\(n = 4k + 1\\), \\(n = 4k + 3\\), where \\(k\\) is an integer", exh, "An odd integer leaves remainder 1 or 3 on division by 4 (remainders 0 and 2 give even numbers), so the two cases cover every odd integer."],
+ ["V6", "every integer \\(n\\) with \\(1 \\le n \\le 4\\)", "\\(n = 1\\), \\(n = 2\\), \\(n = 3\\), \\(n = 4\\)", exh, "The claim is about only four integers, and each of them is a case."]
+];
+poolN: [
+ ["N1", "every real number \\(x\\)", "\\(x > 0\\), \\(x \\lt 0\\)", notexh, "The number \\(x = 0\\) is in neither case."],
+ ["N2", "every integer \\(n\\)", "\\(n = 3k\\), \\(n = 3k + 1\\), where \\(k\\) is an integer", notexh, "Integers such as 2, 5 and 8, which are 2 more than a multiple of 3, are in neither case."],
+ ["N3", "every integer \\(n\\)", "\\(n = 4k\\), \\(n = 4k + 1\\), \\(n = 4k + 3\\), where \\(k\\) is an integer", notexh, "Integers such as 2 and 6, which are 2 more than a multiple of 4, are in no case."],
+ ["N4", "every positive integer \\(n\\)", "\\(n = 1\\), \\(n = 2\\), \\(n = 3\\), \\(n = 4\\), \\(n = 5\\)", notexh, "The claim is about every positive integer, but the cases stop at 5, so \\(n = 6, 7, \\ldots\\) are not covered. Checking some values does not prove a claim about all of them."],
+ ["N5", "every real number \\(x\\) with \\(0 \\le x \\le 1\\)", "the eleven values \\(x = 0, 0.1, 0.2, \\ldots, 0.9, 1\\)", notexh, "Numbers such as \\(x = 0.05\\) lie in the interval but are not among the eleven values."],
+ ["N6", "every integer \\(n\\)", "\\(n = 4k\\), \\(n = 4k + 2\\), where \\(k\\) is an integer", notexh, "These cases cover only the even integers; odd integers such as 1 and 3 are missing."],
+ ["N7", "every prime \\(p\\) with \\(3 \\lt p \\lt 25\\)", "\\(p = 5, 7, 11, 13, 17, 19\\)", notexh, "The prime 23 also satisfies \\(3 \\lt p \\lt 25\\), and it is missing."]
+];
+poolF: [
+ ["F1", "every integer \\(n\\)", "one case for each integer: \\(n = 0\\), \\(n = 1\\), \\(n = -1\\), \\(n = 2\\), \\(n = -2\\), and so on", notfin, "Every integer appears in the list, but the list never ends, so a proof that treats the cases one at a time could never be finished."],
+ ["F2", "every real number \\(x\\)", "one case for each real number", notfin, "There are infinitely many real numbers, so there would be infinitely many cases and the proof could never be finished."],
+ ["F3", "every positive integer \\(n\\)", "\\(n = 1\\), \\(n = 2\\), \\(n = 3\\), and so on, one case for each positive integer", notfin, "Every positive integer appears, but there are infinitely many cases."]
+];
+/* One row from each group, one more from the 13 left, in a random order. */
+rowV: rand(poolV);
+rowN: rand(poolN);
+rowF: rand(poolF);
+poolleft: sublist(append(poolV, poolN, poolF), lambda([rw], not(member(rw, [rowV, rowN, rowF]))));
+rowX: rand(poolleft);
+qrows: random_permutation([rowV, rowN, rowF, rowX]);
+/* The likely error (diag) and the remaining option (other) for each correct category, with lead sentences. */
+diagof(c) := if c = exh then notexh else exh;
+otherof(c) := if c = notexh then notfin else if c = notfin then notexh else notfin;
+/* Wrong-answer feedback prompts the check to make, or says why the chosen category fails. It does not name the right category or show the row's explanation: that appears on a correct answer and in the worked solution. */
+leaddiag(c) := if c = exh then "Not exhaustive would mean that some number the claim is about lies in none of the cases. Try to name such a number, taking care over exactly which numbers the claim is about." else if c = notexh then "Exhaustive means that every number the claim is about lies in at least one of the cases. Test it: choose some numbers the claim is about, including awkward ones (zero, large numbers, numbers at the ends of a range or between the values listed), and find a case for each." else "A proof by exhaustion deals with its cases one at a time, so it has to finish. How many cases are there in this list?";
+leadother(c) := if c = notfin then "Nothing is left out: every number the claim is about appears somewhere in the list. Now check the other condition: could a proof that takes these cases one at a time ever finish?" else "Count the cases, not the numbers in them: a single case can contain infinitely many numbers. Here the list of cases stops, so it is finite. Now check whether every number the claim is about lies in one of the cases.";
+labsent(c) := if c = exh then "These cases are finite and exhaustive." else if c = notexh then "These cases are not exhaustive." else "These cases are not finite.";
+opts(c) := [[exh, is(c = exh), "finite and exhaustive"], [notexh, is(c = notexh), "not exhaustive"], [notfin, is(c = notfin), "not finite"]];
+dom1: qrows[1][2]; cs1: qrows[1][3]; cor1: qrows[1][4]; expl1: qrows[1][5];
+dom2: qrows[2][2]; cs2: qrows[2][3]; cor2: qrows[2][4]; expl2: qrows[2][5];
+dom3: qrows[3][2]; cs3: qrows[3][3]; cor3: qrows[3][4]; expl3: qrows[3][5];
+dom4: qrows[4][2]; cs4: qrows[4][3]; cor4: qrows[4][4]; expl4: qrows[4][5];
+ta1: opts(cor1); ta2: opts(cor2); ta3: opts(cor3); ta4: opts(cor4);
+diag1: diagof(cor1); diag2: diagof(cor2); diag3: diagof(cor3); diag4: diagof(cor4);
+other1: otherof(cor1); other2: otherof(cor2); other3: otherof(cor3); other4: otherof(cor4);
+fbdiag1: leaddiag(cor1); fbother1: leadother(cor1);
+fbdiag2: leaddiag(cor2); fbother2: leadother(cor2);
+fbdiag3: leaddiag(cor3); fbother3: leadother(cor3);
+fbdiag4: leaddiag(cor4); fbother4: leadother(cor4);
+s_assert(is(length(unique([diag1, cor1, other1])) = 3 and length(unique([diag4, cor4, other4])) = 3), true);
+]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Rows {@map(first, qrows)@}; answers {@[cor1, cor2, cor3, cor4]@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the two conditions on the cases in Step 1 of a proof by exhaustion (the cases must be finite and exhaustive), pp. 13-14, in Section 5 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>dropdown</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans2</name><type>dropdown</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans3</name><type>dropdown</type><tans>ta3</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans4</name><type>dropdown</type><tans>ta4</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct category</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>cor1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@expl1@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely error for this row's category</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>diag1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@fbdiag1@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@fbother1@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct category</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>cor2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@expl2@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely error for this row's category</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>diag2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@fbdiag2@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@fbother2@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct category</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>cor3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@expl3@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely error for this row's category</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>diag3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@fbdiag3@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@fbother3@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt4</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct category</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>cor4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@expl4@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt4-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely error for this row's category</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>diag4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@fbdiag4@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>{@fbother4@}</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>4</deployedseed>
+  <deployedseed>6</deployedseed>
+  <qtest><testcase>1</testcase><description>All correct</description>
+    <testinput><name>ans1</name><value>first(mcq_correct(ta1))</value></testinput><testinput><name>ans2</name><value>first(mcq_correct(ta2))</value></testinput><testinput><name>ans3</name><value>first(mcq_correct(ta3))</value></testinput><testinput><name>ans4</name><value>first(mcq_correct(ta4))</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>All rows given the likely wrong category</description>
+    <testinput><name>ans1</name><value>diag1</value></testinput><testinput><name>ans2</name><value>diag2</value></testinput><testinput><name>ans3</name><value>diag3</value></testinput><testinput><name>ans4</name><value>diag4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>All rows given the remaining wrong category</description>
+    <testinput><name>ans1</name><value>other1</value></testinput><testinput><name>ans2</name><value>other2</value></testinput><testinput><name>ans3</name><value>other3</value></testinput><testinput><name>ans4</name><value>other4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Mixed: rows 1 and 2 correct, rows 3 and 4 the likely error</description>
+    <testinput><name>ans1</name><value>cor1</value></testinput><testinput><name>ans2</name><value>cor2</value></testinput><testinput><name>ans3</name><value>diag3</value></testinput><testinput><name>ans4</name><value>diag4</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

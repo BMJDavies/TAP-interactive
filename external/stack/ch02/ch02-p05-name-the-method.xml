@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch02_P05_Name_the_method</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here are four short arguments. For each, choose the kind of argument it is.</p>
+<ol>
+<li><p>{@arg1@}</p>
+<div>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div></li>
+<li><p>{@arg2@}</p>
+<div>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div></li>
+<li><p>{@arg3@}</p>
+<div>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</div></li>
+<li><p>{@arg4@}</p>
+<div>[[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</div></li>
+</ol>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Each kind of argument has its own shape.</p>
+<ul>
+<li><p>A direct proof starts from what is known and reaches the conclusion by a chain of logical steps.</p></li>
+<li><p>A proof by exhaustion splits the statement into a finite number of cases that cover everything, and proves each one.</p></li>
+<li><p>A proof by induction proves a first case, then proves that each case leads to the next.</p></li>
+<li><p>A proof by contradiction assumes that the statement is false and shows that this leads to something impossible.</p></li>
+<li><p>A disproof by counterexample gives one example for which the statement is false.</p></li>
+</ul>
+<ol>
+<li><p>{@expl1@}</p></li>
+<li><p>{@expl2@}</p></li>
+<li><p>{@expl3@}</p></li>
+<li><p>{@expl4@}</p></li>
+</ol>]]></text></generalfeedback>
+  <defaultgrade>4</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Pool rows: [id, argument, method, likely error, other wrong token, lead for the likely error, explanation]. */
+pool: [
+ ["D1", "Multiplying out, \\((x - 1)(x + 1) = x^2 + x - x - 1 = x^2 - 1\\), so the two sides are equal for every real number \\(x\\).", dir, exh, ind,
+  "Nothing here is split into cases or checked value by value.",
+  "It starts from rules of algebra that are always true and reaches the conclusion in a chain of steps: no cases, nothing assumed false, no example. A direct proof."],
+ ["D2", "Let \\(n\\) be an even number, so \\(n = 2k\\) for some integer \\(k\\). Then \\(n^2 = 4k^2 = 2(2k^2)\\), so \\(n^2\\) is even.", dir, ind, exh,
+  "There is no first case here, and no step from \\(k\\) to \\(k + 1\\).",
+  "It starts from what is given, that \\(n\\) is even, and deduces the conclusion step by step for any even \\(n\\). A direct proof."],
+ ["E1", "The statement is only about \\(n = 1, 2, 3\\) and \\(4\\), so we check it for each of these four values in turn.", exh, ind, cex,
+  "Checking four values one at a time is not induction: there is no step from each case to the next.",
+  "The statement is about four values only, and each is checked. Checking values is a proof when the list of cases is finite and complete: a proof by exhaustion."],
+ ["E2", "Every integer \\(n\\) is even or odd. If \\(n = 2k\\), then \\(n^2 + n = 2k(2k + 1)\\), which is even. If \\(n = 2k + 1\\), then \\(n^2 + n = (2k + 1)(2k + 2) = 2(2k + 1)(k + 1)\\), which is even. So \\(n^2 + n\\) is always even.", exh, dir, con,
+  "Look at the structure: the argument splits into two cases.",
+  "It splits the integers into a finite number of cases, even and odd, and proves the statement in each: a proof by exhaustion."],
+ ["I1", "A formula is checked for \\(n = 1\\). Then it is shown that whenever the formula holds for \\(n = k\\), it also holds for \\(n = k + 1\\). So it holds for every positive integer \\(n\\).", ind, exh, dir,
+  "The cases are not checked one at a time: one step covers them all.",
+  "A first case, then a step from each case to the next, which together reach every positive integer: a proof by induction."],
+ ["I2", "\\(3^1 - 1 = 2\\) is even. If \\(3^k - 1\\) is even, then \\(3^{k+1} - 1 = 3(3^k - 1) + 2\\) is even too. So \\(3^n - 1\\) is even for every positive integer \\(n\\).", ind, dir, exh,
+  "Look at the shape: a first case, then a step from \\(n = k\\) to \\(n = k + 1\\).",
+  "It checks \\(n = 1\\), then shows that if the statement holds for \\(n = k\\) it holds for \\(n = k + 1\\): a proof by induction."],
+ ["C1", "Suppose that there is a largest even number, \\(N\\). Then \\(N + 2\\) is even and larger than \\(N\\), which is impossible. So there is no largest even number.", con, cex, dir,
+  "This is not an example where a claim fails: something is assumed and then shown to be impossible.",
+  "It assumes the opposite of what is to be proved and shows that this leads to something impossible: a proof by contradiction."],
+ ["C2", "Suppose that \\(\\sqrt{2} = \\dfrac{p}{q}\\), where \\(p\\) and \\(q\\) are integers with no common factor. Then \\(p\\) and \\(q\\) must both be even, which is impossible. So \\(\\sqrt{2}\\) is irrational.", con, dir, exh,
+  "Look at how the argument starts: it supposes the opposite of what it proves.",
+  "It begins by supposing that \\(\\sqrt{2}\\) is rational, the opposite of the statement, and reaches something impossible: a proof by contradiction."],
+ ["X1", "When \\(a = 4\\) and \\(b = 1\\), \\(a^3 + b^3 = 65\\) but \\((a + b)^3 = 125\\). So the claim that \\(a^3 + b^3 = (a + b)^3\\) for all real numbers \\(a\\) and \\(b\\) is false.", cex, exh, dir,
+  "One value is checked, and it shows that the claim fails.",
+  "One example where the claim fails shows that it is false: a disproof by counterexample. One value cannot prove a claim, but it can disprove one."],
+ ["X2", "The claim that every prime number is odd is false, because \\(2\\) is a prime number and \\(2\\) is even.", cex, con, ind,
+  "Nothing is assumed and then contradicted: one example shows that the claim fails.",
+  "One case where the claim fails, the prime 2, is enough to show that it is false: a disproof by counterexample."]
+];
+rowsof(m) := sublist(pool, lambda([rw], is(rw[3] = m)));
+/* Four of the five methods, one row for each, in a random order. */
+meths: rand_selection([dir, exh, ind, con, cex], 4);
+pick: [rand(rowsof(meths[1])), rand(rowsof(meths[2])), rand(rowsof(meths[3])), rand(rowsof(meths[4]))];
+qrows: random_permutation(pick);
+dd(c) := [[dir, is(c = dir), "direct proof"], [exh, is(c = exh), "proof by exhaustion"], [ind, is(c = ind), "proof by induction"], [con, is(c = con), "proof by contradiction"], [cex, is(c = cex), "disproof by counterexample"]];
+arg1: qrows[1][2]; cor1: qrows[1][3]; diag1: qrows[1][4]; othr1: qrows[1][5]; lead1: qrows[1][6]; expl1: qrows[1][7];
+arg2: qrows[2][2]; cor2: qrows[2][3]; diag2: qrows[2][4]; othr2: qrows[2][5]; lead2: qrows[2][6]; expl2: qrows[2][7];
+arg3: qrows[3][2]; cor3: qrows[3][3]; diag3: qrows[3][4]; othr3: qrows[3][5]; lead3: qrows[3][6]; expl3: qrows[3][7];
+arg4: qrows[4][2]; cor4: qrows[4][3]; diag4: qrows[4][4]; othr4: qrows[4][5]; lead4: qrows[4][6]; expl4: qrows[4][7];
+ta1: dd(cor1); ta2: dd(cor2); ta3: dd(cor3); ta4: dd(cor4);
+s_assert(is(length(unique([cor1, cor2, cor3, cor4])) = 4), true);]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Rows {@map(first, qrows)@}; answers {@[cor1, cor2, cor3, cor4]@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the overview of types of proof (direct proof, proof by exhaustion, proof by induction, proof by contradiction) and of disproving a statement (pp. 5-6) in Section 2 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>dropdown</type><tans>ta1</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans2</name><type>dropdown</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans3</name><type>dropdown</type><tans>ta3</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans4</name><type>dropdown</type><tans>ta4</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct kind of argument</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>cor1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. {@expl1@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely confusion for this row</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>diag1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@lead1@} Compare the argument with the description of each kind of argument above.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Look at what the argument does: how does it start, and how does it reach its conclusion? Compare that with the description of each kind of argument above.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct kind of argument</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>cor2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. {@expl2@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely confusion for this row</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>diag2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@lead2@} Compare the argument with the description of each kind of argument above.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Look at what the argument does: how does it start, and how does it reach its conclusion? Compare that with the description of each kind of argument above.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt3</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct kind of argument</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>cor3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. {@expl3@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt3-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely confusion for this row</description><answertest>AlgEquiv</answertest><sans>ans3</sans><tans>diag3</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt3-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@lead3@} Compare the argument with the description of each kind of argument above.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt3-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Look at what the argument does: how does it start, and how does it reach its conclusion? Compare that with the description of each kind of argument above.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt4</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Correct kind of argument</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>cor4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. {@expl4@}</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt4-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the likely confusion for this row</description><answertest>AlgEquiv</answertest><sans>ans4</sans><tans>diag4</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt4-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>{@lead4@} Compare the argument with the description of each kind of argument above.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt4-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Look at what the argument does: how does it start, and how does it reach its conclusion? Compare that with the description of each kind of argument above.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>4</deployedseed>
+  <deployedseed>5</deployedseed>
+  <qtest><testcase>1</testcase><description>All correct</description>
+    <testinput><name>ans1</name><value>cor1</value></testinput><testinput><name>ans2</name><value>cor2</value></testinput><testinput><name>ans3</name><value>cor3</value></testinput><testinput><name>ans4</name><value>cor4</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt3-1-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt4-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>All the likely confusion</description>
+    <testinput><name>ans1</name><value>diag1</value></testinput><testinput><name>ans2</name><value>diag2</value></testinput><testinput><name>ans3</name><value>diag3</value></testinput><testinput><name>ans4</name><value>diag4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>All another wrong kind</description>
+    <testinput><name>ans1</name><value>othr1</value></testinput><testinput><name>ans2</name><value>othr2</value></testinput><testinput><name>ans3</name><value>othr3</value></testinput><testinput><name>ans4</name><value>othr4</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-F</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Mixed</description>
+    <testinput><name>ans1</name><value>cor1</value></testinput><testinput><name>ans2</name><value>cor2</value></testinput><testinput><name>ans3</name><value>diag3</value></testinput><testinput><name>ans4</name><value>othr4</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+    <expected><name>prt3</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt3-1-F | prt3-2-T</expectedanswernote></expected>
+    <expected><name>prt4</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt4-1-F | prt4-2-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

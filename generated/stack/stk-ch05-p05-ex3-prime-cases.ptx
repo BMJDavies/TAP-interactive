@@ -1,0 +1,20 @@
+<stack-static>
+    <statement><p><p>A statement like the one in the exercise above: if <m>p</m> is a prime number with <m>{5} \lt p \lt {30}</m>, then <m>(p - 1)(p + 1)</m> is a multiple of 12.</p>
+<p>A proof by exhaustion checks one case for each such prime. Enter the set of these primes. Type a set in curly brackets, for example {5, 6}.</p>
+<div><fillin characters="25" name="ans1"/> </div></p></statement>
+    <solution><p><p>The hypothesis says exactly which numbers are cases: primes, strictly between <m>{5}</m> and <m>{30}</m>. So the cases are <m>{\left \{7 , 11 , 13 , 17 , 19 , 23 , 29 \right \}}</m>, and the proof checks each one.</p>
+<tabular>
+<row><cell><m>p</m></cell><cell><m>(p - 1)(p + 1)</m></cell><cell><m>(p - 1)(p + 1) \div 12</m></cell></row>
+
+<row><cell><m>{7}</m></cell><cell><m>{48}</m></cell><cell><m>{4}</m></cell></row>
+<row><cell><m>{11}</m></cell><cell><m>{120}</m></cell><cell><m>{10}</m></cell></row>
+<row><cell><m>{13}</m></cell><cell><m>{168}</m></cell><cell><m>{14}</m></cell></row>
+<row><cell><m>{17}</m></cell><cell><m>{288}</m></cell><cell><m>{24}</m></cell></row>
+<row><cell><m>{19}</m></cell><cell><m>{360}</m></cell><cell><m>{30}</m></cell></row>
+<row><cell><m>{23}</m></cell><cell><m>{528}</m></cell><cell><m>{44}</m></cell></row>
+<row><cell><m>{29}</m></cell><cell><m>{840}</m></cell><cell><m>{70}</m></cell></row>
+
+</tabular>
+<p>Each value is a multiple of 12. The endpoints <m>{5}</m> and <m>{30}</m> are not cases, because the inequalities are strict, and odd numbers such as <m>{15}</m> are not cases, because they are not prime.</p></p></solution>
+    <answer><p><m>\left \{7 , 11 , 13 , 17 , 19 , 23 , 29 \right \}</m></p></answer>
+</stack-static>

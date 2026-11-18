@@ -1,0 +1,24 @@
+<stack-static>
+    <statement><p><p>Here is a proof of the same kind as the example above. Its last step is missing.</p>
+<p>Statement: the sum of any three consecutive odd numbers is a multiple of <m>{3}</m>.</p>
+<p><em>Proof.</em> Let the three consecutive odd numbers be <m>2k + 1</m>, <m>2k + 3</m> and <m>2k + 5</m>, where <m>k</m> is an integer. Their sum is <m>(2k + 1) + (2k + 3) + (2k + 5)</m> <m>= {6 k+9}</m>.</p>
+<p>[The last step is missing.]</p>
+<p>Hence the sum of any three consecutive odd numbers is a multiple of <m>{3}</m>.</p>
+<p>(a) Complete the factorisation.</p>
+<div><m>{6 k+9} = {3}\,\big(</m> <fillin characters="8" name="ans1"/> <m>\big)</m> </div>
+<div/>
+<p>(b) Which fact shows that this is a multiple of <m>{3}</m>?</p>
+<div><ol marker="(1)">
+<li>The number in the brackets is positive.</li>
+<li>The number in the brackets is even.</li>
+<li>The number in the brackets is an integer.</li>
+<li>Each of the numbers being added has this factor.</li>
+</ol> </div>
+<div/></p></statement>
+    <solution><p><p>Here is the whole proof.</p>
+<p>Let the three consecutive odd numbers be <m>2k + 1</m>, <m>2k + 3</m> and <m>2k + 5</m>, where <m>k</m> is an integer. Their sum is <m>(2k + 1) + (2k + 3) + (2k + 5)</m> <m>= {6 k+9} = {3}({2 k+3})</m>. Since <m>k</m> is an integer, <m>{2 k+3}</m> is an integer, so the sum is <m>{3}</m> times an integer: a multiple of <m>{3}</m>. Hence the sum of any three consecutive odd numbers is a multiple of <m>{3}</m>.</p>
+<p>This is the method of the example: write the numbers in terms of <m>k</m>, simplify, take out the factor, and say why what is left is an integer. The reason is that the bracket is an integer. It need not be even or positive, and the numbers being added need not have the factor themselves: with <m>k = 0</m> they are 1, 3 and 5.</p>
+</p></solution>
+    <answer><p><m>2 k+3</m></p></answer>
+    <answer><p><m>(3)</m></p></answer>
+</stack-static>

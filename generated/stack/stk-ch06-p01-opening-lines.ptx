@@ -1,0 +1,28 @@
+<stack-static>
+    <statement><p><p>Facts such as <q>odd × odd = odd</q> can be quoted in a proof, but each can also be proved directly. Statement: the product of any two odd numbers is odd.</p>
+<p>(a) Which of these opening lines would let the proof cover every pair of odd numbers? Select all that apply.</p>
+<div><ol marker="(1)">
+<li>Let the two odd numbers be <m>2k + 1</m> and <m>2k + 1</m>, where <m>k</m> is an integer.</li>
+<li>Let the two odd numbers be <m>2k + 1</m> and <m>2m + 1</m>, where <m>k</m> and <m>m</m> are integers.</li>
+<li>Let the two odd numbers be 3 and 5; any other pair of odd numbers works in the same way.</li>
+<li>Let <m>a</m> and <m>b</m> be odd numbers. Then <m>a = 2k + 1</m> and <m>b = 2m + 1</m> for all integers <m>k</m> and <m>m</m>.</li>
+<li>Let <m>a</m> and <m>b</m> be odd numbers. Then <m>a = 2k + 1</m> and <m>b = 2m + 1</m> for some integers <m>k</m> and <m>m</m>.</li>
+<li>Let the two odd numbers be <m>2k + 1</m> and <m>2k + 3</m>, where <m>k</m> is an integer.</li>
+</ol> </div>
+<div/>
+<p>(b) Another correct opening is: let the two odd numbers be <m>2k - 1</m> and <m>2m - 1</m>, where <m>k</m> and <m>m</m> are integers. Complete the algebra. Type <m>M</m> in terms of <m>k</m> and <m>m</m>, with * between letters, as in <c>k*m</c>.</p>
+<div><m>(2k - 1)(2m - 1) = 2M + 1</m>, where <m>M =</m> <fillin characters="18" name="ans2"/> </div>
+<div/></p></statement>
+    <solution><p><p>(a) A proof about every pair of odd numbers must start from two odd numbers that can be any odd numbers, chosen independently of each other. So it needs two different letters, each standing for an integer. The second and fifth openings do this. The fifth says <q>for some integers <m>k</m> and <m>m</m></q>: each odd number has its own <m>k</m> or <m>m</m>, which depends on the number.</p>
+<ul>
+<li><p>With <m>2k + 1</m> twice, the two numbers are equal, so the proof would only cover squares of odd numbers.</p></li>
+<li><p>3 and 5 are one pair. A proof has to cover every pair, and checking one pair cannot show that the others behave the same way.</p></li>
+<li><p><q>For all integers <m>k</m> and <m>m</m></q> says something false: <m>a</m> is one particular odd number, so it equals <m>2k + 1</m> for one particular integer <m>k</m>.</p></li>
+<li><p><m>2k + 1</m> and <m>2k + 3</m> are consecutive odd numbers, so the proof would only cover pairs such as 5 and 7, not 3 and 11.</p></li>
+</ul>
+<p>(b) Expand and take out a factor of 2 from every term except the final 1:</p>
+<p><me>(2k - 1)(2m - 1) = 4km - 2k - 2m + 1 = 2(2km - k - m) + 1.</me></p>
+<p>So <m>M = 2km - k - m</m>. Since <m>k</m> and <m>m</m> are integers, <m>M</m> is an integer, so the product of any two odd numbers is odd. The same opening with <m>2k</m> and <m>2m + 1</m> proves that even × odd = even: <m>2k(2m + 1) = 2(2km + k)</m>.</p></p></solution>
+    <answer><p><m>(2), (5)</m></p></answer>
+    <answer><p><m>2 k m-m-k</m></p></answer>
+</stack-static>

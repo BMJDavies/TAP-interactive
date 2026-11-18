@@ -1,0 +1,12 @@
+<stack-static>
+    <statement><p><p>Which is the best summary of what is wrong with the proof above that <m>\sqrt{9}</m> is irrational?</p>
+<div><ol marker="(1)">
+<li>It assumes that <m>\sqrt{9}</m> is rational, which is false, so every line after the assumption is unreliable.</li>
+<li>It squares <m>\sqrt{9} = \dfrac{a}{b}</m> wrongly: squaring should give <m>3 = \dfrac{a^2}{b^2}</m>, not <m>9 = \dfrac{a^2}{b^2}</m>.</li>
+<li>It relies on the claim that if <m>a^2</m> is a multiple of 9 then <m>a</m> is a multiple of 9. That claim is false, so the contradiction is not proved.</li>
+<li>It assumes that <m>a</m> and <m>b</m> have no common factor, but not every fraction can be written in that way.</li>
+</ol> </div></p></statement>
+    <solution><p><p>The proof relies on a false general claim: that if <m>a^2</m> is a multiple of 9, then <m>a</m> is a multiple of 9. Since that claim is false, the step that uses it does not follow, and the contradiction at the end is never established. In fact no correct argument could reach a contradiction here, because <m>\sqrt{9} = 3 = \dfrac{3}{1}</m> is rational. The best summary is the third.</p>
+<p>The other summaries are wrong. The assumption is true, not false: <m>\sqrt{9} = \dfrac{3}{1}</m>, and a proof by contradiction may start from any assumption. Squaring is correct, because <m>\left(\sqrt{9}\right)^2 = 9</m>. And every fraction can be written with no common factor in its numerator and denominator: divide both by their highest common factor.</p></p></solution>
+    <answer><p><m>(3)</m></p></answer>
+</stack-static>

@@ -1,0 +1,12 @@
+<stack-static>
+    <statement><p><p>Conjecture: the product of two odd numbers is always a multiple of <m>3</m>.</p>
+<p>Give a counterexample.</p>
+<div>First number: <fillin characters="5" name="ans1"/> </div>
+<div>Second number: <fillin characters="5" name="ans2"/> </div></p></statement>
+    <solution><p><p>The conjecture claims that every product of two odd numbers is a multiple of <m>3</m>. A counterexample is therefore a pair of odd numbers whose product is <em>not</em> a multiple of <m>3</m>.</p>
+<p>Take <m>1</m> and <m>5</m>. Both are odd, and <m>1\times 5=5</m>, which is not a multiple of <m>3</m>. So the product of two odd numbers is not always a multiple of <m>3</m>, and the conjecture is false. (Others: <m>5\times 7=35</m>, <m>1\times 1=1</m>, <m>(-1)\times 5=-5</m>.)</p>
+<p>A pair such as <m>3</m> and <m>5</m> does not work: <m>3\times 5=15</m> is a multiple of <m>3</m>. Because <m>3</m> is prime, a product is a multiple of <m>3</m> exactly when one of its factors is, so a counterexample needs two odd numbers that are not multiples of <m>3</m>.</p>
+<p>A true statement about such products is: the product of two odd numbers is always odd.</p></p></solution>
+    <answer><p><m>1</m></p></answer>
+    <answer><p><m>5</m></p></answer>
+</stack-static>

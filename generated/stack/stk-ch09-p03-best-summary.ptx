@@ -1,0 +1,12 @@
+<stack-static>
+    <statement><p><p>Which is the best summary of the proof by contradiction above, that no quadratic is always prime?</p>
+<div><ol marker="(1)">
+<li>Try many quadratic expressions, such as <m>n^2 + 7n + 5</m>, <m>n^2 - 1</m> and <m>3n^2 + 2</m>, and for each one find a value of <m>n</m> that gives a number that is not prime.</li>
+<li>Suppose <m>f(n) = an^2 + bn + c</m> and put <m>n = c</m>. Then <m>f(c) = c(ac + b + 1)</m> has the two factors <m>c</m> and <m>ac + b + 1</m>, so it cannot be prime.</li>
+<li>Suppose <m>f(n)</m> is prime for every <m>n</m>, and let <m>p = f(1)</m>. Then <m>f(1 + p)</m> and <m>f(1 + 2p)</m> are multiples of <m>p</m>, so all three values equal <m>p</m>, which no quadratic can do.</li>
+<li>Expand <m>a(p + 1)^2 + b(p + 1) + c</m>, then use <m>a + b + c = p</m> to collect the terms into the product <m>(ap + 2a + b + 1)p</m>, which is a multiple of <m>p</m>.</li>
+</ol> </div></p></statement>
+    <solution><p><p>A good summary names the logical structure and the mechanism. Here: assume, for contradiction, that <m>f(n)</m> is prime for every integer <m>n</m>; let <m>p = f(1)</m>; the values at <m>n = 1 + p</m> and <m>n = 1 + 2p</m> are multiples of <m>p</m>, so, being prime, all three values are <m>p</m>; but a quadratic takes each value at most twice. So <m>f(n)</m> is not prime for at least one <m>n</m>. The best summary is the third.</p>
+<p>The other summaries fail. Trying examples can never prove the conjecture: you might miss the one counterexample. Putting <m>n = c</m> is the first attempt, which does not work when <m>c</m> or <m>ac + b + 1</m> is 1 or <m>-1</m>. Expanding <m>f(1 + p)</m> is a correct step of the proof, but it is one step, not a summary of the whole proof.</p></p></solution>
+    <answer><p><m>(3)</m></p></answer>
+</stack-static>

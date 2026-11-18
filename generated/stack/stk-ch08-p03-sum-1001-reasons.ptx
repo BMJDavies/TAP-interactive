@@ -1,0 +1,43 @@
+<stack-static>
+    <statement><p><p>Here is the proof above in numbered lines.</p>
+<tabular>
+<row><cell>1</cell><cell>Suppose, for contradiction, that <m>n</m> and <m>m</m> are positive integers with <m>n + m = 1001</m>, and that <m>nm</m> is divisible by 1001.</cell></row>
+<row><cell>2</cell><cell>Since <m>1001 = 7 \times 11 \times 13</m>, the product <m>nm</m> is divisible by 7.</cell></row>
+<row><cell>3</cell><cell>So <m>n</m> is divisible by 7, or <m>m</m> is divisible by 7.</cell></row>
+<row><cell>4</cell><cell>Swapping the names if necessary, we may suppose that <m>n</m> is divisible by 7. Also, <m>n + m = 1001</m> is divisible by 7.</cell></row>
+<row><cell>5</cell><cell>So <m>m = (n + m) - n</m> is divisible by 7. Now <m>n</m> and <m>m</m> are both divisible by 7.</cell></row>
+<row><cell>6</cell><cell>In the same way, <m>n</m> and <m>m</m> are both divisible by 11, and both divisible by 13.</cell></row>
+<row><cell>7</cell><cell>So <m>n</m> and <m>m</m> are both divisible by <m>7 \times 11 \times 13 = 1001</m>.</cell></row>
+<row><cell>8</cell><cell>Since <m>n</m> and <m>m</m> are positive, <m>n \geq 1001</m> and <m>m \geq 1001</m>, so <m>n + m \geq 2002</m>.</cell></row>
+<row><cell>9</cell><cell>This contradicts <m>n + m = 1001</m>. So <m>nm</m> is not divisible by 1001.</cell></row>
+</tabular>
+<p>Here are five possible reasons.</p>
+<ol type="A">
+<li>If a number divides the sum of two integers, then it divides each of them.</li>
+<li>If a number divides two integers, then it divides their difference.</li>
+<li>Every integer greater than 1 is divisible by a prime.</li>
+<li>If different primes each divide an integer, then their product divides it.</li>
+<li>If a prime divides the product of two integers, then it divides at least one of them.</li>
+</ol>
+<ol class="tb-parts">
+<li><p>Which reason justifies each of these lines?</p>
+<div>Line 3: [ A | B | C | D | E ]  </div>
+<div>Line 5: [ A | B | C | D | E ]  </div>
+<div>Line 7: [ A | B | C | D | E ]  </div></li>
+<li><p>The proof needs all three primes 7, 11 and 13. Lines 2 to 7 with <m>77 = 7 \times 11</m> in place of 1001 show only that <m>n</m> and <m>m</m> are both multiples of 77, and that gives no contradiction. Give an example of positive integers <m>n</m> and <m>m</m> with <m>n + m = 1001</m> and <m>nm</m> divisible by 77.</p>
+<div><m>n =</m> <fillin characters="5" name="ans4"/>  <m>m =</m> <fillin characters="5" name="ans5"/>  </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p>Line 3 uses reason E: 7 is a prime that divides the product <m>nm</m>, so it divides <m>n</m> or <m>m</m>. (This needs 7 to be prime: 6 divides <m>2 \times 3</m> but divides neither 2 nor 3.)</p>
+<p>Line 5 uses reason B: 7 divides both <m>n + m</m> and <m>n</m>, so it divides their difference, <m>(n + m) - n = m</m>.</p>
+<p>Line 7 uses reason D: the different primes 7, 11 and 13 each divide <m>n</m>, so their product, 1001, divides <m>n</m>; the same holds for <m>m</m>.</p>
+<p>Reason A is false: 7 divides <m>1001 = 1000 + 1</m>, but 7 divides neither 1000 nor 1. Reason C is true, but no line of this proof uses it.</p></li>
+<li><p>Take <m>n = 77</m> and <m>m = 924 = 77 \times 12</m>. Then <m>n + m = 1001</m> and <m>nm = 71148 = 77 \times 924</m>. Any pair <m>n = 77a</m>, <m>m = 77b</m> with <m>a + b = 13</m> works.</p>
+<p>The contradiction in the proof comes from the size of 1001 compared with the sum: two positive multiples of 1001 add up to at least 2002, which is more than 1001. Two positive multiples of 77 can add up to 1001, so with 77 in place of 1001 there is no contradiction.</p></li>
+</ol></p></solution>
+    <answer><p>E</p></answer>
+    <answer><p>B</p></answer>
+    <answer><p>D</p></answer>
+    <answer><p><m>77</m></p></answer>
+    <answer><p><m>924</m></p></answer>
+</stack-static>

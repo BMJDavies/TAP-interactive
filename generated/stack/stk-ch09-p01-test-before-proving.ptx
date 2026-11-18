@@ -1,0 +1,17 @@
+<stack-static>
+    <statement><p><p>(a) The statement below is false. Find a counterexample: a value of <m>n</m> for which it fails.</p>
+<p>Statement: Let <m>n</m> be an integer. If <m>n</m> is odd, then <m>n^2 + 4</m> is prime.</p>
+<div><m>n =</m> <fillin characters="5" name="ans1"/>  </div>
+<p>(b) The example above proved that if <m>n</m> is odd, then <m>n^3 + 1</m> is even. A student tries <m>n = 2</m> and finds <m>2^3 + 1 = 9</m>, which is odd. What does this show?</p>
+<div><ol marker="(1)">
+<li>It shows that <m>n = 2</m> is a counterexample, so the statement is false and the proof in the example must contain a mistake.</li>
+<li>It shows nothing about the statement: 2 is not odd, so the statement makes no claim about <m>n = 2</m>.</li>
+<li>It shows that the converse, ‘if <m>n^3 + 1</m> is even, then <m>n</m> is odd’, is false.</li>
+<li>It shows that <m>n^3 + 1</m> is even for some odd numbers <m>n</m> but not for all of them.</li>
+</ol> </div>
+</p></statement>
+    <solution><p><p>(a) A counterexample to ‘if A, then B’ is a value for which A is true and B is false. Here A is ‘<m>n</m> is odd’. For example <m>n = {9}</m> is odd, and <m>{n^2+4} = {85}</m>, which is not prime. So the statement is false: test before you try to prove.</p>
+<p>(b) The statement in the example says nothing about even numbers. <m>n = 2</m> makes the ‘then’ part false, but it does not make the ‘if’ part true, so it is not a counterexample. A value tests a statement only if it satisfies the statement’s conditions, as in the chapter on counterexamples.</p></p></solution>
+    <answer><p><m>9</m></p></answer>
+    <answer><p><m>(2)</m></p></answer>
+</stack-static>

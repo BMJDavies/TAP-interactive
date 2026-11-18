@@ -1,0 +1,16 @@
+<stack-static>
+    <statement><p><p>Which is the best summary of the proof above that the product of any three consecutive positive integers is a multiple of 6?</p>
+<div><ol marker="(1)">
+<li>Multiply out <m>n(n + 1)(n + 2)</m> to get <m>n^3 + 3n^2 + 2n</m>, and show that this expression has a factor of 6 for every positive integer <m>n</m>.</li>
+<li>Among any three consecutive integers at least one is even and one is a multiple of 3, so the product is a multiple of 2 and of 3, and therefore of 6.</li>
+<li>Check that <m>1 \times 2 \times 3 = 6</m>, <m>2 \times 3 \times 4 = 24</m> and <m>3 \times 4 \times 5 = 60</m> are all multiples of 6, and conclude that every such product is a multiple of 6.</li>
+<li>Among any three consecutive integers one of them is always a multiple of 6, so their product must also be a multiple of 6.</li>
+</ol> </div></p></statement>
+    <solution><p><p>A good summary names the structure of the proof and its key idea. The proof does not use the expanded product. It shows that the product has a factor 2 (one or two of the numbers are even) and a factor 3 (one of them is a multiple of 3), and combines the two. That is the second option.</p>
+<ul>
+<li><p>Multiplying out was the first attempt, and the solution abandoned it (<q>start again</q>): <m>n^3 + 3n^2 + 2n</m> shows no factor of 6.</p></li>
+<li><p>Checking some products gives evidence, not a proof: there are infinitely many sets of three consecutive integers.</p></li>
+<li><p>Three consecutive integers need not include a multiple of 6: 7, 8 and 9 do not. Their product, <m>504 = 6 \times 84</m>, is still a multiple of 6, because 8 is even and 9 is a multiple of 3.</p></li>
+</ul></p></solution>
+    <answer><p><m>(2)</m></p></answer>
+</stack-static>

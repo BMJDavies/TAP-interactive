@@ -1,0 +1,27 @@
+<stack-static>
+    <statement><p><p>Follow the picture proof above with <m>x = {3}</m>.</p>
+<p>(a) After the strip has been moved, the pieces form a rectangle. It measures</p>
+<div><fillin characters="4" name="ans1"/>  by <fillin characters="4" name="ans2"/>  </div>
+<p>(b) The proposition <m>x^2 - 1 = (x - 1)(x + 1)</m> is true for every real number <m>x</m>, but the picture cannot always be drawn. Give an example of a value of <m>x</m> for which the picture cannot be drawn.</p>
+<div><m>x =</m> <fillin characters="6" name="ans3"/>  </div>
+<p>(c) Which statement about the picture is correct?</p>
+<div><ol marker="(1)">
+<li>It proves the proposition for every real number <m>x</m>.</li>
+<li>It proves the proposition only for whole numbers <m>x</m> greater than <m>1</m>.</li>
+<li>It proves the proposition for every real number <m>x</m> greater than <m>1</m>.</li>
+<li>It proves the proposition only for the value of <m>x</m> drawn in the picture.</li>
+</ol>  </div>
+<p>Type fractions as <c>1/2</c> and square roots as <c>sqrt(2)</c>.</p></p></statement>
+    <solution><p><p>Follow the four steps of the picture with <m>x = {3}</m>.</p>
+<ol>
+<li><p>Start with a square <m>{3}</m> by <m>{3}</m>. Its area is <m>{9}</m>.</p></li>
+<li><p>Cut a 1 by 1 square from one corner. What is left has area <m>{9} - 1 = {8}</m>.</p></li>
+<li><p>Cut off the strip along the top. It is <m>{2}</m> long and 1 high. Turn it and place it against the side.</p></li>
+<li><p>The pieces form a rectangle <m>{4}</m> by <m>{2}</m>, with area <m>{4} \times {2} = {8}</m>, the same as before.</p></li>
+</ol>
+<p>The same moves work for any <m>x \gt 1</m>, so the picture proves <m>x^2 - 1 = (x - 1)(x + 1)</m> for every real number <m>x \gt 1</m>. For <m>x \le 1</m> the length <m>x - 1</m> is zero or negative and there is no picture; for example, at <m>x = 0</m> there is nothing to draw. Nothing in the picture needs <m>x</m> to be a whole number. The algebraic proof covers every real <m>x</m>.</p></p></solution>
+    <answer><p><m>4</m></p></answer>
+    <answer><p><m>2</m></p></answer>
+    <answer><p><m>0</m></p></answer>
+    <answer><p><m>(3)</m></p></answer>
+</stack-static>

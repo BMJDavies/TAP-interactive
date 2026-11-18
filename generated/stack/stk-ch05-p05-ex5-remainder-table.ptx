@@ -1,0 +1,20 @@
+<stack-static>
+    <statement><p><p>The exercise above checks five values of <m>a</m>. Remainders prove a statement like it for every integer at once.</p>
+<p>Statement: for every integer <m>a</m>, <m>a^2 + {1}</m> is not divisible by <m>{3}</m>.</p>
+<p>Write <m>a = {3 k} + r</m>, where <m>k</m> is an integer and <m>r</m> is one of <m>0, 1, \ldots, {2}</m>. Expanding shows that <m>a^2 + {1}</m> leaves the same remainder on division by <m>{3}</m> as <m>r^2 + {1}</m>.</p>
+<p>Enter the remainders of <m>a^2 + {1}</m> on division by <m>{3}</m> for <m>r = 0, 1, \ldots, {2}</m>, as a list in that order. Type a list in square brackets, for example [5, 6, 7].</p>
+<div><fillin characters="18" name="ans1"/> </div></p></statement>
+    <solution><p><p>Every integer <m>a</m> leaves one of the remainders <m>0, 1, \ldots, {2}</m> on division by <m>{3}</m>, so there are <m>{3}</m> cases, <m>a = {3 k} + r</m>. In each case
+<me>({3 k} + r)^2 + {1} = {3}\left({3 k^2} + 2kr\right) + r^2 + {1},</me>
+and the first term is a multiple of <m>{3}</m>, so the remainder of <m>a^2 + {1}</m> depends only on <m>r</m>.</p>
+<tabular>
+<row><cell><m>r</m></cell><cell><m>r^2 + {1}</m></cell><cell>remainder on division by <m>{3}</m></cell></row>
+
+<row><cell><m>{0}</m></cell><cell><m>{1}</m></cell><cell><m>{1}</m></cell></row>
+<row><cell><m>{1}</m></cell><cell><m>{2}</m></cell><cell><m>{2}</m></cell></row>
+<row><cell><m>{2}</m></cell><cell><m>{5}</m></cell><cell><m>{2}</m></cell></row>
+
+</tabular>
+<p>So the list is <m>{\left[ 1 , 2 , 2 \right]}</m>. No remainder is 0, so <m>a^2 + {1}</m> is never divisible by <m>{3}</m>. These <m>{3}</m> cases prove the statement for every integer, which no list of values could do. The exercise's values fit: <m>a = 6</m> and <m>a = 9</m> leave remainder 0, so <m>a^2 + 1</m> leaves 1; <m>a = 7</m> and <m>a = 10</m> leave 1, giving 2; <m>a = 8</m> leaves 2, giving 2.</p></p></solution>
+    <answer><p><m>\left[ 1 , 2 , 2 \right] </m></p></answer>
+</stack-static>

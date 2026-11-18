@@ -1,0 +1,11 @@
+<stack-static>
+    <statement><p><p>Conjecture: for all positive real numbers <m>a</m> and <m>b</m>, <m>\ln(ab)=(\ln a)(\ln b)</m>.</p>
+<p>Give a counterexample. Type e for the number <m>\mathrm{e}</m>, and e^2 for <m>\mathrm{e}^2</m>.</p>
+<div><m>a=</m> <fillin characters="8" name="ans1"/>  <m>b=</m> <fillin characters="8" name="ans2"/> </div></p></statement>
+    <solution><p><p>A counterexample is a pair of positive numbers <m>a</m>, <m>b</m> for which <m>\ln(ab)\neq(\ln a)(\ln b)</m>. Choose values whose natural logarithms you know exactly.</p>
+<p>Take <m>a=b=\mathrm{e}</m>. Then <m>\ln(ab)=\ln(\mathrm{e}^2)=2</m>, but <m>(\ln a)(\ln b)=1\times 1=1</m>. Since <m>2\neq 1</m>, the conjecture is false.</p>
+<p>The correct law of logarithms is <m>\ln(ab)=\ln a+\ln b</m>: the logarithm turns a product into a sum, not into a product.</p>
+<p>The conjecture is true for some pairs. Writing <m>u=\ln a</m> and <m>v=\ln b</m>, it says <m>u+v=uv</m>, that is <m>(u-1)(v-1)=1</m>. So <m>a=b=1</m> (where <m>u=v=0</m>) and <m>a=b=\mathrm{e}^2</m> (where <m>u=v=2</m>) both satisfy it, which is why the first values you try may not work.</p></p></solution>
+    <answer><p><m>e</m></p></answer>
+    <answer><p><m>e</m></p></answer>
+</stack-static>

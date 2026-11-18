@@ -1,0 +1,15 @@
+<stack-static>
+    <statement><p><p>In the pictures above, each square of dots is made from the one before by adding an L-shaped layer along the top and down the right-hand side.</p>
+<ol class="tb-parts">
+<li><p>How many dots are in the layer that turns the <m>{4}</m> by <m>{4}</m> square into the <m>{5}</m> by <m>{5}</m> square?</p>
+<div><fillin characters="4" name="ans1"/>  </div></li>
+<li><p>How many dots are in the layer that turns a <m>k</m> by <m>k</m> square into a <m>(k+1)</m> by <m>(k+1)</m> square? Give your answer in terms of <m>k</m>.</p>
+<div><fillin characters="10" name="ans2"/>  </div></li>
+</ol></p></statement>
+    <solution><p><ol class="tb-parts">
+<li><p>The new layer runs along the top of the <m>{4}</m> by <m>{4}</m> square and down its right-hand side. It has <m>{4}</m> dots along the top, <m>{4}</m> dots down the side and one dot in the corner where they meet, so it has <m>{4} + {4} + 1 = {9}</m> dots. As a check, <m>{5}^2 - {4}^2 = {25} - {16} = {9}</m>. This is the <m>{5}</m>th odd number, <m>2 \times {5} - 1</m>.</p></li>
+<li><p>In the same way, the layer that turns a <m>k</m> by <m>k</m> square into a <m>(k+1)</m> by <m>(k+1)</m> square has <m>k</m> dots along the top, <m>k</m> dots down the side and one dot in the corner. That is <m>k + k + 1 = 2k + 1 = 2(k+1) - 1</m> dots, the <m>(k+1)</m>th odd number. So <m>k^2 + \big(2(k+1) - 1\big) = (k+1)^2</m>: adding the next odd number to a square number gives the next square number. This is the picture behind the induction step in the next section.</p></li>
+</ol></p></solution>
+    <answer><p><m>9</m></p></answer>
+    <answer><p><m>2 k+1</m></p></answer>
+</stack-static>

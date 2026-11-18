@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch03_P01_Disprove_a_new_conjecture</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Here is another conjecture: for all {@condB@}, {@eqB@}.</p>
+<p>Disprove it by giving a counterexample. Type fractions as 1/2 and \(\sqrt{2}\) as sqrt(2).</p>
+<div>\(a=\) [[input:ans1]] [[validation:ans1]] \(b=\) [[input:ans2]] [[validation:ans2]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>To disprove a <q>for all</q> statement, choose values that satisfy its conditions and show that the two sides differ for those values.</p>
+<p>Here the conjecture is about {@condB@}. Take \(a={@ceA@}\) and \(b={@ceB@}\), which satisfy these conditions. Then the left-hand side of {@eqB@} is {@ceLv@} and the right-hand side is {@ceRv@}. These are different, so the conjecture is false.</p>
+<p>The conjecture is true for some values, for example \(a={@holdA@}\), \(b={@holdB@}\), where both sides equal {@hLv@}. That is why trying one or two values is not enough to decide whether a conjecture is true. (For {@condShortB@}, the two sides are equal exactly when {@whenB@}.)</p>
+<p>{@ruleB@}</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[vB: rand([1,2,3,4,5]);
+ceAL: [9,1,1,1,3];
+ceBL: [16,2,1,4,1];
+holdAL: [0,1,2,3,2];
+holdBL: [4,1,2,3,2];
+ceA: ceAL[vB];
+ceB: ceBL[vB];
+holdA: holdAL[vB];
+holdB: holdBL[vB];
+/* A second pair at which the conjecture holds, in surd or logarithm form: used by the question tests. */
+altAL: [0, log(3)/log(2), 1+sqrt(2), sqrt(8), sqrt(2)];
+altBL: [sqrt(2), log(3/2)/log(2), 1+1/sqrt(2), 2*sqrt(2), sqrt(2)];
+altA: altAL[vB];
+altB: altBL[vB];
+lhsB(a,b) := if vB = 1 then sqrt(a+b) else if vB = 2 then 2^(a+b) else if vB = 3 then log(a+b) else if vB = 4 then sqrt(a*b) else (a-b)^2;
+rhsB(a,b) := if vB = 1 then sqrt(a)+sqrt(b) else if vB = 2 then 2^a+2^b else if vB = 3 then log(a)+log(b) else if vB = 4 then (a+b)/2 else a^2-b^2;
+domB(a,b) := if vB = 1 then (is(a >= 0) and is(b >= 0)) else (is(a > 0) and is(b > 0));
+/* scB: the size of the terms in the conjecture, the scale for the numerical comparison in the PRT. Variant 1 holds only when a or b is 0, which cannot be told numerically from a very small value, so it has no numerical comparison (scale 0). */
+scB(a,b) := if vB = 1 then 0 else if vB = 2 then 2^a+2^b else if vB = 3 then 1+abs(log(a))+abs(log(b)) else if vB = 4 then (a+b)/2 else a^2+b^2;
+condB: if vB = 1 then "real numbers \\(a\\) and \\(b\\) with \\(a \\ge 0\\) and \\(b \\ge 0\\)" else "positive real numbers \\(a\\) and \\(b\\)";
+condShortB: if vB = 1 then "\\(a \\ge 0\\) and \\(b \\ge 0\\)" else "positive \\(a\\) and \\(b\\)";
+eqB: ["\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)", "\\(2^{a+b}=2^a+2^b\\)", "\\(\\ln(a+b)=\\ln a+\\ln b\\)", "\\(\\sqrt{ab}=\\dfrac{a+b}{2}\\)", "\\((a-b)^2=a^2-b^2\\)"][vB];
+wordsB: ["sqrt(a+b) = sqrt(a) + sqrt(b), a, b >= 0", "2^(a+b) = 2^a + 2^b, a, b > 0", "ln(a+b) = ln(a) + ln(b), a, b > 0", "sqrt(ab) = (a+b)/2, a, b > 0", "(a-b)^2 = a^2 - b^2, a, b > 0"][vB];
+whenB: ["\\(a=0\\) or \\(b=0\\)", "\\((2^a-1)(2^b-1)=1\\)", "\\(a+b=ab\\)", "\\(a=b\\)", "\\(a=b\\)"][vB];
+ruleB: ["The correct relationship is the inequality \\(\\sqrt{a+b}\\le\\sqrt{a}+\\sqrt{b}\\): squaring the right-hand side gives \\(a+b+2\\sqrt{ab}\\), not \\(a+b\\).", "The correct law of indices is \\(2^{a+b}=2^a\\times 2^b\\): adding powers corresponds to multiplying, not adding.", "The correct law of logarithms is \\(\\ln(ab)=\\ln a+\\ln b\\): the logarithm of a product, not of a sum, splits into a sum.", "The correct relationship is the inequality \\(\\sqrt{ab}\\le\\dfrac{a+b}{2}\\) (the geometric mean is at most the arithmetic mean), with equality only when \\(a=b\\).", "The correct expansion is \\((a-b)^2=a^2-2ab+b^2\\); it is \\(a^2-b^2\\) that factorises as \\((a-b)(a+b)\\)."][vB];
+ceLv: ev(lhsB(ceA, ceB), simp);
+ceRv: ev(rhsB(ceA, ceB), simp);
+hLv: ev(lhsB(holdA, holdB), simp);
+hRv: ev(rhsB(holdA, holdB), simp);
+s_assert(is(ev(radcan(ceLv - ceRv), simp) = 0), false);
+s_assert(is(ev(radcan(hLv - hRv), simp) = 0), true);
+/* validate_real: the numerical input accepts i, inf, sets, lists, booleans and equations; only a real number may reach the PRT. Same validator as Ch02_P01_Checks_are_not_a_proof. */
+validate_real(ex) := block([sv, fv], sv: ev(ex, simp), fv: errcatch(ev(bfloat(sv), simp)), if ratnump(sv) then "" else if is(fv = []) then "Enter a single real number, for example 3, -1/2 or sqrt(2)." else if bfloatp(first(fv)) then "" else "Enter a single real number, for example 3, -1/2 or sqrt(2).");
+/* nearzero: a numerical fallback for entries that do not simplify exactly, such as sin(1)^2+cos(1)^2 for 1. True when the size of z is less than 10^(-12) times the size of sc: z is 0 to within rounding error, on the scale sc. */
+nearzero(z, sc) := block([fz, fs], fz: errcatch(ev(float(z), numer, simp)), fs: errcatch(ev(float(sc), numer, simp)), if is(fz = []) or is(fs = []) then return(false), fz: first(fz), fs: first(fs), if floatnump(fz) and floatnump(fs) then is(abs(fz) < 10^(-12)*abs(fs)) else false);]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Variant {@vB@}: {@wordsB@}. Sample counterexample a = {@ceA@}, b = {@ceB@}; trap pair a = {@holdA@}, b = {@holdB@}.]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is original to this project and does not come from Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ceA</tans><boxsize>8</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_real</options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ceB</tans><boxsize>8</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_real</options></input>
+  <prt>
+    <name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle>
+    <feedbackvariables><text><![CDATA[sa: ev(ans1, simp);
+sb: ev(ans2, simp);
+inD: domB(sa, sb);
+Lv: if inD then ev(lhsB(sa, sb), simp) else 0;
+Rv: if inD then ev(rhsB(sa, sb), simp) else 0;
+/* Exact test first. A pair typed in a form that does not simplify exactly, such as sin(1)^2+cos(1)^2 for 1, is then compared numerically, on the scale scB; rational pairs are only compared exactly. */
+nearB: if inD then (not (ratnump(sa) and ratnump(sb)) and nearzero(Lv - Rv, scB(sa, sb))) else false;
+holdsB: if inD then (is(ev(radcan(Lv - Rv), simp) = 0) or nearB) else false;]]></text></feedbackvariables>
+    <node>
+      <name>0</name><description>Diagnostic: values outside the conditions</description><answertest>AlgEquiv</answertest><sans>inD</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet>
+      <truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>1</truenextnode><trueanswernote>prt1-1-T</trueanswernote>
+      <truefeedback format="html"><text></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>Your values are not ones the conjecture talks about: it is only about {@condB@}. A counterexample has to satisfy the conditions of the conjecture.</p>]]></text></falsefeedback>
+    </node>
+    <node>
+      <name>1</name><description>Diagnostic: values at which the conjecture holds</description><answertest>AlgEquiv</answertest><sans>holdsB</sans><tans>false</tans><testoptions></testoptions><quiet>1</quiet>
+      <truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote>
+      <truefeedback format="html"><text><![CDATA[<p>With \(a={@sa@}\) and \(b={@sb@}\) the left-hand side is {@Lv@} and the right-hand side is {@Rv@}. They are different, so the conjecture is false.</p>]]></text></truefeedback>
+      <falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote>
+      <falsefeedback format="html"><text><![CDATA[<p>With \(a={@sa@}\) and \(b={@sb@}\) both sides are equal ({@Lv@} and {@Rv@}), so the conjecture is true for these values. This is not a counterexample: a false conjecture can still be true for some values. Try other values.</p>]]></text></falsefeedback>
+    </node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>10</deployedseed>
+  <deployedseed>17</deployedseed>
+  <qtest>
+    <testcase>1</testcase><description>Correct: the sample counterexample</description>
+    <testinput><name>ans1</name><value>ceA</value></testinput>
+    <testinput><name>ans2</name><value>ceB</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>2</testcase><description>Alternative correct: the sample pair swapped</description>
+    <testinput><name>ans1</name><value>ceB</value></testinput>
+    <testinput><name>ans2</name><value>ceA</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>3</testcase><description>Diagnostic: the trap pair, where the conjecture holds</description>
+    <testinput><name>ans1</name><value>holdA</value></testinput>
+    <testinput><name>ans2</name><value>holdB</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>4</testcase><description>Diagnostic: values outside the conditions</description>
+    <testinput><name>ans1</name><value>-1</value></testinput>
+    <testinput><name>ans2</name><value>1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>5</testcase><description>Invalid: a letter</description>
+    <testinput><name>ans1</name><value>x</value></testinput>
+    <testinput><name>ans2</name><value>ceB</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>6</testcase><description>Invalid: infinity is not a real number</description>
+    <testinput><name>ans1</name><value>inf</value></testinput>
+    <testinput><name>ans2</name><value>ceB</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>7</testcase><description>Invalid: i is not a real number</description>
+    <testinput><name>ans1</name><value>ceA</value></testinput>
+    <testinput><name>ans2</name><value>%i</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>8</testcase><description>Diagnostic: the trap pair in a form that does not simplify exactly</description>
+    <testinput><name>ans1</name><value>holdA*(sin(1)^2+cos(1)^2)</value></testinput>
+    <testinput><name>ans2</name><value>holdB</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest>
+    <testcase>9</testcase><description>Diagnostic: a second pair at which the conjecture holds, in surd or logarithm form</description>
+    <testinput><name>ans1</name><value>altA</value></testinput>
+    <testinput><name>ans2</name><value>altB</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

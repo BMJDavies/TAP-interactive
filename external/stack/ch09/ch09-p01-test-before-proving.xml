@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch09_P01_Test_before_proving</text></name>
+  <questiontext format="html"><text><![CDATA[<p>(a) The statement below is false. Find a counterexample: a value of \(n\) for which it fails.</p>
+<p>Statement: {@stmtC@}</p>
+<div>\(n =\) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div>
+<p>(b) The example above proved that if \(n\) is odd, then \(n^3 + 1\) is even. A student tries \(n = 2\) and finds \(2^3 + 1 = 9\), which is odd. What does this show?</p>
+<div>[[input:ans2]] [[validation:ans2]]</div>
+[[feedback:prt2]]]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>(a) A counterexample to ‘if A, then B’ is a value for which A is true and B is false. Here A is ‘\(n\) is {@hypword@}’. For example \(n = {@tce@}\) is {@hypword@}, and \({@fexpr@} = {@valce@}\), which is not prime. So the statement is false: test before you try to prove.</p>
+<p>(b) The statement in the example says nothing about even numbers. \(n = 2\) makes the ‘then’ part false, but it does not make the ‘if’ part true, so it is not a counterexample. A value tests a statement only if it satisfies the statement’s conditions, as in the chapter on counterexamples.</p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Five false statements: [vnum, statement, hypothesis word, f(n), counterexample, second counterexample, value failing the hypothesis, agreeing value]. */
+vbank: [
+ [1, "Let \\(n\\) be an integer. If \\(n\\) is odd, then \\(n^2 + 4\\) is prime.", "odd", n^2 + 4, 9, 11, 2, 1],
+ [2, "Let \\(n\\) be an integer. If \\(n\\) is odd, then \\(n^2 + 2\\) is prime.", "odd", n^2 + 2, 5, 7, 4, 3],
+ [3, "Let \\(n\\) be an integer. If \\(n\\) is prime, then \\(2n + 1\\) is prime.", "prime", 2*n + 1, 7, 13, 4, 5],
+ [4, "Let \\(n\\) be an integer. If \\(n\\) is even, then \\(n^2 + 1\\) is prime.", "even", n^2 + 1, 8, 0, 3, 2],
+ [5, "Let \\(n\\) be an integer. If \\(n\\) is odd, then \\(n^2 + n + 1\\) is prime.", "odd", n^2 + n + 1, 7, -1, 4, 3]
+];
+vrec: rand(vbank);
+vnum: vrec[1]; stmtC: vrec[2]; hypword: vrec[3]; hyp: vrec[3]; fexpr: vrec[4];
+tce: vrec[5]; tce2: vrec[6]; tdiag: vrec[7]; tagree: vrec[8];
+valce: ev(subst(n = tce, fexpr), simp);
+hypholds(m) := if hyp = "odd" then oddp(m) else if hyp = "even" then evenp(m) else (is(m > 1) and primep(m));
+validate_int(ex) := block([vv], vv: ev(ex, simp), if integerp(vv) then "" else "Enter a whole number.");
+ta1: tce;
+ta2: [[t_cex, false, "It shows that \\(n = 2\\) is a counterexample, so the statement is false and the proof in the example must contain a mistake."],
+      [t_none, true, "It shows nothing about the statement: 2 is not odd, so the statement makes no claim about \\(n = 2\\)."],
+      [t_conv, false, "It shows that the converse, ‘if \\(n^3 + 1\\) is even, then \\(n\\) is odd’, is false."],
+      [t_some, false, "It shows that \\(n^3 + 1\\) is even for some odd numbers \\(n\\) but not for all of them."]];
+s_assert(hypholds(tce) and not(primep(valce)), true);
+s_assert(hypholds(tce2) and not(primep(ev(subst(n = tce2, fexpr), simp))), true);
+s_assert(not(hypholds(tdiag)), true);
+s_assert(not(hypholds(-tdiag)), true);
+s_assert(hypholds(tagree) and primep(ev(subst(n = tagree, fexpr), simp)), true);
+]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Variant {@vnum@}: counterexample {@tce@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the second of the two statements proved on pp. 47-49 (if n is an odd integer then n³ + 1 is an even integer) in Section 9 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_int</options></input>
+  <input><name>ans2</name><type>radio</type><tans>ta2</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>nonotanswered</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[val: ev(subst(n = ans1, fexpr), simp);
+hok: hypholds(ans1);
+cfails: not(is(val > 1) and primep(val));
+sf: if is(val >= 4) and is(val < 10^12) then first(first(ifactors(val))) else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>A counterexample: hypothesis holds, conclusion fails</description><answertest>AlgEquiv</answertest><sans>hok and cfails</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. \(n = {@ans1@}\) is {@hypword@}, and \({@fexpr@} = {@val@}\), which is not prime[[if test='is(sf > 1)']] (it is divisible by {@sf@})[[/if]][[if test='is(val = 1)']] (1 is not a prime number)[[/if]]. One counterexample shows that the statement is false, so there is nothing to prove.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: the value does not satisfy the hypothesis</description><answertest>AlgEquiv</answertest><sans>hok</sans><tans>false</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\(n = {@ans1@}\) is not {@hypword@}. A counterexample must make the ‘if’ part true and the ‘then’ part false.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>When \(n = {@ans1@}\), \({@fexpr@} = {@val@}\), which is prime, so this value agrees with the statement. Keep testing values of \(n\) that are {@hypword@}.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Nothing: 2 does not satisfy the hypothesis</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>t_none</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes. The statement only makes a claim about odd \(n\), and 2 is not odd, so \(n = 2\) cannot test it. To test it, use odd values of \(n\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: n = 2 taken as a counterexample</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>t_cex</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>A counterexample must make the ‘if’ part of the statement true, as well as the ‘then’ part false. Check the ‘if’ part for \(n = 2\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: the converse</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>t_conv</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The converse is in fact true (\(n^3 + 1\) is even exactly when \(n\) is odd). And \(n = 2\) could not be a counterexample to it: that would need \(n^3 + 1\) to be even, and 9 is not.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>The example proved that \(n^3 + 1\) is even for every odd \(n\), so no odd number can fail. Which numbers does this option talk about, and is 2 one of them?</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>10</deployedseed>
+  <deployedseed>17</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct</description>
+    <testinput><name>ans1</name><value>tce</value></testinput><testinput><name>ans2</name><value>t_none</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Value outside the hypothesis; n = 2 as counterexample</description>
+    <testinput><name>ans1</name><value>tdiag</value></testinput><testinput><name>ans2</name><value>t_cex</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Agreeing value; converse</description>
+    <testinput><name>ans1</name><value>tagree</value></testinput><testinput><name>ans2</name><value>t_conv</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Second counterexample; for some</description>
+    <testinput><name>ans1</name><value>tce2</value></testinput><testinput><name>ans2</name><value>t_some</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F | prt2-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Negative value outside the hypothesis</description>
+    <testinput><name>ans1</name><value>-tdiag</value></testinput><testinput><name>ans2</name><value>t_none</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Invalid: not a whole number</description>
+    <testinput><name>ans1</name><value>7/2</value></testinput><testinput><name>ans2</name><value>t_none</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

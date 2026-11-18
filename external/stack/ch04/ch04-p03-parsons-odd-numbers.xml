@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch04_P03_Parsons_odd_numbers</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Prove that \(n^2 + 4n + 3\) is divisible by 8 for every odd number \(n\). Drag the blocks you need into the box, in order. Not every block belongs in the proof.</p>
+[[parsons input="ans1"]]
+{"steps": {# parsons_encode(proof_steps) #},
+ "headers": ["Your proof:"],
+ "available_header": ["Drag from here:"]}
+[[/parsons]]
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>A written proof has four parts: what you are given, any new letters, the deductions, and the conclusion. Here is one complete proof.</p>
+<ol>
+<li><p>Let \(n\) be an odd number.</p></li>
+<li><p>Then \(n = 2k + 1\) for some integer \(k\).</p></li>
+<li><p>So \(n^2 + 4n + 3 = (2k + 1)^2 + 4(2k + 1) + 3 = 4k^2 + 12k + 8 = 4(k + 1)(k + 2)\).</p></li>
+<li><p>Since \(k + 1\) and \(k + 2\) are consecutive integers, one of them is even, so \((k + 1)(k + 2) = 2m\) for some integer \(m\).</p></li>
+<li><p>So \(n^2 + 4n + 3 = 4 \times 2m = 8m\), which is divisible by 8.</p></li>
+<li><p>Hence \(n^2 + 4n + 3\) is divisible by 8 for every odd number \(n\).</p></li>
+</ol>
+<p>The hypothesis is line 1, the new letter \(k\) comes in line 2, lines 3 to 5 are the deductions, and line 6 is the conclusion. Lines 3 and 4 can come in either order, since each needs only \(n = 2k + 1\). Three blocks do not belong: \(n = 2k + 1\) for every integer \(k\) is false; assuming \(n^2 + 4n + 3 = 8m\) assumes what is to be proved; and checking two values does not prove the statement for every odd number.</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.0000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[stack_include("contribl://prooflib.mac");
+proof_steps: [
+  ["hyp",     "Let \\(n\\) be an odd number."],
+  ["intro",   "Then \\(n = 2k + 1\\) for some integer \\(k\\)."],
+  ["alg",     "So \\(n^2 + 4n + 3 = (2k + 1)^2 + 4(2k + 1) + 3 = 4k^2 + 12k + 8 = 4(k + 1)(k + 2)\\)."],
+  ["even",    "Since \\(k + 1\\) and \\(k + 2\\) are consecutive integers, one of them is even, so \\((k + 1)(k + 2) = 2m\\) for some integer \\(m\\)."],
+  ["ded",     "So \\(n^2 + 4n + 3 = 4 \\times 2m = 8m\\), which is divisible by 8."],
+  ["conc",    "Hence \\(n^2 + 4n + 3\\) is divisible by 8 for every odd number \\(n\\)."],
+  ["d_every", "Then \\(n = 2k + 1\\) for every integer \\(k\\)."],
+  ["d_circ",  "Assume that \\(n^2 + 4n + 3 = 8m\\) for some integer \\(m\\)."],
+  ["d_check", "Since \\(1 + 4 + 3 = 8\\) and \\(9 + 12 + 3 = 24\\), the statement is true for every odd number \\(n\\)."]
+];
+proof_steps: random_permutation(proof_steps);
+ta: proof("hyp", "intro", proof_c("alg", "even"), "ded", "conc");]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Parsons n^2+4n+3 for odd n; order {@map(first, proof_steps)@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is original to this project and does not come from Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>parsons</type><tans>[ta, proof_steps]</tans><boxsize>15</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[sa: parsons_decode(ans1);
+sal: args(proof_flatten(sa));
+[pd, saa]: proof_assessment(sa, proof_alternatives(ta));
+has_circ: if member("d_circ", sal) then 1 else 0;
+has_every: if member("d_every", sal) then 1 else 0;
+has_check: if member("d_check", sal) then 1 else 0;]]></text></feedbackvariables>
+    <node><name>0</name><description>Distance to the nearest valid proof</description><answertest>AlgEquiv</answertest><sans>pd</sans><tans>0</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>This is a complete proof: given, new letter, deductions, conclusion. The algebra and the line about consecutive integers may come in either order, since each needs only \(n = 2k + 1\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: circular block used</description><answertest>AlgEquiv</answertest><sans>has_circ</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>The block ‘Assume that \(n^2 + 4n + 3 = 8m\)’ assumes what is to be proved, so the proof would be circular. The proof starts from what is given: \(n\) is odd.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>2</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>2</name><description>Diagnostic: for every integer k</description><answertest>AlgEquiv</answertest><sans>has_every</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>‘\(n = 2k + 1\) for every integer \(k\)’ is false: \(n\) is one odd number, so \(k\) is one integer. The definition of odd gives some integer \(k\) with \(n = 2k + 1\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: empirical block used</description><answertest>AlgEquiv</answertest><sans>has_check</sans><tans>1</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Checking \(n = 1\) and \(n = 3\) does not prove the statement for every odd number. The conclusion must follow from the deductions.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>This is not yet a correct proof: every valid order scores, so something here needs to change. Here is your proof compared with one correct proof:</p>
+{@proof_assessment_display(saa, proof_steps)@}]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>4</deployedseed>
+  <deployedseed>5</deployedseed>
+  <qtest><testcase>1</testcase><description>The teacher's order</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [ta, proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>The other valid order: the even factor before the algebra</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("hyp","intro","even","alg","ded","conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Circular block in place of the hypothesis</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("d_circ","intro","alg","even","ded","conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>For every integer k</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("hyp","d_every","alg","even","ded","conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Concluding from checked values</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("hyp","intro","d_check"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Misordered: m used before it exists</description>
+    <testinput><name>ans1</name><value>apply(parsons_answer, [proof("hyp","intro","alg","ded","even","conc"), proof_steps])</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F | prt1-3-F | prt1-4-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

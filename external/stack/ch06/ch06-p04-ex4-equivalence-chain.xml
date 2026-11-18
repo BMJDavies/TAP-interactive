@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch06_P04_Ex4_equivalence_chain</text></name>
+  <questiontext format="html"><text><![CDATA[<p>Take the four consecutive integers to be \(n\), \(n + 1\), \(n + 2\) and \(n + 3\), where \(n\) is an integer. Show that the product of the last two minus the product of the first two equals the sum of all four.</p>
+<p>Work line by line in the box. The first line, \((n + 2)(n + 3) - n(n + 1)\), is typed for you. Start each new line with <code>=</code>, expand and simplify, and finish with the sum written out, \(n + (n + 1) + (n + 2) + (n + 3)\). Type products as <code>n*(n+1)</code> or <code>n(n+1)</code>.</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Expand both products, collect terms, and compare with the sum. Each line is equal to the one before:</p>
+<p>\[\begin{aligned}(n + 2)(n + 3) - n(n + 1) &= n^2 + 5n + 6 - n^2 - n\\ &= 4n + 6\\ &= n + (n + 1) + (n + 2) + (n + 3).\end{aligned}\]</p>
+<p>The minus sign in front of \(n(n + 1)\) applies to both of its terms: \(-n(n + 1) = -n^2 - n\). So for any four consecutive integers, the product of the last two minus the product of the first two equals the sum of all four. Writing the integers as \(n - 1\), \(n\), \(n + 1\), \(n + 2\) gives \(4n + 2\) for both.</p>
+<p>Other chains are just as good, for example one that passes through \(2(2n + 3)\) instead of \(4n + 6\). What matters is that every line equals the one before, and that at least one line of working comes between the first line and the sum.</p>]]></text></generalfeedback>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Fixed. questionsimplify 0 so that the given first line and the written-out sum stay as typed. */
+strip_eq(L) := if safe_op(L) = "stackeq" then first(args(L)) else L;
+ta1: [(n+2)*(n+3)-n*(n+1), stackeq(n^2+5*n+6-n^2-n), stackeq(4*n+6), stackeq(n+(n+1)+(n+2)+(n+3))];
+sumex: n+(n+1)+(n+2)+(n+3);
+/* cval only chooses the wording of the correct-answer feedback; the "jumps" check is in the PRT's feedback variables. */
+cval: 4*n+6;
+/* Diagnostic: the sign slip -n(n + 1) = -n^2 + n gives 6n + 6. */
+slipval: 6*n+6;
+]]></text></questionvariables>
+  <specificfeedback format="html"><text><![CDATA[[[feedback:prt1]]]]></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Chain (n+2)(n+3) - n(n+1) = 4n + 6 = n + (n+1) + (n+2) + (n+3)]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is adapted from Exercise 4, p. 26, in Section 6 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: the algebra of the proof is written as a chain of equal expressions, checked line by line.]]></text></questiondescription>
+  <questionsimplify>0</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>equiv</type><tans>ta1</tans><boxsize>30</boxsize><strictsyntax>1</strictsyntax><insertstars>4</insertstars><syntaxhint>firstline</syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>1</showvalidation><options>firstline</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>0</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[lastex: strip_eq(last(ans1));
+firstex: first(ta1);
+/* newlines: the lines after the first that do more than restate the first line (EqualComAss, as stack_equiv_find_step uses). */
+newlines: sublist(rest(ans1), lambda([L], emptyp(stack_equiv_find_step(L, [firstex]))));
+/* The working jumps when the first such line is already the sum written out. Any other line there counts as working. */
+jumps: if emptyp(newlines) then false else not(emptyp(stack_equiv_find_step(first(newlines), [sumex])));
+shown: not(jumps);
+nowork: emptyp(newlines);
+hasval: not(emptyp(stack_equiv_find_step(cval, ans1)));
+hasslip: some(lambda([L], is(ev(expand(strip_eq(L) - slipval), simp) = 0)), ans1);]]></text></feedbackvariables>
+    <node><name>0</name><description>Each line equals the one before</description><answertest>EquivFirst</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>3</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Some working comes between the first line and the sum (the first new line is not the sum itself)</description><answertest>AlgEquiv</answertest><sans>shown</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>2</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Every line is equal to the one before, but the working jumps to the answer. Expand both products and collect terms, so that the reader can see that the difference simplifies to the same expression as the sum.</p>]]></text></falsefeedback></node>
+    <node><name>2</name><description>The chain ends with the sum written out</description><answertest>EqualComAss</answertest><sans>lastex</sans><tans>sumex</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-3-T</trueanswernote><truefeedback format="html"><text><![CDATA[[[if test="hasval"]]<p>Your chain shows \((n + 2)(n + 3) - n(n + 1) = 4n + 6 = n + (n + 1) + (n + 2) + (n + 3)\), which proves the statement.</p>[[else]]<p>Your chain shows \((n + 2)(n + 3) - n(n + 1) = n + (n + 1) + (n + 2) + (n + 3)\), which proves the statement. Both expressions simplify to \(4n + 6\).</p>[[/if]]]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-3-F</falseanswernote><falsefeedback format="html"><text><![CDATA[[[if test="nowork"]]<p>There is no working yet. Start a new line with <code>=</code>, expand both products and collect terms.</p>[[else]]<p>Your working is correct so far. To finish the proof, end with the sum itself, \(n + (n + 1) + (n + 2) + (n + 3)\), so that the chain shows that the difference equals the sum.</p>[[/if]]]]></text></falsefeedback></node>
+    <node><name>3</name><description>Diagnostic: the sign slip</description><answertest>AlgEquiv</answertest><sans>hasslip</sans><tans>true</tans><testoptions></testoptions><quiet>1</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-4-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Each line marked ? is not equal to the line before it. When you subtract \(n(n + 1)\), the minus sign applies to both terms: \(-n(n + 1) = -n^2 - n\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-4-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Each line marked ? is not equal to the line before it. Expand each product carefully, and put the second product in brackets before you subtract it.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <qtest><testcase>1</testcase><description>Teacher's chain</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Terms in another order</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(6+4*n), stackeq((n+3)+(n+2)+(n+1)+n)]</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Brackets dropped in the sum</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(4*n+6), stackeq(n+n+1+n+2+n+3)]</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>The sign slip</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(n^2+5*n+6-n^2+n), stackeq(6*n+6)]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-4-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Jumps straight to the sum</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(n+(n+1)+(n+2)+(n+3))]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Stops at 4n + 6</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(n^2+5*n+6-n^2-n), stackeq(4*n+6)]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Another error</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(n^2+5*n+6-n^2-n), stackeq(4*n+7), stackeq(n+(n+1)+(n+2)+(n+3))]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-4-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>Invalid: wrong first line</description>
+    <testinput><name>ans1</name><value>[n*(n+1)-(n+2)*(n+3), stackeq(-4*n-6)]</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>One line of working, factorised, not 4n + 6</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(2*(2*n+3)), stackeq(n+(n+1)+(n+2)+(n+3))]</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>10</testcase><description>One line of working, expanded only</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(n^2+5*n+6-n^2-n), stackeq(n+(n+1)+(n+2)+(n+3))]</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>11</testcase><description>Jump hidden behind a restated first line</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq((n+3)*(n+2)-(n+1)*n), stackeq(n+(n+1)+(n+2)+(n+3))]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>12</testcase><description>Jump, then the sum restated</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(n+n+1+n+2+n+3), stackeq(n+(n+1)+(n+2)+(n+3))]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>13</testcase><description>Stops at a line of working that is not 4n + 6</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(2*(2*n+3))]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-T | prt1-3-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>14</testcase><description>Jump to the sum first, working only afterwards</description>
+    <testinput><name>ans1</name><value>[(n+2)*(n+3)-n*(n+1), stackeq(n+(n+1)+(n+2)+(n+3)), stackeq(4*n+6), stackeq(n+(n+1)+(n+2)+(n+3))]</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-T | prt1-2-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch02_P01_Checks_are_not_a_proof</text></name>
+  <questiontext format="html"><text><![CDATA[<p>A student wonders whether {@lhsA = rhsA@} for every real number \(x\). They check \(x = {@ra@}\), \(x = {@rb@}\) and \(x = {@rc@}\), and find that the two sides are equal each time.</p>
+<p>(a) Complete one of the checks: when \(x = {@rb@}\), both sides equal</p>
+<div>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</div>
+<p>(b) The student concludes that the equation is true for every real number \(x\). Show that the student is wrong: give an example of a value of \(x\) for which the two sides are different.</p>
+<div>\(x =\) [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</div>
+<p>Type fractions as <code>1/2</code> and square roots as <code>sqrt(2)</code>.</p>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>Checking values can show that a statement is false, but no number of checks can show that it is true for every real number: there are always values you have not checked.</p>
+<p>(a) When \(x = {@rb@}\), the left-hand side is \({@rb@}^3 + {@s2@} \times {@rb@} = {@tval@}\) and the right-hand side is \({@s1@} \times {@rb@}^2 + {@s3@} = {@tval@}\).</p>
+<p>(b) Subtracting the right-hand side from the left-hand side gives</p>
+<p>\[\left({@lhsA@}\right) - \left({@rhsA@}\right) = (x - {@ra@})(x - {@rb@})(x - {@rc@}).\]</p>
+<p>This product is 0 exactly when \(x\) is {@ra@}, {@rb@} or {@rc@}, the three values the student happened to check, and it is not 0 for any other value of \(x\). So any other value is a counterexample. For example, at \(x = 0\) the left-hand side is 0 and the right-hand side is {@s3@}.</p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[/* Six claims, each true at exactly three positive integers: (x - a)(x - b)(x - c) = 0 rearranged. */
+trip: rand([[1,2,3],[1,2,4],[1,3,4],[2,3,4],[1,2,5],[1,3,5]]);
+ra: trip[1]; rb: trip[2]; rc: trip[3];
+s1: ra + rb + rc; s2: ra*rb + rb*rc + rc*ra; s3: ra*rb*rc;
+lhsA: x^3 + s2*x; rhsA: s1*x^2 + s3;
+tval: rb^3 + s2*rb;
+ta1: tval;
+ta2: 0;
+/* Validation: the numerical input type rejects letters and decimals, but accepts i, inf, sets, lists, booleans and equations. This validator leaves only real numbers. */
+validate_real(ex) := block([sv, fv], sv: ev(ex, simp), fv: errcatch(ev(bfloat(sv), simp)), if ratnump(sv) then "" else if is(fv = []) then "Enter a single real number, for example 3, -1/2 or sqrt(2)." else if bfloatp(first(fv)) then "" else "Enter a single real number, for example 3, -1/2 or sqrt(2).");]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[Claim {@lhsA = rhsA@}, true only at x = {@ra@}, {@rb@}, {@rc@}; check value {@tval@}]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is based on the discussion of checking the proposition x^2 - 1 = (x - 1)(x + 1) by substituting values of x (p. 5) in Section 2 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>6</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options>validator:validate_real</options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[/* No diagnostic: a single substitution, so any wrong value is an arithmetic slip. */]]></text></feedbackvariables>
+    <node><name>0</name><description>The check value</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>tval</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \({@rb@}^3 + {@s2@} \times {@rb@} = {@tval@}\) and \({@s1@} \times {@rb@}^2 + {@s3@} = {@tval@}\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Substitute \(x = {@rb@}\) into each side. The left-hand side is \({@rb@}^3 + {@s2@} \times {@rb@}\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text><![CDATA[/* Binary: the false branch is the diagnostic (a checked value offered as a counterexample). */
+sx: ev(ans2, simp);
+Lv: ev(sx^3 + s2*sx, simp);
+Rv: ev(s1*sx^2 + s3, simp);
+/* A checked value typed in a form that does not simplify exactly, such as sin(1)^2+cos(1)^2, is compared numerically. Rational values are compared exactly. */
+nearA: if ratnump(sx) then false else is(abs(float(Lv - Rv)) < 10^(-9));
+holdsA: is(ratsimp(radcan(Lv - Rv)) = 0) or is(nearA = true);
+/* Show exact values when rational; otherwise a 2 d.p. approximation (Maxima writes 16*sqrt(2) as 2^(9/2)). */
+Lrat: ratnump(Lv);
+Rrat: ratnump(Rv);]]></text></feedbackvariables>
+    <node><name>0</name><description>The two sides differ at the student's value</description><answertest>AlgEquiv</answertest><sans>holdsA</sans><tans>false</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>At \(x = {@sx@}\) the left-hand side is [[if test="Lrat"]]{@Lv@}[[else]]about {@dispdp(float(Lv), 2)@}[[/if]] and the right-hand side is [[if test="Rrat"]]{@Rv@}[[else]]about {@dispdp(float(Rv), 2)@}[[/if]]. They are different, so the equation is not true for every real number \(x\). One value where it fails is enough to show this.</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>[[if test="Lrat"]]At \(x = {@sx@}\) both sides equal {@Lv@}, so this value agrees with the claim: it is one of the values the student checked.[[else]]At \(x = {@sx@}\) the two sides are equal, so this value agrees with the claim: it is equal to one of the values the student checked.[[/if]] Choose a value of \(x\) that the student did not check.</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>5</deployedseed>
+  <deployedseed>6</deployedseed>
+  <deployedseed>7</deployedseed>
+  <qtest><testcase>1</testcase><description>Correct: the check value and x = 0</description>
+    <testinput><name>ans1</name><value>tval</value></testinput><testinput><name>ans2</name><value>0</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>Derivation of the check value from the right-hand side; x = 1/2</description>
+    <testinput><name>ans1</name><value>ev(s1*rb^2 + s3, simp)</value></testinput><testinput><name>ans2</name><value>1/2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Wrong check value; a checked value as counterexample</description>
+    <testinput><name>ans1</name><value>ev(tval + 1, simp)</value></testinput><testinput><name>ans2</name><value>rb</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Another checked value as counterexample</description>
+    <testinput><name>ans1</name><value>tval</value></testinput><testinput><name>ans2</name><value>ra</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>5</testcase><description>Alternative correct: a surd</description>
+    <testinput><name>ans1</name><value>tval</value></testinput><testinput><name>ans2</name><value>sqrt(2)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>6</testcase><description>Alternative correct: a negative value</description>
+    <testinput><name>ans1</name><value>tval</value></testinput><testinput><name>ans2</name><value>-1</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>7</testcase><description>Invalid: a letter in (b)</description>
+    <testinput><name>ans1</name><value>tval</value></testinput><testinput><name>ans2</name><value>x</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>8</testcase><description>Invalid: not a real number in (b)</description>
+    <testinput><name>ans1</name><value>tval</value></testinput><testinput><name>ans2</name><value>%i</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>9</testcase><description>Invalid: infinity in (b)</description>
+    <testinput><name>ans1</name><value>tval</value></testinput><testinput><name>ans2</name><value>inf</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>10</testcase><description>A checked value in a form that does not simplify exactly</description>
+    <testinput><name>ans1</name><value>tval</value></testinput><testinput><name>ans2</name><value>rb*(sin(1)^2+cos(1)^2)</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

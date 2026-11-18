@@ -1,0 +1,16 @@
+<stack-static>
+    <statement><p><p>Which is the best summary of the proof above that <m>m^2 - 1</m> is a multiple of 3 whenever the integer <m>m</m> is not a multiple of 3?</p>
+<div><ol marker="(1)">
+<li>Check that <m>m^2 - 1</m> is a multiple of 3 for <m>m = 1, 2, 4, 5</m> and <m>7</m>, and conclude that the same holds for every integer that is not a multiple of 3.</li>
+<li>Write each integer that is not a multiple of 3 as <m>3k + 1</m> or <m>3k + 2</m>, and in each case factorise <m>m^2 - 1</m> as a difference of two squares to show that it has a factor of 3.</li>
+<li>Factorise <m>m^2 - 1</m> as <m>(m - 1)(m + 1)</m>, and note that a product of two integers like this must be a multiple of 3.</li>
+<li>Split all the integers into multiples of 3 and integers that are not multiples of 3, and show that <m>m^2 - 1</m> is a multiple of 3 in each of these two cases.</li>
+</ol> </div></p></statement>
+    <solution><p><p>A good summary names the structure of the proof and its key step. The proof is by exhaustion: every integer that is not a multiple of 3 is 1 or 2 more than a multiple of 3, so there are two cases, and in each one the difference of two squares shows a factor of 3. That is the second option.</p>
+<ul>
+<li><p>Checking <m>m = 1, 2, 4, 5, 7</m> gives evidence, not a proof: there are infinitely many integers that are not multiples of 3, and no list of values covers them all.</p></li>
+<li><p>Factorising alone is not enough. A product of two integers need not be a multiple of 3 (<m>2 \times 4 = 8</m>); the cases are what show that one of the factors is a multiple of 3.</p></li>
+<li><p>The multiples of 3 are not a case to prove: for <m>m = 3</m>, <m>m^2 - 1 = 8</m>, which is not a multiple of 3. The hypothesis rules those integers out.</p></li>
+</ul></p></solution>
+    <answer><p><m>(2)</m></p></answer>
+</stack-static>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="stack">
+  <name><text>Ch06_P04_Ex5_smallest_constant</text></name>
+  <questiontext format="html"><text><![CDATA[<p>(a) What is the least value of \(\sin x\cos x + 1\)?</p>
+<div>[[input:ans1]] [[validation:ans1]]</div>
+<div>[[feedback:prt1]]</div>
+<p>(b) For which values of \(c\) are the graphs of \(y = \lvert {@aa@}\sin x\cos x + c\rvert\) and \(y = {@aa@}\sin x\cos x + c\) identical? Enter the smallest such value of \(c\).</p>
+<div>\(c =\) [[input:ans2]] [[validation:ans2]]</div>
+<div>[[feedback:prt2]]</div>]]></text></questiontext>
+  <generalfeedback format="html"><text><![CDATA[<p>\(\lvert t\rvert = t\) exactly when \(t \ge 0\), so the graphs of \(y = \lvert f(x)\rvert\) and \(y = f(x)\) are identical exactly when \(f(x) \ge 0\) for every \(x\).</p>
+<p>(a) By the double angle formula, \(\sin x\cos x = \dfrac12\sin 2x\), and \(-1 \le \sin 2x \le 1\). So \(\sin x\cos x + 1\) lies between \(\dfrac12\) and \(\dfrac32\). Its least value is \(\dfrac12\), at \(x = \dfrac{3\pi}{4}\) for example. In particular it is never negative, and this proves the exercise.</p>
+<p>(b) In the same way \(\displaystyle {@aa@}\sin x\cos x = {@aa/2@}\sin 2x\), so \({@aa@}\sin x\cos x + c\) has least value \(\displaystyle c - {@aa/2@}\), which is at least 0 exactly when \(\displaystyle c \ge {@aa/2@}\). The smallest such value is \(\displaystyle c = {@ta2@}\). For a smaller \(c\) the expression is negative near \(x = \dfrac{3\pi}{4}\), and there the modulus reflects the graph in the \(x\)-axis.</p>]]></text></generalfeedback>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1000000</penalty>
+  <hidden>0</hidden>
+  <idnumber></idnumber>
+  <stackversion><text>2026062900</text></stackversion>
+  <questionvariables><text><![CDATA[aa: rand([3, 4, 5, 6, 8]);
+ta1: 1/2;
+ta2: aa/2;
+/* Diagnostic: sin x cos x taken to reach -1, so c = a. Distinct from ta2 because aa >= 3. */
+dfull: aa;
+s_assert(is(dfull # ta2 and ta2 + 1 # dfull), true);
+]]></text></questionvariables>
+  <specificfeedback format="html"><text></text></specificfeedback>
+  <questionnote format="moodle_auto_format"><text><![CDATA[\(a = {@aa@}\): least value 1/2; smallest \(c = {@ta2@}\)]]></text></questionnote>
+  <questiondescription format="html"><text><![CDATA[This question is adapted from Exercise 5, p. 26, in Section 6 of Bokhove, C., Thoma, A., Gammack, D., Yu, L. H. S., Roberts, S. and Downey, F., Thinking about Proof, 1st edition, University of Southampton, 2022: it asks for the least value of sin x cos x + 1, and for the smallest constant c that keeps a sin x cos x + c from being negative.]]></text></questiondescription>
+  <questionsimplify>1</questionsimplify>
+  <assumepositive>0</assumepositive>
+  <assumereal>0</assumereal>
+  <prtcorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtcorrectfeedback"/]] [[commonstring key="defaultprtcorrectfeedback"/]]]]></text></prtcorrect>
+  <prtpartiallycorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtpartiallycorrectfeedback"/]] [[commonstring key="defaultprtpartiallycorrectfeedback"/]]]]></text></prtpartiallycorrect>
+  <prtincorrect format="html"><text><![CDATA[[[commonstring key="symbolicprtincorrectfeedback"/]] [[commonstring key="defaultprtincorrectfeedback"/]]]]></text></prtincorrect>
+  <decimals>.</decimals>
+  <scientificnotation>*10</scientificnotation>
+  <multiplicationsign>none</multiplicationsign>
+  <sqrtsign>1</sqrtsign>
+  <complexno>i</complexno>
+  <inversetrig>cos-1</inversetrig>
+  <logicsymbol>lang</logicsymbol>
+  <matrixparens>[</matrixparens>
+  <isbroken>0</isbroken>
+  <variantsselectionseed></variantsselectionseed>
+  <input><name>ans1</name><type>numerical</type><tans>ta1</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <input><name>ans2</name><type>numerical</type><tans>ta2</tans><boxsize>5</boxsize><strictsyntax>1</strictsyntax><insertstars>0</insertstars><syntaxhint></syntaxhint><syntaxattribute>0</syntaxattribute><forbidwords></forbidwords><allowwords></allowwords><forbidfloat>1</forbidfloat><requirelowestterms>0</requirelowestterms><checkanswertype>0</checkanswertype><mustverify>0</mustverify><showvalidation>0</showvalidation><options></options></input>
+  <prt><name>prt1</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Least value 1/2</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>ta1</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(\sin x\cos x = \dfrac12\sin 2x \ge -\dfrac12\), with equality when \(\sin 2x = -1\), for example at \(x = \dfrac{3\pi}{4}\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt1-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: sin x cos x taken to reach -1</description><answertest>AlgEquiv</answertest><sans>ans1</sans><tans>0</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt1-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\(\sin x\cos x\) never reaches \(-1\): that would need one of \(\sin x\) and \(\cos x\) to be 1 and the other \(-1\) at the same \(x\), and when one of them is \(\pm 1\) the other is 0. Use \(\sin 2x = 2\sin x\cos x\) to find the least value of \(\sin x\cos x\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt1-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>Use \(\sin 2x = 2\sin x\cos x\) to write \(\sin x\cos x\) in terms of \(\sin 2x\), whose least value you know.</p>]]></text></falsefeedback></node>
+  </prt>
+  <prt><name>prt2</name><value>1.0000000</value><autosimplify>1</autosimplify><feedbackstyle>1</feedbackstyle><feedbackvariables><text></text></feedbackvariables>
+    <node><name>0</name><description>Smallest c is a/2</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>ta2</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>1.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-1-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>Yes: \(\displaystyle {@aa@}\sin x\cos x = {@aa/2@}\sin 2x \ge -{@aa/2@}\), so \({@aa@}\sin x\cos x + c \ge 0\) for every \(x\) exactly when \(\displaystyle c \ge {@aa/2@}\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>1</falsenextnode><falseanswernote>prt2-1-F</falseanswernote><falsefeedback format="html"><text></text></falsefeedback></node>
+    <node><name>1</name><description>Diagnostic: c = a</description><answertest>AlgEquiv</answertest><sans>ans2</sans><tans>dfull</tans><testoptions></testoptions><quiet>0</quiet><truescoremode>=</truescoremode><truescore>0.0000000</truescore><truepenalty></truepenalty><truenextnode>-1</truenextnode><trueanswernote>prt2-2-T</trueanswernote><truefeedback format="html"><text><![CDATA[<p>\({@aa@}\sin x\cos x\) never reaches \(-{@aa@}\), because \(\sin x\cos x\) never reaches \(-1\). So a smaller \(c\) is enough. Use \(\sin 2x = 2\sin x\cos x\) to find the least value of \({@aa@}\sin x\cos x\).</p>]]></text></truefeedback><falsescoremode>=</falsescoremode><falsescore>0.0000000</falsescore><falsepenalty></falsepenalty><falsenextnode>-1</falsenextnode><falseanswernote>prt2-2-F</falseanswernote><falsefeedback format="html"><text><![CDATA[<p>The graphs are identical exactly when \({@aa@}\sin x\cos x + c\) is never negative, because \(\lvert t\rvert = t\) exactly when \(t \ge 0\). Find the least value of \({@aa@}\sin x\cos x\).</p>]]></text></falsefeedback></node>
+  </prt>
+  <deployedseed>1</deployedseed>
+  <deployedseed>2</deployedseed>
+  <deployedseed>3</deployedseed>
+  <deployedseed>10</deployedseed>
+  <deployedseed>17</deployedseed>
+  <qtest><testcase>1</testcase><description>Both correct</description>
+    <testinput><name>ans1</name><value>ta1</value></testinput><testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt1-1-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>2</testcase><description>sin x cos x taken to reach -1</description>
+    <testinput><name>ans1</name><value>0</value></testinput><testinput><name>ans2</name><value>dfull</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-T</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-T</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>3</testcase><description>Other wrong values (1 is wrong on every seed)</description>
+    <testinput><name>ans1</name><value>1</value></testinput><testinput><name>ans2</name><value>ta2 + 1</value></testinput>
+    <expected><name>prt1</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt1-1-F | prt1-2-F</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>0.0000000</expectedscore><expectedpenalty>0.1000000</expectedpenalty><expectedanswernote>prt2-1-F | prt2-2-F</expectedanswernote></expected>
+  </qtest>
+  <qtest><testcase>4</testcase><description>Invalid: a decimal</description>
+    <testinput><name>ans1</name><value>0.5</value></testinput><testinput><name>ans2</name><value>ta2</value></testinput>
+    <expected><name>prt1</name><expectedscore></expectedscore><expectedpenalty></expectedpenalty><expectedanswernote>NULL</expectedanswernote></expected>
+    <expected><name>prt2</name><expectedscore>1.0000000</expectedscore><expectedpenalty>0.0000000</expectedpenalty><expectedanswernote>prt2-1-T</expectedanswernote></expected>
+  </qtest>
+</question>
+</quiz>

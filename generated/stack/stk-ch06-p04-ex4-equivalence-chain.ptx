@@ -1,0 +1,10 @@
+<stack-static>
+    <statement><p><p>Take the four consecutive integers to be <m>n</m>, <m>n + 1</m>, <m>n + 2</m> and <m>n + 3</m>, where <m>n</m> is an integer. Show that the product of the last two minus the product of the first two equals the sum of all four.</p>
+<p>Work line by line in the box. The first line, <m>(n + 2)(n + 3) - n(n + 1)</m>, is typed for you. Start each new line with <c>=</c>, expand and simplify, and finish with the sum written out, <m>n + (n + 1) + (n + 2) + (n + 3)</m>. Type products as <c>n*(n+1)</c> or <c>n(n+1)</c>.</p>
+<div><fillin characters="30" name="ans1"/> </div></p></statement>
+    <solution><p><p>Expand both products, collect terms, and compare with the sum. Each line is equal to the one before:</p>
+<p><me>\begin{aligned}(n + 2)(n + 3) - n(n + 1) &amp;= n^2 + 5n + 6 - n^2 - n\\ &amp;= 4n + 6\\ &amp;= n + (n + 1) + (n + 2) + (n + 3).\end{aligned}</me></p>
+<p>The minus sign in front of <m>n(n + 1)</m> applies to both of its terms: <m>-n(n + 1) = -n^2 - n</m>. So for any four consecutive integers, the product of the last two minus the product of the first two equals the sum of all four. Writing the integers as <m>n - 1</m>, <m>n</m>, <m>n + 1</m>, <m>n + 2</m> gives <m>4n + 2</m> for both.</p>
+<p>Other chains are just as good, for example one that passes through <m>2(2n + 3)</m> instead of <m>4n + 6</m>. What matters is that every line equals the one before, and that at least one line of working comes between the first line and the sum.</p></p></solution>
+    <answer><p><m>\left[ \left(n+2\right) \left(n+3\right)-n \left(n+1\right) , =n^2+5 n+6-n^2-n , =4 n+6 , =n+\left(n+1\right)+\left(n+2\right)+\left(n+3\right) \right] </m></p></answer>
+</stack-static>
